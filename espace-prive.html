@@ -6,6 +6,7 @@
 <button class="tab" data-tab="finance">Finance</button>
 <button class="tab" data-tab="kpi">KPI</button>
 <button class="tab" data-tab="crm">CRM</button>
+<button class="tab" data-tab="strategie">Stratégie</button>
 </div>
 <div id="panel-liens" class="panel active"><div id="groups" class="groups"></div></div>
 <div id="panel-social" class="panel"><div id="social-content" class="muted">Chargement…</div></div>
@@ -13,6 +14,7 @@
 <div id="panel-finance" class="panel"><div id="finance-content" class="muted">Chargement…</div></div>
 <div id="panel-kpi" class="panel"><div id="kpi-content" class="muted">Chargement…</div></div>
 <div id="panel-crm" class="panel"><div id="crm-content" class="muted">Chargement…</div></div>
+<div id="panel-strategie" class="panel"><div id="strategie-content" class="muted">Chargement…</div></div>
 </section></main><script>
 const esc=s=>String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 const loaded={};
@@ -153,7 +155,35 @@ async function loadCrm(){
   }catch(e){el.innerHTML='<div class="note">Erreur de chargement.</div>'}
 }
 
-const loaders={social:loadSocial,projets:loadProjets,finance:loadFinance,kpi:loadKpi,crm:loadCrm};
+async function loadStrategie(){
+  const el=document.getElementById('strategie-content');
+  try{
+    const r=await fetch('/api/strategie',{credentials:'same-origin'});
+    const d=await r.json();
+    const p=d.portefeuille;
+    let html='<div class="kpi-cards">'+
+      `<div class="kpi-card"><b>${p.projetsActifs}</b><span>Projets actifs (avec URL)</span></div>`+
+      `<div class="kpi-card"><b>${p.urgents.length}</b><span>Urgents</span></div>`+
+      `<div class="kpi-card"><b>${p.meilleurTrafic30j?p.meilleurTrafic30j.v:'—'}</b><span>Meilleur trafic 30j${p.meilleurTrafic30j?' ('+esc(p.meilleurTrafic30j.name)+')':''}</span></div>`+
+      `<div class="kpi-card"><b>${p.projetsAZeroVisiteur.length}</b><span>Projets à 0 visiteur mesuré</span></div>`+
+      '</div>';
+    if(p.urgents.length){html+='<div class="note"><strong>Urgents : </strong>'+p.urgents.map(esc).join(', ')+'</div>'}
+    html+='<div class="cat-block"><h3>Projets prioritaires</h3><table class="data"><tr><th>Projet</th><th>Priorité</th><th>Trafic 30j</th><th>Piste d\'optimisation</th></tr>'+
+      d.projetsPrioritaires.map(pp=>`<tr><td>${esc(pp.name)}</td><td>${esc(pp.priorite)}</td><td class="num">${pp.trafic30j==null?'—':pp.trafic30j}</td><td class="muted">${esc(pp.pisteOptimisation||'—')}</td></tr>`).join('')+'</table></div>';
+    html+='<div class="cat-block"><h3>Concurrents / benchmarks</h3><table class="data"><tr><th>Projet</th><th>Concurrents identifiés</th><th>État</th></tr>'+
+      d.benchmarks.map(b=>`<tr><td>${esc(b.projet)}</td><td class="muted">${esc(b.concurrentsIdentifies)}</td><td>${esc(b.etat)}</td></tr>`).join('')+'</table></div>';
+    const v=d.veille;
+    html+=`<div class="cat-block"><h3>Veille &amp; tendances par projet</h3><div class="note">${esc(v.constat)}</div>`+
+      '<table class="data"><tr><th>Projet</th><th>Mots-clés de veille</th><th>Domaines connexes</th></tr>'+
+      v.parProjet.map(pv=>`<tr><td>${esc(pv.projet)}</td><td class="muted">${pv.motsCles.map(esc).join(', ')}</td><td class="muted">${pv.domainesConnexes.map(esc).join(', ')}</td></tr>`).join('')+'</table></div>';
+    html+='<div class="cat-block"><h3>Domaines connexes — niveau portefeuille</h3><table class="data"><tr><th>Cluster</th><th>Connexe à</th><th>Raison</th></tr>'+
+      v.domainesConnexesPortefeuille.map(c=>`<tr><td>${esc(c.cluster)}</td><td class="muted">${esc(c.connexeA)}</td><td class="muted">${esc(c.raison)}</td></tr>`).join('')+'</table></div>';
+    html+=`<div class="note">${esc(v.commentBrancherVeille)}</div>`;
+    el.innerHTML=html;
+  }catch(e){el.innerHTML='<div class="note">Erreur de chargement.</div>'}
+}
+
+const loaders={social:loadSocial,projets:loadProjets,finance:loadFinance,kpi:loadKpi,crm:loadCrm,strategie:loadStrategie};
 document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{
   document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));

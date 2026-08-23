@@ -1,0 +1,95 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/", "destination": "/dyonysos-maquette-entreprise-v2" },
+    { "source": "/solutions", "destination": "/dyonysos-solutions-v2" },
+    { "source": "/en", "destination": "/localized" },
+    { "source": "/en/solutions", "destination": "/localized" },
+    { "source": "/es", "destination": "/localized" },
+    { "source": "/es/solutions", "destination": "/localized" },
+    { "source": "/nl", "destination": "/localized" },
+    { "source": "/nl/solutions", "destination": "/localized" },
+    { "source": "/de", "destination": "/localized" },
+    { "source": "/de/solutions", "destination": "/localized" },
+    { "source": "/en/blog", "destination": "/blog" },
+    { "source": "/es/blog", "destination": "/blog" },
+    { "source": "/nl/blog", "destination": "/blog" },
+    { "source": "/de/blog", "destination": "/blog" },
+    { "source": "/en/contact", "destination": "/localized-secondary" },
+    { "source": "/es/contact", "destination": "/localized-secondary" },
+    { "source": "/nl/contact", "destination": "/localized-secondary" },
+    { "source": "/de/contact", "destination": "/localized-secondary" },
+    { "source": "/en/legal", "destination": "/localized-secondary" },
+    { "source": "/es/legal", "destination": "/localized-secondary" },
+    { "source": "/nl/legal", "destination": "/localized-secondary" },
+    { "source": "/de/legal", "destination": "/localized-secondary" },
+    { "source": "/partenaires", "destination": "/partenaires" },
+    { "source": "/en/partenaires", "destination": "/partenaires" },
+    { "source": "/es/partenaires", "destination": "/partenaires" },
+    { "source": "/nl/partenaires", "destination": "/partenaires" },
+    { "source": "/de/partenaires", "destination": "/partenaires" },
+    { "source": "/emploi", "destination": "/emploi" },
+    { "source": "/en/emploi", "destination": "/emploi" },
+    { "source": "/es/emploi", "destination": "/emploi" },
+    { "source": "/nl/emploi", "destination": "/emploi" },
+    { "source": "/de/emploi", "destination": "/emploi" },
+    { "source": "/formation-conseil", "destination": "/formation-conseil" },
+    { "source": "/en/formation-conseil", "destination": "/formation-conseil" },
+    { "source": "/es/formation-conseil", "destination": "/formation-conseil" },
+    { "source": "/nl/formation-conseil", "destination": "/formation-conseil" },
+    { "source": "/de/formation-conseil", "destination": "/formation-conseil" },
+    { "source": "/en/blog/articles", "destination": "/localized-articles" },
+    { "source": "/es/blog/articles", "destination": "/localized-articles" },
+    { "source": "/nl/blog/articles", "destination": "/localized-articles" },
+    { "source": "/de/blog/articles", "destination": "/localized-articles" },
+    { "source": "/emploi-carriere", "destination": "/category" },
+    { "source": "/education", "destination": "/category" },
+    { "source": "/commerce", "destination": "/category" },
+    { "source": "/gestion", "destination": "/category" },
+    { "source": "/marketplaces", "destination": "/category" },
+    { "source": "/video", "destination": "/category" },
+    { "source": "/graphisme", "destination": "/category" },
+    { "source": "/annuaire", "destination": "/category" },
+    { "source": "/createurs", "destination": "/category" },
+    { "source": "/applications", "destination": "/category" },
+    { "source": "/en/:category(emploi-carriere|education|commerce|gestion|marketplaces|video|graphisme|annuaire|createurs|applications)", "destination": "/category" },
+    { "source": "/es/:category(emploi-carriere|education|commerce|gestion|marketplaces|video|graphisme|annuaire|createurs|applications)", "destination": "/category" },
+    { "source": "/nl/:category(emploi-carriere|education|commerce|gestion|marketplaces|video|graphisme|annuaire|createurs|applications)", "destination": "/category" },
+    { "source": "/de/:category(emploi-carriere|education|commerce|gestion|marketplaces|video|graphisme|annuaire|createurs|applications)", "destination": "/category" },
+    { "source": "/solutions/:product(cvdesignpro|quizplay|courshub|ecole-connect|firmoscope|arbitrage-plus|analyzer-plus|profit-plus|erpbridge|marketplace|creation-graphique|applications-mobiles)", "destination": "/product" },
+    { "source": "/:lang(en|es|nl|de)/solutions/:product(cvdesignpro|quizplay|courshub|ecole-connect|firmoscope|arbitrage-plus|analyzer-plus|profit-plus|erpbridge|marketplace|creation-graphique|applications-mobiles)", "destination": "/product" },
+    { "source": "/blog/articles", "destination": "/articles" },
+    { "source": "/blog/applications-mobiles", "destination": "/mobile-articles" },
+    { "source": "/blog/:article", "destination": "/seo-article" },
+    { "source": "/:lang(en|es|nl|de)/blog/:article", "destination": "/seo-article" },
+    { "source": "/out/:solution", "destination": "/out" },
+    { "source": "/contact", "destination": "/contact" }
+    ,
+    { "source": "/espace-prive", "destination": "/espace-prive" }
+    ,
+    { "source": "/pilotage-social", "destination": "/pilotage-social" }
+  ],
+  "headers": [
+    {
+      "source": "/common.js",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, max-age=0" }
+      ]
+    },
+    {
+      "source": "/common.css",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, max-age=0" }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
+    }
+  ]
+}

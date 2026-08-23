@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" role="img" aria-labelledby="title">
+  <title id="title">Partenaires pédagogiques</title>
+  <defs><linearGradient id="g" x1="18" y1="18" x2="142" y2="102" gradientUnits="userSpaceOnUse"><stop stop-color="#714bce"/><stop offset="1" stop-color="#1688d8"/></linearGradient></defs>
+  <rect x="8" y="8" width="144" height="104" rx="24" fill="#f4f0ff"/>
+  <path d="M80 88c-12-11-27-15-46-12V35c19-3 34 1 46 12v41Zm0 0c12-11 27-15 46-12V35c-19-3-34 1-46 12v41Z" fill="none" stroke="url(#g)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M80 47v41" stroke="url(#g)" stroke-width="7" stroke-linecap="round"/>
+</svg>

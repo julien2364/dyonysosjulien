@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Nous contacter — Dyonysos</title>
+  <meta name="description" content="Contactez Dyonysos pour un projet de conseil, développement, intégration ou formation.">
+  <link rel="canonical" href="https://dyonysos.fr/contact">
+  <link rel="stylesheet" href="/common.css">
+  <link rel="stylesheet" href="/theme.css">
+  <style>
+    :root{--n:#08233f;--b:#1688d8;--t:#26384a;--m:#65778a;--l:#d7e5ee;--s:#f3f8fb}
+    *{box-sizing:border-box}body{margin:0;font:16px/1.6 Arial,sans-serif;color:var(--t);background:var(--s)}
+    .wrap{max-width:1120px;margin:auto;padding:0 24px}header{background:#fff;border-bottom:1px solid var(--l)}
+    nav{height:78px;display:flex;align-items:center;gap:28px}nav img{width:165px}nav a{color:var(--t);text-decoration:none;font-weight:700;margin-left:auto}
+    .hero{background:linear-gradient(115deg,#071f39,#0c466c);color:#fff;padding:65px 0}.hero h1{font-size:48px;margin:0 0 12px}.hero p{color:#cbddeb;max-width:680px}
+    .layout{display:grid;grid-template-columns:.75fr 1.25fr;gap:48px;padding:65px 24px}.aside h2{color:var(--n);font-size:30px}.aside p{color:var(--m)}
+    form{background:#fff;border:1px solid var(--l);border-radius:12px;padding:30px;box-shadow:0 20px 60px #0b31510d}.row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .field{margin-bottom:18px}label{display:block;font-weight:800;font-size:14px;margin-bottom:7px}input,textarea{width:100%;border:1px solid #bdccd8;border-radius:6px;padding:13px 14px;font:inherit}
+    textarea{min-height:170px;resize:vertical}input:focus,textarea:focus{outline:3px solid #1688d822;border-color:var(--b)}.required{color:#ba2d36}.hp{position:absolute;left:-9999px}
+    button{border:0;background:var(--b);color:#fff;padding:14px 22px;border-radius:6px;font-weight:800;font-size:15px;cursor:pointer}button:disabled{opacity:.6}.status{margin-top:16px;font-weight:700}.success{color:#137456}.error{color:#b32631}
+    footer{background:var(--n);color:#cbd8e5;padding:32px 0}@media(max-width:760px){.layout{grid-template-columns:1fr}.row{grid-template-columns:1fr}.hero h1{font-size:38px}}
+  </style>
+</head>
+<body>
+  <header><nav class="wrap"><a href="/"><img src="/logo-dyonysos-wordmark.png" alt="Dyonysos"></a><a href="/">Accueil</a></nav></header>
+  <main>
+    <section class="hero"><div class="wrap"><h1>Nous contacter</h1><p>Présentez-nous votre besoin. Dyonysos vous répondra pour cadrer les objectifs, les délais et la prochaine étape utile.</p></div></section>
+    <section class="wrap layout">
+      <aside class="aside"><h2>Parlons de votre projet</h2><p>Conseil, développement, intégration, automatisation ou formation : décrivez simplement votre contexte et le résultat recherché. Votre demande sera transmise directement à Dyonysos.</p></aside>
+      <form id="contactForm">
+        <div class="field"><label for="objet">Objet</label><input id="objet" name="objet" maxlength="180"></div>
+        <div class="row"><div class="field"><label for="nom">Nom</label><input id="nom" name="nom" maxlength="100"></div><div class="field"><label for="prenom">Prénom</label><input id="prenom" name="prenom" maxlength="100"></div></div>
+        <div class="row"><div class="field"><label for="email">Adresse email <span class="required">*</span></label><input id="email" name="email" type="email" required maxlength="180" autocomplete="email"></div><div class="field"><label for="telephone">Téléphone <span class="required">*</span></label><input id="telephone" name="telephone" type="tel" required maxlength="40" autocomplete="tel"></div></div>
+        <div class="field"><label for="message">Message <span class="required">*</span></label><textarea id="message" name="message" required maxlength="5000"></textarea></div>
+        <div class="hp"><label>Ne pas remplir<input name="website" tabindex="-1" autocomplete="off"></label></div>
+        <button type="submit">Envoyer le message</button><div id="status" class="status" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+  </main>
+  <footer><div class="wrap">© 2026 Dyonysos — SASU enregistrée à Mouguerre, France.</div></footer>
+  <script>
+    const requestedObject=new URLSearchParams(location.search).get('objet');if(requestedObject)document.getElementById('objet').value=requestedObject;
+    contactForm.addEventListener('submit',async e=>{e.preventDefault();const button=contactForm.querySelector('button');status.textContent='Envoi en cours…';status.className='status';button.disabled=true;try{const body=Object.fromEntries(new FormData(contactForm));const response=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const data=await response.json();if(!response.ok)throw new Error(data.error||'Envoi impossible.');status.textContent='Votre message a bien été envoyé.';status.className='status success';window.va?.('pageview',{route:'/conversion/contact-envoye',path:'/conversion/contact-envoye'});contactForm.reset()}catch(error){status.textContent=error.message;status.className='status error'}finally{button.disabled=false}})
+  </script>
+  <script src="/common.js" defer></script>
+</body>
+</html>

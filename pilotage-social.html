@@ -1,0 +1,293 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Pilotage Social — Dyonysos</title><style>
+:root{--n:#08233f;--b:#1688d8;--t:#26384a;--m:#667789;--l:#d7e5ee;--s:#f3f8fb;--g:#198765;--r:#b32631;--w:#a06400}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 Arial,sans-serif;color:var(--t);background:var(--s)}
+.wrap{max-width:1180px;margin:auto;padding:0 24px}
+header{background:#fff;border-bottom:1px solid var(--l)}
+nav{height:78px;display:flex;align-items:center;gap:18px}
+nav img{width:150px}
+nav a{color:var(--t);text-decoration:none;font-weight:700}
+nav a.back{margin-left:auto}
+.hero{background:linear-gradient(115deg,#071f39,#0c466c);color:#fff;padding:38px 0}
+.hero h1{font-size:32px;margin:0 0 6px}
+.hero p{color:#cbddeb;margin:0}
+.tabs{display:flex;gap:8px;padding:18px 0;flex-wrap:wrap}
+.tab{padding:10px 18px;border-radius:8px;border:1px solid var(--l);background:#fff;font-weight:700;cursor:pointer;color:var(--t)}
+.tab.active{background:var(--b);color:#fff;border-color:var(--b)}
+main{padding:0 0 60px}
+.panel{display:none}
+.panel.active{display:block}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.stat{background:#fff;border:1px solid var(--l);border-radius:10px;padding:18px}
+.stat b{display:block;font-size:28px;color:var(--n)}
+.stat span{color:var(--m);font-size:13px}
+.card{background:#fff;border:1px solid var(--l);border-radius:10px;padding:22px;margin-bottom:20px}
+.card h2{margin-top:0;color:var(--n);font-size:19px}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--l);font-size:14px}
+th{color:var(--m);font-weight:700;font-size:12px;text-transform:uppercase}
+.btn{border:0;background:var(--b);color:#fff;padding:9px 16px;border-radius:6px;font-weight:700;cursor:pointer;font-size:13px}
+.btn.secondary{background:#fff;color:var(--b);border:1px solid var(--b)}
+.btn.danger{background:var(--r)}
+.field{margin-bottom:16px}
+.field label{display:block;font-weight:800;font-size:14px;margin-bottom:6px}
+.field input,.field select,.field textarea{width:100%;padding:11px;border:1px solid #b9cad7;border-radius:6px;font:inherit}
+.badge{display:inline-block;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:800;text-transform:uppercase}
+.badge.ok{background:#e4f6ee;color:var(--g)}
+.badge.warn{background:#fdf1de;color:var(--w)}
+.badge.err{background:#fbe7e8;color:var(--r)}
+.badge.muted{background:#eef2f5;color:var(--m)}
+.empty{color:var(--m);padding:20px 0;text-align:center}
+.banner{padding:14px 18px;border-radius:8px;margin-bottom:20px;font-weight:700}
+.banner.warn{background:#fdf1de;color:var(--w);border:1px solid #f1d8a8}
+.banner.err{background:#fbe7e8;color:var(--r);border:1px solid #f0c2c5}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.cal-cell{min-height:96px;background:#fff;border:1px solid var(--l);border-radius:8px;padding:6px;font-size:12px}
+.cal-cell .daynum{font-weight:800;color:var(--m);margin-bottom:4px}
+.cal-item{background:var(--s);border-radius:5px;padding:3px 6px;margin-bottom:3px;cursor:pointer;font-weight:700;color:var(--n)}
+.cal-nav{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.cal-nav h3{margin:0;color:var(--n)}
+.modal-bg{display:none;position:fixed;inset:0;background:#08233f88;align-items:center;justify-content:center;z-index:50}
+.modal-bg.active{display:flex}
+.modal{background:#fff;border-radius:12px;padding:26px;max-width:480px;width:92%;max-height:80vh;overflow:auto}
+.modal h3{margin-top:0;color:var(--n)}
+.gate{max-width:520px;margin:70px auto;background:#fff;border:1px solid var(--l);border-radius:12px;padding:30px;text-align:center}
+.gate a{color:var(--b);font-weight:800}
+</style><link rel="stylesheet" href="/common.css"><link rel="stylesheet" href="/theme.css"></head>
+<body>
+<header><nav class="wrap"><a href="/"><img src="/logo-dyonysos-wordmark.png" alt="Dyonysos"></a><a href="/espace-prive" class="back">← Espace privé</a></nav></header>
+<section class="hero"><div class="wrap"><h1>Pilotage Social</h1><p>Sélection projet → canal → lien → approbation → génération &amp; publication (Make). Calendrier visuel et suivi des erreurs.</p></div></section>
+
+<div id="gate" class="wrap gate" style="display:none">
+  <h2>Session privée requise</h2>
+  <p>Connecte-toi depuis l'<a href="/espace-prive">espace privé</a> pour accéder au pilotage social.</p>
+</div>
+
+<main id="app" class="wrap" style="display:none">
+  <div class="tabs">
+    <button class="tab active" data-tab="dashboard">Tableau de bord</button>
+    <button class="tab" data-tab="nouveau">Nouvelle publication</button>
+    <button class="tab" data-tab="calendrier">Calendrier</button>
+    <button class="tab" data-tab="erreurs">Erreurs</button>
+  </div>
+
+  <div id="configBanner"></div>
+
+  <section id="panel-dashboard" class="panel active">
+    <div class="grid-4">
+      <div class="stat"><b id="statProjects">—</b><span>Projets actifs</span></div>
+      <div class="stat"><b id="statPending">—</b><span>Demandes en attente</span></div>
+      <div class="stat"><b id="statQueue">—</b><span>Dans la file</span></div>
+      <div class="stat"><b id="statPublished">—</b><span>Publiés</span></div>
+    </div>
+    <div class="card">
+      <h2>Demandes en attente d'approbation</h2>
+      <table id="pendingTable"><thead><tr><th>Projet</th><th>Canal</th><th>Lien</th><th>Demandé le</th><th></th></tr></thead><tbody></tbody></table>
+      <div id="pendingEmpty" class="empty" style="display:none">Aucune demande en attente.</div>
+    </div>
+  </section>
+
+  <section id="panel-nouveau" class="panel">
+    <div class="card" style="max-width:560px">
+      <h2>Nouvelle publication</h2>
+      <form id="newForm">
+        <div class="field"><label>Projet</label><select id="f_project" required></select></div>
+        <div class="field"><label>Canal</label><select id="f_channel" required></select></div>
+        <div class="field"><label>Lien / page source</label><input id="f_link" type="url" placeholder="https://..." required></div>
+        <div class="field"><label>Note (optionnel)</label><textarea id="f_note" rows="3"></textarea></div>
+        <button class="btn" type="submit">Envoyer pour approbation</button>
+        <p id="newStatus" role="status" style="font-weight:700"></p>
+      </form>
+    </div>
+  </section>
+
+  <section id="panel-calendrier" class="panel">
+    <div class="card">
+      <div class="cal-nav">
+        <button class="btn secondary" id="calPrev">←</button>
+        <h3 id="calTitle"></h3>
+        <button class="btn secondary" id="calNext">→</button>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+  </section>
+
+  <section id="panel-erreurs" class="panel">
+    <div class="grid-3">
+      <div class="stat"><b id="statOk">—</b><span>Publications réussies</span></div>
+      <div class="stat"><b id="statFail">—</b><span>Échecs</span></div>
+      <div class="stat"><b id="statRate">—</b><span>Taux de réussite</span></div>
+    </div>
+    <div class="card">
+      <h2>Échecs de publication</h2>
+      <table id="errTable"><thead><tr><th>Date</th><th>Canal</th><th>Erreur</th><th>Code</th></tr></thead><tbody></tbody></table>
+      <div id="errEmpty" class="empty" style="display:none">Aucun échec enregistré.</div>
+    </div>
+    <div class="card">
+      <h2>Contenus bloqués / en révision</h2>
+      <table id="blockedTable"><thead><tr><th>Contenu</th><th>Canal</th><th>Statut</th></tr></thead><tbody></tbody></table>
+      <div id="blockedEmpty" class="empty" style="display:none">Rien en attente de révision.</div>
+    </div>
+  </section>
+</main>
+
+<div class="modal-bg" id="modalBg"><div class="modal" id="modalBody"></div></div>
+
+<script>
+let PROJECTS = [];
+let currentMonth = new Date(); currentMonth.setDate(1);
+
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+
+async function api(path, opts){
+  const r = await fetch(path, Object.assign({credentials:'same-origin'}, opts||{}));
+  if (r.status === 401) { showGate(); throw new Error('unauthorized'); }
+  const data = await r.json().catch(()=>({}));
+  return { ok: r.ok, status: r.status, data };
+}
+
+function showGate(){
+  document.getElementById('gate').style.display = 'block';
+  document.getElementById('app').style.display = 'none';
+}
+
+function configBanner(messages){
+  const el = document.getElementById('configBanner');
+  if (!messages.length) { el.innerHTML=''; return; }
+  el.innerHTML = messages.map(m=>`<div class="banner warn">⚠ ${esc(m)}</div>`).join('');
+}
+
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  document.getElementById('panel-'+t.dataset.tab).classList.add('active');
+  if (t.dataset.tab === 'calendrier') renderCalendar();
+}));
+
+async function loadProjects(){
+  const { data } = await api('/api/pilotage-social/projects');
+  PROJECTS = (data.projects||[]).filter(p=>String(p.statut||'').toLowerCase().includes('actif') || !p.statut);
+  const sel = document.getElementById('f_project');
+  sel.innerHTML = PROJECTS.map(p=>`<option value="${esc(p.id)}">${esc(p.name)}</option>`).join('') || '<option value="">Aucun projet</option>';
+  updateChannels();
+  document.getElementById('statProjects').textContent = PROJECTS.length;
+  return data.error === 'not_configured' ? data.message : null;
+}
+
+function updateChannels(){
+  const projectId = document.getElementById('f_project').value;
+  const p = PROJECTS.find(x=>x.id===projectId);
+  const channels = (p && p.canaux && p.canaux.length) ? p.canaux : ['LINKEDIN','FACEBOOK'];
+  document.getElementById('f_channel').innerHTML = channels.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');
+}
+document.getElementById('f_project').addEventListener('change', updateChannels);
+
+async function loadDashboard(){
+  const [{data:reqData}, {data:queueData}] = await Promise.all([
+    api('/api/pilotage-social/requests'),
+    api('/api/pilotage-social/queue'),
+  ]);
+  const requests = reqData.requests || [];
+  const pending = requests.filter(r=>r.status==='PENDING_REVIEW');
+  const items = queueData.items || [];
+  document.getElementById('statPending').textContent = pending.length;
+  document.getElementById('statQueue').textContent = items.filter(i=>i.status!=='PUBLISHED').length;
+  document.getElementById('statPublished').textContent = items.filter(i=>i.status==='PUBLISHED').length;
+
+  const tbody = document.querySelector('#pendingTable tbody');
+  tbody.innerHTML = pending.map(r=>{
+    const proj = PROJECTS.find(p=>p.id===r.project_id);
+    return `<tr><td>${esc(proj?proj.name:r.project_id)}</td><td>${esc(r.channel)}</td><td><a href="${esc(r.source_link)}" target="_blank" rel="noopener">${esc(r.source_link)}</a></td><td>${esc((r.requested_at||'').slice(0,16).replace('T',' '))}</td><td><button class="btn" data-approve="${esc(r.request_id)}">Approuver</button></td></tr>`;
+  }).join('');
+  document.getElementById('pendingEmpty').style.display = pending.length ? 'none' : 'block';
+  tbody.querySelectorAll('[data-approve]').forEach(btn=>btn.addEventListener('click', async ()=>{
+    btn.disabled = true; btn.textContent = 'Approbation…';
+    const { ok, data } = await api(`/api/pilotage-social/requests/${encodeURIComponent(btn.dataset.approve)}/approve`, { method:'POST' });
+    if (ok) { await loadDashboard(); }
+    else { btn.disabled = false; btn.textContent = 'Approuver'; alert(data.message || data.error || 'Échec de l’approbation'); }
+  }));
+}
+
+document.getElementById('newForm').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const status = document.getElementById('newStatus');
+  status.textContent = 'Envoi…'; status.style.color = '';
+  const body = {
+    project_id: document.getElementById('f_project').value,
+    channel: document.getElementById('f_channel').value,
+    source_link: document.getElementById('f_link').value,
+    note_utilisateur: document.getElementById('f_note').value,
+  };
+  const { ok, data } = await api('/api/pilotage-social/requests', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+  if (ok) {
+    status.textContent = 'Demande envoyée — en attente d’approbation.'; status.style.color = 'var(--g)';
+    document.getElementById('newForm').reset(); updateChannels();
+    loadDashboard();
+  } else {
+    status.textContent = data.message || data.error || 'Erreur lors de l’envoi.'; status.style.color = 'var(--r)';
+  }
+});
+
+async function renderCalendar(){
+  const { data } = await api('/api/pilotage-social/queue');
+  const items = (data.items||[]).filter(i=>i.scheduled_at);
+  const year = currentMonth.getFullYear(), month = currentMonth.getMonth();
+  document.getElementById('calTitle').textContent = currentMonth.toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
+  const first = new Date(year, month, 1);
+  const startOffset = (first.getDay()+6)%7; // lundi=0
+  const daysInMonth = new Date(year, month+1, 0).getDate();
+  const byDay = {};
+  items.forEach(i=>{ const d = new Date(i.scheduled_at); if(d.getFullYear()===year && d.getMonth()===month){ const k=d.getDate(); (byDay[k]=byDay[k]||[]).push(i); } });
+  let html = '';
+  for (let i=0;i<startOffset;i++) html += '<div class="cal-cell" style="background:transparent;border:none"></div>';
+  for (let d=1; d<=daysInMonth; d++){
+    const dayItems = byDay[d]||[];
+    html += `<div class="cal-cell"><div class="daynum">${d}</div>${dayItems.map(it=>`<div class="cal-item" data-item='${esc(JSON.stringify(it)).replace(/'/g,'&#39;')}'>${esc(it.channel)}</div>`).join('')}</div>`;
+  }
+  document.getElementById('calGrid').innerHTML = html;
+  document.querySelectorAll('[data-item]').forEach(el=>el.addEventListener('click',()=>{
+    const it = JSON.parse(el.dataset.item);
+    document.getElementById('modalBody').innerHTML = `<h3>${esc(it.channel)} — ${esc(it.status)}</h3><p><b>Accroche</b><br>${esc(it.hook)}</p><p><b>Texte</b><br>${esc(it.body)}</p><p><b>CTA</b><br>${esc(it.cta)}</p><p><b>Lien</b><br>${esc(it.url)}</p><p><b>Hashtags</b><br>${esc(it.hashtags)}</p><p><b>Planifié le</b><br>${esc(it.scheduled_at)}</p><button class="btn secondary" id="modalClose">Fermer</button>`;
+    document.getElementById('modalBg').classList.add('active');
+    document.getElementById('modalClose').addEventListener('click',()=>document.getElementById('modalBg').classList.remove('active'));
+  }));
+}
+document.getElementById('modalBg').addEventListener('click', e=>{ if(e.target.id==='modalBg') e.target.classList.remove('active'); });
+document.getElementById('calPrev').addEventListener('click', ()=>{ currentMonth.setMonth(currentMonth.getMonth()-1); renderCalendar(); });
+document.getElementById('calNext').addEventListener('click', ()=>{ currentMonth.setMonth(currentMonth.getMonth()+1); renderCalendar(); });
+
+async function loadErrors(){
+  const { data } = await api('/api/pilotage-social/logs');
+  const s = data.summary || {};
+  document.getElementById('statOk').textContent = s.published ?? '—';
+  document.getElementById('statFail').textContent = s.failed ?? '—';
+  document.getElementById('statRate').textContent = s.successRate!=null ? s.successRate+'%' : '—';
+  const errTbody = document.querySelector('#errTable tbody');
+  const failed = data.failedLogs || [];
+  errTbody.innerHTML = failed.map(l=>`<tr><td>${esc((l.timestamp||'').slice(0,16).replace('T',' '))}</td><td>${esc(l.channel)}</td><td>${esc(l.error_message)}</td><td>${esc(l.http_code)}</td></tr>`).join('');
+  document.getElementById('errEmpty').style.display = failed.length ? 'none' : 'block';
+  const blockedTbody = document.querySelector('#blockedTable tbody');
+  const blocked = data.blockedQueue || [];
+  blockedTbody.innerHTML = blocked.map(c=>`<tr><td>${esc(c.content_id)}</td><td>${esc(c.channel)}</td><td><span class="badge ${c.status==='FAILED'?'err':'warn'}">${esc(c.status)}</span></td></tr>`).join('');
+  document.getElementById('blockedEmpty').style.display = blocked.length ? 'none' : 'block';
+}
+
+(async function init(){
+  try {
+    const notConfigured = [];
+    const projMsg = await loadProjects();
+    if (projMsg) notConfigured.push(projMsg);
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    configBanner(notConfigured);
+    await loadDashboard();
+    await loadErrors();
+  } catch (e) {
+    if (e.message !== 'unauthorized') console.error(e);
+  }
+})();
+</script>
+<script src="/common.js" defer></script>
+</body></html>

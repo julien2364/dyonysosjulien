@@ -5,25 +5,23 @@
 // 12-13/08/2026) : l'historique ci-dessous ne couvre donc qu'environ une semaine, pas un mois plein.
 // Rien n'est extrapolé ni estimé au-delà de ce qui a été lu dans ces emails.
 const { requireSession } = require('./_lib/session');
-
-const DEPENSES = [
-  { date: '2026-08-12', fournisseur: 'ChatGPT', montant: 99.53, devise: 'EUR', note: null },
-  { date: '2026-08-15', fournisseur: 'Keepa', montant: 49.00, devise: 'EUR', note: 'Outil de suivi de prix Amazon' },
-  { date: '2026-08-15', fournisseur: 'ChatGPT', montant: 136.01, devise: 'EUR', note: null },
-  { date: '2026-08-16', fournisseur: 'OVHcloud', montant: 25.46, devise: 'EUR', note: null },
-  { date: '2026-08-17', fournisseur: 'Vercel', montant: 0.43, devise: 'EUR', note: '0,50 USD — usage' },
-  { date: '2026-08-17', fournisseur: 'Vercel', montant: 20.83, devise: 'EUR', note: '24,00 USD — transaction ANNULÉE/remboursée le jour même, non comptée dans le total', annulee: true },
-];
+const { DEPENSES, getTotaux } = require('./_lib/finance-data');
 
 module.exports = function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).json({ error: 'Méthode non autorisée.' });
   if (!requireSession(req, res)) return;
   res.setHeader('Cache-Control', 'private, no-store');
 
-  const retenues = DEPENSES.filter(d => !d.annulee);
-  const total = Math.round(retenues.reduce((s, d) => s + d.montant, 0) * 100) / 100;
-  const parFournisseur = {};
-  retenues.forEach(d => { parFournisseur[d.fournisseur] = Math.round(((parFournisseur[d.fournisseur] || 0) + d.montant) * 100) / 100; });
+  const { retenues, total, parFournisseur } = getTotaux();
+
+  // Conseils calculés à partir des vraies dépenses ci-dessus — des observations, pas des faits établis.
+  const conseils = [];
+  const chatgpt = retenues.filter(d => d.fournisseur === 'ChatGPT');
+  if (chatgpt.length >= 2) {
+    const totalChatgpt = Math.round(chatgpt.reduce((s, d) => s + d.montant, 0) * 100) / 100;
+    conseils.push(`2 paiements ChatGPT en 3 jours (12/08 et 15/08) totalisant ${totalChatgpt.toFixed(2)} € — à vérifier : abonnement + usage API séparés, ou double facturation.`);
+  }
+  conseils.push('Keepa (49 €/mois) et OVHcloud (25,46 €) n\'ont pas encore de projet explicitement rattaché dans ce tableau — les taguer permettrait de savoir si leur coût est justifié par le trafic/usage réel du projet concerné.');
 
   return res.status(200).json({
     updatedAt: '2026-08-23',
@@ -43,5 +41,39 @@ module.exports = function handler(req, res) {
       { sujet: 'Anthropic', detail: 'Un reçu Anthropic (#2032-8557-7896) reçu le 20/08/2026 — montant non extrait de l’aperçu, à ouvrir pour le chiffrer précisément.' },
       { sujet: 'Facture fournisseur Odoo (Dyonysos)', detail: 'Notification "Nouvelle facture dans le journal Factures fournisseurs" reçue le 16/08 (notifications@dyonysos.be) — brouillon, montant non consulté.' },
     ],
+    // --- Ajouts du 23/08 (demande "Finance GO") — scaffolding honnête : structure prête, aucune
+    // donnée fabriquée. Chaque bloc dit explicitement ce qui manque pour devenir réel.
+    tcd: {
+      note: 'Ventilation par projet impossible aujourd\'hui : aucune dépense ci-dessus n\'est taguée à un projet précis. La colonne "Mutualisé" reprend le vrai total par fournisseur ; les colonnes par projet resteront à 0 tant qu\'un tag projet n\'est pas ajouté à chaque dépense.',
+      mutualise: parFournisseur,
+      parProjet: {},
+    },
+    objectifsMois: {
+      configured: false,
+      mois: '2026-08',
+      note: 'Aucun objectif chiffré n\'a été fixé pour l\'instant. Ce bloc affichera achats/frais fixes/déductibles visés dès qu\'un objectif est défini avec toi.',
+    },
+    previsionnel: {
+      configured: false,
+      note: 'Un prévisionnel 6 mois / 1 an ne peut pas être construit honnêtement sur ~1 semaine d\'historique Qonto — ce serait de l\'extrapolation, pas une prévision. Dépouiller les relevés Qonto avril-juillet 2026 (déjà reçus par email, pas encore ouverts) donnerait assez de recul pour un premier prévisionnel réaliste.',
+    },
+    autresDepenses: {
+      configured: false,
+      categories: ['Véhicule', 'Téléphone'],
+      note: 'Pas de source connectée. Un module Fleet existe dans l\'Odoo encore actif (pet-stone.shop) et pourrait donner les coûts véhicule réels si vérifié avant l\'abandon d\'Odoo — non fait ce soir, Odoo étant en cours de sortie de service.',
+    },
+    dougs: {
+      configured: false,
+      note: 'Dougs retenu par toi comme comptabilité de référence (notamment pour la conformité), à la place de la compta Odoo. Aucun détail d\'intégration/API connu pour l\'instant — à clarifier avec toi avant tout branchement.',
+    },
+    financesPersonnelles: {
+      configured: false,
+      note: 'Section prévue (assets personnels, état banque perso séparé du pro) — aucune source connectée aujourd\'hui.',
+    },
+    etatActuel: {
+      configured: false,
+      note: 'Banque, cash disponible et assets ne sont pas connectés en direct (pas d\'API bancaire branchée) — les seuls chiffres réels de ce module viennent des emails de notification Qonto ci-dessus.',
+    },
+    conseils,
   });
 };

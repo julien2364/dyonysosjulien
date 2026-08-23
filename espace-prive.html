@@ -32,6 +32,7 @@ async function loadSocial(){
     html+='<div class="cat-block"><h3>Comptes Google</h3><table class="data"><tr><th>Compte</th><th>Usage</th></tr>'+d.comptesGoogle.comptes.map(c=>`<tr><td>${esc(c.email)}</td><td>${esc(c.usage)}</td></tr>`).join('')+'</table></div>';
     html+=`<div class="cat-block"><h3>Indexation Google (Search Console)</h3><p class="muted">${esc(d.indexationGoogle.note)}</p><table class="data"><tr><th>Date</th><th>Alerte</th></tr>`+d.indexationGoogle.alertesRecentes.map(a=>`<tr><td>${esc(a.date)}</td><td>${esc(a.sujet)}</td></tr>`).join('')+'</table></div>';
     if(d.projets.length){html+='<div class="cat-block"><h3>Connexions par projet</h3><table class="data"><tr><th>Projet</th><th>LinkedIn</th><th>Facebook</th><th>Instagram</th><th>TikTok</th><th>YouTube</th></tr>'+d.projets.map(p=>`<tr><td>${esc(p.name)}</td>`+p.connexions.map(c=>`<td>${c.connecte?'✅':'—'}</td>`).join('')+'</tr>').join('')+'</table></div>'}
+    if(d.planificateursExternesTrouves){const pe=d.planificateursExternesTrouves;html+='<div class="cat-block"><h3>Planificateurs déjà existants dans Drive</h3><div class="note">'+esc(pe.note)+'</div><table class="data"><tr><th>Fichier</th><th>Contenu</th><th></th></tr>'+pe.fichiers.map(f=>`<tr><td>${esc(f.titre)}</td><td class="muted">${esc(f.description)}</td><td><a href="${esc(f.url)}" target="_blank" rel="noopener noreferrer">Ouvrir →</a></td></tr>`).join('')+'</table></div>'}
     html+=`<div class="note">${esc(d.reseauxSociauxOAuth.note)}</div>`;
     el.innerHTML=html;
   }catch(e){el.innerHTML='<div class="note">Erreur de chargement.</div>'}
@@ -96,6 +97,15 @@ async function loadFinance(){
     if(d.stripe){html+=`<div class="cat-block"><h3>Revenus — Stripe</h3><p class="muted">${esc(d.stripe.note)}</p></div>`}
     html+='<div class="cat-block"><h3>À relier / à dépouiller</h3><table class="data"><tr><th>Sujet</th><th>Détail</th></tr>'+
       d.aRelier.map(a=>`<tr><td>${esc(a.sujet)}</td><td>${esc(a.detail)}</td></tr>`).join('')+'</table></div>';
+    if(d.tcd){html+='<div class="cat-block"><h3>TCD achats/frais — mutualisé vs par projet</h3><div class="note">'+esc(d.tcd.note)+'</div><table class="data"><tr><th>Fournisseur</th><th>Mutualisé</th></tr>'+
+      Object.entries(d.tcd.mutualise).map(([k,v])=>`<tr><td>${esc(k)}</td><td class="num">${v.toFixed(2)} €</td></tr>`).join('')+'</table></div>'}
+    if(d.conseils&&d.conseils.length){html+='<div class="cat-block"><h3>Conseils &amp; optimisation</h3><ul>'+d.conseils.map(c=>`<li class="muted">${esc(c)}</li>`).join('')+'</ul></div>'}
+    ['objectifsMois','previsionnel','autresDepenses','dougs','financesPersonnelles','etatActuel'].forEach(k=>{
+      if(d[k]&&d[k].configured===false){
+        const titres={objectifsMois:'Objectifs du mois',previsionnel:'Prévisionnel 6 mois / 1 an',autresDepenses:'Autres dépenses (véhicule, téléphone…)',dougs:'Comptabilité — Dougs',financesPersonnelles:'Finances personnelles &amp; assets',etatActuel:'État actuel — banque / cash / assets'};
+        html+=`<div class="cat-block"><h3>${titres[k]}</h3><div class="note">${esc(d[k].note)}</div></div>`;
+      }
+    });
     el.innerHTML=html;
   }catch(e){el.innerHTML='<div class="note">Erreur de chargement.</div>'}
 }
@@ -122,6 +132,9 @@ async function loadKpi(){
     const principal=t.parProjet[0];
     if(principal&&principal.pays30j){html+='<div class="cat-block"><h3>dyonysos.fr — visites par pays (30j)</h3><table class="data"><tr><th>Pays</th><th>Visiteurs</th><th>Pages vues</th></tr>'+principal.pays30j.map(c=>`<tr><td>${esc(c.pays)}</td><td class="num">${c.visiteurs}</td><td class="num">${c.pageviews}</td></tr>`).join('')+'</table></div>'}
     html+=`<div class="note">${esc(t.commentPasserEnLive)}</div>`;
+    if(d.couts){html+='<div class="cat-block"><h3>Coûts — global &amp; par fournisseur (relié à Finance)</h3><div class="note">'+esc(d.couts.note)+'</div>'+
+      `<div class="kpi-cards"><div class="kpi-card"><b>${d.couts.totalGlobal.toFixed(2)} €</b><span>Coût global retenu</span></div></div>`+
+      '<table class="data"><tr><th>Fournisseur</th><th>Montant</th></tr>'+Object.entries(d.couts.parFournisseur).map(([k,v])=>`<tr><td>${esc(k)}</td><td class="num">${v.toFixed(2)} €</td></tr>`).join('')+'</table></div>'}
     html+=`<div class="note">Indexation Google : ${esc(d.indexation.note)}</div>`;
     html+=`<div class="note">Domaine ${esc(d.domaine.nom)} (${esc(d.domaine.registrar)}) : ${esc(d.domaine.renouvellement)}</div>`;
     el.innerHTML=html;

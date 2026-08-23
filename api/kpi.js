@@ -7,6 +7,7 @@
 const { requireSession } = require('./_lib/session');
 const { PROJECTS } = require('./_lib/registry');
 const { TRAFIC_SNAPSHOT } = require('./_lib/kpi-data');
+const { getTotaux } = require('./_lib/finance-data');
 
 module.exports = function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).json({ error: 'Méthode non autorisée.' });
@@ -38,6 +39,15 @@ module.exports = function handler(req, res) {
       ],
     },
     finance: { configured: true, note: 'Voir l’onglet Finance — total retenu calculé sur ~1 semaine de transactions Qonto réelles, pas un KPI mensuel stabilisé. Compte Stripe créé le 12-18/08, premier produit récurrent le 17/08 — clé API pas encore fournie.' },
+    couts: (() => {
+      const { total: totalGlobal, parFournisseur } = getTotaux();
+      return {
+        totalGlobal,
+        parFournisseur,
+        parProjet: {},
+        note: 'Coût global et par fournisseur = mêmes chiffres réels que l’onglet Finance (source Qonto, ~1 semaine d’historique). Le détail par projet reste vide tant que les dépenses ne sont pas taguées à un projet.',
+      };
+    })(),
     domaine: { nom: 'dyonysos.fr', registrar: 'IONOS', renouvellement: 'Prolongé avec succès (confirmation email du 20/08/2026)' },
   });
 };

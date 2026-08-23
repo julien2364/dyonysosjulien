@@ -63,5 +63,18 @@ module.exports = async function handler(req, res) {
       configured: false,
       note: 'Publier automatiquement (au-delà du déclenchement Make déjà en place) demanderait de créer des applications développeur LinkedIn/Facebook/Instagram/TikTok et de fournir leurs identifiants — aucune app de ce type n’est enregistrée à ce jour, rien n’a été inventé ici. Les champs li_org_urn / fb_page_id / etc. dans PROJECTS restent la source de vérité actuelle par projet.',
     },
+    // Trouvé le 23/08/2026 en cherchant dans Drive avant de reconstruire quoi que ce soit (demande de
+    // Julien) : 3 planificateurs réels et déjà remplis, séparés par projet, distincts du classeur
+    // Content Engine (qui existe mais est vide — xlsx pas encore importé, voir registre). Rien n'a
+    // encore été fusionné automatiquement : import à faire consciemment plutôt que par script silencieux,
+    // pour ne pas écraser du contenu déjà rédigé/programmé.
+    planificateursExternesTrouves: {
+      note: 'Ces 3 fichiers existent déjà dans ton Drive avec du vrai contenu programmé — le Content Engine (classeur "DYONYSOS_CONTENT_ENGINE") est censé les unifier mais est encore vide. À importer plutôt qu\'à reconstruire.',
+      fichiers: [
+        { titre: 'P2P - Social Media Planner', description: 'Schéma déjà très proche du Content Engine (onglets Publications / Idées / Traductions / Médias / KPI).', url: 'https://docs.google.com/spreadsheets/d/1DqS5VIX7vv3HBoYbs3I-CRKVg_tQMaSNmILRz6UzIKg/edit' },
+        { titre: 'Planificateur Propecto — 3 mois (C2B & B2B)', description: '120 contenus déjà rédigés (60 C2B + 60 B2B), calendrier du 24/08 au 13/11/2026, textes LinkedIn/Facebook/Instagram/TikTok/YouTube prêts, statut "Prêt à programmer".', url: 'https://docs.google.com/spreadsheets/d/13JczIOdEbVshRJ5RW0ewhYvnWwIi93emKtHunATUfKU/edit' },
+        { titre: 'cvdesignpro-social-calendar', description: 'Calendrier hebdomadaire avec statut réel (plusieurs posts déjà marqués "Posted") — historique de ce qui a été publié pour CVDesignPro.', url: 'https://docs.google.com/spreadsheets/d/15X1j5LgV7-4q8TJ98QikX-HdLQYQJ3ggKD4ZvbHK_S8/edit' },
+      ],
+    },
   });
 };

@@ -17,7 +17,48 @@ const PROJECTS = [
   { name: 'École Connect', categorie: 'Éducation / formation / recrutement', url: 'https://ecole-connect-pied.vercel.app', github: 'julien2364/ecole-connect', drive: 'École Connect (+ School connect)', local: '/Users/juliendaures/Claude/School connect', vercelProjectId: 'prj_6t8rABLHNlvQb0sUMb0gT55P50E7', priorite: 'à auditer', etat: '0 visiteur mesuré sur 30j — pas de suivi récent en mémoire, état réel à vérifier.', taches: ['Faire un état des lieux (dernier point de suivi non retrouvé)'] },
 
   // --- Annuaire entreprises / leads ---
-  { name: 'Firmoscope / Prospeo', categorie: 'Annuaire entreprises C2B/B2B', url: 'https://prospeo-drab.vercel.app/', github: 'julien2364/annuaire', drive: 'Prospeo - Livrables (Claude), Projet 2 - Annuaire entreprises et vente de leads', local: null, vercelProjectId: 'prj_iTUKEu3BUVEGJpxm9nS0Km7vjIUs', priorite: 'normal', etat: 'Délégué à ChatGPT/Codex depuis le 17/08 — Claude assure uniquement la communication/relève horaire, plus aucun développement direct. 0 visiteur mesuré sur 30j.', taches: ['Relève horaire de ce que Codex a laissé, instructions suivantes, vérification', 'Construire le C2B en premier (gratuit, priorité posée)', 'Grille B2B (France 29€, Team ×2,5, Corporate sur devis)'], note: 'Vercel: prospeo, prospeo-prototype, prospeo-mvp, firmoscope-design, firmoscope-site — plusieurs projets Vercel pour la même famille, à consolider.' },
+  { name: 'Firmoscope / Prospeo', categorie: 'Annuaire entreprises C2B/B2B', url: 'https://prospeo-drab.vercel.app/', github: 'julien2364/annuaire', drive: 'Prospeo - Livrables (Claude), Projet 2 - Annuaire entreprises et vente de leads', local: null, vercelProjectId: 'prj_iTUKEu3BUVEGJpxm9nS0Km7vjIUs', priorite: 'normal', etat: 'Délégué à ChatGPT/Codex depuis le 17/08 — Claude assure uniquement la communication/relève horaire, plus aucun développement direct. 0 visiteur mesuré sur 30j.', taches: ['Relève horaire de ce que Codex a laissé, instructions suivantes, vérification', 'Construire le C2B en premier (gratuit, priorité posée)', 'Grille B2B (France 29€, Team ×2,5, Corporate sur devis)'], note: 'Vercel: prospeo, prospeo-prototype, prospeo-mvp, firmoscope-design, firmoscope-site — plusieurs projets Vercel pour la même famille, à consolider.',
+    suivi: {
+      capturedAt: '23/08/2026 · 18h20 UTC',
+      stats: [ { v: '43 897 112', l: 'Sociétés' }, { v: '15 190 697', l: 'Géolocalisées' }, { v: '784 260', l: 'Marchés publics' }, { v: '14 271 679', l: 'Annonces légales' }, { v: '424', l: 'Enfants sitemap' }, { v: '96', l: 'Tâches suivies' } ],
+      decision: { tag: 'Décision du jour — P10', texte: 'Pas de limitation du sitemap : élargissement, pas restriction. Les 4,24 M pages « découvertes, non indexées » remontées par Search Console (22/08) ne déclenchent pas de réduction à un sous-ensemble « meilleures fiches ». La surface doit s’étendre.', qui: 'Julien · appliquée · consignée dans DECISIONS.md (commit 1c6d728)' },
+      flags: [ { tag: 'À noter — coordination', texte: 'Le commit e69dff7 (renommage Firmoscope→Propecto sur 55 articles, 15h23 UTC) vient d’un troisième agent — ni Codex, ni cette session Claude. Le modèle de coordination du projet suppose deux écrivains (Claude + Codex, CLAUDE.md §5) ; un troisième compte actif explique une partie des verrous git rencontrés. À clarifier avec Julien : qui est ce compte, et faut-il l’intégrer au journal partagé.' } ],
+      enCours: [
+        { owner: 'codex', id: 'T-093', titre: 'Atteindre la fiche société cible B2B et particulier en 3 à 5 jours' },
+        { owner: 'codex', id: 'T-094', titre: 'Rattraper le registre finlandais, fiabiliser le snapshot norvégien' },
+        { owner: 'codex', id: 'T-090', titre: 'Vue particulier C2B : gratuit / réservé / indice de confiance' },
+        { owner: 'codex', id: 'T-085', titre: 'Crons H24 : enrichissement, exercices, rapprochement EI, repères' },
+        { owner: 'codex', id: 'T-080', titre: 'Positionnement sectoriel — reste la RPC + le revoke côté Claude' },
+        { owner: 'codex', id: 'T-081', titre: 'Importer la base nationale des aides, croiser avec le profil' },
+        { owner: 'codex', id: 'T-073', titre: 'Fiche dirigeant : mandats certifiés et rapprochements séparés' },
+        { owner: 'codex', id: 'T-075', titre: 'Lever le filtre « actives seulement » de l’import KBO belge' },
+        { owner: 'codex', id: 'T-096', titre: 'Courriel automatique en cas de panne des imports' },
+      ],
+      bloque: [
+        { niveau: 'crit', qui: 'attend codex', pourquoi: 'Signature SQL exacte à écrire dans journal-codex.md avant que Claude applique la DDL (décision O3). Rien à faire côté Claude tant que ce n’est pas là.', taches: [
+          { id: 'T-017', titre: 'Fournir les RPC privées de recherches et autorisation pilotage' },
+          { id: 'T-021', titre: 'Alimenter la carte en marchés publics localisés' },
+          { id: 'T-035', titre: 'Garantir l’unicité d’une revendication SIREN' },
+          { id: 'T-057', titre: 'Appliquer la DDL de l’agrégat BODACC' },
+        ] },
+        { niveau: 'crit', qui: 'attend julien', pourquoi: 'Décisions ou accès qu’aucun agent ne peut trancher.', taches: [
+          { id: 'T-048', titre: 'Rétablir les exécutions GitHub Actions d’imports' },
+          { id: '—', titre: 'SUPABASE_SERVICE_ROLE_KEY absente de Vercel Production — bloque 29 codes de liasse restants, l’import entrepreneurs individuels, le pilote finances-postes étendu' },
+        ] },
+        { niveau: 'muted', qui: 'reste (codex, divers)', pourquoi: '21 tâches supplémentaires — pilotes RGE/RPPS/FINESS/bio/CNOA/CNB, graphe des sociétés, BODACC en profondeur, domaines français, jauges de fiche. Détail dans _ia/taches.json.', taches: [] },
+      ],
+      livreAujourdhui: [
+        { heure: '18h08', titre: 'Curseur documents_marches figé à 0', detail: 'depuis 170 passages (3,5 jours) — cause : PostgREST tronque toute réponse RPC à 1000 lignes, lu à tort comme fin de table. Corrigé en base + JS.', commit: '1d3b5a7' },
+        { heure: '18h08', titre: 'Résidu « Firmoscope »', detail: 'sur le tag de 3 articles — donnée, pas code. Corrigé, vérifié en direct.', commit: '72d5aa0' },
+        { heure: '18h16', titre: 'T-038 et T-079', detail: 'affichaient « bloqué » alors que la part Claude était livrée — suivi corrigé.', commit: 'd5bbef0' },
+        { heure: '18h22', titre: 'Décision P10', detail: 'consignée dans le registre.', commit: '1c6d728' },
+        { heure: 'plus tôt', titre: 'T-079', detail: 'fs_ingest_upsert étendu aux 14 colonnes rapatriées FR.', commit: '9563b7c' },
+      ],
+      acces: [ { k: 'Site', v: 'propecto.eu', url: 'https://www.propecto.eu' }, { k: 'Dépôt', v: 'julien2364/annuaire' }, { k: 'Base', v: 'oajrjxkuhhpfwsvnnuae' }, { k: 'Déploiement', v: 'git push · cron :25' } ],
+      commentLancer: [ 'En ligne — rien à faire, chaque push sur main publie.', 'En local — cd prospeo-mvp && npm install && npm run dev, secret dans .env.local (copie dans _data/secret_ingest.sh).', 'Publier — commit signé julien2364, jamais la CLI Vercel depuis ce dépôt.' ],
+      source: 'Compilé par Claude (session Propecto) à partir de _ia/taches.json, journal-claude.md, journal-codex.md, DECISIONS.md et vérifications directes (SQL, HTTP). Fiche importée dans le registre le 23/08/2026 depuis un fichier suivi.html fourni par Julien — registre Drive non mis à jour automatiquement.',
+    },
+  },
   { name: 'Propecto (annuaire)', categorie: 'Annuaire entreprises C2B/B2B', url: null, github: null, drive: 'Propecto, Propecto — Communication omnicanale 3 mois, Propecto — vidéos à juger', local: null, note: 'Même projet que Firmoscope/Prospeo ci-dessus (renommé) — doublon d’entrée à fusionner dans une prochaine passe.' },
 
   // --- Commerce et performance ---

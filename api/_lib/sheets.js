@@ -41,17 +41,48 @@ function spreadsheetId() {
   return process.env.SPREADSHEET_ID;
 }
 
-// Lit toutes les lignes d'un onglet (hors en-tête) sur la plage donnée, ex "PROJECTS!A1:AM"
-async function readRows(sheetName, range) {
+// Lit toutes les lignes d'un onglet (hors en-tête) sur la plage donnée, ex "PROJECTS!A1:AM".
+// externalSpreadsheetId (ajouté le 24/08/2026) : permet de lire un AUTRE classeur que celui du
+// Content Engine (ex. les planificateurs réseaux sociaux réels trouvés dans Drive, chacun dans son
+// propre fichier) — le classeur cible doit avoir été partagé en lecture avec le même compte de
+// service (GOOGLE_SERVICE_ACCOUNT_EMAIL). Si non partagé, l'appel échoue avec une erreur Google
+// (403) — pas de code NOT_CONFIGURED, remonte tel quel pour être distingué côté appelant.
+async function readRows(sheetName, range, externalSpreadsheetId) {
   const sheets = await getSheetsClient();
   const res = await sheets.spreadsheets.values.get({
-    spreadsheetId: spreadsheetId(),
+    spreadsheetId: externalSpreadsheetId || spreadsheetId(),
     range: `${sheetName}!${range}`,
     valueRenderOption: "FORMATTED_VALUE",
   });
   const values = res.data.values || [];
   if (values.length === 0) return [];
   return values.slice(1); // enlève la ligne d'en-tête
+}
+
+// Liste les noms des onglets d'un classeur (le nôtre par défaut, ou un classeur externe si un ID est
+// passé) — ajouté le 24/08/2026 pour lire les planificateurs réseaux sociaux externes trouvés dans
+// Drive sans avoir à deviner/coder en dur le nom de leur(s) onglet(s).
+async function listSheetTitles(externalSpreadsheetId) {
+  const sheets = await getSheetsClient();
+  const res = await sheets.spreadsheets.get({
+    spreadsheetId: externalSpreadsheetId || spreadsheetId(),
+    fields: 'sheets.properties.title',
+  });
+  return (res.data.sheets || []).map((s) => s.properties.title);
+}
+
+// Comme readRows, mais renvoie aussi la ligne d'en-tête séparément (utile pour mapper des colonnes
+// par nom plutôt que par position fixe — cas des classeurs externes non standardisés).
+async function readSheetWithHeader(sheetName, range, externalSpreadsheetId) {
+  const sheets = await getSheetsClient();
+  const res = await sheets.spreadsheets.values.get({
+    spreadsheetId: externalSpreadsheetId || spreadsheetId(),
+    range: `${sheetName}!${range}`,
+    valueRenderOption: "FORMATTED_VALUE",
+  });
+  const values = res.data.values || [];
+  if (values.length === 0) return { header: [], rows: [] };
+  return { header: values[0], rows: values.slice(1) };
 }
 
 // Ajoute une ligne à la fin de l'onglet
@@ -98,4 +129,4 @@ function columnLetterFromIndex(index) {
   return letters;
 }
 
-module.exports = { getSheetsClient, readRows, appendRow, updateCell, rowNumberFromIndex, columnLetterFromIndex };
+module.exports = { getSheetsClient, readRows, listSheetTitles, readSheetWithHeader, appendRow, updateCell, rowNumberFromIndex, columnLetterFromIndex };

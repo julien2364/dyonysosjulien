@@ -7,6 +7,9 @@
 // Complété le 24/08/2026 : reçus Anthropic (Claude) et factures OVHcloud/IONOS trouvés directement
 // par recherche Gmail (montants réels lus dans chaque email/reçu, pas de carte Qonto pour ceux-là —
 // paiement direct par carte bancaire hors Qonto). Rien n'est extrapolé ni estimé.
+// Complété une 2e fois le 24/08/2026 (soir) : 4 achats supplémentaires trouvés dans la boîte mail sur
+// demande explicite de Julien ("finance il y a eu 2-4 achats depuis hier") — 2 factures OVHcloud +
+// Deep Infra + Grok xAI, toutes confirmées par les emails Qonto "Vous avez effectué un paiement".
 const DEPENSES = [
   { date: '2026-08-01', fournisseur: 'Anthropic (Claude)', montant: 96.23, devise: 'EUR', note: 'Reçu #2649-9224-6519 — passage au plan Max 5x (déduction du reliquat Claude Pro non utilisé)' },
   { date: '2026-08-03', fournisseur: 'OVHcloud', montant: 7.99, devise: 'EUR', note: 'Facture FR79732010' },
@@ -20,6 +23,10 @@ const DEPENSES = [
   { date: '2026-08-17', fournisseur: 'Vercel', montant: 0.43, devise: 'EUR', note: '0,50 USD — usage' },
   { date: '2026-08-17', fournisseur: 'Vercel', montant: 20.83, devise: 'EUR', note: '24,00 USD — transaction ANNULÉE/remboursée le jour même, non comptée dans le total', annulee: true },
   { date: '2026-08-19', fournisseur: 'Anthropic (Claude)', montant: 92.57, devise: 'EUR', note: 'Reçu #2032-8557-7896 — usage prépayé supplémentaire, plan Individual' },
+  { date: '2026-08-24', fournisseur: 'OVHcloud', montant: 24.89, devise: 'EUR', note: 'Facture FR79868834 — commande 256877815, paiement Qonto carte •••2725' },
+  { date: '2026-08-24', fournisseur: 'OVHcloud', montant: 24.89, devise: 'EUR', note: 'Facture FR79869620 — commande 256882839, paiement Qonto carte •••2725' },
+  { date: '2026-08-24', fournisseur: 'Deep Infra', montant: 8.57, devise: 'EUR', note: '10,00 USD — paiement Qonto carte •••2725' },
+  { date: '2026-08-24', fournisseur: 'Grok xAI (X.AI)', montant: 8.57, devise: 'EUR', note: '10,00 USD — paiement Qonto carte •••2725' },
 ];
 
 // Note honnête : d'autres factures OVHcloud/IONOS existent avant juillet 2026 (renouvellements de

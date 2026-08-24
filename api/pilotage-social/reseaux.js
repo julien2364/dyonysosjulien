@@ -9,6 +9,7 @@ const { readRows } = require('../_lib/sheets');
 const { SHEET_PROJECTS, PROJECTS_RANGE, PROJECTS_COLS, SHEET_CONTENT_QUEUE, CONTENT_QUEUE_RANGE, CONTENT_QUEUE_COLS, rowToObject } = require('../_lib/schema');
 const { isMakeConfigured, getMakeSnapshot } = require('../_lib/make-client');
 const { GUIDE_URL, YOUTUBE_PREP, YOUTUBE_PREP_NOTE } = require('../_lib/youtube-prep-data');
+const { getExternalCalendarItems } = require('../_lib/social-calendars-external');
 
 const CHANNEL_FIELDS = [
   { key: 'linkedin', label: 'LinkedIn', col: 'li_org_urn' },
@@ -48,13 +49,15 @@ module.exports = async function handler(req, res) {
   // Source réelle : l'onglet CONTENT_QUEUE du même classeur Content Engine, déjà alimenté et lu par les
   // scénarios Make de publication (channel/scheduled_at/status) — aucune donnée inventée : si la file
   // est vide, l'agenda est vide, et le dashboard l'affiche tel quel plutôt que du texte de remplissage.
-  let calendrier = { configured: sheetsConfigure, prochaines: [] };
+  let calendrier = { configured: sheetsConfigure, prochaines: [], banques: [], sourcesExternes: [] };
   if (sheetsConfigure) {
+    let itemsContentEngine = [];
+    let erreurContentEngine;
     try {
       const nomParId = {};
       projets.forEach((p) => { nomParId[p.id] = p.name; });
       const queueRows = await readRows(SHEET_CONTENT_QUEUE, CONTENT_QUEUE_RANGE);
-      const items = queueRows
+      itemsContentEngine = queueRows
         .map((row) => rowToObject(row, CONTENT_QUEUE_COLS))
         .filter((c) => c.content_id && c.status && c.status !== 'FAILED')
         .map((c) => ({
@@ -65,12 +68,43 @@ module.exports = async function handler(req, res) {
           statut: c.status,
           programmePour: c.scheduled_at || null,
           apercu: (c.hook || c.body || '').slice(0, 90),
-        }))
-        .sort((a, b) => (a.programmePour || '9999').localeCompare(b.programmePour || '9999'));
-      calendrier = { configured: true, prochaines: items };
+          source: 'contentEngine',
+        }));
     } catch (err) {
-      calendrier = { configured: false, error: err.code === 'NOT_CONFIGURED' ? undefined : (err.message || String(err)) };
+      erreurContentEngine = err.code === 'NOT_CONFIGURED' ? undefined : (err.message || String(err));
     }
+
+    // Sources externes — ajouté le 24/08/2026 : le classeur Content Engine ci-dessus est vide (import
+    // xlsx jamais fait, cf. LISEZ-MOI dans Drive), mais 3 planificateurs réels et déjà remplis existent
+    // en dehors de lui (Firmoscope/Prospeo ex-Propecto, Pet Stone, CVDesignPro). Lus ici en direct
+    // plutôt qu'importés une fois pour rester dynamiques. Chaque source échoue proprement (403 tant que
+    // Julien n'a pas partagé le fichier avec le compte de service) sans casser l'agenda global.
+    const externes = await getExternalCalendarItems();
+    const itemsExternesDates = [];
+    const banques = [];
+    externes.forEach((src) => {
+      calendrier.sourcesExternes.push({
+        cle: src.key, label: src.label, projet: src.projetRegistre, driveUrl: src.driveUrl,
+        configured: src.configured, onglet: src.onglet, total: src.total, erreur: src.erreur,
+      });
+      if (!src.configured) return;
+      src.items.forEach((it) => {
+        if (it.programmePour) itemsExternesDates.push(it);
+        else banques.push(it);
+      });
+    });
+
+    calendrier = {
+      configured: true,
+      error: erreurContentEngine,
+      prochaines: [...itemsContentEngine, ...itemsExternesDates].sort((a, b) => (a.programmePour || '9999').localeCompare(b.programmePour || '9999')),
+      // Contenu réel, rédigé et prêt, mais SANS date absolue dans son fichier source (Pet Stone,
+      // CVDesignPro — juste "Semaine X / Jour") : affiché à part plutôt que fusionné avec une date
+      // inventée. Donner une date de départ à Julien reste le seul moyen honnête de les faire entrer
+      // dans l'agenda daté ci-dessus.
+      banques,
+      sourcesExternes: calendrier.sourcesExternes,
+    };
   }
 
   // Moteur Make — connexion live si MAKE_API_TOKEN est configuré (cf. api/_lib/make-client.js),

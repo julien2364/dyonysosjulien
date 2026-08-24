@@ -65,12 +65,37 @@ function renderCalendrier(){
   const filtre=sel?sel.value:'';
   const d=socialData;
   const items=(d.calendrier.prochaines||[]).filter(it=>!filtre||String(it.projetId)===filtre);
+  const banques=(d.calendrier.banques||[]).filter(it=>!filtre||String(it.projetId)===filtre);
   const box=document.getElementById('social-calendrier-box');
   if(!d.calendrier.configured){box.innerHTML='<div class="note">Agenda non disponible — '+esc(d.calendrier.error||'Google Sheets non configuré')+'</div>';return}
-  if(!items.length){box.innerHTML='<div class="note">Aucune publication programmée pour le moment dans CONTENT_QUEUE'+(filtre?' pour ce projet':'')+' — l\'agenda se remplit automatiquement dès que le moteur de contenu génère des publications prêtes (statut READY/PUBLISHING).</div>';return}
-  box.innerHTML='<table class="data"><tr><th>Programmé pour</th><th>Projet</th><th>Canal</th><th>Statut</th><th>Aperçu</th></tr>'+
-    items.map(it=>`<tr><td class="muted">${it.programmePour?esc(it.programmePour):'—'}</td><td>${esc(it.projet)}</td><td><span class="pill pill-warn">${canalBadge(it.canal)}</span></td><td class="muted">${esc(it.statut)}</td><td class="muted">${esc(it.apercu)}${it.apercu&&it.apercu.length>=90?'…':''}</td></tr>`).join('')+
-    '</table>';
+  let html='';
+  // Sources externes — ajouté le 24/08/2026 : Firmoscope/Prospeo, Pet Stone et CVDesignPro ont du vrai
+  // contenu rédigé dans des fichiers Drive séparés du Content Engine (encore vide). Statut par source
+  // affiché en transparence : "non partagé" tant que le fichier n'a pas été partagé en lecture avec le
+  // compte de service (voir Vercel > Environment Variables > GOOGLE_SERVICE_ACCOUNT_EMAIL).
+  if(d.calendrier.sourcesExternes&&d.calendrier.sourcesExternes.length){
+    html+='<div class="muted" style="font-size:12px;margin-bottom:8px">Sources externes : '+d.calendrier.sourcesExternes.map(s=>{
+      const label=`${esc(s.projet)}`+(s.total!=null?` (${s.total})`:'');
+      return s.configured?`<span class="pill pill-ok">${label}</span>`:`<a href="${esc(s.driveUrl)}" target="_blank" rel="noopener noreferrer" class="pill pill-crit" title="${esc(s.erreur||'')}">${label} — pas encore partagé</a>`;
+    }).join(' ')+'</div>';
+  }
+  if(!items.length&&!banques.length){
+    html+='<div class="note">Aucune publication programmée pour le moment dans CONTENT_QUEUE'+(filtre?' pour ce projet':'')+' — l\'agenda se remplit automatiquement dès que le moteur de contenu génère des publications prêtes (statut READY/PUBLISHING), ou dès qu\'une des sources externes ci-dessus est partagée.</div>';
+    box.innerHTML=html;return;
+  }
+  if(items.length){
+    html+='<table class="data"><tr><th>Programmé pour</th><th>Projet</th><th>Canal</th><th>Statut</th><th>Aperçu</th></tr>'+
+      items.map(it=>`<tr><td class="muted">${it.programmePour?esc(it.programmePour):'—'}</td><td>${esc(it.projet)}</td><td><span class="pill pill-warn">${canalBadge(it.canal)}</span></td><td class="muted">${esc(it.statut)}</td><td class="muted">${esc(it.apercu)}${it.apercu&&it.apercu.length>=90?'…':''}</td></tr>`).join('')+
+      '</table>';
+  }
+  if(banques.length){
+    html+='<h4 style="margin:14px 0 6px;color:var(--n)">Contenu prêt, sans date fixée ('+banques.length+')</h4>'+
+      '<p class="muted" style="font-size:12px">Rédigé et prêt, mais son fichier source ne contient que "Semaine X / Jour" — pas de date de calendrier. Donne une date de départ pour l\'intégrer à l\'agenda ci-dessus.</p>'+
+      '<table class="data"><tr><th>Période</th><th>Projet</th><th>Canal</th><th>Statut</th><th>Aperçu</th></tr>'+
+      banques.map(it=>`<tr><td class="muted">${esc(it.periodeRelative||'—')}</td><td>${esc(it.projet)}</td><td><span class="pill pill-warn">${canalBadge(it.canal)}</span></td><td class="muted">${esc(it.statut||'—')}</td><td class="muted">${esc(it.apercu)}${it.apercu&&it.apercu.length>=90?'…':''}</td></tr>`).join('')+
+      '</table>';
+  }
+  box.innerHTML=html;
 }
 function scenarioStatusPill(s){
   if(s.invalide)return'<span class="pill pill-crit">invalide</span>';

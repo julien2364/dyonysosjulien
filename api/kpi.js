@@ -8,6 +8,7 @@ const { requireSession } = require('./_lib/session');
 const { PROJECTS } = require('./_lib/registry');
 const { TRAFIC_SNAPSHOT } = require('./_lib/kpi-data');
 const { getTotaux } = require('./_lib/finance-data');
+const { OBJECTIFS_SOURCE, OBJECTIFS, OBJECTIFS_CUMUL_J189 } = require('./_lib/kpi-objectifs-data');
 
 module.exports = function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).json({ error: 'Méthode non autorisée.' });
@@ -49,5 +50,51 @@ module.exports = function handler(req, res) {
       };
     })(),
     domaine: { nom: 'dyonysos.fr', registrar: 'IONOS', renouvellement: 'Prolongé avec succès (confirmation email du 20/08/2026)' },
+    // Tableau croisé dynamique — ajouté le 24/08/2026 en réponse directe à la remarque de Julien
+    // ("Kpi tu n'as pas ce qui est demandé tableau croisé dynamique"). Deux jeux de données réels,
+    // croisés par projet :
+    //  - "objectifs" : les prévisions 7-189j du 21/08/2026 (e-mail relu intégralement, voir
+    //    api/_lib/kpi-objectifs-data.js) — seuls CVDesignPro, ArbitragePro+ et Propecto en ont.
+    //  - "reel" : le même TRAFIC_SNAPSHOT que ci-dessus (Vercel Web Analytics, 23/08/2026), la plupart
+    //    du temps limité à une seule période "30j" (pas une vraie série temporelle).
+    // Pour tout autre projet du portefeuille, aDesObjectifs / aDuTraficReel valent false — affiché tel
+    // quel côté dashboard plutôt que du texte de remplissage (consigne explicite de Julien).
+    tcd: (() => {
+      const objectifsParNom = {};
+      OBJECTIFS.forEach((o) => { objectifsParNom[o.registreNom] = o; });
+      const traficParNom = {};
+      TRAFIC_SNAPSHOT.parProjet.forEach((t) => { traficParNom[t.name] = t; });
+
+      const projets = PROJECTS.map((p) => {
+        // Le nom du projet dans TRAFIC_SNAPSHOT ne correspond pas toujours mot pour mot au registre
+        // (ex. "Firmoscope / Prospeo" vs "Firmoscope / Prospeo (ex-Propecto)") — on rapproche donc
+        // aussi par vercelProjectId quand les noms diffèrent, sans jamais inventer de correspondance.
+        let traf = traficParNom[p.name];
+        if (!traf && p.vercelProjectId) traf = TRAFIC_SNAPSHOT.parProjet.find((t) => t.vercelProjectId === p.vercelProjectId);
+        const obj = objectifsParNom[p.name];
+        return {
+          nom: p.name,
+          aDesObjectifs: Boolean(obj),
+          aDuTraficReel: Boolean(traf),
+          nomTraficReel: traf ? traf.name : null,
+          periodesTraficDisponibles: traf ? Object.keys(traf.periodes) : [],
+        };
+      });
+
+      return {
+        source: OBJECTIFS_SOURCE,
+        metriques: [
+          { cle: 'visites', label: 'Visites' },
+          { cle: 'adhesions', label: 'Adhésions payantes' },
+          { cle: 'ca', label: 'CA (€)' },
+        ],
+        scenarios: ['pessimiste', 'normal', 'optimiste'],
+        projets,
+        objectifsParProjet: OBJECTIFS,
+        traficParProjet: TRAFIC_SNAPSHOT.parProjet,
+        cumulJ189: OBJECTIFS_CUMUL_J189,
+        note: `Seuls ${OBJECTIFS.length} projets sur ${PROJECTS.length} ont des objectifs chiffrés réels (e-mail du 21/08/2026) — les autres n'en ont aucun, ce n'est pas un oubli d'affichage. Le "réel" vient du même instantané Vercel Web Analytics que ci-dessus (23/08/2026), pas d'une série temporelle live.`,
+      };
+    })(),
   });
 };

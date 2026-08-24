@@ -7,13 +7,14 @@
 const { requireSession } = require('./_lib/session');
 const { PROJECTS } = require('./_lib/registry');
 const { TRAFIC_SNAPSHOT } = require('./_lib/kpi-data');
+const { COMPETITORS_REAL, CONCURRENTS_PORTEFEUILLE, BMC_SWOT } = require('./_lib/strategie-data');
 
 // Pistes de veille manuelle, écrites à la main à partir de la catégorie et de l'activité réelle de
 // chaque projet piloté activement (ceux qui ont un champ "priorite" dans le registre). Pas une
 // extraction automatique — à traiter comme un point de départ à valider, pas un fait mesuré.
 const VEILLE_PAR_PROJET = {
   'CVDesignPro': { motsCles: ['générateur de CV en ligne', 'CV ATS friendly', 'modèle de CV gratuit'], domainesConnexes: ['recrutement / RH', 'coaching carrière', 'lettre de motivation IA'] },
-  'Pet Stone': { motsCles: ['boutique en ligne animaux', 'pierre de lithothérapie', 'accessoires chat/chien'], domainesConnexes: ['lithothérapie / bien-être', 'e-commerce niche animaux'] },
+  'Pet Stone': { motsCles: ['pet rock / cadeau humoristique animal', 'boîte-cadeau insolite', 'fausse adoption animal de compagnie'], domainesConnexes: ['cadeau insolite / gift box', 'e-commerce niche humour'] },
   'École Connect': { motsCles: ['plateforme école en ligne', 'gestion établissement scolaire'], domainesConnexes: ['EdTech', 'communication parents-école'] },
   'Firmoscope / Prospeo': { motsCles: ['annuaire entreprises gratuit', 'recherche SIREN/SIRET', 'données légales entreprise'], domainesConnexes: ['scoring / data B2B', 'prospection commerciale'] },
   'Arbitrage+': { motsCles: ['arbitrage Amazon', 'sourcing produits revente', 'FBA outils'], domainesConnexes: ['e-commerce Amazon FBA', 'dropshipping'] },
@@ -50,11 +51,14 @@ module.exports = function handler(req, res) {
       pisteOptimisation: (p.taches && p.taches[0]) || null,
     }));
 
-  // --- Concurrents / benchmarks — réel, déjà vérifié pour Automation Remake ; à faire pour les autres ---
+  // --- Concurrents / benchmarks — recherche web réelle du 24/08/2026 (voir _lib/strategie-data.js pour
+  // le détail complet + sources par concurrent) ; remplace les précédents "à confirmer".
   const benchmarks = [
-    { projet: 'CVDesignPro', concurrentsIdentifies: 'Canva CV, Zety, Novoresume — à confirmer', etat: 'à faire' },
-    { projet: 'Firmoscope / Prospeo', concurrentsIdentifies: 'Societe.com, Pappers, Infogreffe — à confirmer', etat: 'à faire' },
+    { projet: 'CVDesignPro', concurrentsIdentifies: 'CVDesignR, Zety, Resume.io, Novoresume, Kickresume, Rezi, Canva CV', etat: 'fait' },
+    { projet: 'Firmoscope / Prospeo (ex-Propecto)', concurrentsIdentifies: 'Societe.com, Pappers, Kompass, Manageo, Ellisphere, Altares, Sirene (gratuit)', etat: 'fait' },
+    { projet: 'Pet Stone', concurrentsIdentifies: 'Vendeurs "Pet Rock" (Etsy) ; marché adjacent JoyDogCat (colliers lithothérapie chien/chat, produit différent)', etat: 'fait' },
     { projet: 'Automation Remake', concurrentsIdentifies: 'Make, Zapier, n8n — déjà écartés pour raisons de licence (cœur MIT Activepieces retenu)', etat: 'fait' },
+    ...CONCURRENTS_PORTEFEUILLE,
   ];
 
   // --- Veille & tendances (nouveau, demandé le 23/08) ---
@@ -91,5 +95,13 @@ module.exports = function handler(req, res) {
       commentBrancherVeille: 'Pour avoir de vrais chiffres de tendance ici : soit un abonnement SerpApi (Google Trends via API, payant) soit la librairie non-officielle pytrends (gratuite mais fragile, Google peut la bloquer) branchés côté serveur avec un cache — à décider ensemble avant d\'implémenter, aucune clé n\'a été demandée ou stockée pour l\'instant.',
     },
     parCategorie,
+    // Ajouté le 24/08/2026 : Business Model Canvas + SWOT réels (recherche web sourcée) pour les 3
+    // projets urgents. Le reste du portefeuille n'a que la ligne "concurrents" (benchmarks) ci-dessus —
+    // un BMC/SWOT complet par projet supplémentaire demande une passe dédiée par projet, pas fait ce soir.
+    marcheParProjet: COMPETITORS_REAL,
+    bmcSwot: {
+      note: 'BMC (Business Model Canvas) + SWOT construits les 24/08/2026 (3 projets urgents) puis complétés le soir même sur demande explicite ("de suite") pour le reste du portefeuille, via 8 agents de recherche web sourcée au total. Toute case sans donnée interne fiable dit "à valider avec Julien" plutôt que d\'inventer. 14 des 15 projets du registre sont couverts (Mym++/Tinder++ = 2 BMC sous une même fiche, statut "gelé commercialisation"). Reste non couvert : Firmoscope/Prospeo n\'a que le concurrentiel (marcheParProjet), pas de BMC/SWOT dédié — à faire si utile.',
+      projets: BMC_SWOT,
+    },
   });
 };

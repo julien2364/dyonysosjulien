@@ -84,4 +84,18 @@ function rowNumberFromIndex(indexInDataRows) {
   return indexInDataRows + 2; // +1 pour l'en-tête, +1 pour passer de 0-based à 1-based
 }
 
-module.exports = { getSheetsClient, readRows, appendRow, updateCell, rowNumberFromIndex };
+// Convertit un index de colonne 0-based (comme dans PROJECTS_COLS) en lettre(s) de colonne
+// Google Sheets (0->A, 25->Z, 26->AA...). Ajouté le 24/08/2026 pour piloter l'écriture des
+// identifiants réseaux sociaux par projet depuis le dashboard.
+function columnLetterFromIndex(index) {
+  let n = index + 1;
+  let letters = '';
+  while (n > 0) {
+    const rem = (n - 1) % 26;
+    letters = String.fromCharCode(65 + rem) + letters;
+    n = Math.floor((n - 1) / 26);
+  }
+  return letters;
+}
+
+module.exports = { getSheetsClient, readRows, appendRow, updateCell, rowNumberFromIndex, columnLetterFromIndex };

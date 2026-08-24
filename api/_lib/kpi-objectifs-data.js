@@ -130,4 +130,53 @@ const OBJECTIFS_CUMUL_J189 = {
   optimiste: { visites: 760000, adhesions: 943.1, ca: 121958 },
 };
 
-module.exports = { OBJECTIFS_SOURCE, OBJECTIFS, OBJECTIFS_CUMUL_J189 };
+// Interpolation dynamique — ajoutée le 24/08/2026 à la demande de Julien ("recalcule tout en
+// dynamique, chaque évolution projet a un impact"). Les 6 points par scénario (J7..J189) sont fixes
+// (issus de l'e-mail du 21/08), mais "où on devrait en être AUJOURD'HUI" ne l'est pas : ce point se
+// recalcule à chaque appel de l'API à partir de la date réelle du serveur, par interpolation linéaire
+// entre le point de départ (21/08/2026, tout à 0) et les deux points de l'e-mail qui encadrent la
+// date du jour. Au-delà de J189 (26/02/2027), la valeur plafonne à celle de J189 plutôt que
+// d'extrapoler. Rien n'est réinventé : les 6 points restent ceux de l'e-mail, seule la position du
+// curseur "aujourd'hui" le long de la courbe bouge avec le temps.
+function joursEntre(d1, d2) {
+  return (new Date(d2) - new Date(d1)) / 86400000;
+}
+
+function interpolerCumul(points, dateDepart, metrique, dateCible) {
+  const cible = new Date(dateCible);
+  const depart = new Date(dateDepart);
+  if (cible <= depart) return 0;
+  let prevDate = depart, prevVal = 0;
+  for (const pt of points) {
+    const ptDate = new Date(pt.date);
+    const val = pt[metrique].cumul;
+    if (cible <= ptDate) {
+      const totalJours = joursEntre(prevDate, ptDate);
+      const faitJours = joursEntre(prevDate, cible);
+      const frac = totalJours > 0 ? faitJours / totalJours : 1;
+      return prevVal + (val - prevVal) * frac;
+    }
+    prevDate = ptDate;
+    prevVal = val;
+  }
+  return points[points.length - 1][metrique].cumul;
+}
+
+const METRIQUES = ['visites', 'adhesions', 'ca'];
+const SCENARIOS = ['pessimiste', 'normal', 'optimiste'];
+
+// Calcule, pour un projet des OBJECTIFS et une date cible (par défaut aujourd'hui), la valeur
+// interpolée des 3 métriques sur les 3 scénarios — { visites: {pessimiste,normal,optimiste}, ... }.
+function objectifInterpoleAujourdhui(objectifProjet, dateCible) {
+  const cible = dateCible || new Date().toISOString().slice(0, 10);
+  const out = {};
+  METRIQUES.forEach((m) => {
+    out[m] = {};
+    SCENARIOS.forEach((s) => {
+      out[m][s] = interpolerCumul(objectifProjet.scenarios[s], OBJECTIFS_SOURCE.emailDate, m, cible);
+    });
+  });
+  return out;
+}
+
+module.exports = { OBJECTIFS_SOURCE, OBJECTIFS, OBJECTIFS_CUMUL_J189, objectifInterpoleAujourdhui, METRIQUES, SCENARIOS };

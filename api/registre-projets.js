@@ -3,6 +3,7 @@ const { requireSession } = require('./_lib/session');
 const { PROJECTS } = require('./_lib/registry');
 const { SUIVI_PROJETS } = require('./_lib/suivi-projets');
 const { PROJECT_LINKS } = require('./_lib/project-links');
+const { getAvancementPortefeuille } = require('./_lib/taiga-client');
 
 // Correspondance entre le nom de projet tel qu'écrit dans Pilotage-des-projets.xlsx (onglet "Suivi",
 // fichier réel de Julien) et le nom utilisé dans ce registre — les deux sources existaient séparément,
@@ -36,10 +37,14 @@ function buildSuiviParProjet() {
   }));
 }
 
-module.exports = function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).json({ error: 'Méthode non autorisée.' });
   if (!requireSession(req, res)) return;
   res.setHeader('Cache-Control', 'private, no-store');
+
+  // Avancement live (Taiga) — mêmes données que KPI/Finance/Stratégie, priorité sur les fiches
+  // "Suivi" statiques ci-dessous quand un projet Taiga réel est rapproché.
+  const avancement = await getAvancementPortefeuille(PROJECTS.map((p) => p.name));
 
   const categories = [...new Set(PROJECTS.map(p => p.categorie))];
   const parCategorie = categories.map(cat => ({
@@ -51,6 +56,7 @@ module.exports = function handler(req, res) {
 
   return res.status(200).json({
     updatedAt: '2026-08-24',
+    avancement,
     total: PROJECTS.length,
     urgents,
     parCategorie,

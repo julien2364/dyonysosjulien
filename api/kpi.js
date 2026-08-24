@@ -8,12 +8,19 @@ const { requireSession } = require('./_lib/session');
 const { PROJECTS } = require('./_lib/registry');
 const { TRAFIC_SNAPSHOT } = require('./_lib/kpi-data');
 const { getTotaux } = require('./_lib/finance-data');
-const { OBJECTIFS_SOURCE, OBJECTIFS, OBJECTIFS_CUMUL_J189 } = require('./_lib/kpi-objectifs-data');
+const { OBJECTIFS_SOURCE, OBJECTIFS, OBJECTIFS_CUMUL_J189, objectifInterpoleAujourdhui, METRIQUES, SCENARIOS } = require('./_lib/kpi-objectifs-data');
+const { getAvancementPortefeuille } = require('./_lib/taiga-client');
 
-module.exports = function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).json({ error: 'Méthode non autorisée.' });
   if (!requireSession(req, res)) return;
   res.setHeader('Cache-Control', 'private, no-store');
+
+  // Avancement live — ajouté le 24/08/2026 ("je veux que tu recalcules tout suivant l'avancé des
+  // projets [...] tout en dynamique [...] indiqué dans les autres onglets"). Source = Taiga en
+  // direct (api/_lib/taiga-client.js), pas les champs taches[]/etat statiques du registre — ce même
+  // bloc est repris tel quel dans Finance et Stratégie pour rester cohérent partout.
+  const avancement = await getAvancementPortefeuille(PROJECTS.map((p) => p.name));
 
   const total = PROJECTS.length;
   const actifs = PROJECTS.filter(p => p.url).length;
@@ -30,6 +37,7 @@ module.exports = function handler(req, res) {
   return res.status(200).json({
     updatedAt: '2026-08-23',
     portefeuille: { total, actifs, avecGithub, avecDrive, avecLocal, aNettoyer, aIdentifier, parCategorie, urgents },
+    avancement,
     trafic: TRAFIC_SNAPSHOT,
     indexation: {
       configured: false,
@@ -81,19 +89,36 @@ module.exports = function handler(req, res) {
         };
       });
 
+      const aujourdhui = new Date().toISOString().slice(0, 10);
+      // Point "aujourd'hui" recalculé à chaque appel (pas figé) — cf. commentaire dans
+      // kpi-objectifs-data.js. Ajouté le 24/08/2026 : "recalcule tout en dynamique, chaque évolution
+      // projet a un impact". Le réel n'existe que pour "visites" (Vercel Web Analytics) — aucune
+      // mesure d'adhésions/CA n'est branchée nulle part (pas de Stripe live), donc pas de "réel"
+      // inventé pour ces deux métriques : le graphe côté client doit l'afficher comme non mesuré.
+      const objectifsAvecAujourdhui = OBJECTIFS.map((o) => {
+        const traf = traficParNom[o.registreNom] || (o.vercelProjectId ? TRAFIC_SNAPSHOT.parProjet.find((t) => t.vercelProjectId === o.vercelProjectId) : null);
+        return {
+          ...o,
+          aujourdhui: objectifInterpoleAujourdhui(o, aujourdhui),
+          reelVisites30j: traf && traf.periodes['30j'] ? traf.periodes['30j'].visiteurs : null,
+        };
+      });
+
       return {
         source: OBJECTIFS_SOURCE,
+        dateDepart: OBJECTIFS_SOURCE.emailDate,
+        aujourdhui,
         metriques: [
           { cle: 'visites', label: 'Visites' },
           { cle: 'adhesions', label: 'Adhésions payantes' },
           { cle: 'ca', label: 'CA (€)' },
         ],
-        scenarios: ['pessimiste', 'normal', 'optimiste'],
+        scenarios: SCENARIOS,
         projets,
-        objectifsParProjet: OBJECTIFS,
+        objectifsParProjet: objectifsAvecAujourdhui,
         traficParProjet: TRAFIC_SNAPSHOT.parProjet,
         cumulJ189: OBJECTIFS_CUMUL_J189,
-        note: `Seuls ${OBJECTIFS.length} projets sur ${PROJECTS.length} ont des objectifs chiffrés réels (e-mail du 21/08/2026) — les autres n'en ont aucun, ce n'est pas un oubli d'affichage. Le "réel" vient du même instantané Vercel Web Analytics que ci-dessus (23/08/2026), pas d'une série temporelle live.`,
+        note: `Seuls ${OBJECTIFS.length} projets sur ${PROJECTS.length} ont des objectifs chiffrés réels (e-mail du 21/08/2026) — les autres n'en ont aucun, ce n'est pas un oubli d'affichage. Le point "aujourd'hui" est recalculé à chaque chargement par interpolation entre les jalons de l'e-mail — le "réel" visites vient du même instantané Vercel Web Analytics que ci-dessus (23/08/2026, pas une série live) ; adhésions et CA n'ont aucune mesure réelle branchée (pas de connexion Stripe), donc aucun "réel" n'est affiché pour ces deux métriques.`,
       };
     })(),
   });

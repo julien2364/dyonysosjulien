@@ -8,6 +8,7 @@ const { requireSession } = require('./_lib/session');
 const { PROJECTS } = require('./_lib/registry');
 const { TRAFIC_SNAPSHOT } = require('./_lib/kpi-data');
 const { COMPETITORS_REAL, CONCURRENTS_PORTEFEUILLE, BMC_SWOT } = require('./_lib/strategie-data');
+const { getAvancementPortefeuille } = require('./_lib/taiga-client');
 
 // Pistes de veille manuelle, écrites à la main à partir de la catégorie et de l'activité réelle de
 // chaque projet piloté activement (ceux qui ont un champ "priorite" dans le registre). Pas une
@@ -23,10 +24,13 @@ const VEILLE_PAR_PROJET = {
   'Content Engine DYONYSOS': { motsCles: ['planification réseaux sociaux', 'automatisation publication multi-canal'], domainesConnexes: ['MarTech', 'outils créateurs de contenu'] },
 };
 
-module.exports = function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).json({ error: 'Méthode non autorisée.' });
   if (!requireSession(req, res)) return;
   res.setHeader('Cache-Control', 'private, no-store');
+
+  // Même bloc d'avancement live que KPI/Finance (api/_lib/taiga-client.js).
+  const avancement = await getAvancementPortefeuille(PROJECTS.map((p) => p.name));
 
   // --- Niveau 1 : portefeuille ---
   const traficParNom = {};
@@ -80,6 +84,7 @@ module.exports = function handler(req, res) {
 
   return res.status(200).json({
     capturedAt: '2026-08-23',
+    avancement,
     portefeuille: {
       projetsActifs: PROJECTS.filter(p => p.url).length,
       urgents: urgents.map(p => p.name),

@@ -179,6 +179,85 @@ async function updateUserStoryStatus(userStoryId, statusId, version) {
   });
 }
 
+// Avancement live par projet — ajouté le 24/08/2026 en réponse directe à la demande de Julien
+// ("je veux que tu recalcules tout suivant l'avancé des projets [...] tout en dynamique [...] tout
+// peut être consigné dans Odoo, Taiga [...] et tu fais afficher les datas"). Source de vérité =
+// Taiga (pas registry.js) : pour chaque projet Taiga visible par le compte configuré, on lit ses
+// user stories réelles et on les classe fait / en cours / bloqué en utilisant les champs natifs
+// Taiga is_closed et is_blocked/blocked_note (pas un statut deviné par mot-clé). Le rapprochement
+// avec le registre (api/_lib/registry.js) se fait par nom, au mieux — un projet Taiga qui ne
+// correspond à aucun nom du registre reste listé à part plutôt que d'être perdu ou mal assigné.
+// Aucune projection : uniquement ce que Taiga renvoie à l'instant de l'appel.
+function normaliserNom(s) {
+  return String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+async function getTacheParProjetTaiga(token, taigaProjet) {
+  const stories = await taigaGet(`/api/v1/userstories?project=${taigaProjet.id}`, token);
+  const fait = stories.filter((s) => s.is_closed);
+  const bloque = stories.filter((s) => !s.is_closed && s.is_blocked);
+  const enCours = stories.filter((s) => !s.is_closed && !s.is_blocked);
+  return {
+    taigaId: taigaProjet.id,
+    taigaNom: taigaProjet.name,
+    taigaUrl: `${TAIGA_BASE_URL}/project/${taigaProjet.slug}/`,
+    total: stories.length,
+    fait: fait.length,
+    enCours: enCours.length,
+    bloque: bloque.map((s) => ({ id: s.ref, titre: s.subject, note: s.blocked_note || null })),
+  };
+}
+
+// registryNames : noms exacts du registre (api/_lib/registry.js) — sert uniquement au rapprochement
+// par nom, jamais à filtrer ce qui existe réellement dans Taiga.
+async function getAvancementPortefeuille(registryNames) {
+  if (!isTaigaConfigured()) return { configured: false };
+  try {
+    const token = await taigaLogin();
+    const me = await taigaGet('/api/v1/users/me', token);
+    const projetsTaiga = await taigaGet(`/api/v1/projects?member=${me.id}`, token);
+
+    const detailParProjet = await Promise.all(
+      projetsTaiga.map((p) => getTacheParProjetTaiga(token, p).catch((err) => ({
+        taigaId: p.id, taigaNom: p.name, taigaUrl: `${TAIGA_BASE_URL}/project/${p.slug}/`, erreur: err.message || String(err),
+      })))
+    );
+
+    const parNomNormalise = {};
+    detailParProjet.forEach((d) => { parNomNormalise[normaliserNom(d.taigaNom)] = d; });
+
+    const parProjetRegistre = {};
+    const nomsRegistreNormalises = new Set((registryNames || []).map(normaliserNom));
+    (registryNames || []).forEach((nomRegistre) => {
+      const n = normaliserNom(nomRegistre);
+      // correspondance exacte d'abord, puis inclusion dans un sens ou l'autre (ex. "Firmoscope / Prospeo"
+      // vs "Firmoscope / Prospeo (ex-Propecto)") — jamais de correspondance devinée au hasard.
+      let match = parNomNormalise[n];
+      if (!match) {
+        match = detailParProjet.find((d) => {
+          const dn = normaliserNom(d.taigaNom);
+          return dn && n && (dn.includes(n) || n.includes(dn));
+        });
+      }
+      if (match) parProjetRegistre[nomRegistre] = match;
+    });
+
+    const nonRapproches = detailParProjet.filter((d) => {
+      const dn = normaliserNom(d.taigaNom);
+      return ![...nomsRegistreNormalises].some((n) => dn.includes(n) || n.includes(dn));
+    });
+
+    return {
+      configured: true,
+      capturedAt: new Date().toISOString(),
+      parProjetRegistre,
+      projetsTaigaNonRapproches: nonRapproches.map((d) => ({ nom: d.taigaNom, url: d.taigaUrl, total: d.total })),
+    };
+  } catch (err) {
+    return { configured: true, error: err.message || String(err) };
+  }
+}
+
 module.exports = {
   isTaigaConfigured,
   getTaigaSnapshot,
@@ -188,4 +267,5 @@ module.exports = {
   updateUserStoryStatus,
   createProject,
   listMyProjectsRaw,
+  getAvancementPortefeuille,
 };

@@ -7,11 +7,17 @@
 const { requireSession } = require('./_lib/session');
 const { DEPENSES, getTotaux, ABONNEMENT_QONTO } = require('./_lib/finance-data');
 const { PROJECTS } = require('./_lib/registry');
+const { getAvancementPortefeuille } = require('./_lib/taiga-client');
 
-module.exports = function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).json({ error: 'Méthode non autorisée.' });
   if (!requireSession(req, res)) return;
   res.setHeader('Cache-Control', 'private, no-store');
+
+  // Même bloc d'avancement live que KPI/Stratégie (api/_lib/taiga-client.js) — ajouté le 24/08/2026
+  // pour que le lien blocage-projet ↔ coût soit visible ici : un projet bloqué explique souvent une
+  // dépense qui ne produit rien tant que le blocage n'est pas levé.
+  const avancement = await getAvancementPortefeuille(PROJECTS.map((p) => p.name));
 
   const { retenues, total, parFournisseur } = getTotaux();
 
@@ -83,6 +89,7 @@ module.exports = function handler(req, res) {
 
   return res.status(200).json({
     updatedAt: '2026-08-24',
+    avancement,
     source: 'Qonto (carte "One", active depuis le 12/08/2026) + reçus Anthropic (Claude) + factures OVHcloud/IONOS — tout trouvé par recherche directe dans les emails, montants réels lus sur chaque reçu/facture.',
     avertissement: 'Historique réel mais partiel : Qonto ne couvre qu\'~1 semaine (carte récente) ; Anthropic/OVHcloud/IONOS couvrent début juillet à mi-août 2026 mais seules les factures effectivement ouvertes sont chiffrées ici — d\'autres existent (renouvellements de domaines réguliers) sans montant vérifié. Ne pas extrapoler sur un mois complet ni traiter ce total comme exhaustif. Des relevés Qonto mensuels (avril à juillet 2026) existent en pièce jointe email mais n’ont pas encore été ouverts/dépouillés.',
     depenses: DEPENSES,

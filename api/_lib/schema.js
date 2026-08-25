@@ -12,6 +12,10 @@ const SHEET_CONTENT_QUEUE = "CONTENT_QUEUE";
 const SHEET_ASSETS = "ASSETS";
 const SHEET_PUBLICATION_LOG = "PUBLICATION_LOG";
 const SHEET_MANUAL_REQUESTS = "MANUAL_REQUESTS";
+// Ajouté le 25/08/2026 pour l'onglet "Check-list" (avant lancement / démarrage / pilotage) — feuille
+// créée automatiquement au premier enregistrement si elle n'existe pas encore (voir _lib/sheets.js
+// ensureSheetExists), pas besoin que Julien la crée à la main.
+const SHEET_CHECKLIST = "CHECKLIST";
 
 // Colonnes PROJECTS (A..AM) — index 0-based dans le tableau de valeurs
 const PROJECTS_COLS = {
@@ -67,6 +71,15 @@ const MANUAL_REQUESTS_COLS = {
 const MANUAL_REQUESTS_RANGE = "A1:M";
 // Statuts possibles : PENDING_REVIEW, APPROVED, REJECTED, PROCESSED, FAILED
 
+// Colonnes CHECKLIST (A..F) — une ligne par (projet, item de check-list) réellement renseigné.
+// Sparse par construction : un item jamais touché n'a pas de ligne, statut par défaut "a_faire" côté
+// lecture. project_id = le champ "name" du registre (api/_lib/registry.js), item_id = un code du
+// référentiel (api/_lib/checklist-data.js, ex "A1"..."L2") ou "_AMELIORATIONS"/"_CRITIQUES" pour le
+// texte libre par projet.
+const CHECKLIST_COLS = { project_id: 0, item_id: 1, statut: 2, document_url: 3, note: 4, updated_at: 5 };
+const CHECKLIST_RANGE = "A1:F";
+const CHECKLIST_HEADER = ['project_id', 'item_id', 'statut', 'document_url', 'note', 'updated_at'];
+
 function rowToObject(row, colsMap) {
   const obj = {};
   for (const [key, idx] of Object.entries(colsMap)) {
@@ -92,5 +105,6 @@ module.exports = {
   CONTENT_QUEUE_COLS, CONTENT_QUEUE_RANGE,
   PUBLICATION_LOG_COLS, PUBLICATION_LOG_RANGE,
   MANUAL_REQUESTS_COLS, MANUAL_REQUESTS_RANGE,
+  SHEET_CHECKLIST, CHECKLIST_COLS, CHECKLIST_RANGE, CHECKLIST_HEADER,
   rowToObject, objectToRow,
 };

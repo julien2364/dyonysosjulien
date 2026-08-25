@@ -109,6 +109,43 @@ async function updateCell(sheetName, columnLetter, rowNumber, value) {
   });
 }
 
+// Met à jour plusieurs cellules contiguës d'une même ligne en un seul appel, ex
+// updateRowRange("CHECKLIST", 5, "C", "F", ["fait", "https://...", "note", "2026-08-25"]).
+// Ajouté le 25/08/2026 pour l'onglet Check-list (évite 4 appels updateCell par item enregistré).
+async function updateRowRange(sheetName, rowNumber, startColLetter, endColLetter, values) {
+  const sheets = await getSheetsClient();
+  await sheets.spreadsheets.values.update({
+    spreadsheetId: spreadsheetId(),
+    range: `${sheetName}!${startColLetter}${rowNumber}:${endColLetter}${rowNumber}`,
+    valueInputOption: "USER_ENTERED",
+    requestBody: { values: [values] },
+  });
+}
+
+// Crée l'onglet s'il n'existe pas encore, avec une ligne d'en-tête optionnelle — idempotent (renvoie
+// false sans rien faire si l'onglet existe déjà). Ajouté le 25/08/2026 pour que l'onglet Check-list
+// se crée tout seul au premier enregistrement, sans demander à Julien de le créer à la main dans le
+// classeur Content Engine.
+async function ensureSheetExists(sheetName, headerRow) {
+  const sheets = await getSheetsClient();
+  const meta = await sheets.spreadsheets.get({ spreadsheetId: spreadsheetId(), fields: "sheets.properties.title" });
+  const titles = (meta.data.sheets || []).map((s) => s.properties.title);
+  if (titles.includes(sheetName)) return false;
+  await sheets.spreadsheets.batchUpdate({
+    spreadsheetId: spreadsheetId(),
+    requestBody: { requests: [{ addSheet: { properties: { title: sheetName } } }] },
+  });
+  if (headerRow && headerRow.length) {
+    await sheets.spreadsheets.values.update({
+      spreadsheetId: spreadsheetId(),
+      range: `${sheetName}!A1`,
+      valueInputOption: "USER_ENTERED",
+      requestBody: { values: [headerRow] },
+    });
+  }
+  return true;
+}
+
 // Retrouve le numéro de ligne réel (1-based, avec en-tête = ligne 1) d'une valeur trouvée
 // dans une colonne — utile pour cibler updateCell après un readRows.
 function rowNumberFromIndex(indexInDataRows) {
@@ -129,4 +166,4 @@ function columnLetterFromIndex(index) {
   return letters;
 }
 
-module.exports = { getSheetsClient, readRows, listSheetTitles, readSheetWithHeader, appendRow, updateCell, rowNumberFromIndex, columnLetterFromIndex };
+module.exports = { getSheetsClient, readRows, listSheetTitles, readSheetWithHeader, appendRow, updateCell, updateRowRange, ensureSheetExists, rowNumberFromIndex, columnLetterFromIndex };

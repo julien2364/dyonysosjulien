@@ -52,6 +52,7 @@
       value.length > 1 &&
       value.length <= 1200 &&
       /\p{L}/u.test(value) &&
+      !/^(?:[A-ZÀ-Þ0-9][A-ZÀ-Þ0-9+./%-]{1,11}|fr|en|es|it|pt|br|de|nl|pl|sv|no|da|fi|el|bg|ro|uk|ar|ru|ko|ja)$/.test(value) &&
       !/^(?:https?:\/\/|www\.|[^\s@]+@[^\s@]+\.[^\s@]+$)/i.test(value)
     );
   };

@@ -65,4 +65,5 @@
   // La section ecosysteme est strictement reservee aux pages d'accueil.
   if(!/^\/(?:en|es|nl|de)?\/?$/.test(location.pathname)&&!/^\/dyonysos-maquette-entreprise-v2(?:\.html)?$/.test(location.pathname)&&section!=='partenaires')document.querySelector('.dy-ecosystem')?.remove();
   if(location.pathname==='/espace-prive'&&!document.querySelector('script[src="/private-funnel.js"]')){const funnelScript=document.createElement('script');funnelScript.src='/private-funnel.js';funnelScript.defer=true;document.body.appendChild(funnelScript)}
+  if(!/^\\/(?:espace-prive|pilotage-social)(?:\\/|$)/.test(location.pathname)&&!document.querySelector('script[src="/auto-i18n.js"]')){const i18nScript=document.createElement('script');i18nScript.src='/auto-i18n.js';i18nScript.defer=true;document.body.appendChild(i18nScript)}
 })();

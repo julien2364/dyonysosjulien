@@ -1,0 +1,1 @@
+(()=>{const buttons=[...document.querySelectorAll('[data-filter]')],cards=[...document.querySelectorAll('.app-card')];buttons.forEach(button=>button.addEventListener('click',()=>{const filter=button.dataset.filter;buttons.forEach(x=>x.classList.toggle('active',x===button));cards.forEach(card=>card.hidden=filter!=='Tous'&&card.dataset.group!==filter)}));})();

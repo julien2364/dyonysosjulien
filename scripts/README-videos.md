@@ -4,7 +4,9 @@
 
 Le script envoie le MP4 au relais privé `automation.dyonysos.fr`. Aucun secret
 n'est copié dans le dépôt. Par sécurité, YouTube reçoit d'abord la vidéo en
-mode **non répertorié**.
+mode **non répertorié**. Avant l'envoi, le script vérifie que le relais cible
+bien la chaîne `@dyonysosfr` ; il s'arrête sans téléverser si une autre chaîne
+est autorisée.
 
 ```sh
 node scripts/upload-odoo-youtube.mjs \

@@ -59,6 +59,15 @@ const metadata = {
   language: args.language,
   privacyStatus: 'unlisted'
 };
+
+const expectedChannel = args['expected-channel'] || '@dyonysosfr';
+const channelCommand = `docker exec ap-youtube-relay node -e 'const{google}=require("googleapis"),{getOAuthClientForBrand}=require("./lib/oauth");(async()=>{const a=await getOAuthClientForBrand("Dyonysos"),y=google.youtube({version:"v3",auth:a}),r=await y.channels.list({part:["snippet"],mine:true});console.log(JSON.stringify((r.data.items||[]).map(x=>({id:x.id,title:x.snippet.title,handle:x.snippet.customUrl}))))})().catch(e=>{console.error(e.message);process.exit(1)})'`;
+const authorizedChannels = JSON.parse(await runSsh(channelCommand));
+if (!authorizedChannels.some((channel) => channel.handle === expectedChannel)) {
+  const observed = authorizedChannels.map((channel) => `${channel.title} (${channel.handle || channel.id})`).join(', ') || 'aucune chaîne';
+  throw new Error(`Upload bloqué : le relais Dyonysos pointe vers ${observed}, attendu ${expectedChannel}. Réautoriser https://automation.dyonysos.fr/youtube-relay/oauth/Dyonysos/authorize avec la bonne chaîne.`);
+}
+
 const encoded = Buffer.from(JSON.stringify(metadata), 'utf8').toString('base64');
 const uploadCommand = `set -a; . /home/ubuntu/infra/ap-youtube-relay/.env; set +a; curl -fsS -X POST https://automation.dyonysos.fr/youtube-relay/upload-file -H "Authorization: Bearer $API_KEY" -H "Content-Type: video/mp4" -H "Content-Length: ${file.size}" -H "X-Upload-Metadata-B64: ${encoded}" --data-binary @-`;
 const started = JSON.parse(await runSsh(uploadCommand, args.file));

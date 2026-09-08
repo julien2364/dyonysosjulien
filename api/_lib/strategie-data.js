@@ -49,17 +49,18 @@ const COMPETITORS_REAL = {
     marche: 'Pas de rapport dédié au segment "outils vendeurs Amazon FBA" trouvé. Repères adjacents : logiciels e-commerce (marché large) 7,03 Md$ (2024) → 25,32 Md$ (2033), CAGR 15,3% ; 2,5M+ vendeurs actifs sur Amazon dans le monde en 2026, 60%+ des ventes Amazon via tiers/FBA, revenu FBA moyen 160 000$/an (médian 35 000$/an).',
     sourcesMarche: ['https://www.skyquestt.com/report/e-commerce-software-market', 'https://thunderbit.com/blog/amazon-fba-stats'],
     concurrents: [
+      { nom: 'Tactical Arbitrage (Threecolts Seller 365)', note: 'Concurrent direct de référence : sourcing automatisé, recherches planifiées et analyse de catalogues', prix: 'Seller 365 dès 69$/mois (65$/mois annuel)', source: 'https://www.threecolts.com/seller-365' },
       { nom: 'Keepa', note: 'Quasi-standard data Amazon ; API Starter confirmée = même palier que celui souscrit par Arbitrage+', prix: 'Free ; Pro 29€/mois ; API Starter 49€/mois → Enterprise 11 099€/mois', source: 'https://revenuegeeks.com/software/keepa/pricing' },
       { nom: 'Helium 10', note: 'Suite complète (sourcing + recherche + PPC)', prix: 'Platinum 129$/mois, Diamond 359$/mois, Enterprise dès 1 499$/mois', source: 'https://www.helium10.com/pricing/' },
       { nom: 'Jungle Scout', note: 'Suite complète, positionnement établi', prix: 'Starter 49$/mois, Growth 79$/mois, Brand Owner 149$/mois', source: 'https://www.demandsage.com/jungle-scout-pricing/' },
-      { nom: 'SellerAmp SAS', note: 'Positionnement le plus proche d\'Arbitrage+ (sourcing/arbitrage pur), extension Chrome incluse à tous les plans, 100 000+ utilisateurs revendiqués', prix: '19,95 à 49,95$/mois', source: 'https://selleramp.com/pricing/' },
     ],
-    positionnement: 'SellerAmp démontre qu\'un outil de sourcing pur (sans suite complète) peut réussir sous les 20-50$/mois avec forte adoption — modèle le plus proche d\'Arbitrage+. L\'absence d\'extension Chrome (standard chez les 4 concurrents) est un écart concret à combler.',
+    positionnement: 'Tactical Arbitrage est le concurrent direct de référence. Keepa, Helium 10 et Jungle Scout restent des repères de données ou de suites plus larges. SellerAmp est rattaché à Analyzer+ comme outil d’analyse comparable, pas comme concurrent direct d’Arbitrage+.',
   },
   'Analyzer+': {
     marche: 'Même contexte que Arbitrage+ (pas de rapport dédié) — voir ci-dessus.',
     sourcesMarche: ['https://www.skyquestt.com/report/e-commerce-software-market', 'https://thunderbit.com/blog/amazon-fba-stats'],
     concurrents: [
+      { nom: 'SellerAmp SAS', note: 'Outil d’analyse produit comparable : profit, ROI, historique, alertes et extension Chrome ; pas un concurrent direct d’Arbitrage+', prix: '19,95 à 49,95$/mois', source: 'https://selleramp.com/pricing/' },
       { nom: 'Jungle Scout', note: 'Suite complète incluant recherche produit', prix: 'Starter 49$/mois, Growth 79$/mois, Brand Owner 149$/mois', source: 'https://www.demandsage.com/jungle-scout-pricing/' },
       { nom: 'Helium 10', note: 'Suite complète (Xray/Black Box pour la recherche produit)', prix: 'Platinum 129$/mois, Diamond 359$/mois', source: 'https://www.helium10.com/pricing/' },
       { nom: 'AMZScout', note: 'Positionnement le plus proche d\'Analyzer+ : analyse produit simple, orienté débutants', prix: 'AI Bundle 59,99$/mois ou 399,99$/an', source: 'https://revenuegeeks.com/amzscout-pricing/' },
@@ -176,8 +177,8 @@ const COMPETITORS_REAL = {
 // Concurrents réels trouvés pour le reste du portefeuille (recherche web du 24/08/2026, moins approfondie
 // — pas de BMC/SWOT complet, juste des noms + une source, pour remplacer les "à confirmer").
 const CONCURRENTS_PORTEFEUILLE = [
-  { projet: 'Arbitrage+', concurrentsIdentifies: 'Keepa, Helium 10, Jungle Scout, SellerAmp', etat: 'fait', source: 'https://www.helium10.com/competitors/helium-10-vs-jungle-scout/' },
-  { projet: 'Analyzer+', concurrentsIdentifies: 'Jungle Scout, Helium 10, AMZScout', etat: 'fait', source: 'https://amzscout.net/blog/amzscout-vs-jungle-scout-accuracy-comparison/' },
+  { projet: 'Arbitrage+', concurrentsIdentifies: 'Tactical Arbitrage (direct) ; SourceMogul et Actorio ; Keepa/Helium 10/Jungle Scout en repères adjacents', etat: 'fait', source: 'https://www.threecolts.com/seller-365' },
+  { projet: 'Analyzer+', concurrentsIdentifies: 'SellerAmp (outil d’analyse comparable), Jungle Scout, Helium 10, AMZScout', etat: 'fait', source: 'https://selleramp.com/features/' },
   { projet: 'Profit+', concurrentsIdentifies: 'Sellerboard (cible de parité), Fetcher, RestockPro', etat: 'fait', source: 'https://novadata.io/resources/blog/best-amazon-analytics-tools' },
   { projet: 'École Connect', concurrentsIdentifies: 'Pronote, EcoleDirecte, Beneylu School', etat: 'fait', source: 'https://www.aladom.fr/actualites/secteur-service/10050/educonnect-beneylu-pronote-toutatice-quelle-solution-pour-suivre-la-scolarite/' },
   { projet: 'CoursHub', concurrentsIdentifies: 'Podia, LearnyBox, Systeme.io, Teachizy', etat: 'fait', source: 'https://www.montersonbusiness.com/podia-vendre-formations-coaching/' },
@@ -256,9 +257,9 @@ const BMC_SWOT = {
     },
     swot: {
       forces: ['Accès Keepa Starter déjà opérationnel', 'App déployée', 'Feuille de route claire (extension Chrome, Stripe)'],
-      faiblesses: ['0 visiteur mesuré/30j', 'Données encore simulées dans certains modules', 'Pas d\'extension Chrome alors que c\'est un standard chez les 4 concurrents identifiés', 'Stripe non branché'],
-      opportunites: ['2,5M+ vendeurs Amazon actifs dans le monde', 'SellerAmp démontre qu\'un outil de sourcing pur peut réussir sous les 20-50$/mois avec forte adoption (100k+ utilisateurs)'],
-      menaces: ['Marché mature/consolidé (Keepa = quasi-standard data, SellerAmp sur le même usage exact)', 'Coûts API Keepa croissants avec le volume (jusqu\'à 11k€/mois aux paliers élevés)', 'Aucune traction actuelle à convertir avant tout lancement payant'],
+      faiblesses: ['0 visiteur mesuré/30j', 'Données encore simulées dans certains modules', 'Pas d\'extension Chrome alors que les outils adjacents d’analyse en proposent une', 'Stripe non branché'],
+      opportunites: ['2,5M+ vendeurs Amazon actifs dans le monde', 'Les outils d’analyse comme SellerAmp démontrent une demande pour des décisions de sourcing mieux structurées'],
+      menaces: ['Marché mature : Tactical Arbitrage est le concurrent direct de référence et Keepa un quasi-standard data', 'Coûts API Keepa croissants avec le volume (jusqu\'à 11k€/mois aux paliers élevés)', 'Aucune traction actuelle à convertir avant tout lancement payant'],
     },
   },
   'Analyzer+': {

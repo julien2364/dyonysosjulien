@@ -39,6 +39,8 @@ test('construit un cockpit probant à partir des agrégats live', () => {
   assert.match(dashboard.verdict.acquisition, /^GO/);
   assert.equal(dashboard.channels.paid.state, 'go_authorized');
   assert.equal(dashboard.channels.paid.budgetAuthorized, null);
+  assert.equal(dashboard.channels.social.postizDrafts, 16);
+  assert.equal(dashboard.channels.social.postizVisuals, 5);
   assert.match(dashboard.projections.warning, /pas des garanties de vente/);
 });
 
@@ -79,4 +81,13 @@ test('enregistre le GO sans déclarer la bascule complète avant la preuve rése
   assert.equal(dashboard.channels.email.vps.testAccepted, true);
   assert.equal(dashboard.internalEngines.services.find((item) => item.id === 'odoo').cutoverEligible, true);
   assert.equal(dashboard.internalEngines.services.find((item) => item.id === 'postiz').cutoverEligible, false);
+});
+
+test('classe Tactical Arbitrage en concurrent direct et SellerAmp en outil d’analyse', () => {
+  const dashboard = buildDashboard(snapshot, { ok: false, state: 'not_configured', value: null });
+  const tactical = dashboard.competitors.find((item) => item.name === 'Tactical Arbitrage');
+  const sellerAmp = dashboard.competitors.find((item) => item.name === 'SellerAmp');
+
+  assert.equal(tactical.role, 'Concurrent direct');
+  assert.match(sellerAmp.role, /pas concurrent direct/);
 });

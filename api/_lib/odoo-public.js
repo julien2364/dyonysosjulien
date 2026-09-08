@@ -47,38 +47,49 @@ function parseCataloguePage(html, kind) {
 async function fetchText(url) {
   const response = await fetch(url, {
     headers: { 'User-Agent': 'Dyonysos-Pilotage/1.0 (+https://dyonysos.fr)' },
+    signal: AbortSignal.timeout(8000),
   });
   if (!response.ok) throw new Error(`Odoo Apps répond ${response.status}`);
   return response.text();
 }
 
+async function fetchAll(kind) {
+  const segment = kind === 'app' ? 'modules' : 'themes';
+  const firstUrl = `${BASE_URL}/apps/${segment}/browse?repo_maintainer_id=${MAINTAINER_ID}`;
+  const first = parseCataloguePage(await fetchText(firstUrl), kind);
+  const unique = new Map(first.items.map((item) => [item.slug, item]));
+  let page = 2;
+  while (unique.size < first.total && page <= 20) {
+    const parsed = parseCataloguePage(
+      await fetchText(`${BASE_URL}/apps/${segment}/browse/page/${page}?repo_maintainer_id=${MAINTAINER_ID}`),
+      kind
+    );
+    if (parsed.items.length === 0) break;
+    const before = unique.size;
+    parsed.items.forEach((item) => unique.set(item.slug, item));
+    if (unique.size === before) break;
+    page += 1;
+  }
+  if (unique.size !== first.total) {
+    throw new Error(`Catalogue ${segment} incomplet : ${unique.size}/${first.total} éléments parsés`);
+  }
+  return { total: first.total, items: [...unique.values()], source: firstUrl };
+}
+
 async function fetchPublicCatalogue() {
-  const appsUrl = `${BASE_URL}/apps/modules/browse?repo_maintainer_id=${MAINTAINER_ID}`;
-  const themesUrl = `${BASE_URL}/apps/themes/browse?repo_maintainer_id=${MAINTAINER_ID}`;
-  const [apps1Html, apps2Html, themes1Html, themes2Html] = await Promise.all([
-    fetchText(appsUrl),
-    fetchText(`${BASE_URL}/apps/modules/browse/page/2?repo_maintainer_id=${MAINTAINER_ID}`),
-    fetchText(themesUrl),
-    fetchText(`${BASE_URL}/apps/themes/browse/page/2?repo_maintainer_id=${MAINTAINER_ID}`),
-  ]);
-  const apps1 = parseCataloguePage(apps1Html, 'app');
-  const apps2 = parseCataloguePage(apps2Html, 'app');
-  const themes1 = parseCataloguePage(themes1Html, 'theme');
-  const themes2 = parseCataloguePage(themes2Html, 'theme');
-  const uniqueApps = new Map([...apps1.items, ...apps2.items].map((item) => [item.slug, item]));
-  const uniqueThemes = new Map([...themes1.items, ...themes2.items].map((item) => [item.slug, item]));
-  const appItems = [...uniqueApps.values()];
-  const items = [...appItems, ...uniqueThemes.values()];
+  const [apps, themes] = await Promise.all([fetchAll('app'), fetchAll('theme')]);
+  const appItems = apps.items;
+  const items = [...appItems, ...themes.items];
   const freeApps = appItems.filter((item) => item.free);
   const technicalBases = freeApps.filter((item) => item.technicalBase);
   const acquisitionApps = freeApps.filter((item) => !item.technicalBase);
-  const themeItems = [...uniqueThemes.values()];
+  const themeItems = themes.items;
   const freeThemes = themeItems.filter((item) => item.free);
   return {
     fetchedAt: new Date().toISOString(),
-    source: appsUrl,
-    appsTotal: Math.max(apps1.total, uniqueApps.size),
-    themesTotal: Math.max(themes1.total, uniqueThemes.size),
+    source: apps.source,
+    appsTotal: apps.total,
+    themesTotal: themes.total,
     paidApps: appItems.filter((item) => !item.free).length,
     freeApps: freeApps.length,
     paidThemes: themeItems.filter((item) => !item.free).length,

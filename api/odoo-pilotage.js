@@ -49,9 +49,21 @@ function parseNumber(value) {
   return Number.isFinite(parsed) ? parsed : 0;
 }
 
+function requireNumber(value, key) {
+  if (value === null || value === undefined || String(value).trim() === '') throw new Error(`Valeur numérique requise pour ${key}.`);
+  const parsed = Number(String(value).replace(/\s/g, '').replace(',', '.'));
+  if (!Number.isFinite(parsed)) throw new Error(`Valeur numérique invalide pour ${key}.`);
+  return parsed;
+}
+
 function fallbackRows() {
   const now = new Date().toISOString();
-  return DEFAULTS.map(([key, label, value, source, kind]) => ({ key, label, value, updatedAt: now, source, kind }));
+  return DEFAULTS.map(([key, label, value, source, kind]) => ({
+    key, label, value: kind === 'actual' ? null : value,
+    updatedAt: kind === 'actual' ? null : now,
+    source: kind === 'actual' ? 'Donnée indisponible — Google Sheets non lu' : source,
+    kind,
+  }));
 }
 
 function rowsToObjects(rows) {
@@ -216,6 +228,17 @@ async function getPayload() {
     catalogueWarning,
     rows,
     projection: calculate(rows),
+    benchmark: {
+      status: 'hypothèse interne à recalibrer',
+      rate: 0.0291,
+      source: 'Baromètre Odoo Apps UE du 07/09/2026 — 176 éditeurs recensés, sous-groupe à faible historique',
+      productCoefficientsSource: 'Classeur de potentiel Dyonysos du 08/09/2026 — coefficients commerciaux internes',
+    },
+    actualFinance: (() => {
+      const v = Object.fromEntries(rows.map((row) => [row.key, parseNumber(row.value)]));
+      const explained = v.odoo_commission_actual_eur + v.partner_share_actual_eur + v.refunds_actual_eur + v.dyonysos_attributed_eur;
+      return { gross: v.paid_gross_eur, explained, unreconciled: Math.round((v.paid_gross_eur - explained) * 100) / 100, cashReceived: v.cash_received_eur };
+    })(),
     modelProducts: MODEL_PRODUCTS.map((row) => ({ technicalName: row.technical_name, type: row.type, price: row.price_eur, coefficient: row.coefficient, status: row.status, domain: row.domain, weightedValue: Math.round(row.price_eur * row.coefficient * 100) / 100 })),
     catalogueChanges: {
       publicPaidApps: catalogue?.paidApps ?? null,
@@ -235,8 +258,8 @@ async function getPayload() {
 }
 
 module.exports = async function handler(req, res) {
-  if (!requireSession(req, res)) return;
   res.setHeader('Cache-Control', 'private, no-store');
+  if (!requireSession(req, res)) return;
   if (req.method === 'GET') return res.status(200).json(await getPayload());
   if (req.method !== 'POST') return res.status(405).json({ error: 'Méthode non autorisée.' });
   try {
@@ -248,7 +271,8 @@ module.exports = async function handler(req, res) {
     const changes = [];
     for (const [key, rawValue] of Object.entries(updates)) {
       if (!ALLOWED.has(key)) continue;
-      const value = parseNumber(rawValue);
+      let value;
+      try { value = requireNumber(rawValue, key); } catch (error) { return res.status(400).json({ error: error.message }); }
       if (value < 0 || (RATE_KEYS.has(key) && value > 1) || (key === 'marketplace_growth_exponent' && value > 3)) return res.status(400).json({ error: `Valeur hors limites pour ${key}.` });
       if (COUNT_ACTUAL_KEYS.has(key) && !Number.isInteger(value)) return res.status(400).json({ error: `${key} doit être un entier.` });
       if (current[key] && value !== current[key].value) changes.push({ key, oldValue: current[key].value, newValue: value, kind: current[key].kind });

@@ -175,6 +175,21 @@ async function writeChanges(changes, state, evidence, now) {
   });
 }
 
+async function loadRecentHistory(limit = 10) {
+  await ensureSheetExists(HISTORY_SHEET, ['changed_at', 'model_version', 'key', 'old_value', 'new_value', 'kind', 'evidence', 'actor']);
+  const history = await readSheetWithHeader(HISTORY_SHEET, 'A1:H');
+  return history.rows.slice(-limit).reverse().map((row) => ({
+    changedAt: row[0] || null,
+    modelVersion: row[1] || '',
+    key: row[2] || '',
+    oldValue: parseNumber(row[3]),
+    newValue: parseNumber(row[4]),
+    kind: row[5] || '',
+    evidence: row[6] || '',
+    actor: row[7] || '',
+  }));
+}
+
 function snapshotRow(catalogue) {
   return [catalogue.fetchedAt, catalogue.appsTotal, catalogue.paidApps, catalogue.freeApps, catalogue.themesTotal, catalogue.paidThemes, catalogue.freeThemes, catalogue.acquisitionDownloads, catalogue.technicalBaseDownloads, catalogue.themeDownloads, catalogue.source];
 }
@@ -200,10 +215,12 @@ async function latestSnapshot() {
 
 async function getPayload() {
   let rows;
+  let recentHistory = [];
   let storage = 'google-sheets';
   let storageWarning = null;
   try {
     rows = await loadState();
+    recentHistory = await loadRecentHistory();
   } catch (error) {
     rows = fallbackRows();
     storage = 'fallback';
@@ -227,6 +244,7 @@ async function getPayload() {
     catalogue,
     catalogueWarning,
     rows,
+    recentHistory,
     projection: calculate(rows),
     benchmark: {
       status: 'hypothèse interne à recalibrer',

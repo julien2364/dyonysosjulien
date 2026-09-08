@@ -1,5 +1,5 @@
 const { requireSession } = require('./_lib/session');
-const { ensureSheetExists, readSheetWithHeader, appendRow, updateRowRange } = require('./_lib/sheets');
+const { getSheetsClient, ensureSheetExists, readSheetWithHeader, updateRowRange } = require('./_lib/sheets');
 const { fetchPublicCatalogue } = require('./_lib/odoo-public');
 
 const SHEET = 'ODOO_PILOTAGE';
@@ -37,9 +37,14 @@ async function loadState() {
   let result = await readSheetWithHeader(SHEET, 'A1:F');
   if (created || result.rows.length === 0) {
     const now = new Date().toISOString();
-    for (const [key, label, value, source, kind] of DEFAULTS) {
-      await appendRow(SHEET, [key, label, value, now, source, kind]);
-    }
+    const sheets = await getSheetsClient();
+    const values = [HEADER, ...DEFAULTS.map(([key, label, value, source, kind]) => [key, label, value, now, source, kind])];
+    await sheets.spreadsheets.values.update({
+      spreadsheetId: process.env.SPREADSHEET_ID,
+      range: `${SHEET}!A1:F${values.length}`,
+      valueInputOption: 'USER_ENTERED',
+      requestBody: { values },
+    });
     result = await readSheetWithHeader(SHEET, 'A1:F');
   }
   return rowsToObjects(result.rows);

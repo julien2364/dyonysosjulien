@@ -276,7 +276,7 @@
     },
     {
       "source": "/pilotage-odoo",
-      "destination": "/pilotage-odoo"
+      "destination": "/api/pilotage-odoo-page"
     }
   ],
   "headers": [

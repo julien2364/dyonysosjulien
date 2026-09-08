@@ -1,0 +1,38 @@
+{
+  "updatedAt": "2026-09-09T12:00:00+02:00",
+  "playlists": {
+    "fr": {
+      "name": "Odoo Apps Dyonysos — Français",
+      "url": "https://www.youtube.com/playlist?list=PLAJRwo0mIPBw",
+      "status": "public"
+    },
+    "en": {
+      "name": "Dyonysos Odoo Apps — English",
+      "url": "https://www.youtube.com/playlist?list=PLNZJM-Sun_Bw",
+      "status": "public"
+    }
+  },
+  "videos": {
+    "amazon-connector-community": {
+      "youtubeId": "fPD2CyZdFrg",
+      "title": "Amazon & Packlink for Odoo Community — product demo",
+      "locale": "en",
+      "publishedAt": "2026-09-09",
+      "status": "public"
+    },
+    "dyo-packlink-connector": {
+      "youtubeId": "fPD2CyZdFrg",
+      "title": "Amazon & Packlink for Odoo Community — product demo",
+      "locale": "en",
+      "publishedAt": "2026-09-09",
+      "status": "public"
+    },
+    "dyo-mrp-cockpit": {
+      "youtubeId": "BuEGueGiKL8",
+      "title": "MRP Essential for Odoo Community — product demo",
+      "locale": "en",
+      "publishedAt": "2026-09-09",
+      "status": "public"
+    }
+  }
+}

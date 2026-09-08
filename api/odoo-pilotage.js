@@ -292,9 +292,9 @@ async function getPayload() {
       { locale: 'EN', name: 'Dyonysos Odoo Apps — English', url: 'https://www.youtube.com/playlist?list=PLNZJM-Sun_Bw', status: 'Publique' },
     ],
     videoPlan: [
-      { product: 'Amazon + Packlink', priority: 1, demoReady: false, screenshots: true, script: true, video: true, youtube: false, listingLinked: false },
+      { product: 'Amazon + Packlink', priority: 1, demoReady: true, screenshots: true, script: true, video: true, youtube: true, listingLinked: true },
       { product: 'MCP Server for Odoo', priority: 2, demoReady: false, screenshots: false, script: false, video: false, youtube: false, listingLinked: false },
-      { product: 'MRP Essentiel', priority: 3, demoReady: false, screenshots: true, script: true, video: true, youtube: false, listingLinked: false },
+      { product: 'MRP Essentiel', priority: 3, demoReady: true, screenshots: true, script: true, video: true, youtube: true, listingLinked: true },
     ],
   };
 }

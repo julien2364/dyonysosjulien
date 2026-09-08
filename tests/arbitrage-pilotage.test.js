@@ -79,6 +79,9 @@ test('enregistre le GO sans déclarer la bascule complète avant la preuve rése
   assert.equal(dashboard.internalEngines.checklist[1].done, false);
   assert.equal(dashboard.channels.email.vps.cutoverEligible, true);
   assert.equal(dashboard.channels.email.vps.testAccepted, true);
+  assert.equal(dashboard.channels.email.vps.testReceived, true);
+  assert.equal(dashboard.channels.email.vps.deliveryPlacement, 'indésirables');
+  assert.equal(dashboard.channels.email.vps.trackingConfirmed, false);
   assert.equal(dashboard.channels.email.vps.prospects, 9);
   assert.equal(dashboard.channels.email.vps.prospectsBlocked, 9);
   assert.equal(dashboard.channels.email.vps.contactAutomations, 0);

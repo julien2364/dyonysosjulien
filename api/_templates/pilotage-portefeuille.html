@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pilotage Dyonysos — portefeuille, acquisition, ventes et cash</title>
+  <style>
+    :root{--ink:#152036;--muted:#5f6b7a;--line:#dfe5ec;--soft:#f5f7fa;--blue:#3157d5;--blue2:#eef2ff;--green:#138a63;--green2:#eaf8f2;--amber:#a76400;--amber2:#fff6df;--red:#b83535;--red2:#fff0f0;--purple:#6842bd;--purple2:#f2edff;--card:#fff}
+    *{box-sizing:border-box} body{margin:0;background:#eef1f5;color:var(--ink);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif} a{color:var(--blue)}
+    .wrap{max-width:1220px;margin:auto;padding:28px 20px 64px}.hero{padding:44px;border-radius:24px;background:linear-gradient(135deg,#172044,#3157d5 62%,#6842bd);color:white;box-shadow:0 18px 50px #17204426}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:11px;font-weight:800;opacity:.78}.hero h1{font-size:42px;line-height:1.08;margin:10px 0 14px;max-width:920px}.hero p{font-size:18px;max-width:900px;margin:0;opacity:.9}.meta{display:flex;flex-wrap:wrap;gap:9px;margin-top:25px}.meta span,.pill{display:inline-flex;align-items:center;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:750}.meta span{background:#ffffff19;border:1px solid #ffffff28}
+    .tabs{position:sticky;top:0;z-index:10;display:flex;gap:7px;overflow:auto;margin:20px 0;padding:9px;background:#fffffff2;border:1px solid var(--line);border-radius:15px;backdrop-filter:blur(10px)}button.tab{border:0;background:transparent;color:var(--muted);font:inherit;font-weight:750;padding:9px 13px;border-radius:10px;white-space:nowrap;cursor:pointer}button.tab.active{background:var(--ink);color:white}.panel{display:none}.panel.active{display:block}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.card{grid-column:span 12;background:var(--card);border:1px solid var(--line);border-radius:17px;padding:22px;box-shadow:0 6px 22px #1520360a}.half{grid-column:span 6}.third{grid-column:span 4}.quarter{grid-column:span 3}.twothird{grid-column:span 8}
+    h2{font-size:28px;line-height:1.2;margin:28px 0 14px}h3{font-size:18px;line-height:1.3;margin:0 0 9px}h4{font-size:14px;margin:17px 0 6px}.lead{font-size:18px}.muted{color:var(--muted)}.big{font-size:32px;font-weight:850;line-height:1}.tiny{font-size:12px}.critical{background:var(--red2);border-color:#efc6c6}.warn{background:var(--amber2);border-color:#f0d49d}.good{background:var(--green2);border-color:#bfe5d6}.blue{background:var(--blue2);border-color:#ccd5ff}.purple{background:var(--purple2);border-color:#dacdff}.pill.red{background:var(--red2);color:var(--red)}.pill.amber{background:var(--amber2);color:var(--amber)}.pill.green{background:var(--green2);color:var(--green)}.pill.blue{background:var(--blue2);color:var(--blue)}.pill.purple{background:var(--purple2);color:var(--purple)}
+    table{width:100%;border-collapse:collapse;font-size:13px}th{text-align:left;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em;background:var(--soft)}th,td{padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:top}tr:last-child td{border-bottom:0}.nowrap{white-space:nowrap}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px;background:white}.table-wrap table{min-width:850px}.controls{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 14px}.controls select,.controls input{border:1px solid var(--line);background:white;color:var(--ink);border-radius:10px;padding:10px 12px;font:inherit}.controls input{min-width:250px}.controls button{border:0;border-radius:10px;background:var(--ink);color:white;padding:10px 14px;font:inherit;font-weight:750;cursor:pointer}
+    .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.step{background:white;border:1px solid var(--line);border-radius:14px;padding:15px;position:relative}.step:not(:last-child):after{content:'→';position:absolute;right:-9px;top:40%;z-index:1;color:var(--blue);font-weight:900}.status{display:flex;gap:8px;align-items:center}.dot{width:9px;height:9px;border-radius:50%;background:var(--muted)}.dot.live{background:var(--green)}.dot.warn{background:var(--amber)}.dot.red{background:var(--red)}.dot.blue{background:var(--blue)}ul,ol{padding-left:20px}.callout{border-left:4px solid var(--blue);padding-left:14px}.scorebar{height:8px;background:#e8ecf1;border-radius:99px;overflow:hidden;margin-top:10px}.scorebar i{display:block;height:100%;background:var(--blue)}
+    .budget-grid,.purchase-form{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.budget-grid label,.purchase-form label{display:flex;flex-direction:column;gap:6px;font-weight:750}.budget-grid input,.budget-grid select,.purchase-form input,.purchase-form select,textarea{width:100%;border:1px solid var(--line);background:white;color:var(--ink);border-radius:10px;padding:10px 12px;font:inherit}.budget-grid small,.purchase-form small{font-weight:400;color:var(--muted)}textarea{min-height:320px;resize:vertical}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}.actions button{border:0;border-radius:10px;background:var(--ink);color:white;padding:10px 14px;font:inherit;font-weight:750;cursor:pointer}.stamp{font-variant-numeric:tabular-nums}.money{font-variant-numeric:tabular-nums;white-space:nowrap}.decision-band{border-left:6px solid var(--accent)}
+    .task-status{width:100%;min-width:145px;border:1px solid var(--line);background:white;color:var(--ink);border-radius:9px;padding:8px;font:inherit}.progress-line{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.progress-line progress{width:min(420px,100%);height:14px}.task-note{min-height:90px}
+    .gauge{display:grid;gap:8px}.gauge progress{width:100%;height:18px;accent-color:var(--blue)}.gauge progress.danger{accent-color:var(--red)}.gauge progress.caution{accent-color:var(--amber)}.gauge progress.safe{accent-color:var(--green)}.gauge-head{display:flex;justify-content:space-between;gap:10px;align-items:baseline}.gauge-value{font-weight:850;font-size:24px;font-variant-numeric:tabular-nums}.inline-edit{min-width:130px;border:1px solid var(--line);border-radius:8px;padding:7px 8px;font:inherit;background:white}.stock-form{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stock-form label{display:flex;flex-direction:column;gap:6px;font-weight:750}.stock-form input,.stock-form select{width:100%;border:1px solid var(--line);background:white;color:var(--ink);border-radius:10px;padding:10px 12px;font:inherit}.stock-form small{font-weight:400;color:var(--muted)}
+    @media(max-width:900px){.quarter,.third,.half,.twothird{grid-column:span 12}.flow{grid-template-columns:1fr}.stock-form{grid-template-columns:1fr}.step:not(:last-child):after{content:'↓';right:auto;left:50%;top:auto;bottom:-15px}.hero h1{font-size:34px}}
+  </style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow">Dyonysos · direction portefeuille</div>
+    <h1>Décider sur le cash, libérer l’espace, puis accélérer les gagnants.</h1>
+    <p>Le cockpit distingue désormais le solde bancaire, le stock documentaire, la valeur de vente déclarée, les versements Amazon et l’enveloppe d’achat. La priorité est de vendre et déplacer le stock existant avant d’immobiliser 500 € supplémentaires chez NOZ.</p>
+    <div class="meta"><span>09 septembre 2026 · contrôle 00:51</span><span>24 solutions et canaux</span><span>517 unités · snapshot opérationnel 02/09</span><span>761 unités · inventaire historique élargi</span><span>600 € solde SASU déclaré</span><span>142,85 € Amazon différés · 0 € disponible</span></div>
+  </section>
+
+  <nav class="tabs" aria-label="Sections du rapport">
+    <button class="tab active" data-tab="overview">Vue d’ensemble</button>
+    <button class="tab" data-tab="portfolio">Toutes les solutions</button>
+    <button class="tab" data-tab="acquisition">Acquisition &amp; ventes</button>
+    <button class="tab" data-tab="actions">Décisions &amp; achats</button>
+    <button class="tab" data-tab="stockflow">Stocks &amp; expéditions</button>
+    <button class="tab" data-tab="cash">Cash &amp; runway</button>
+    <button class="tab" data-tab="agents">4 IA &amp; Contrôle Rouge</button>
+    <button class="tab" data-tab="sources">Preuves &amp; limites</button>
+  </nav>
+
+  <section id="overview" class="panel active">
+    <div class="card blue"><div class="gauge-head"><h2 style="margin:0">Sources dynamiques du portefeuille</h2><span class="gauge-value" id="live-source-state">Chargement…</span></div><p id="live-source-note" class="muted">Sur dyonysos.fr, ce bloc contrôle les productions, sitemaps et données Vercel Analytics disponibles. Le fichier local conserve le dernier rapport statique.</p><div class="actions" id="live-project-links"><a href="/pilotage-agoeon">Agoeon</a><a href="/pilotage-linktrib">Linktrib</a><a href="/pilotage-odoo">Odoo Apps</a><a href="/pilotage-etsy">Etsy</a><a href="/pilotage-arbitragepro">ArbitragePro+</a></div></div>
+    <h2>Verdict de direction</h2>
+    <div class="grid">
+      <article class="card quarter good"><span class="pill green">En ligne vérifié</span><p class="big">8</p><p>Agoeon, Linktrib, ArbitragePro+, Propecto, Dyonysos, École Connect, CoursHub et QuizPlay.</p></article>
+      <article class="card quarter blue"><span class="pill blue">Snapshot opérationnel</span><p class="big">517 u.</p><p>336 France + 181 Belgique au 02/09 ; comptage physique postérieur non prouvé.</p></article>
+      <article class="card quarter critical"><span class="pill red">Nouveau stock</span><p class="big">HOLD</p><p>Le pilote NOZ 500 € attend l’éligibilité, le devis prep et une marge ASIN prouvée.</p></article>
+      <article class="card quarter warn"><span class="pill amber">Protégé jusqu'au 06/10</span><p class="big">444,54 €</p><p>103,99 € d'ici fin septembre + 340,55 € début octobre ; hors montants ChatGPT/Vercel et deux comptes Claude inconnus.</p></article>
+    </div>
+
+    <h2>Jauges de décision · données modifiables dans Cash</h2>
+    <div class="grid">
+      <article class="card quarter critical gauge"><div class="gauge-head"><span class="pill red">Couverture 30 jours</span><span class="gauge-value" id="overview-cash-coverage">60–75 %</span></div><progress id="overview-cash-progress" class="danger" max="100" value="60">60 %</progress><p class="muted">600 € face à une charge de gestion déclarée de 800–1 000 €, avant frais Amazon futurs non chiffrés.</p></article>
+      <article class="card quarter warn gauge"><div class="gauge-head"><span class="pill amber">Besoin à couvrir</span><span class="gauge-value" id="overview-cash-gap">200–400 €</span></div><progress id="overview-gap-progress" class="caution" max="1000" value="400">400 €</progress><p class="muted" id="overview-cash-gap-note">Écart avant frais Amazon futurs. Si les 142,85 € différés sont encaissés, il tombe à 57,15–257,15 €.</p></article>
+      <article class="card quarter blue gauge"><div class="gauge-head"><span class="pill blue">Charges rapprochées</span><span class="gauge-value">444,54 €</span></div><progress class="caution" max="1000" value="444.54">444,54 €</progress><p class="muted" id="overview-unreconciled">Il reste 355,46–555,46 € de la fourchette mensuelle à identifier ou à exclure.</p></article>
+      <article class="card quarter critical gauge"><div class="gauge-head"><span class="pill red">Achat stock</span><span class="gauge-value">HOLD</span></div><progress class="danger" max="8" value="0">0 / 8</progress><p class="muted">Premier lot 250–500 € seulement après 8 portes vertes. Le compte SASU ne le finance pas.</p></article>
+    </div>
+
+    <h2>Le Pareto corrigé par le cash et les preuves</h2>
+    <div class="grid">
+      <article class="card third blue"><h3>1 · Amazon : liquider l’existant</h3><p>Le snapshot opérationnel contient 207 SKU et 517 unités. L’ancien fichier élargi compte 344 lignes et 761 unités : il ne s’additionne pas. Seller Central affiche 0 référence « recommandée FBA » ; l’éligibilité doit être vérifiée ASIN par ASIN.</p></article>
+      <article class="card third"><h3>2 · ArbitragePro+ Starter</h3><p>L’entrée d’achat à 71 €/mois est active après connexion et l’API annonce Stripe prêt. Il manque la preuve live complète : session, paiement, webhook, accès et cash reçu.</p></article>
+      <article class="card third warn"><h3>WIP = 1</h3><p>Chaque produit s’arrête à la première porte non franchie. Pas d’allocation rigide 80/20 sans marge observée.</p></article>
+    </div>
+
+    <div class="card callout"><h3>Ordre commercial sans publicité</h3><p><strong>Amazon</strong> : garder en FBM les petits lots à vente rapide ; réserver le pilote FBA aux stocks réellement volumineux, lents mais encore rentables après coût complet. <strong>ArbitragePro+</strong> : prouver le parcours live Starter déjà présent. <strong>Pet Stone</strong> : corriger le domaine Odoo actuellement habillé « Parents Solo — Brouillon », puis rapprocher les ventes historiques. <strong>Propecto et Odoo Apps</strong> : privilégier les pages existantes et le SEO contrôlé. <strong>Agoeon et Linktrib</strong> restent prioritaires stratégiquement, sans acquisition payante tant que leurs portes de paiement ne sont pas franchies.</p></div>
+
+    <h2>Pareto opérationnel · priorité au cash déjà proche</h2>
+    <div class="table-wrap"><table><thead><tr><th>Rang</th><th>Solution</th><th>Preuve actuelle</th><th>Porte actuelle</th><th>Décision</th></tr></thead><tbody>
+      <tr><td>1</td><td><strong>Amazon arbitrage</strong></td><td>142,85 € après commissions Amazon · avant COGS/port</td><td>Libération estimée 12–16/09 · 0 € disponible</td><td>0 € aujourd’hui ; micro-lot uniquement après portes vertes</td></tr>
+      <tr><td>2</td><td><strong>ArbitragePro+ Starter</strong></td><td>71 €/mois · entrée achat active</td><td>Paiement, webhook, accès et cash non prouvés</td><td>Test live complet contrôlé</td></tr>
+      <tr><td>3</td><td>Pet Stone</td><td>5 offres Amazon actives · 3 commandes Odoo historiques</td><td>Site Odoo mal routé · marge externe inconnue</td><td>Corriger le tunnel, rapprocher</td></tr>
+      <tr><td>4</td><td>Propecto</td><td>Trafic SEO mesuré · configuration Stripe annoncée live</td><td>Routes publiques de prix testées en 404</td><td>Chemin offre → checkout, sitemap, SEO sans pub</td></tr>
+      <tr><td>5</td><td>Odoo Apps</td><td>29 apps + 39 thèmes Store</td><td>Ventes, paniers et payouts non visibles</td><td>2–3 fiches Pareto, métriques Store</td></tr>
+      <tr><td>6</td><td>Agoeon / Linktrib</td><td>Deux produits distincts en production</td><td>Connect/démonstration, aucun cash prouvé</td><td>Pool P0, mais HOLD acquisition payante</td></tr>
+    </tbody></table></div>
+    <p class="tiny muted">L’ordre privilégie l’argent déjà en transit, un parcours d’achat existant et le faible effort humain. Il ne constitue pas une prévision de revenu.</p>
+
+    <h2>Chaîne de preuve obligatoire</h2>
+    <div class="flow">
+      <div class="step"><span class="pill green">1</span><h3>Production</h3><p class="muted">Site public accessible.</p></div>
+      <div class="step"><span class="pill blue">2</span><h3>Acquisition</h3><p class="muted">Visiteur ou prospect attribué.</p></div>
+      <div class="step"><span class="pill amber">3</span><h3>Activation</h3><p class="muted">Valeur produit réellement obtenue.</p></div>
+      <div class="step"><span class="pill purple">4</span><h3>Paiement</h3><p class="muted">Transaction réussie et produit identifié.</p></div>
+      <div class="step"><span class="pill green">5</span><h3>Cash</h3><p class="muted">Payout encaissé, net de frais.</p></div>
+    </div>
+  </section>
+
+  <section id="portfolio" class="panel">
+    <h2>Registre complet</h2>
+    <p class="lead">« À revérifier » ne signifie pas absent : cela signifie qu’aucune preuve actuelle suffisante n’a été collectée dans ce cycle.</p>
+    <div class="controls"><select id="portfolio-filter"><option value="all">Tout le portefeuille</option><option value="p0">Pool déployé</option><option value="active">Actifs commerciaux</option><option value="support">Support P0</option><option value="hold">HOLD / à revérifier</option></select><input id="portfolio-search" type="search" placeholder="Rechercher une solution"><button id="portfolio-reset">Réinitialiser</button></div>
+    <p class="muted"><strong id="portfolio-count">24</strong> lignes affichées</p>
+    <div class="table-wrap"><table><thead><tr><th>ID</th><th>Solution</th><th>Groupe</th><th>État retenu</th><th>Acquisition / ventes</th><th>Décision</th></tr></thead><tbody id="portfolio-rows">
+      <tr data-group="p0"><td>P01</td><td><strong>ArbitragePro+</strong></td><td>Pool déployé</td><td>Starter 71 €/mois : entrée achat active après connexion</td><td>3 386 sessions, 4 inscriptions, 1 recherche ; aucun paiement/cash prouvé</td><td>Prouver le parcours live complet</td></tr>
+      <tr data-group="p0"><td>P02</td><td><strong>Propecto</strong></td><td>P0-candidat cash</td><td>En ligne ; Stripe réel ; checkout test prouvé (24/08, test)</td><td>1 session/événement test à 0 € ; 0 paiement live attribué</td><td>Preuve paiement live, sans pub</td></tr>
+      <tr data-group="active"><td>P03</td><td>CVDesignPro</td><td>Actif</td><td>Analytics observés</td><td>717 visiteurs ; 58 starts ; 0 paiement commencé</td><td>Mesure seulement</td></tr>
+      <tr data-group="p0"><td>P04</td><td><strong>Linktrib</strong></td><td>Produit distinct · en ligne</td><td>GitHub/Vercel 200 ; checkout testé = mode démo</td><td>250 profils fictifs, 0 réel, 0 commande/abonnement</td><td>HOLD croissance</td></tr>
+      <tr data-group="p0"><td>P05</td><td><strong>Agoeon</strong></td><td>Produit distinct · en ligne</td><td>2 fiches créateur reliées à 2 IDs auth ; connexion réussie non prouvée</td><td>3 paliers sur @ania ; 0 sur @flamme ; Stripe Connect 0/2 ; 0 paiement base</td><td>HOLD jusqu’à créateur externe + Connect</td></tr>
+      <tr data-group="hold"><td>P06</td><td>École Connect</td><td>MVP en ligne</td><td>Vitrine + prix 0/49/149 € ; checkout authentifié</td><td>Stripe absent de Vercel ; non monétisé</td><td>HOLD cash</td></tr>
+      <tr data-group="active"><td>P07</td><td>Pet Stone</td><td>Actif historique</td><td>5 offres Amazon actives ; produits Odoo visibles ; domaine mal routé</td><td>Amazon : 24 notifications historiques et 4 remboursements (130,96 €) · Etsy : 9 ventes notifiées (233,91 €) et 1 remboursement (30,49 €) · Odoo : 3 commandes internes (24,10 €)</td><td>Corriger tunnel + réconcilier payouts et marge</td></tr>
+      <tr data-group="support"><td>P08</td><td>Analyzer+</td><td>Suite ArbitragePro+</td><td>Démo/lien publics</td><td>Acquisition autonome non prouvée</td><td>Support P0</td></tr>
+      <tr data-group="support"><td>P09</td><td>Profit+</td><td>Suite ArbitragePro+</td><td>Démo/lien publics</td><td>Acquisition autonome non prouvée</td><td>Support P0</td></tr>
+      <tr data-group="hold"><td>P10</td><td>CoursHub</td><td>MVP en ligne</td><td>HTTP 200 ; source non réconciliée : master canonique, prod main + dirty</td><td>/checkout = 404 ; non monétisé</td><td>Réconcilier Git avant délégation</td></tr>
+      <tr data-group="support"><td>P11</td><td>Les Pépites de Julie</td><td>Outil interne + canaux sociaux</td><td>Module admin en production ; Facebook, YouTube et TikTok publics ; pas de site autonome prouvé</td><td>1 publication YouTube tracée le 02/09 ; clic, vente et commission non attribués</td><td>Réconcilier les identités et liens sortants</td></tr>
+      <tr data-group="support"><td>P12</td><td>Dyonysos</td><td>Portefeuille</td><td>Site public observé</td><td>Pas un tunnel concurrent</td><td>Support / direction</td></tr>
+      <tr data-group="hold"><td>P13</td><td>DesignForge</td><td>MVP</td><td>À revérifier</td><td>Non consolidé</td><td>HOLD</td></tr>
+      <tr data-group="hold"><td>P14</td><td>Marketplace-in-a-Box</td><td>Offre B2B</td><td>À revérifier</td><td>Prospect prépayé non vérifié</td><td>HOLD sauf demande</td></tr>
+      <tr data-group="hold"><td>P15</td><td>QuizPlay</td><td>MVP en ligne</td><td>Railway 200 ; Supabase actif</td><td>/pricing = 404 ; non monétisé</td><td>HOLD cash</td></tr>
+      <tr data-group="hold"><td>P16</td><td>CreatorCut</td><td>MVP</td><td>À revérifier</td><td>Non consolidé</td><td>HOLD</td></tr>
+      <tr data-group="hold"><td>P17</td><td>FlowRecipe</td><td>MVP</td><td>À revérifier</td><td>Non consolidé</td><td>HOLD</td></tr>
+      <tr data-group="hold"><td>P18</td><td>OpenERP Web Starter</td><td>MVP</td><td>À revérifier</td><td>Non consolidé</td><td>HOLD</td></tr>
+      <tr data-group="hold"><td>P19</td><td>Breakout Templates</td><td>Actif</td><td>Droits à revérifier</td><td>Transférabilité non prouvée</td><td>HOLD</td></tr>
+      <tr data-group="hold"><td>P20</td><td>OpenArt Local Studio</td><td>MVP</td><td>À revérifier</td><td>Non consolidé</td><td>HOLD</td></tr>
+      <tr data-group="support"><td>P21</td><td>Kreo</td><td>Dépôt technique de Linktrib</td><td>Alias technique, pas un produit à recompter</td><td>Revenus rattachés à Linktrib uniquement</td><td>Ne pas doubler les totaux</td></tr>
+      <tr data-group="active"><td>C01</td><td>Amazon arbitrage</td><td>Canal · compte sain</td><td>0,00 € disponible ; 142,85 € différés</td><td>7 paiements non-Pet Stone : 173,91 € produits, −31,06 € commissions, libération estimée 12–16/09 ; transfert affiché le 19/09 sous condition</td><td>0 € aujourd’hui ; pilote conditionnel après revalidation</td></tr>
+      <tr data-group="active"><td>C02</td><td>Etsy · PetStoneOriginal</td><td>Canal Pet Stone</td><td>Boutique active</td><td>Actuel : 114 visites / 7 j, 0 commande, 0 € · historique emails : 9 ventes = 233,91 € brut, 1 remboursement = 30,49 €</td><td>Rapprocher Etsy Payments ; sans hausse pub</td></tr>
+      <tr data-group="active"><td>C03</td><td>Odoo Apps</td><td>Store Odoo 19 en production</td><td>29 apps publiées : 27 produits (26 payants, 1 gratuit) + 2 socles gratuits ; 39 thèmes publiés</td><td>Add to Cart prouvé ; 5 téléchargements gratuits visibles ; ventes/payouts non prouvés</td><td>2–3 offres Pareto ; 3 PR restent non fusionnées</td></tr>
+    </tbody></table></div>
+  </section>
+
+  <section id="acquisition" class="panel">
+    <h2>Acquisition, conversion et intervention</h2>
+    <div class="grid">
+      <article class="card half blue"><span class="pill blue">ArbitragePro+</span><h3>Starter existe ; bout en bout non prouvé</h3><ul><li>3 386 sessions et 4 inscriptions/30 j, mais une seule recherche ; trafic fortement non qualifié.</li><li>Starter 71 €/mois est accessible après connexion et l’API <code>/api/stripe/disponible</code> annonce <code>pret:true</code>.</li><li>Session Checkout live, capture, webhook, activation du droit et cash reçu restent non prouvés.</li></ul></article>
+      <article class="card half blue"><span class="pill blue">Propecto</span><h3>Checkout technique prouvé, cash non prouvé</h3><ul><li>745 clics et 35,3 k impressions GSC sur la période observée.</li><li>L’API expose 16 offres et annonce une clé Stripe réelle.</li><li>Supabase contient un test du 24/08 en mode test, montant 0 € ; prochaine preuve : paiement live attribué puis payout.</li></ul></article>
+      <article class="card half critical"><span class="pill red">Linktrib</span><h3>Distinct, en ligne, non encaissable</h3><ul><li>Accueil et tarifs répondent HTTP 200, mais les offres perdent le plan en allant vers <code>/start</code>.</li><li>250 profils sont en base, tous fictifs ; 0 créateur réel, commande ou abonnement.</li><li>Le test API du 08/09 retourne <em>mode démo</em> et le parcours d’exemple rejoint une page 404.</li></ul></article>
+      <article class="card half warn"><span class="pill amber">Agoeon</span><h3>Deux fiches créateur, pas deux créateurs authentifiés prouvés</h3><ul><li>Deux lignes créateur sont reliées à deux IDs d’authentification, sans preuve de connexion réussie, identité externe ou activité récente.</li><li>Trois paliers existent, tous sur <code>@ania</code> (5/12/30 €) ; <code>@flamme</code> n’en a aucun.</li><li>Stripe Connect est absent pour les deux comptes ; 0 commande, adhésion, paiement ou payout en base.</li></ul></article>
+      <article class="card half good"><span class="pill green">Amazon</span><h3>Sept paiements identifiés, mais pas encore du cash</h3><ul><li>7 commandes non-Pet Stone composent exactement les 142,85 € différés : 173,91 € de produits et −31,06 € de commissions Amazon.</li><li>Dates estimées de publication : 12/09 (12,68 €), 14/09 (26,81 €) et 16/09 (103,36 €).</li><li>0,00 € disponible ; aucune commande non expédiée n’est visible au contrôle de 23:20. Surveiller sans compter ce montant en trésorerie.</li></ul></article>
+      <article class="card half purple"><span class="pill purple">Odoo Apps</span><h3>Publication prouvée ; conversion inconnue</h3><ul><li>29 apps Odoo 19 et 39 thèmes sont publiés ; les produits payants affichent un prix et Add to Cart.</li><li>26 apps payantes, 1 produit gratuit et 2 socles gratuits ; ventes et payouts non visibles.</li><li>Trois PR ajoutent 8 produits/packs et 1 socle, mais sont ouvertes, non fusionnées et CI en attente.</li></ul></article>
+    </div>
+    <div class="card critical"><span class="pill red">Règle</span><h3>Ne pas lancer quatre campagnes en parallèle</h3><p>Le pool P0 reçoit la priorité stratégique, mais le portefeuille n’ouvre qu’une expérience à la fois. On passe au produit suivant quand le seuil de preuve est atteint, invalidé, ou bloqué par une donnée précise.</p></div>
+    <h2>Lignes secondaires</h2>
+    <div class="table-wrap"><table><thead><tr><th>Ligne</th><th>Signal</th><th>Ce qui ne marche pas encore</th><th>Intervention</th></tr></thead><tbody>
+      <tr><td>Pet Stone</td><td>Amazon : 24 commandes notifiées historiquement · Etsy : 9 ventes notifiées · Odoo : 3 commandes internes</td><td>Captures, payouts, crédit bancaire, frais, COGS et marge nette non rapprochés ; <code>pet-stone.shop</code> affiche « Parents Solo — Brouillon »</td><td>Réparer le routage puis rapprocher, sans dépense</td></tr>
+      <tr><td>Etsy</td><td>Actuel : 114 visites / 7 j, 0 commande · historique : 233,91 € brut notifié</td><td>1 remboursement de 30,49 € ; autres frais, port, COGS et payout inconnus</td><td>Exporter Etsy Payments ; aucune hausse pub</td></tr>
+      <tr><td>CVDesignPro</td><td>717 visiteurs / 30 j</td><td>0 début de paiement ; trafic à qualifier</td><td>Instrumentation seulement</td></tr>
+      <tr><td>Amazon</td><td>Compte sain ; 142,85 € différés sur 7 commandes ; 0 non expédiée visible</td><td>0 € disponible ; COGS, port, payout final et marge non réconciliés</td><td>Contrôler 12–16/09 ; 0 € d’achat</td></tr>
+      <tr><td>Odoo Apps</td><td>29 apps + 39 thèmes publiés ; panier Store présent</td><td>Métriques ventes/payouts absentes ; 2 prix dyonysos.fr périmés ; 3 PR non fusionnées</td><td>Corriger prix, mesurer, concentrer 2–3 offres</td></tr>
+    </tbody></table></div>
+  </section>
+
+  <section id="actions" class="panel">
+    <h2>Décisions financières · maintenant, demain, fin de mois</h2>
+    <p class="lead">Les décisions sont calculées sur le cash prouvé, pas sur le chiffre d’affaires espéré. Les montants « attendus » restent séparés du disponible bancaire.</p>
+    <div class="grid">
+      <article class="card third critical decision-band"><span class="pill red">MAINTENANT · 09/09</span><h3>Couvrir 200–400 € avant nouveau stock</h3><p><strong>Décision :</strong> le solde SASU de 600 € ne couvre que 60–75 % de la fourchette de charges déclarée de 800–1 000 €. Les 444,54 € détaillés sont un minimum identifié, pas le budget mensuel complet. L'écart reste de 200–400 €, plus les frais Amazon futurs encore inconnus.</p></article>
+      <article class="card third blue decision-band"><span class="pill blue">DEMAIN · 10/09</span><h3>Choisir les volumes à désengorger</h3><p>Julien choisit dans les stocks FR/BE les lots réellement volumineux ou répétitifs. L’IA vérifie ensuite autorisation, Buy Box 30/90 j, concurrence, rotation, frais, prep et transport. Les petits lots à vente rapide restent en FBM. Pilote FBA : <strong>20–30 unités maximum</strong>.</p></article>
+      <article class="card third purple decision-band"><span class="pill purple">FIN DE MOIS</span><h3>Mesurer cash et espace libéré</h3><p>Fast movers : conserver en FBM tant que la charge reste acceptable. Stock lent et encombrant : maintenir en FBA seulement si la marge reste ≥20 % après tous les transports, la prep, les frais Amazon et le stockage prévisible.</p></article>
+    </div>
+
+    <h2>Base cash observée · sans double compte</h2>
+    <div class="table-wrap"><table><thead><tr><th>Flux</th><th>Montant</th><th>Preuve / date</th><th>Décision</th></tr></thead><tbody>
+      <tr><td>Virements de Julien vers Qonto</td><td class="money">+650,00 €</td><td>2 virements observés le 07/09 : 200 € + 450 €</td><td>Financement, pas revenu commercial</td></tr>
+      <tr><td>Solde bancaire professionnel</td><td class="money">600,00 €</td><td>Montant confirmé par Julien le 09/09</td><td>Réservé aux charges ; ne pas le confondre avec l’enveloppe arbitrage</td></tr>
+      <tr><td>Amazon différé</td><td class="money">+142,85 €</td><td>7 transactions ; libération estimée 12/09 12,68 €, 14/09 26,81 €, 16/09 103,36 €</td><td>0 € disponible ; transfert affiché le 19/09 si solde positif</td></tr>
+      <tr><td>Etsy · encaissement proche</td><td class="money">0,00 €</td><td>114 visites / 7 j, 0 commande observée</td><td>Ne rien budgéter</td></tr>
+      <tr><td>Odoo Store · encaissement proche</td><td class="money">0,00 €</td><td>29 apps + 39 thèmes publiés ; vente/payout non prouvé</td><td>Ne rien budgéter</td></tr>
+      <tr><td>SaaS · encaissement proche</td><td class="money">0,00 €</td><td>ArbitragePro+, Propecto, Agoeon, Linktrib : aucun paiement externe attribué</td><td>SEO et preuve de checkout seulement</td></tr>
+    </tbody></table></div>
+
+    <h2>Achat Amazon · lot de sourcing déjà identifié</h2>
+    <div class="card warn"><p><strong>Préselection, pas autorisation d’achat.</strong> Les calculs du sourcing du 04/09 restent utiles comme candidats, mais aucun achat ne part avant lecture des ASIN/EAN exacts, admissibilité du compte, historique 30/90 jours et devis transport. Le panier NOZ de 500 € reste en HOLD : déplacer d’abord le stock existant permet de tester FBA avec beaucoup moins de capital neuf.</p></div>
+    <div class="table-wrap"><table><thead><tr><th>Candidat du sourcing du 04/09</th><th>Qté</th><th>Achat estimé</th><th>Net source</th><th>Après prep seule</th><th>Porte avant achat</th></tr></thead><tbody>
+      <tr><td>Narta Nord-Extrême</td><td>4</td><td class="money">29,44 €</td><td class="money">50,56 €</td><td class="money">48,56 € · incomplet</td><td>ASIN/EAN, prix 30/90 j, restrictions et coût rendu FBA complet</td></tr>
+      <tr><td>Pedigree Markies 500 g → Amazon NL</td><td>12</td><td class="money">196,04 €</td><td class="money">130,56 €</td><td class="money">124,56 € · incomplet</td><td>Autorisation NL, concurrence et coût rendu FBA complet</td></tr>
+      <tr><td><strong>Micro-lot documentaire</strong></td><td><strong>16</strong></td><td class="money"><strong>225,48 €</strong></td><td class="money"><strong>181,12 €</strong></td><td class="money"><strong>173,12 € · incomplet</strong></td><td><strong>HOLD tant que les transports et frais FBA manquent</strong></td></tr>
+    </tbody></table></div>
+    <p class="tiny muted">Les achats unitaires sont reconstitués à partir du net et du ROI du sourcing du 04/09. La colonne « après prep seule » ne constitue pas une marge finale : elle n'intègre pas encore l'envoi de Julien ou Marie-Claude au prep center, les suppléments réels du prep center, son expédition vers Amazon ni les frais FBA propres à chaque ASIN.</p>
+    <div class="card blue"><h3>Kit jardin enfant · stratégie FBA confirmée, stock actuel non prouvé</h3><p><strong>Small Foot 11663</strong> · ASIN <strong>B085GYGL8P</strong> · EAN <strong>4020972116635</strong>. Les archives Sellerboard prouvent 4 ventes historiques, un coût d'achat historique de 24 € et 14,14 € de résultat net historique par unité. Un comparateur français a observé 70,33 €, mais cette offre n'est plus disponible depuis le 21/01/2026 ; d'autres offres françaises observées sont autour de 82,90–85,89 €. Le prix Amazon France actuel, la source d'achat, l'autorisation et les dimensions restent à revalider avant achat.</p><p><span class="pill green">FBA VALIDÉ PAR JULIEN</span> Le choix logistique FBA est arrêté pour ce type de produit surdimensionné. Le <strong>GO achat</strong> reste séparé : il exige source disponible, admissibilité et coût complet laissant ≥20 % de contribution.</p></div>
+
+    <h2>Stock physique documenté · France et Belgique</h2>
+    <div class="grid">
+      <article class="card third blue"><span class="pill blue">France · comptage Julien 09/09</span><p class="big">30 cartons</p><p>336 unités et 141 SKU dans le snapshot du 02/09 ; 208 offres Seller Central, dont 113 avec problème d’activation.</p></article>
+      <article class="card third purple"><span class="pill purple">Belgique · 02/09</span><p class="big">181 u.</p><p>66 SKU · 4 cartons source identifiés · 39 unités sans carton · 212 offres, dont 112 avec problème d’activation.</p></article>
+      <article class="card third warn"><span class="pill amber">Valeur ≠ cash</span><p class="big">13 603 €</p><p>Prix cible du staging, après 12 366 € au relevé Keepa du 30/08. L’ancien inventaire élargi valait 17 845 € aux prix source ; aucun de ces montants n’est du net encaissable.</p></article>
+    </div>
+    <div class="card blue">
+      <h3>Estimateur de volume · scénario, pas mesure</h3>
+      <div class="budget-grid">
+        <label>Litres moyens par carton<input id="carton-liters" type="number" min="20" max="150" step="5" value="65"><small>Les dimensions réelles manquent ; 50–80 L donne une fourchette de travail.</small></label>
+        <label>France · 30 cartons<input id="fr-volume" type="text" readonly value="1,95 m³"><small>Fourchette à 50–80 L : 1,50–2,40 m³.</small></label>
+        <label>Belgique · 4 cartons<input id="be-volume" type="text" readonly value="0,26 m³"><small>Fourchette à 50–80 L : 0,20–0,32 m³, hors 39 unités non cartonnées.</small></label>
+      </div>
+      <p><strong>Volume connu simulé :</strong> <span id="total-volume">2,21 m³</span> pour 34 cartons. Les liquides, jouets et autres unités belges non affectées rendent le volume réel supérieur mais non quantifiable sans dimensions.</p>
+    </div>
+
+    <h2>France · petits lots à conserver en FBM</h2>
+    <div class="card blue"><p><strong>Décision confirmée par Julien le 09/09 :</strong> ces références partent rapidement et représentent seulement 11 unités. Les basculer en FBA retarderait les ventes d'environ trois semaines et ajouterait prep, transport et frais Amazon. Elles sont donc exclues du pilote FBA.</p></div>
+    <div class="table-wrap"><table><thead><tr><th>SKU</th><th>Produit / ASIN</th><th>Qté</th><th>Carton</th><th>Valeur source</th><th>Pourquoi regarder</th></tr></thead><tbody>
+      <tr><td>STK-FR-FEUI-0026</td><td>Port Gigabit TP-Link · B00A128S24</td><td>4</td><td>3</td><td class="money">180 €</td><td><strong>FBM</strong> · faible volume, vente rapide ; ne pas immobiliser en FBA</td></tr>
+      <tr><td>STK-FR-FEUI-0029</td><td>TheraPearl gel articulaire · B00NYXZ0SM</td><td>3</td><td>3</td><td class="money">75 €</td><td><strong>FBM</strong> · faible volume, vente rapide ; contrôle santé/hazmat maintenu</td></tr>
+      <tr><td>STK-FR-FEUI-0028</td><td>TheraPearl gel genou · B00RNIZ9XU</td><td>2</td><td>3</td><td class="money">50 €</td><td><strong>FBM</strong> · même famille, faible volume et rotation rapide</td></tr>
+      <tr><td>STK-FR-FEUI-0187</td><td>TheraPearl compresse · B00NYY708O</td><td>2</td><td>29</td><td class="money">50 €</td><td><strong>FBM</strong> · seulement 2 unités ; aucun gain logistique FBA</td></tr>
+    </tbody></table></div>
+    <p class="tiny muted">Lot FBM confirmé : 11 unités, 355 € aux prix source. Priorité à la continuité des ventes et au cash rapide.</p>
+
+    <h2>France · candidats FBA restant à filtrer par volume réel</h2>
+    <div class="table-wrap"><table><thead><tr><th>SKU</th><th>Produit / ASIN</th><th>Qté</th><th>Carton</th><th>Valeur source</th><th>Pourquoi regarder</th></tr></thead><tbody>
+      <tr><td>STK-FR-FEUI-0075</td><td>Polaroid Kids · B0BS73JHWT</td><td>2</td><td>16</td><td class="money">90 €</td><td>Compact et valeur unitaire correcte ; concurrence à mesurer</td></tr>
+      <tr><td>STK-FR-FEUI-0082</td><td>Écouteurs filaires UTNB · B085B26VK8</td><td>2</td><td>17</td><td class="money">40 €</td><td>Compact ; frais FBA et prix plancher à tester</td></tr>
+      <tr><td>STK-FR-FEUI-0081</td><td>Écouteurs Grundig · B0DFMJWGX6</td><td>2</td><td>17</td><td class="money">40 €</td><td>Compact, mais confiance élevée et non certaine</td></tr>
+      <tr><td>STK-FR-FEUI-0123</td><td>Star Trek JL Picard · 2376972779</td><td>5</td><td>25</td><td class="money">100 €</td><td>Compact ; marge livres et rotation à vérifier</td></tr>
+      <tr><td>STK-FR-FEUI-0002</td><td>Crocs 19/20 · B0D2NQP7NG</td><td>6</td><td>1</td><td class="money">300 €</td><td>Libère du volume ; risque taille/retours et concurrence</td></tr>
+      <tr><td>STK-FR-FEUI-0044</td><td>Super Stor puzzle 3000 · B0DHXSRKR4</td><td>5</td><td>12</td><td class="money">150 €</td><td>Libère de la place ; dimension et frais FBA à chiffrer</td></tr>
+    </tbody></table></div>
+    <p class="tiny muted">Candidats FR restant à filtrer : 22 unités, 720 € aux prix source. Cette liste n'est pas encore un GO FBA : conserver seulement les lots qui libèrent réellement de la place et dont la marge supporte le délai, la prep et les frais.</p>
+
+    <h2>Belgique · petits lots à conserver en FBM</h2>
+    <div class="card blue"><p><strong>Décision confirmée par Julien le 09/09 :</strong> FIFA FC 25 et Sunny Angel sont des petits lots compacts. Le décalage d'environ trois semaines et les frais FBA détruiraient une partie de l'intérêt de leur vente rapide.</p></div>
+    <div class="table-wrap"><table><thead><tr><th>SKU</th><th>Produit / ASIN</th><th>Qté</th><th>Carton</th><th>Valeur source</th><th>Décision</th></tr></thead><tbody>
+      <tr><td>STK-BE-DIVE-0045</td><td>Sunny Angel Animal Series · B09L522B49</td><td>7</td><td>6</td><td class="money">245 €</td><td><strong>FBM</strong> · compact et vente rapide ; ne pas immobiliser en FBA</td></tr>
+      <tr><td>STK-BE-DIVE-0057</td><td>FIFA FC 25 · B0D989SMTG</td><td>3</td><td>6</td><td class="money">45 €</td><td><strong>FBM</strong> · compact et vente rapide ; réactiver l'offre avant transfert éventuel</td></tr>
+    </tbody></table></div>
+    <p class="tiny muted">Lot FBM confirmé : 10 unités, 290 € aux prix source.</p>
+
+    <h2>Belgique · inventaire restant à classer par volume réel</h2>
+    <div class="table-wrap"><table><thead><tr><th>SKU</th><th>Produit / ASIN</th><th>Qté</th><th>Carton</th><th>Valeur source</th><th>Pourquoi regarder</th></tr></thead><tbody>
+      <tr><td>STK-BE-DIVE-0054</td><td>DVD There Are No Innocent Bystanders · B00HXLMW1Y</td><td>3</td><td>6</td><td class="money">45 €</td><td>Petit et standard ; rotation à confirmer</td></tr>
+      <tr><td>STK-BE-DIVERS-0060</td><td>DVD Big Bang Theory saison 5 · B00BU5YQN6</td><td>3</td><td>7</td><td class="money">35,10 € cible</td><td>Rang live observé 2 032 ; offre inactive et prix concurrent inférieur</td></tr>
+      <tr><td>STK-BE-DIVE-0034</td><td>Blu-ray Winchester 73 · B07KM2RLWD</td><td>2</td><td>6</td><td class="money">30 €</td><td>Petit ; contrôle prix et vitesse</td></tr>
+      <tr><td>STK-BE-DIVERS-0080</td><td>Doudou Déglingos hippopotame · B00BVSIO44</td><td>2</td><td>non affecté</td><td class="money">103,80 € cible</td><td>Offre live active ; rang observé BE 12 088, FR 5 418</td></tr>
+      <tr><td>STK-BE-DIVE-0059</td><td>Corsair RS140 Max · B0CXSLSJNX</td><td>1</td><td>6</td><td class="money">45 €</td><td>Compact et valeur correcte ; Buy Box à contrôler</td></tr>
+      <tr><td>STK-BE-DIVE-0002</td><td>Twistshake · B07B7GCDG5</td><td>3</td><td>1</td><td class="money">75 €</td><td>Identifiant certain ; produit exact et frais à revalider</td></tr>
+      <tr><td>STK-BE-DIVE-0016</td><td>Verrückte Anatomie Clementoni · B0938BMKHP</td><td>3</td><td>4</td><td class="money">60 €</td><td>Jouet standard ; saisonnalité et dimensions à vérifier</td></tr>
+      <tr><td>STK-BE-DIVE-0030</td><td>Puma Women Carina 3 · B0D2KF1V7K</td><td>1</td><td>5</td><td class="money">45 €</td><td>Libère de la place ; risque taille/retour</td></tr>
+    </tbody></table></div>
+    <p class="tiny muted">Ce tableau n'est plus une présélection FBA. Les dimensions et la vitesse de vente manquent pour ces lignes. FIFA FC 25 et Sunny Angel en ont été retirés vers FBM. Le futur lot FBA doit être reconstruit à partir des produits volumineux et lents, puis filtré par admissibilité et coût rendu complet.</p>
+
+    <h2>FBA · candidats lents ou volumineux issus des inventaires</h2>
+    <div class="table-wrap"><table><thead><tr><th>Lieu / SKU</th><th>Produit</th><th>Qté</th><th>Signal de lenteur au 30/08</th><th>Prix source → Keepa</th><th>Décision provisoire</th></tr></thead><tbody>
+      <tr><td>BE · STK-BE-DIVE-0017</td><td>Gift box Harry Potter · B0BFT79FL6</td><td>6</td><td>Rang 392 236 · 1 offre neuve</td><td>20,00 € → 53,18 € / unité</td><td><strong>Seul candidat FBA économique actuel</strong> ; dimensions, état exact, autorisation et coût rendu complet requis</td></tr>
+      <tr><td>BE · STK-BE-DIVE-0013</td><td>Disney Doorables pack X50 · B0D6GW3RB5</td><td>50</td><td>Rang 92 068 · 5 offres</td><td>9,00 € → 8,99 € / unité</td><td><strong>REJET FBA</strong> · quantité importante mais marge déjà nulle avant frais</td></tr>
+      <tr><td>BE · STK-BE-DIVE-0048</td><td>Nivea 75 ml X4 · B07YNXYCJ1</td><td>10</td><td>Rang 424 454 · 9 offres</td><td>5,00 € → 7,42 € / unité</td><td><strong>REJET FBA</strong> · écart insuffisant avant prep, FBA et stockage</td></tr>
+      <tr><td>FR · STK-FR-FEUI-0051</td><td>Happy Garden · B0D94RP5JG</td><td>5</td><td>Rang 258 038 · 9 offres</td><td>50,00 € → 14,07 € / unité</td><td><strong>REJET FBA</strong> · perte avant frais ; liquidation ou autre canal à étudier</td></tr>
+      <tr><td>FR · STK-FR-FEUI-0061</td><td>Coffret Laguiole · B0851LTZQF</td><td>5</td><td>Rang 878 979 · 8 offres</td><td>25,00 € → 19,90 € / unité</td><td><strong>REJET FBA</strong> · vente lente et prix sous le coût source</td></tr>
+      <tr><td>FR · STK-FR-FEUI-0057</td><td>Réservoir à eau De'Longhi · B0BTX5QF97</td><td>4</td><td>Rang 404 575 · 5 offres</td><td>Coût manquant → 17,48 €</td><td><strong>HOLD</strong> · dimensions et coût d'achat manquants</td></tr>
+    </tbody></table></div>
+    <p class="tiny muted">Le rang et le prix viennent du relevé Keepa France du 30/08, pas d'un historique 30/90 jours. « Volumineux » reste à confirmer physiquement : les inventaires indiquent les cartons, pas les dimensions. Le tableau évite donc de transformer une vente lente en coût de stockage FBA sans marge.</p>
+
+    <h2>Stock surdimensionné prouvé dans les historiques Amazon</h2>
+    <div class="grid">
+      <article class="card third blue"><span class="pill blue">France</span><p class="big">7 unités</p><p>Barbie bateau 4 · Xylophone 1 · Barbecue 2. Toutes marquées « surdimensionnées » dans l’historique d’expédition.</p></article>
+      <article class="card third purple"><span class="pill purple">Belgique opérationnel</span><p class="big">5 unités</p><p>Pat’ Patrouille camion 4 · Voltcraft 1 dans le staging 517 unités.</p></article>
+      <article class="card third warn"><span class="pill amber">Belgique à réconcilier</span><p class="big">+1 unité</p><p>Couffin BabySun, carton 5, emballage abîmé : présent dans l’inventaire élargi mais absent du staging opérationnel.</p></article>
+    </div>
+    <div class="table-wrap"><table><thead><tr><th>Lieu / produit</th><th>Qté</th><th>Carton(s)</th><th>Économie connue au 30/08</th><th>Décision logistique</th></tr></thead><tbody>
+      <tr><td>FR · Barbie Boat · B0B5YH9MCF</td><td>4</td><td>14–15</td><td>40 € → 62,99 €/u ; écart brut 22,99 € avant tous frais</td><td><strong>HOLD FBA</strong> · pour garder 20 %, tous les frais devraient rester ≤10,39 €/u ; devis et prix live requis</td></tr>
+      <tr><td>FR · Xylophone · B09QY3V9PN</td><td>1</td><td>16</td><td>25 € → 38,58 €/u</td><td><strong>FBM / liquidation</strong> · une seule unité, gain d’espace faible et plafond de frais ≈5,86 €</td></tr>
+      <tr><td>FR · Barbecue · B00BLV9DT6</td><td>2</td><td>19–20</td><td>70 € → 39,80 €/u</td><td><strong>REJET FBA</strong> · perte avant même le transport, la prep et Amazon</td></tr>
+      <tr><td>BE · Pat’ Patrouille camion · B0CSPBXN3P</td><td>4</td><td>À localiser</td><td>50 € → 39,31 €/u</td><td><strong>REJET FBA</strong> au prix relevé · vendre autrement ou attendre une reprise de prix</td></tr>
+      <tr><td>BE · Voltcraft · B005FWWV0A</td><td>1</td><td>À localiser</td><td>800 € → 775 €/u ; rang absent</td><td><strong>REJET FBA</strong> au prix relevé · capital élevé et perte avant frais</td></tr>
+      <tr><td>BE · Couffin BabySun · B00OZN0YEA</td><td>1</td><td>5</td><td>80 € ; prix et rang absents ; emballage abîmé</td><td><strong>PRIORITÉ COMPTAGE</strong> · candidat espace, mais condition et économie à prouver avant FBA</td></tr>
+    </tbody></table></div>
+    <p class="tiny muted">Périmètre prudent : 12 unités surdimensionnées dans le staging opérationnel, plus 1 Couffin seulement présent dans l’inventaire élargi. Ce sont des lignes produit, pas un comptage de cartons complet. La déclaration actuelle de Julien reste la référence du simulateur : 30 cartons en France et 4 en Belgique.</p>
+
+    <div class="card critical"><span class="pill red">Double comptage interdit</span><p>Ne jamais additionner 761 unités, 517 unités du staging, copies multi-pays et 230 unités Pet Stone sans pont unique SKU–emplacement–quantité. Le fichier <code>Amazon_Analyse.xlsx</code> est exclu : références circulaires et agrégats décalés rendent ses CA, bénéfices et payouts impropres au pilotage.</p></div>
+
+    <h2>FBM ou FBA · décision par type de stock</h2>
+    <div class="table-wrap"><table><thead><tr><th>Option</th><th>Cash à planifier</th><th>Charge Julien</th><th>Usage recommandé</th><th>Porte GO</th></tr></thead><tbody>
+      <tr><td><strong>FBM</strong></td><td>Sous un mois possible, non garanti ; planifier 2–6 semaines après la vente</td><td>Stockage, recherche, emballage, dépôt, messages et retours</td><td>Petit lot déjà possédé et localisé, surtout si la vente est rapide ; garder aussi les références incompatibles FBA</td><td>Cash plus rapide que FBA et charge d'expédition encore acceptable</td></tr>
+      <tr><td><strong>FBA + prep</strong></td><td>4–5 semaines favorable ; base 6–8 ; défavorable ≥10</td><td>Sélection et exceptions seulement</td><td>Stock volumineux à vente lente qui encombre Julien ou Marie-Claude ; pas les petits fast movers</td><td>Coût rendu complet renseigné, marge ≥20 % après stockage prévisible et gain d'espace réel</td></tr>
+      <tr><td><strong>NOZ 500 €</strong></td><td>Nouveau capital immobilisé</td><td>Sourcing + preuve d’achat + prep</td><td>Après preuve des deux premiers cycles, 5–10 ASIN</td><td><span class="pill red">HOLD ACTUEL</span></td></tr>
+    </tbody></table></div>
+
+    <h2>Choix du centre de préparation · décision provisoire</h2>
+    <div class="table-wrap"><table><thead><tr><th>Prestataire</th><th>Standard</th><th>Cash / contraintes</th><th>Décision</th></tr></thead><tbody>
+      <tr><td><strong>EcomPrep Hub</strong></td><td>0,50 € HT/unité &lt;1 kg ; réception et inspection standard gratuites ; inventaire non trié +0,10 €/u</td><td>Aucun minimum ni abonnement ; facture fin de mois, paiement à 7 jours</td><td><strong>Choix pilote provisoire</strong>, après devis transport réel</td></tr>
+      <tr><td>France Prep FBA</td><td>0,60 € HT/u de 10 à 199 ; 0,50 € dès 200 ; FNSKU inclus</td><td>Paiement Stripe avant expédition ; lot non trié 15 €/carton ou 45 €/palette</td><td>Alternative simple pour flux inventorié</td></tr>
+      <tr><td>FBA Prep Solution 81</td><td>0,80 € HT/u, réception et contrôle quantitatif inclus</td><td>Aucun minimum ; suppléments pour tri complexe à confirmer</td><td>Alternative, plus chère de 0,20–0,30 €/u</td></tr>
+      <tr><td>FLEX France</td><td>0,50 € prep + 0,15 € FNSKU</td><td>Jusqu’à 10 cartons : 9,99 €/carton ; pertinent surtout après consolidation</td><td>Écarter pour micro-lot multi-colis</td></tr>
+    </tbody></table></div>
+
+    <h2>Calculateur du coût rendu FBA complet</h2>
+    <div class="card warn">
+      <p><strong>Règle :</strong> une marge FBA reste indisponible tant que les trois postes obligatoires ne sont pas renseignés : envoi vers le prep center, expédition prep center vers Amazon et frais FBA Amazon par unité.</p>
+      <div class="budget-grid">
+        <label>Nombre d'unités<input id="fba-units" type="number" min="1" step="1" value="20"><small>Quantité du lot réellement envoyé.</small></label>
+        <label>Julien / Marie-Claude → prep center (€)<input id="fba-first-mile" type="number" min="0" step="0.01" placeholder="Devis requis"><small>Port total payé pour acheminer le lot.</small></label>
+        <label>Prep et étiquetage par unité (€)<input id="fba-prep-unit" type="number" min="0" step="0.01" value="0.50"><small>Hypothèse EcomPrep provisoire ; remplacer par le devis.</small></label>
+        <label>Prep center → Amazon (€)<input id="fba-inbound" type="number" min="0" step="0.01" placeholder="Devis requis"><small>Transport entrant Amazon total, suppléments compris.</small></label>
+        <label>Frais FBA Amazon par unité (€)<input id="fba-amazon-unit" type="number" min="0" step="0.01" placeholder="Calculateur ASIN requis"><small>Frais d'exécution propres au produit et à sa taille.</small></label>
+        <label>Stockage / retours provisionnés (€)<input id="fba-storage" type="number" min="0" step="0.01" value="0"><small>Provision totale sur la durée de vente lente.</small></label>
+      </div>
+      <div class="grid">
+        <article class="card third"><span class="pill">Prep totale</span><p class="big" id="fba-prep-total">10,00 €</p></article>
+        <article class="card third"><span class="pill">Logistique complète</span><p class="big" id="fba-logistics-total">HOLD</p><p id="fba-logistics-unit" class="muted">Coût par unité indisponible</p></article>
+        <article class="card third critical"><span class="pill red">Porte marge</span><p class="big" id="fba-cost-status">HOLD</p><p id="fba-missing" class="muted">Renseigner les frais obligatoires.</p></article>
+      </div>
+    </div>
+
+    <h2>Registre des achats et charges collectés</h2>
+    <div class="grid">
+      <article class="card third blue"><span class="pill blue">Payé 01–08/09</span><p class="big">611,54 €</p><p>606,82 € déjà rapprochés + Cloudflare 4,72 € payé le 08/09.</p></article>
+      <article class="card third warn"><span class="pill amber">À protéger jusqu'au 06/10</span><p class="big">444,54 €</p><p>103,99 € jusqu'au 30/09 puis 340,55 € du 01 au 06/10. Hors montants ChatGPT/Vercel et deux comptes Claude encore inconnus.</p></article>
+      <article class="card third"><span class="pill">Achats stock observés</span><p class="big">0 €</p><p>Aucune commande de stock payée retrouvée du 01 au 08/09 dans les avis Qonto consultés.</p></article>
+    </div>
+    <div class="table-wrap"><table><thead><tr><th>Date</th><th>Achat / charge</th><th>Montant</th><th>État</th><th>Source</th></tr></thead><tbody>
+      <tr><td>01/09</td><td>Dougs</td><td class="money">130,80 €</td><td>PAYÉ</td><td>Facture Gmail</td></tr>
+      <tr><td>31/08</td><td>OVH · 2 factures</td><td class="money">30,05 €</td><td>PAYÉ</td><td>Qonto · 15,98 € + 14,07 € · factures FR79915050 + FR79916202</td></tr>
+      <tr><td>02/09</td><td>Postiz</td><td class="money">25,03 €</td><td>PAYÉ</td><td>Qonto</td></tr>
+      <tr><td>02–03/09</td><td>Packlink</td><td class="money">20,27 €</td><td>PAYÉ</td><td>Qonto · 10,98 € + 9,29 €</td></tr>
+      <tr><td>03/09</td><td>La Poste</td><td class="money">28,22 €</td><td>PAYÉ</td><td>Qonto</td></tr>
+      <tr><td>04/09</td><td>LinkedIn</td><td class="money">178,39 €</td><td>PAYÉ</td><td>Qonto</td></tr>
+      <tr><td>06/09</td><td>Claude Max 20x</td><td class="money">180,00 €</td><td>PAYÉ · période 06/09–06/10</td><td>Reçu Anthropic #2381-7409-9557</td></tr>
+      <tr><td>07–08/09</td><td>Amazon FR + IT</td><td class="money">44,11 €</td><td>PAYÉ</td><td>Débits vendeur 41,57 € + 2,54 €</td></tr>
+      <tr><td>08/09</td><td>Cloudflare</td><td class="money">4,72 €</td><td>PAYÉ</td><td>Qonto · 5,48 USD</td></tr>
+      <tr><td>01/09</td><td>Qonto FAC-202609432306</td><td class="money">3,42 €</td><td>ÉCHUE · paiement non prouvé</td><td>Facture électronique</td></tr>
+    </tbody></table></div>
+    <div class="card">
+      <h3>Ajouter un achat observé</h3>
+      <p class="muted">Ajout local dans ce navigateur. À utiliser pour une facture ou un débit réellement vu, pas pour une intention d’achat.</p>
+      <div class="purchase-form">
+        <label>Date<input id="purchase-date" type="date" value="2026-09-08"></label>
+        <label>Fournisseur / produit<input id="purchase-label" type="text" placeholder="Ex. Carrefour · Pedigree Markies"></label>
+        <label>Montant (€)<input id="purchase-amount" type="number" min="0" step="0.01" placeholder="0,00"></label>
+        <label>Catégorie<select id="purchase-category"><option>Stock Amazon</option><option>Logistique</option><option>Logiciel / IA</option><option>Hébergement</option><option>Marketing</option><option>Comptabilité</option><option>Autre</option></select></label>
+        <label>État<select id="purchase-status"><option>PAYÉ</option><option>FACTURÉ</option><option>COMMANDÉ</option><option>REMBOURSÉ</option></select></label>
+        <label>Référence<input id="purchase-ref" type="text" placeholder="Facture, e-mail, commande…"></label>
+      </div>
+      <div class="actions"><button id="purchase-add" type="button">Ajouter au suivi local</button><button id="purchase-clear" type="button">Effacer les ajouts locaux</button><span id="purchase-status-label" class="muted" aria-live="polite"></span></div>
+      <p><strong>Total des ajouts locaux :</strong> <span id="purchase-total" class="money">0,00 €</span></p>
+      <div class="table-wrap"><table><thead><tr><th>Date</th><th>Achat</th><th>Montant</th><th>Catégorie</th><th>État</th><th>Référence</th><th>Action</th></tr></thead><tbody id="purchase-local-rows"></tbody></table></div>
+    </div>
+
+    <h2>File d’actions courte · charge Julien minimale</h2>
+    <p class="lead">Un seul chantier de conversion logiciel à la fois. Les statuts ci-dessous sont modifiables et mémorisés uniquement dans ce navigateur.</p>
+    <div class="grid">
+      <article class="card third blue"><span class="pill blue">Cash à surveiller</span><p class="big">142,85 €</p><p>7 transactions Amazon différées ; transfert affiché le 19/09 si elles deviennent disponibles.</p></article>
+      <article class="card third purple"><span class="pill purple">Porte logiciel</span><p class="big">Starter</p><p>ArbitragePro+ 71 €/mois : paiement → webhook → accès → cash.</p></article>
+      <article class="card third critical"><span class="pill red">NOZ / nouveau stock</span><p class="big">HOLD</p><p>Enveloppe 2–2,5 k€ décaissée seulement après 8 portes vertes.</p></article>
+    </div>
+    <div class="card">
+      <div class="progress-line"><strong id="action-progress-label">0 / 10 terminées</strong><progress id="action-progress" max="10" value="0">0 / 10</progress><span class="muted" id="action-active-label">3 en cours</span></div>
+    </div>
+    <div class="table-wrap"><table><thead><tr><th>ID</th><th>Quand</th><th>Action</th><th>Preuve de sortie</th><th>Responsable / effort Julien</th><th>Statut</th></tr></thead><tbody id="action-rows">
+      <tr data-action="A01"><td>A01</td><td>12–16/09</td><td>Surveiller la publication des 7 transactions Amazon différées</td><td>Disponible/payout puis crédit bancaire, sans double compte</td><td>IA Finance · Julien 0 min</td><td><select class="task-status" aria-label="Statut A01"><option value="a_faire">À faire</option><option value="en_cours">En cours</option><option value="attente" selected>Attente externe</option><option value="bloque">Bloqué</option><option value="termine">Terminé</option><option value="hold">HOLD</option></select></td></tr>
+      <tr data-action="A02"><td>A02</td><td>10/09</td><td>Julien confirme les produits réellement volumineux et lents en FR/BE ; l’IA vérifie les 8 portes Amazon</td><td>Comptage, dimensions, ASIN, autorisation, Buy Box 30/90 j, vélocité, deux transports, prep, frais FBA et marge</td><td>Julien 10–20 min · IA Finance/Amazon ensuite</td><td><select class="task-status" aria-label="Statut A02"><option value="a_faire" selected>À faire</option><option value="en_cours">En cours</option><option value="attente">Attente externe</option><option value="bloque">Bloqué</option><option value="termine">Terminé</option><option value="hold">HOLD</option></select></td></tr>
+      <tr data-action="A03"><td>A03</td><td>48 h</td><td>Prouver le parcours live ArbitragePro+ Starter déjà existant</td><td>Session, paiement externe ou test autorisé, webhook, droit d’accès et cash distingués</td><td>Tâche ArbitragePro+ · Julien ≤20 min uniquement si paiement test autorisé</td><td><select class="task-status" aria-label="Statut A03"><option value="a_faire">À faire</option><option value="en_cours" selected>En cours</option><option value="attente">Attente externe</option><option value="bloque">Bloqué</option><option value="termine">Terminé</option><option value="hold">HOLD</option></select></td></tr>
+      <tr data-action="A04"><td>A04</td><td>48 h</td><td>Propecto : rétablir un chemin public offre → checkout puis vérifier sitemap</td><td>URL prix 200, CTA conservant l’offre, checkout live identifiable ; aucune publicité</td><td>Tâche Propecto · Julien 0 min avant décision de déploiement</td><td><select class="task-status" aria-label="Statut A04"><option value="a_faire">À faire</option><option value="en_cours" selected>En cours</option><option value="attente">Attente externe</option><option value="bloque">Bloqué</option><option value="termine">Terminé</option><option value="hold">HOLD</option></select></td></tr>
+      <tr data-action="A05"><td>A05</td><td>Après A03/A04</td><td>Préparer la correction de routage <code>pet-stone.shop</code></td><td>Identité Pet Stone correcte, panier anonyme testé ; aucun mélange Parents Solo</td><td>IA Technique · validation Julien avant publication</td><td><select class="task-status" aria-label="Statut A05"><option value="a_faire">À faire</option><option value="en_cours">En cours</option><option value="attente">Attente externe</option><option value="bloque" selected>Bloqué</option><option value="termine">Terminé</option><option value="hold">HOLD</option></select></td></tr>
+      <tr data-action="A06"><td>A06</td><td>48 h</td><td>Odoo Apps : corriger les prix Cockpit/Configurateur et mesurer 2–3 fiches</td><td>Prix site = Store ; vues, paniers, commandes et payout disponibles</td><td>IA Odoo · validation Julien avant publication</td><td><select class="task-status" aria-label="Statut A06"><option value="a_faire" selected>À faire</option><option value="en_cours">En cours</option><option value="attente">Attente externe</option><option value="bloque">Bloqué</option><option value="termine">Terminé</option><option value="hold">HOLD</option></select></td></tr>
+      <tr data-action="A07"><td>A07</td><td>Après identité</td><td>Pépites : corriger les liens homonymes et ajouter une attribution UTM</td><td>Un lien canonique par réseau ; clic → offre → vente attribuable</td><td>IA Acquisition · aucune publication automatique</td><td><select class="task-status" aria-label="Statut A07"><option value="a_faire" selected>À faire</option><option value="en_cours">En cours</option><option value="attente">Attente externe</option><option value="bloque">Bloqué</option><option value="termine">Terminé</option><option value="hold">HOLD</option></select></td></tr>
+      <tr data-action="A08"><td>A08</td><td>Après demande</td><td>Agoeon : créateur externe vérifié puis Stripe Connect complet</td><td>Connexion réelle, palier publié, Connect 1/1, paiement et payout</td><td>IA Agoeon · Julien uniquement pour KYC/Connect</td><td><select class="task-status" aria-label="Statut A08"><option value="a_faire">À faire</option><option value="en_cours">En cours</option><option value="attente">Attente externe</option><option value="bloque">Bloqué</option><option value="termine">Terminé</option><option value="hold" selected>HOLD</option></select></td></tr>
+      <tr data-action="A09"><td>A09</td><td>Quotidien au 30/09</td><td>Collecter achats, factures, remboursements et payouts nouveaux</td><td>Une ligne par événement, source et référence ; aucun doublon ; payé séparé de facturé</td><td>IA Finance · Julien 0 min sauf pièce manquante</td><td><select class="task-status" aria-label="Statut A09"><option value="a_faire">À faire</option><option value="en_cours" selected>En cours</option><option value="attente">Attente externe</option><option value="bloque">Bloqué</option><option value="termine">Terminé</option><option value="hold">HOLD</option></select></td></tr>
+      <tr data-action="A10"><td>A10</td><td>30/09</td><td>Décision fin de mois : conserver, couper ou accélérer</td><td>Cash bancaire, payables, marge par produit, dépenses par abonnement et règle GO/HOLD</td><td>IA Direction · Julien ≤20 min</td><td><select class="task-status" aria-label="Statut A10"><option value="a_faire">À faire</option><option value="en_cours">En cours</option><option value="attente" selected>Attente externe</option><option value="bloque">Bloqué</option><option value="termine">Terminé</option><option value="hold">HOLD</option></select></td></tr>
+    </tbody></table></div>
+    <div class="card">
+      <label for="action-note"><strong>Note de pilotage locale</strong></label>
+      <textarea id="action-note" class="task-note" placeholder="Décision, blocage ou information à transmettre aux autres sessions…"></textarea>
+      <div class="actions"><button id="action-reset" type="button">Réinitialiser les statuts</button><span id="action-saved" class="muted" aria-live="polite">Suivi local</span></div>
+    </div>
+  </section>
+
+  <section id="stockflow" class="panel">
+    <h2>Stocks, commandes et expéditions Amazon</h2>
+    <p class="lead">Ce registre suit une unité ou un lot depuis l'achat jusqu'au cash. Les lignes sont modifiables et conservées dans ce navigateur. Elles ne se synchronisent pas automatiquement avec Seller Central, le prep center ou Qonto.</p>
+    <div class="grid">
+      <article class="card quarter blue"><span class="pill blue">Lignes suivies</span><p class="big" id="stock-record-count">0</p><p>Lots ou commandes enregistrés localement.</p></article>
+      <article class="card quarter warn"><span class="pill amber">Commandes à traiter</span><p class="big" id="stock-open-orders">0 u.</p><p>Commande Amazon reçue ou étiquette prête, mais pas encore expédiée.</p></article>
+      <article class="card quarter purple"><span class="pill purple">En transit</span><p class="big" id="stock-in-transit">0 u.</p><p>Vers le client, le prep center ou Amazon.</p></article>
+      <article class="card quarter good"><span class="pill green">Cash encaissé</span><p class="big" id="stock-paid-cash">0,00 €</p><p>Uniquement les lignes marquées « Payé / cash rapproché ».</p></article>
+    </div>
+    <div class="grid">
+      <article class="card half gauge"><div class="gauge-head"><h3>Traitement FBM</h3><span class="gauge-value" id="stock-fbm-label">n.a.</span></div><progress id="stock-fbm-progress" class="safe" max="100" value="0">0 %</progress><p class="muted">Unités expédiées au client ÷ commandes FBM enregistrées. Sans commande enregistrée, le résultat reste indisponible.</p></article>
+      <article class="card half gauge"><div class="gauge-head"><h3>Entrée FBA</h3><span class="gauge-value" id="stock-fba-label">n.a.</span></div><progress id="stock-fba-progress" class="safe" max="100" value="0">0 %</progress><p class="muted">Unités réceptionnées par Amazon ÷ unités FBA envoyées au prep center ou à Amazon.</p></article>
+    </div>
+
+    <h2>Ajouter ou mettre à jour un lot</h2>
+    <div class="card blue">
+      <div class="stock-form">
+        <label>Date<input id="stock-date" type="date" value="2026-09-09"></label>
+        <label>Produit<input id="stock-product" type="text" placeholder="Ex. Gift box Harry Potter"></label>
+        <label>SKU / ASIN<input id="stock-ref" type="text" placeholder="SKU ou ASIN exact"></label>
+        <label>Quantité<input id="stock-qty" type="number" min="1" step="1" value="1"></label>
+        <label>Flux<select id="stock-mode"><option>FBM</option><option>FBA direct</option><option>FBA + prep center</option></select></label>
+        <label>Étape<select id="stock-stage"><option value="achat_commande">Achat fournisseur commandé</option><option value="recu_local">Reçu chez Julien / Marie-Claude</option><option value="offre_active">Offre Amazon active</option><option value="commande_amazon">Commande client Amazon reçue</option><option value="etiquette_prete">Étiquette préparée</option><option value="expedie_client">Expédié au client</option><option value="envoye_prep">Envoyé au prep center</option><option value="envoye_amazon">Envoyé à Amazon</option><option value="recu_amazon">Réceptionné par Amazon</option><option value="paye">Payé / cash rapproché</option><option value="annule">Annulé / remboursé</option></select></label>
+        <label>Destinataire<input id="stock-destination" type="text" placeholder="Client, prep center ou centre Amazon"></label>
+        <label>Transport / suivi<input id="stock-tracking" type="text" placeholder="Transporteur et numéro de suivi"></label>
+        <label>Cash net encaissé (€)<input id="stock-cash" type="number" min="0" step="0.01" placeholder="Seulement si rapproché"></label>
+        <label>Source<input id="stock-source" type="text" placeholder="Seller Central, facture, e-mail…"></label>
+      </div>
+      <div class="actions"><button id="stock-add" type="button">Ajouter au suivi</button><button id="stock-prefill-gift" type="button">Préremplir Gift box</button><button id="stock-clear" type="button">Effacer les lignes locales</button><span id="stock-status" class="muted" aria-live="polite">Aucune ligne locale</span></div>
+    </div>
+    <div class="table-wrap"><table><thead><tr><th>Date</th><th>Produit / identifiant</th><th>Qté</th><th>Flux</th><th>Étape</th><th>Destinataire</th><th>Transport / suivi</th><th>Cash net</th><th>Source</th><th>Action</th></tr></thead><tbody id="stock-flow-rows"></tbody></table></div>
+    <p class="tiny muted">Dernier instantané collecté : Seller Central montrait 0 commande non expédiée le 08/09. La recherche Gmail du 01 au 09/09 n'a trouvé aucune notification de vente ou d'expédition Amazon. Cela ne remplace pas une synchronisation Seller Central en temps réel.</p>
+
+    <h2>Candidats connus à rattacher au registre</h2>
+    <div class="table-wrap"><table><thead><tr><th>Produit</th><th>État prouvé</th><th>Usage probable</th><th>Avant mouvement</th></tr></thead><tbody>
+      <tr><td>Gift box Harry Potter · B0BFT79FL6 · 6 u.</td><td>Stock Belgique documenté ; coût source 20 €/u ; Keepa du 30/08 à 53,18 € ; rang 392 236</td><td>FBA + prep possible pour libérer de la place</td><td>Dimensions, autorisation, prix 30/90 j et coût rendu complet</td></tr>
+      <tr><td>Small Foot 11663 jardin · B085GYGL8P</td><td>4 ventes historiques ; coût 24 €/u ; résultat net historique 14,14 €/u ; stock actuel non prouvé</td><td><strong>FBA confirmé par Julien</strong> pour ce type de produit surdimensionné</td><td>Source actuelle, stock physique, Amazon FR, autorisation et frais complets avant GO achat</td></tr>
+      <tr><td>TP-Link + TheraPearl FR · 11 u.</td><td>Petits lots à rotation rapide confirmés par Julien</td><td>FBM</td><td>Créer une ligne seulement lors d'une commande ou d'un mouvement réel</td></tr>
+      <tr><td>Sunny Angel + FIFA Belgique · 10 u.</td><td>Petits lots compacts à rotation rapide confirmés par Julien</td><td>FBM</td><td>Créer une ligne seulement lors d'une commande ou d'un mouvement réel</td></tr>
+    </tbody></table></div>
+  </section>
+
+  <section id="cash" class="panel">
+    <h2>Trésorerie dynamique · périmètre professionnel</h2>
+    <div class="card blue">
+      <div class="budget-grid">
+        <label>Enveloppe arbitrage (€)<input id="budget-envelope" type="number" min="0" step="50" value="2250"><small>Milieu de la fourchette déclarée 2 000–2 500 € ; disponibilité bancaire distincte à réconcilier.</small></label>
+        <label>Minimum contribution (%)<input id="charges-protected" type="number" min="0" step="1" value="20"><small>Seuil absolu demandé ; cible pilote recommandée : 30 %.</small></label>
+        <label>Plancher de sécurité personnel (€)<input id="safety-floor" type="number" min="0" step="50" value="1200"><small>Suivi séparé ; non mobilisé dans les décisions professionnelles.</small></label>
+        <label>Solde SASU déclaré (€)<input id="sasu-balance" type="number" min="0" step="1" value="600"><small>Confirmé par Julien ; dédié aux charges.</small></label>
+        <label>À protéger jusqu'au 30/09 (€)<input id="sasu-payables" type="number" min="0" step="0.01" value="103.99"><small>Qonto 3,42 € + Keepa 49 € + IONOS 16,34 € + Railway 5,18 € + OVH 30,05 €.</small></label>
+        <label>Charges probables 01–06/10 (€)<input id="next-payables" type="number" min="0" step="0.01" value="340.55"><small>Dougs 130,80 € + Postiz 25,03 € + Claude Max 180 € + Cloudflare 4,72 € si reconduits.</small></label>
+        <label>Charges de gestion 30 j · bas (€)<input id="runrate-low" type="number" min="0" step="10" value="800"><small>Fourchette déclarée par Julien ; à réconcilier facture par facture.</small></label>
+        <label>Charges de gestion 30 j · haut (€)<input id="runrate-high" type="number" min="0" step="10" value="1000"><small>Scénario prudent avant nouveau stock.</small></label>
+        <label>Frais Amazon futurs non inclus (€)<input id="amazon-future-fees" type="number" min="0" step="0.01" placeholder="Montant non connu"><small>Laisser vide tant qu'ils ne sont pas facturés. Les 44,11 € déjà payés ne sont pas resoustraits.</small></label>
+      </div>
+      <div class="actions"><button id="budget-reset" type="button">Revenir aux valeurs déclarées</button><span class="muted stamp" id="budget-saved">Calcul local instantané</span></div>
+    </div>
+    <h2>Projection de l’enveloppe arbitrage</h2>
+    <div class="card blue">
+      <p><strong>Projection de cycle, pas revenu garanti.</strong> La contribution doit être saisie après achat, commission, transport, prep, FBA/FBM, stockage, retours et TVA applicable.</p>
+      <div class="budget-grid">
+        <label>Mode du lot<select id="arb-mode"><option value="fbm">FBM</option><option value="fba">FBA + prep</option><option value="mixte" selected>Mixte</option></select><small>Le mode ne change pas la marge ; il documente la durée et la charge.</small></label>
+        <label>Capital engagé (€)<input id="arb-capital" type="number" min="0" step="50" value="500"><small>Premier lot recommandé : 250–500 €, même si l’enveloppe déclarée atteint 2–2,5 k€.</small></label>
+        <label>Contribution nette estimée (%)<input id="arb-margin" type="number" min="0" step="1" value="20"><small>20 % est le seuil minimum, pas une marge observée.</small></label>
+        <label>Temps avant vente / disponibilité (jours)<input id="arb-sale-days" type="number" min="0" step="1" value="14"><small>FBM : mise en vente rapide ; FBA : réception Amazon comprise.</small></label>
+        <label>Vente → cash bancaire (jours)<input id="arb-payout-days" type="number" min="0" step="1" value="21"><small>Délai d'encaissement estimé après la vente.</small></label>
+      </div>
+      <div class="actions"><button id="arb-preset-fbm" type="button">Scénario FBM</button><button id="arb-preset-fba" type="button">Scénario FBA</button><button id="arb-reset" type="button">Réinitialiser</button><span id="arb-saved" class="muted">Calcul local</span></div>
+    </div>
+    <div class="grid">
+      <article class="card quarter good"><span class="pill green">Marge nette estimée</span><p class="big" id="arb-net-margin">100,00 €</p><p id="arb-net-margin-note">20 % sur 500 € engagés.</p></article>
+      <article class="card quarter blue"><span class="pill blue">Cash récupéré estimé</span><p class="big" id="arb-cash-return">600,00 €</p><p>Capital récupéré + contribution nette, si le lot est vendu.</p></article>
+      <article class="card quarter warn"><span class="pill amber">Temps jusqu’au cash</span><p class="big" id="arb-cash-days">35 j</p><p id="arb-cash-days-note">14 j avant vente + 21 j avant crédit bancaire.</p></article>
+      <article class="card quarter purple"><span class="pill purple">Rendement mensuel équivalent</span><p class="big" id="arb-monthly-equivalent">85,71 €</p><p>Simple équivalent de cadence ; ne suppose pas que chaque cycle se répète.</p></article>
+    </div>
+    <div class="card warn gauge"><div class="gauge-head"><h3>Utilisation de l’enveloppe déclarée</h3><span class="gauge-value" id="arb-envelope-share">22 %</span></div><progress id="arb-envelope-progress" class="caution" max="100" value="22">22 %</progress><p id="arb-decision">HOLD opérationnel : marge de 20 % saisie comme seuil, mais les huit portes produit ne sont pas encore prouvées.</p></div>
+    <div class="grid">
+      <article class="card quarter blue"><span class="pill blue">Enveloppe arbitrage</span><p class="big">2–2,5 k€</p><p>Budget déclaré ; cash bancaire distinct encore à réconcilier.</p></article>
+      <article class="card quarter good"><span class="pill green">Solde SASU déclaré</span><p class="big">600 €</p><p>Distinct et dédié aux charges ; non mobilisable.</p></article>
+      <article class="card quarter warn"><span class="pill amber">Après charges identifiées</span><p class="big" id="sasu-card-free">155,46 €</p><p>Après 444,54 € détaillés ; ce n'est pas le solde prévu après toutes les charges du mois.</p></article>
+      <article class="card quarter critical"><span class="pill red">Croissance autorisée</span><p class="big">0 €</p><p>Jusqu’au premier encaissement attribué.</p></article>
+    </div>
+    <div class="grid">
+      <article class="card half critical gauge"><div class="gauge-head"><h3>Couverture de la fourchette 30 jours</h3><span class="gauge-value" id="sasu-runrate-coverage">60–75 %</span></div><progress id="sasu-runrate-progress" class="danger" max="100" value="60">60 %</progress><p>Besoin non couvert : <strong id="sasu-runrate-gap">200–400 € + frais Amazon futurs</strong>. Autonomie indicative : <strong id="sasu-runway-days">18–23 jours</strong>.</p></article>
+      <article class="card half warn gauge"><div class="gauge-head"><h3>Réconciliation des charges</h3><span class="gauge-value" id="sasu-identified-total">444,54 €</span></div><progress id="sasu-identified-progress" class="caution" max="1000" value="444.54">444,54 €</progress><p id="sasu-unreconciled">Il reste 355,46–555,46 € de la fourchette déclarée à identifier ou à exclure.</p></article>
+    </div>
+    <div class="card critical"><span class="pill red">Règle confirmée</span><h3>Le compte SASU paie les charges, pas le stock</h3><p>Le solde de 600 € est confirmé par Julien. Les 103,99 € identifiés jusqu'au 30/09 laissent <strong><span id="sasu-free">496,01 €</span></strong>. Après les 340,55 € probables du 01 au 06/10, le solde théorique sur les seules charges détaillées est <strong><span id="sasu-after-30d">155,46 €</span></strong>. Ce chiffre ne couvre pas encore l'intégralité de la fourchette 800–1 000 €, ChatGPT/Vercel, les deux comptes Claude distincts ni les frais Amazon futurs. Besoin non couvert sur les seules charges détaillées : <strong><span id="sasu-30d-gap">0,00 €</span></strong>.</p><p><strong>Couverture du budget mensuel estimé :</strong> <span id="sasu-coverage">60–75 %</span> avant frais Amazon futurs · <strong>budget stock issu de ce compte :</strong> 0 €.</p><p class="tiny muted">Les 44,11 € de frais Amazon du 07–08/09 sont déjà payés et supposés reflétés dans le solde actuel : ils ne sont pas soustraits une seconde fois. Tout nouveau frais non encore débité doit être renseigné dans le champ ci-dessus.</p></div>
+    <h2>Charges retrouvées · état de preuve</h2>
+    <div class="table-wrap"><table><thead><tr><th>Élément</th><th>Montant</th><th>État</th><th>Traitement cockpit</th></tr></thead><tbody>
+      <tr><td>Dépenses professionnelles payées du 01 au 08/09</td><td>611,54 €</td><td>PAYÉ · Dougs, Postiz, Packlink, La Poste, LinkedIn, Claude, Amazon FR/IT et Cloudflare</td><td>Flux historique ; ne pas le resoustraire du solde actuel</td></tr>
+      <tr><td>Cloudflare IN-78167536</td><td>5,48 USD / 4,72 €</td><td>PAYÉ le 08/09 via Qonto</td><td>Dette soldée dans les avis consultés</td></tr>
+      <tr><td>OVH FR79915050 + FR79916202</td><td>30,05 €</td><td>PAYÉ le 31/08 via Qonto · 15,98 € + 14,07 €</td><td>Dette soldée ; prochain cycle estimé fin septembre</td></tr>
+      <tr><td>Qonto FAC-202609432306</td><td>3,42 €</td><td>Échéance 01/09 · paiement non réconcilié</td><td>Risque à réserver jusqu’au contrôle</td></tr>
+      <tr><td>Dougs Compta</td><td>130,80 €</td><td>Factures acquittées les 01/07, 01/08 et 01/09</td><td>Abonnement mensuel prouvé ; réserver le prochain cycle du 01/10</td></tr>
+      <tr><td>IONOS Email Basic / Pro</td><td>16,34 € TTC</td><td>Facture 202546102882 du 26/08 ; quatre lignes mensuelles, prélèvement automatique</td><td>Réserver le prochain cycle attendu fin septembre</td></tr>
+      <tr><td>Anthropic Max 20x</td><td>180,00 €</td><td>Payé le 06/09 ; période facturée jusqu’au 06/10</td><td>Réexaminer avant le prochain renouvellement</td></tr>
+      <tr><td>Pilotage Finance Vercel</td><td>—</td><td>Données figées au 24/08 et explicitement partielles</td><td>Source historique, pas registre actuel des payables</td></tr>
+    </tbody></table></div>
+    <h2>Renouvellements à décider · pas des dettes certaines</h2>
+    <div class="table-wrap"><table><thead><tr><th>Service</th><th>Dernier montant observé</th><th>Prochaine date estimative</th><th>Décision</th></tr></thead><tbody>
+      <tr><td>Keepa API 20 tokens/min</td><td class="money">49,00 € · 15/08</td><td>15/09 · fin de période prouvée</td><td>Réserver ; outil nécessaire aux portes Amazon 30/90 j</td></tr>
+      <tr><td>ChatGPT · un abonnement Max/Pro x20 déclaré</td><td class="money">99,53 € + 136,01 € observés</td><td>Date et montant du prochain cycle non prouvés</td><td>Ne pas additionner automatiquement les deux débits ; vérifier la page du plan avant réserve finale</td></tr>
+      <tr><td>Railway</td><td class="money">5,18 € · 29/08</td><td>Fin septembre, non confirmée</td><td>Rattacher aux projets réellement actifs avant toute coupure</td></tr>
+      <tr><td>Vercel</td><td class="money">103,51 € + 20,83 € observés</td><td>Charge de 103,51 € réduite selon Julien ; 20,83 € historiquement annulé/remboursé</td><td>Ne plus réserver 124,34 € ; lire la prochaine facture réduite avant d'inscrire le montant</td></tr>
+      <tr><td>OVHcloud</td><td class="money">30,05 € · payé 31/08</td><td>Fin septembre, estimée</td><td>Réserver le cycle suivant par prudence</td></tr>
+      <tr><td>IONOS Email Basic / Pro</td><td class="money">16,34 € · facture 26/08</td><td>Fin septembre, cycle mensuel prouvé</td><td>Vérifier si les quatre lignes sont encore utilisées ; réserver avant décision</td></tr>
+      <tr><td>Dougs Compta</td><td class="money">130,80 € · 01/09</td><td>01/10 selon trois factures mensuelles successives</td><td>Réserver ; charge comptable confirmée par Julien</td></tr>
+      <tr><td>Postiz</td><td class="money">25,03 € · 02/09</td><td>Début octobre si récurrent</td><td>Basculer depuis le VPS seulement après preuve 100 % opérationnelle</td></tr>
+      <tr><td>Anthropic Max 20x</td><td class="money">180,00 € · 06/09</td><td>06/10 si renouvellement actif</td><td>Mesurer livrables et cash attribué avant le 05/10</td></tr>
+      <tr><td>Deux autres comptes Claude annoncés</td><td class="money">Inconnu</td><td>Reprise samedi selon Julien</td><td>Aucun reçu distinct retrouvé dans Gmail connecté ; ne pas inventer montant/date</td></tr>
+      <tr><td>LinkedIn Premium Career</td><td class="money">178,39 € · 04/09</td><td>04/09/2027 · annuel prouvé</td><td>Ne pas réserver à nouveau ce mois-ci</td></tr>
+      <tr><td><strong>À protéger jusqu'au 30/09</strong></td><td class="money"><strong>103,99 €</strong></td><td>Qonto 3,42 + Keepa 49 + IONOS 16,34 + Railway 5,18 + OVH 30,05</td><td>Minimum identifiable ; hors ChatGPT/Vercel et deux comptes Claude non chiffrés</td></tr>
+      <tr><td><strong>Bloc probable du 01 au 06/10</strong></td><td class="money"><strong>340,55 €</strong></td><td>Dougs 130,80 + Postiz 25,03 + Claude 180 + Cloudflare 4,72</td><td>Décider avant renouvellement ; non soustrait deux fois</td></tr>
+    </tbody></table></div>
+    <h2>Questions à copier-coller avec réponses connues</h2>
+    <div class="card">
+      <textarea id="questions-copy" aria-label="Questions de réconciliation">FINANCE — RÉPONSES CONNUES ET À COMPLÉTER
+1. Les 2 000–2 500 € sont-ils disponibles pour arbitrage ? RÉPONSE : enveloppe déclarée ; compte bancaire support encore à réconcilier.
+2. Le plancher de sécurité personnel est-il mobilisable ? RÉPONSE : non ; suivi séparé du cockpit professionnel.
+3. Solde compte SASU ? RÉPONSE : 600 €, confirmé par Julien et dédié aux charges.
+4. Charges SASU à protéger au 30/09 ? RÉPONSE : 103,99 € identifiés : Qonto 3,42 + Keepa 49 + IONOS 16,34 + Railway 5,18 + OVH 30,05. Dougs 130,80 € est ensuite attendu le 01/10.
+5. Les 600 € sont-ils inclus dans l’enveloppe arbitrage ? RÉPONSE : non, ils sont suivis séparément.
+6. Budget logement, charges personnelles et 500 € « cas dur » ? RÉPONSE : hors périmètre du cockpit.
+7. Définition qui lève le gel ? RÉPONSE : réception effective de l’argent ; règle de contrôle : crédit bancaire net rapproché à un produit.
+8. Le compte SASU peut-il financer NOZ/prep ? RÉPONSE : non ; 155,46 € resteraient après les seules charges détaillées de 444,54 €, mais le budget de gestion déclaré est de 800–1 000 €.
+9. Besoin de trésorerie sur 30 jours ? RÉPONSE : 200–400 € avant frais Amazon futurs. Après encaissement effectif des 142,85 € Amazon différés, l'écart tomberait à 57,15–257,15 €.
+
+AMAZON — SÉLECTION À RENSEIGNER PAR JULIEN
+Pays / lieu : FR / BE
+SKU choisi :
+ASIN / EAN :
+Quantité physique comptée :
+Carton / emplacement :
+Option : FBM / FBA prep
+Autorisation Seller Central : OUI / NON
+Buy Box et prix 30/90 jours :
+Ventes mensuelles prudentes :
+Transport fournisseur → prep :
+Coût total et contribution nette :
+Décision : GO / HOLD
+
+CHECKOUT — PREUVE À RATTACHER PAR PRODUIT
+Produit :
+URL offre → action checkout :
+Date du test :
+Environnement : TEST / LIVE :
+Plan et prix :
+Session de checkout créée : OUI / NON :
+Paiement réussi : OUI / NON :
+Événement fournisseur expurgé :
+Cash/payout reçu : OUI / NON :
+
+RÉPONSES DÉJÀ PROUVÉES
+- Propecto : checkout de test enregistré le 24/08, livemode=false, montant 0 € ; configuration actuelle annoncée « réel » ; paiement live/payout non prouvé.
+- Linktrib : checkout testé le 08/09, résultat mode démo ; 0 page Stripe Connect activée.
+- Agoeon : 2 fiches créateur reliées à 2 IDs auth, mais connexion/authentification réussie non prouvée ; 3 paliers sur @ania, 0 sur @flamme ; Stripe Connect 0/2 ; 0 paiement en base.
+- ArbitragePro+ : Starter 71 €/mois possède une entrée d’achat active après connexion ; aucune preuve de session Checkout live réussie, webhook, activation ou cash reçu.
+- Amazon : 0,00 € disponible ; 142,85 € différés ; le montant n’est pas encore un encaissement bancaire.
+- École Connect : vitrine/prix en ligne ; checkout exige authentification et Stripe n’est pas configuré dans Vercel.
+- CoursHub : en ligne ; paiement annoncé « à venir » ; /checkout retourne 404.
+- QuizPlay : en ligne ; /pricing retourne 404 ; aucun paiement présent dans le produit.</textarea>
+      <div class="actions"><button id="copy-questions" type="button">Copier les questions et réponses</button><span id="copy-status" class="muted" aria-live="polite"></span></div>
+    </div>
+  </section>
+
+  <section id="agents" class="panel">
+    <h2>Mégaprompts lancés</h2>
+    <div class="grid">
+      <article class="card third good"><span class="pill green">TERMINÉ · CYCLE 4</span><h3>Pet Stone / Amazon / Stripe</h3><p>Ancien Odoo, Seller Central, deux comptes Stripe live et fichiers Drive rapprochés sans transaction.</p></article>
+      <article class="card third good"><span class="pill green">TERMINÉ · CYCLE 4</span><h3>Odoo Apps</h3><p>Store authentifié, GitHub et nouvelles PR recoupés : 29 apps et 39 thèmes publiés.</p></article>
+      <article class="card third good"><span class="pill green">TERMINÉ · CYCLE 6</span><h3>Contrôle Rouge</h3><p>Le modèle « stock 20 k€ finance le scale » a été challengé : double comptage bloqué, NOZ mis en HOLD et FBA limité aux gagnants compacts.</p></article>
+    </div>
+    <div class="card good"><span class="pill green">SYNCHRONISÉ</span><h3>Pareto commercial final</h3><p>Amazon passe en premier, mais par réconciliation et liquidation du stock existant. ArbitragePro+ Starter reste le premier test de paiement logiciel. Pet Stone, Propecto et Odoo Apps suivent en organique. Nouveau stock : HOLD jusqu’à preuve ASIN par ASIN.</p></div>
+    <h2>Canaux internes · basculement seulement à 100 %</h2>
+    <div class="table-wrap"><table><thead><tr><th>Canal</th><th>Preuve actuelle</th><th>Manque avant 100 %</th><th>Décision</th></tr></thead><tbody>
+      <tr><td><a href="https://automation.dyonysos.fr/">Activepieces</a></td><td>HTTPS 200 ; application et worker sains, 0 redémarrage</td><td>Connexions Odoo/Postiz, flux actif, déduplication et test bout en bout non prouvés</td><td>SHADOW — aucun déclenchement</td></tr>
+      <tr><td><a href="https://social.dyonysos.fr/">Postiz VPS</a></td><td>Page d’authentification 200 ; conteneur et PostgreSQL/Redis démarrés</td><td>API <code>/api/user/self</code> et <code>/api/health</code> en refus de connexion lors du contrôle</td><td>NON OPÉRATIONNEL — aucun basculement</td></tr>
+      <tr><td>Mailing Odoo VPS</td><td>Base active nettoyée : 5 335 contacts, 129 mailings tous en brouillon et exclusion globale activée. 37 adresses historiquement désabonnées sont blacklistées. Les 35 doublons d'import ont été fusionnés avec sauvegarde le 09/09.</td><td>28 e-mails en exception : refus de connexion, authentification Gmail invalide et domaine Resend non vérifié. Aucun contact inexistant n'est prouvé par la base active.</td><td>HOLD — réparer SMTP, puis un seul test contrôlé avec réception et désabonnement vérifiés</td></tr>
+    </tbody></table></div>
+    <p class="tiny muted">Contrôle DNS du 09/09 : les 986 domaines des contacts actifs répondent encore par MX, A ou AAAA. Cela prouve l'existence du domaine, pas celle de chaque boîte. L'ancienne base dyonysos_be contient 764 073 contacts et 2 442 099 traces historiques : elle reste une archive et ne doit pas alimenter directement une campagne. Porte 100 % : SMTP valide, un test reçu, déduplication, blacklist, désabonnement, limitation de pression et reprise documentée.</p>
+    <h2>Rôles sans chevauchement</h2>
+    <div class="table-wrap"><table><thead><tr><th>IA</th><th>Propriétaire de</th><th>Ne fait pas</th><th>Sortie</th></tr></thead><tbody>
+      <tr><td>Direction</td><td>Manifeste, arbitrage, cockpit</td><td>Nouvel audit source déjà couvert</td><td>Décision unique</td></tr>
+      <tr><td>Finance</td><td>Cash, ledger, payouts, contribution</td><td>Stratégie ou écriture produit</td><td>MANIFEST_DELTA</td></tr>
+      <tr><td>Odoo</td><td>État apps et preuves Store</td><td>Priorité portefeuille globale</td><td>MANIFEST_DELTA</td></tr>
+      <tr><td>Contrôle Rouge</td><td>Objections, calculs, seuils</td><td>Exécution commerciale</td><td>RED_TEAM_DELTA</td></tr>
+    </tbody></table></div>
+  </section>
+
+  <section id="sources" class="panel">
+    <h2>Preuves publiques et internes</h2>
+    <div class="grid">
+      <article class="card half"><h3>Sites et canaux vérifiés le 08/09</h3><ul><li><a href="https://www.agoeon.com/">Agoeon</a> · production</li><li><a href="https://www.linktrib.com/">Linktrib</a> · production</li><li><a href="https://www.propecto.eu/">Propecto</a> · production</li><li><a href="https://www.arbitragepro.eu/abonnement">ArbitragePro+ abonnement</a> · Starter 71 €/mois</li><li><a href="https://apps.odoo.com/apps/modules/browse?author=DYONYSOS&amp;series=19.0">Odoo Apps DYONYSOS</a> · 29 apps</li><li><a href="https://apps.odoo.com/apps/themes/browse?author=DYONYSOS&amp;series=19.0">Thèmes Odoo DYONYSOS</a> · 39 thèmes</li><li><a href="https://www.facebook.com/Lespepitesdejuliefr/">Pépites Facebook</a>, <a href="https://www.youtube.com/channel/UCIplwrvIpxRNH8wwYsfPu8A">YouTube</a> et <a href="https://www.tiktok.com/@lespepitesdejuliefr">TikTok</a></li><li><a href="https://pet-stone.shop/shop">Pet Stone Odoo</a> · produits visibles, identité de site incorrecte</li></ul><p class="muted">Une page, un panier ou un compteur social ne prouve ni vente ni cash.</p></article>
+      <article class="card half"><h3>Sources opérationnelles recoupées</h3><ul><li>GitHub : 4 dépôts Odoo Store actifs, HEAD et PR non fusionnées contrôlés</li><li>Vercel/Railway/Supabase : état production et agrégats produit</li><li>Seller Central : 7 transactions différées détaillées, 0,00 € disponible et 0 commande non expédiée visible au 08/09</li><li>Gmail/Qonto : charges, reçus et dates de période ; recherche du 01 au 09/09 sans notification de vente/expédition Amazon</li><li>Odoo historique <code>dyonysos.odoo.com</code> : 3 commandes Pet Stone, 24,10 € total, au nom de Julien</li><li>Stripe live Dyonysos : 0 paiement, charge, mouvement ou lien ; Stripe live ArbitragePro : 1 session expirée impayée et 0 charge</li><li><a href="file:///Users/juliendaures/Documents/Codex/2026-08-28/tat-actuel-des-produits-indicateurnombre-produits/outputs/Inventaire_Amazon_FR_BE_pour_Julien.xlsx">Inventaire Amazon FR/BE</a> : 344 lignes, 761 unités, 35 références de carton dans le fichier et 17 845 € aux prix source ; comptage Julien du 09/09 : 30 cartons FR + 4 BE</li><li><a href="file:///Users/juliendaures/Documents/Codex/2026-08-29/no/outputs/01a04dd6-2296-72a2-a172-2f1b072a4aab/Amazon_EU_FBM_staging_207_SKU_517_unites_stock_partage_2026-08-31.xlsx">Staging Amazon</a> : 207 SKU / 517 unités, sous-ensemble sans upload prouvé</li><li><a href="https://www.123comparer.fr/Jouets-d-exterieur/goadrcb3gh3dncjsga3uk.html">Small Foot 11663 · prix français historique</a> et <a href="https://www.consobaby.com/avis-chariot-avec-outils-de-jardin-small-foot.html">offres françaises récentes</a> : le seuil de 70 € est plausible, mais le prix Amazon France actuel reste à contrôler</li></ul></article>
+    </div>
+    <div class="card warn"><h3>Limites à ne pas masquer</h3><ul><li>Les 2 fiches Agoeon liées à des IDs auth ne prouvent pas deux créateurs externes authentifiés et actifs.</li><li>Une entrée Checkout ou Add to Cart ne prouve pas paiement, activation, payout ni demande marché.</li><li>Les 142,85 € Amazon sont différés, pas disponibles ; les 173,91 € sont les frais produit avant 31,06 € de commissions et avant COGS/port.</li><li>Les 3 commandes Pet Stone Odoo sont au nom de Julien et à prix tests ; la marge affichée à 100 % n’est pas une marge commerciale externe.</li><li>Les 17 845 € sont une valeur documentaire aux prix source ; le staging 517 unités est inclus dans les 761, et Pet Stone ne peut pas être additionné sans pont SKU.</li><li>Les dimensions/poids du stock manquent : l’estimateur utilise le comptage déclaré de 30 cartons France et 4 Belgique, avec un volume moyen paramétrable.</li><li>Les ventes Odoo Store, payouts Amazon, marge Etsy et coût d’achat du stock restent à réconcilier.</li><li>Les débits ChatGPT et Vercel sont prouvés, mais leur plan exact et leur récurrence ne le sont pas ; ils sont réservés par prudence.</li><li>Le suivi des lots, étiquettes et expéditions est dynamique mais local au navigateur ; une ligne saisie n'est pas une preuve Seller Central.</li><li>Les valeurs modifiées dans le simulateur sont conservées uniquement dans ce navigateur.</li></ul></div>
+    <p class="tiny muted">Rapport généré localement. Les filtres et calculs de trésorerie sont dynamiques dans ce navigateur ; les preuves cloud sont un instantané daté et ne se synchronisent pas seules. Aucun site, campagne, prix, compte, abonnement ou moyen de paiement n’a été modifié.</p>
+  </section>
+</main>
+<script>
+  const tabs=[...document.querySelectorAll('.tab')];
+  const panels=[...document.querySelectorAll('.panel')];
+  tabs.forEach(tab=>tab.addEventListener('click',()=>{tabs.forEach(t=>t.classList.toggle('active',t===tab));panels.forEach(p=>p.classList.toggle('active',p.id===tab.dataset.tab));window.scrollTo({top:0,behavior:'smooth'})}));
+  const filter=document.getElementById('portfolio-filter');
+  const search=document.getElementById('portfolio-search');
+  const rows=[...document.querySelectorAll('#portfolio-rows tr')];
+  const count=document.getElementById('portfolio-count');
+  function updatePortfolio(){const group=filter.value;const q=search.value.trim().toLocaleLowerCase('fr');let shown=0;rows.forEach(row=>{const visible=(group==='all'||row.dataset.group===group)&&(!q||row.textContent.toLocaleLowerCase('fr').includes(q));row.hidden=!visible;if(visible)shown++});count.textContent=String(shown)}
+  filter.addEventListener('change',updatePortfolio);search.addEventListener('input',updatePortfolio);document.getElementById('portfolio-reset').addEventListener('click',()=>{filter.value='all';search.value='';updatePortfolio()});updatePortfolio();
+  const budgetDefaults={envelope:2250,charges:20,floor:1200,sasu:600,payables:103.99,nextPayables:340.55,runrateLow:800,runrateHigh:1000,amazonFuture:''};
+  const budgetIds={envelope:'budget-envelope',charges:'charges-protected',floor:'safety-floor',sasu:'sasu-balance',payables:'sasu-payables',nextPayables:'next-payables',runrateLow:'runrate-low',runrateHigh:'runrate-high',amazonFuture:'amazon-future-fees'};
+  const euro=n=>Number(n).toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
+  const purchaseKey='dyonysos-purchases-v1';
+  const purchaseRows=document.getElementById('purchase-local-rows');
+  const purchaseStatusLabel=document.getElementById('purchase-status-label');
+  let purchases=[];
+  try{const stored=JSON.parse(localStorage.getItem(purchaseKey)||'[]');if(Array.isArray(stored))purchases=stored}catch(e){}
+  function purchaseCell(row,value){const cell=document.createElement('td');cell.textContent=value;row.appendChild(cell);return cell}
+  function savePurchases(){localStorage.setItem(purchaseKey,JSON.stringify(purchases))}
+  function renderPurchases(message=''){
+    purchaseRows.replaceChildren();
+    if(!purchases.length){const row=document.createElement('tr');const cell=document.createElement('td');cell.colSpan=7;cell.className='muted';cell.textContent='Aucun ajout local. Les charges collectées automatiquement restent dans le tableau au-dessus.';row.appendChild(cell);purchaseRows.appendChild(row)}
+    purchases.slice().sort((a,b)=>String(b.date).localeCompare(String(a.date))).forEach(item=>{
+      const row=document.createElement('tr');
+      purchaseCell(row,item.date||'—');purchaseCell(row,item.label);const amount=purchaseCell(row,euro(item.amount));amount.className='money';purchaseCell(row,item.category);purchaseCell(row,item.status);purchaseCell(row,item.ref||'—');
+      const action=document.createElement('td');const remove=document.createElement('button');remove.type='button';remove.textContent='Retirer';remove.dataset.purchaseId=item.id;remove.style.cssText='border:0;border-radius:8px;padding:7px 10px;background:#fff0f0;color:#b83535;font:inherit;font-weight:750;cursor:pointer';action.appendChild(remove);row.appendChild(action);purchaseRows.appendChild(row)
+    });
+    document.getElementById('purchase-total').textContent=euro(purchases.reduce((sum,item)=>sum+Number(item.amount||0),0));
+    purchaseStatusLabel.textContent=message||`${purchases.length} ajout${purchases.length>1?'s':''} local${purchases.length>1?'aux':''}`
+  }
+  document.getElementById('purchase-date').value=new Date().toLocaleDateString('sv-SE');
+  document.getElementById('purchase-add').addEventListener('click',()=>{
+    const date=document.getElementById('purchase-date').value;
+    const label=document.getElementById('purchase-label').value.trim();
+    const amount=Number(document.getElementById('purchase-amount').value);
+    if(!date||!label||!Number.isFinite(amount)||amount<=0){purchaseStatusLabel.textContent='Date, libellé et montant positif requis.';return}
+    purchases.push({id:(globalThis.crypto&&crypto.randomUUID)?crypto.randomUUID():String(Date.now()),date,label,amount,category:document.getElementById('purchase-category').value,status:document.getElementById('purchase-status').value,ref:document.getElementById('purchase-ref').value.trim()});
+    savePurchases();document.getElementById('purchase-label').value='';document.getElementById('purchase-amount').value='';document.getElementById('purchase-ref').value='';renderPurchases('Achat ajouté au suivi local.')
+  });
+  purchaseRows.addEventListener('click',event=>{const id=event.target.dataset&&event.target.dataset.purchaseId;if(!id)return;purchases=purchases.filter(item=>item.id!==id);savePurchases();renderPurchases('Ligne retirée du suivi local.')});
+  document.getElementById('purchase-clear').addEventListener('click',()=>{if(!purchases.length){renderPurchases('Aucun ajout local à effacer.');return}if(confirm('Effacer tous les achats ajoutés localement dans ce navigateur ?')){purchases=[];savePurchases();renderPurchases('Ajouts locaux effacés.')}});
+  renderPurchases();
+  function readBudgets(){const out={};Object.entries(budgetIds).forEach(([k,id])=>{const v=document.getElementById(id).value;out[k]=v===''?'':Number(v)});return out}
+  function renderBudgets(save=true){
+    const b=readBudgets();const sasu=Number(b.sasu||0);const payables=Number(b.payables||0);const nextPayables=Number(b.nextPayables||0);const identified=payables+nextPayables;const free=sasu-payables;const after30d=free-nextPayables;
+    const low=Math.min(Number(b.runrateLow||0),Number(b.runrateHigh||0));const high=Math.max(Number(b.runrateLow||0),Number(b.runrateHigh||0));const amazonKnown=b.amazonFuture!=='';const amazonFuture=amazonKnown?Number(b.amazonFuture||0):0;const totalLow=low+amazonFuture;const totalHigh=high+amazonFuture;
+    const lowGap=Math.max(0,totalLow-sasu);const highGap=Math.max(0,totalHigh-sasu);const gapText=euro(lowGap)+'–'+euro(highGap)+(amazonKnown?'':' + frais Amazon futurs');
+    const conservative=totalHigh>0?Math.min(100,sasu/totalHigh*100):0;const optimistic=totalLow>0?Math.min(100,sasu/totalLow*100):0;const coverageText=totalLow>0?Math.round(conservative)+'–'+Math.round(optimistic)+' %':'n.a.';
+    const runwayLow=totalHigh>0?Math.floor(30*sasu/totalHigh):0;const runwayHigh=totalLow>0?Math.floor(30*sasu/totalLow):0;const runwayText=totalLow>0?runwayLow+'–'+runwayHigh+' jours':'n.a.';
+    const unreconciledLow=Math.max(0,totalLow-identified);const unreconciledHigh=Math.max(0,totalHigh-identified);const unreconciledText='Il reste '+euro(unreconciledLow)+'–'+euro(unreconciledHigh)+' de la fourchette déclarée à identifier ou à exclure'+(amazonKnown?'.':' ; frais Amazon futurs en plus.')
+    document.getElementById('sasu-free').textContent=euro(Math.max(0,free));document.getElementById('sasu-after-30d').textContent=euro(Math.max(0,after30d));document.getElementById('sasu-card-free').textContent=euro(Math.max(0,after30d));document.getElementById('sasu-30d-gap').textContent=euro(Math.max(0,-after30d));document.getElementById('sasu-coverage').textContent=coverageText;
+    document.getElementById('sasu-runrate-coverage').textContent=coverageText;document.getElementById('sasu-runrate-gap').textContent=gapText;document.getElementById('sasu-runway-days').textContent=runwayText;document.getElementById('sasu-runrate-progress').value=conservative;
+    document.getElementById('sasu-identified-total').textContent=euro(identified);document.getElementById('sasu-identified-progress').max=Math.max(1,totalHigh);document.getElementById('sasu-identified-progress').value=Math.min(identified,totalHigh);document.getElementById('sasu-unreconciled').textContent=unreconciledText;
+    document.getElementById('overview-cash-coverage').textContent=coverageText;document.getElementById('overview-cash-progress').value=conservative;document.getElementById('overview-cash-gap').textContent=euro(lowGap)+'–'+euro(highGap);document.getElementById('overview-gap-progress').max=Math.max(1,totalHigh);document.getElementById('overview-gap-progress').value=highGap;document.getElementById('overview-unreconciled').textContent=unreconciledText;
+    const payoutLow=Math.max(0,lowGap-142.85);const payoutHigh=Math.max(0,highGap-142.85);document.getElementById('overview-cash-gap-note').textContent='Écart '+(amazonKnown?'incluant les frais Amazon futurs connus.':'avant frais Amazon futurs. ')+'Si les 142,85 € différés sont encaissés, il tombe à '+euro(payoutLow)+'–'+euro(payoutHigh)+'.';
+    if(save){localStorage.setItem('dyonysos-budget-v7',JSON.stringify(b));document.getElementById('budget-saved').textContent='Valeurs locales mises à jour à '+new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}
+  }
+  try{const saved=JSON.parse(localStorage.getItem('dyonysos-budget-v7')||localStorage.getItem('dyonysos-budget-v6')||'null');if(saved)Object.entries(budgetIds).forEach(([k,id])=>{if(Object.prototype.hasOwnProperty.call(saved,k))document.getElementById(id).value=saved[k]})}catch(e){}
+  Object.values(budgetIds).forEach(id=>document.getElementById(id).addEventListener('input',()=>renderBudgets(true)));
+  document.getElementById('budget-reset').addEventListener('click',()=>{Object.entries(budgetIds).forEach(([k,id])=>document.getElementById(id).value=budgetDefaults[k]);renderBudgets(true)});renderBudgets(false);
+  const arbitrageKey='dyonysos-arbitrage-projection-v1';
+  const arbitrageDefaults={mode:'mixte',capital:500,margin:20,saleDays:14,payoutDays:21};
+  const arbitrageIds={mode:'arb-mode',capital:'arb-capital',margin:'arb-margin',saleDays:'arb-sale-days',payoutDays:'arb-payout-days'};
+  function readArbitrage(){const out={};Object.entries(arbitrageIds).forEach(([key,id])=>{const el=document.getElementById(id);out[key]=key==='mode'?el.value:Number(el.value||0)});return out}
+  function renderArbitrage(save=true){
+    const a=readArbitrage();const capital=Math.max(0,a.capital);const margin=Math.max(0,a.margin);const saleDays=Math.max(0,a.saleDays);const payoutDays=Math.max(0,a.payoutDays);const totalDays=saleDays+payoutDays;const net=capital*margin/100;const cash=capital+net;
+    const envelope=Math.max(0,Number(document.getElementById('budget-envelope').value||0));const minimum=Math.max(0,Number(document.getElementById('charges-protected').value||0));const share=envelope?capital/envelope*100:0;const monthly=totalDays?net*30/totalDays:null;
+    document.getElementById('arb-net-margin').textContent=euro(net);document.getElementById('arb-net-margin-note').textContent=margin.toLocaleString('fr-FR',{maximumFractionDigits:1})+' % sur '+euro(capital)+' engagés.';document.getElementById('arb-cash-return').textContent=euro(cash);document.getElementById('arb-cash-days').textContent=totalDays+' j';document.getElementById('arb-cash-days-note').textContent=saleDays+' j avant vente / disponibilité + '+payoutDays+' j avant crédit bancaire.';document.getElementById('arb-monthly-equivalent').textContent=monthly===null?'n.a.':euro(monthly);document.getElementById('arb-envelope-share').textContent=Math.round(share)+' %';document.getElementById('arb-envelope-progress').value=Math.min(100,share);
+    let decision='HOLD opérationnel : projection cohérente, mais les huit portes produit ne sont pas encore prouvées.';
+    if(!envelope)decision='HOLD : enveloppe arbitrage non renseignée.';else if(capital>envelope)decision='HOLD : capital engagé supérieur à l’enveloppe déclarée.';else if(margin<minimum)decision='REJET : contribution de '+margin+' % sous le minimum de '+minimum+' %.';else if(!totalDays)decision='HOLD : délai de vente et de versement à renseigner.';
+    document.getElementById('arb-decision').textContent=decision;
+    if(save){localStorage.setItem(arbitrageKey,JSON.stringify(a));document.getElementById('arb-saved').textContent='Projection locale mise à jour à '+new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}
+  }
+  try{const saved=JSON.parse(localStorage.getItem(arbitrageKey)||'null');if(saved)Object.entries(arbitrageIds).forEach(([key,id])=>{if(Object.prototype.hasOwnProperty.call(saved,key))document.getElementById(id).value=saved[key]})}catch(e){}
+  Object.values(arbitrageIds).forEach(id=>document.getElementById(id).addEventListener('input',()=>renderArbitrage(true)));
+  ['budget-envelope','charges-protected'].forEach(id=>document.getElementById(id).addEventListener('input',()=>renderArbitrage(false)));
+  document.getElementById('arb-preset-fbm').addEventListener('click',()=>{document.getElementById('arb-mode').value='fbm';document.getElementById('arb-sale-days').value='7';document.getElementById('arb-payout-days').value='21';renderArbitrage(true)});
+  document.getElementById('arb-preset-fba').addEventListener('click',()=>{document.getElementById('arb-mode').value='fba';document.getElementById('arb-sale-days').value='21';document.getElementById('arb-payout-days').value='14';renderArbitrage(true)});
+  document.getElementById('arb-reset').addEventListener('click',()=>{Object.entries(arbitrageIds).forEach(([key,id])=>document.getElementById(id).value=arbitrageDefaults[key]);renderArbitrage(true)});renderArbitrage(false);
+  const stockKey='dyonysos-stock-flow-v1';
+  const stockStages={achat_commande:'Achat fournisseur commandé',recu_local:'Reçu chez Julien / Marie-Claude',offre_active:'Offre Amazon active',commande_amazon:'Commande client Amazon reçue',etiquette_prete:'Étiquette préparée',expedie_client:'Expédié au client',envoye_prep:'Envoyé au prep center',envoye_amazon:'Envoyé à Amazon',recu_amazon:'Réceptionné par Amazon',paye:'Payé / cash rapproché',annule:'Annulé / remboursé'};
+  const stockRows=document.getElementById('stock-flow-rows');let stockFlow=[];
+  try{const stored=JSON.parse(localStorage.getItem(stockKey)||'[]');if(Array.isArray(stored))stockFlow=stored}catch(e){}
+  function saveStock(){localStorage.setItem(stockKey,JSON.stringify(stockFlow))}
+  function addStockCell(row,value,className=''){const cell=document.createElement('td');cell.textContent=value;if(className)cell.className=className;row.appendChild(cell);return cell}
+  function stockInput(item,field,type='text'){const input=document.createElement('input');input.className='inline-edit';input.type=type;input.dataset.stockId=item.id;input.dataset.stockField=field;input.value=item[field]||'';if(type==='number'){input.min='0';input.step='0.01'}return input}
+  function renderStock(message=''){
+    stockRows.replaceChildren();
+    if(!stockFlow.length){const row=document.createElement('tr');const cell=document.createElement('td');cell.colSpan=10;cell.className='muted';cell.textContent='Aucun lot ou commande enregistré localement. Le bouton « Préremplir Gift box » prépare le formulaire sans créer un mouvement.';row.appendChild(cell);stockRows.appendChild(row)}
+    stockFlow.slice().sort((a,b)=>String(b.date).localeCompare(String(a.date))).forEach(item=>{
+      const row=document.createElement('tr');addStockCell(row,item.date||'—');addStockCell(row,item.product+' · '+item.ref);addStockCell(row,String(item.qty));addStockCell(row,item.mode);
+      const statusCell=document.createElement('td');const select=document.createElement('select');select.className='task-status';select.dataset.stockId=item.id;select.dataset.stockField='stage';Object.entries(stockStages).forEach(([value,label])=>{const option=document.createElement('option');option.value=value;option.textContent=label;option.selected=item.stage===value;select.appendChild(option)});statusCell.appendChild(select);row.appendChild(statusCell);
+      ['destination','tracking'].forEach(field=>{const cell=document.createElement('td');cell.appendChild(stockInput(item,field));row.appendChild(cell)});
+      const cashCell=document.createElement('td');cashCell.appendChild(stockInput(item,'cash','number'));row.appendChild(cashCell);
+      const sourceCell=document.createElement('td');sourceCell.appendChild(stockInput(item,'source'));row.appendChild(sourceCell);
+      const action=document.createElement('td');const remove=document.createElement('button');remove.type='button';remove.textContent='Retirer';remove.dataset.stockRemove=item.id;remove.style.cssText='border:0;border-radius:8px;padding:7px 10px;background:#fff0f0;color:#b83535;font:inherit;font-weight:750;cursor:pointer';action.appendChild(remove);row.appendChild(action);stockRows.appendChild(row)
+    });
+    const qtyFor=predicate=>stockFlow.filter(predicate).reduce((sum,item)=>sum+Number(item.qty||0),0);const openOrders=qtyFor(item=>item.stage==='commande_amazon'||item.stage==='etiquette_prete');const inTransit=qtyFor(item=>['expedie_client','envoye_prep','envoye_amazon'].includes(item.stage));const paidCash=stockFlow.filter(item=>item.stage==='paye').reduce((sum,item)=>sum+Number(item.cash||0),0);
+    document.getElementById('stock-record-count').textContent=String(stockFlow.length);document.getElementById('stock-open-orders').textContent=openOrders+' u.';document.getElementById('stock-in-transit').textContent=inTransit+' u.';document.getElementById('stock-paid-cash').textContent=euro(paidCash);
+    const fbmDen=qtyFor(item=>item.mode==='FBM'&&['commande_amazon','etiquette_prete','expedie_client','paye'].includes(item.stage));const fbmNum=qtyFor(item=>item.mode==='FBM'&&['expedie_client','paye'].includes(item.stage));const fbaDen=qtyFor(item=>item.mode!=='FBM'&&['envoye_prep','envoye_amazon','recu_amazon','paye'].includes(item.stage));const fbaNum=qtyFor(item=>item.mode!=='FBM'&&['recu_amazon','paye'].includes(item.stage));const fbmPct=fbmDen?Math.round(fbmNum/fbmDen*100):0;const fbaPct=fbaDen?Math.round(fbaNum/fbaDen*100):0;
+    document.getElementById('stock-fbm-progress').value=fbmPct;document.getElementById('stock-fbm-label').textContent=fbmDen?fbmPct+' %':'n.a.';document.getElementById('stock-fba-progress').value=fbaPct;document.getElementById('stock-fba-label').textContent=fbaDen?fbaPct+' %':'n.a.';document.getElementById('stock-status').textContent=message||stockFlow.length+' ligne'+(stockFlow.length>1?'s':'')+' locale'+(stockFlow.length>1?'s':'')
+  }
+  document.getElementById('stock-date').value=new Date().toLocaleDateString('sv-SE');
+  document.getElementById('stock-prefill-gift').addEventListener('click',()=>{document.getElementById('stock-product').value='Gift box Harry Potter';document.getElementById('stock-ref').value='B0BFT79FL6';document.getElementById('stock-qty').value='6';document.getElementById('stock-mode').value='FBA + prep center';document.getElementById('stock-stage').value='recu_local';document.getElementById('stock-destination').value='Stock Belgique';document.getElementById('stock-source').value='Inventaire BE · snapshot 02/09';document.getElementById('stock-status').textContent='Formulaire prérempli. Vérifier le comptage physique avant ajout.'});
+  document.getElementById('stock-add').addEventListener('click',()=>{const date=document.getElementById('stock-date').value;const product=document.getElementById('stock-product').value.trim();const ref=document.getElementById('stock-ref').value.trim();const qty=Number(document.getElementById('stock-qty').value);if(!date||!product||!ref||!Number.isInteger(qty)||qty<1){document.getElementById('stock-status').textContent='Date, produit, SKU/ASIN et quantité entière positive requis.';return}stockFlow.push({id:(globalThis.crypto&&crypto.randomUUID)?crypto.randomUUID():String(Date.now()),date,product,ref,qty,mode:document.getElementById('stock-mode').value,stage:document.getElementById('stock-stage').value,destination:document.getElementById('stock-destination').value.trim(),tracking:document.getElementById('stock-tracking').value.trim(),cash:document.getElementById('stock-cash').value,source:document.getElementById('stock-source').value.trim()});saveStock();['stock-product','stock-ref','stock-destination','stock-tracking','stock-cash','stock-source'].forEach(id=>document.getElementById(id).value='');document.getElementById('stock-qty').value='1';renderStock('Lot ajouté. Les mises à jour dans le tableau sont enregistrées automatiquement.')});
+  stockRows.addEventListener('change',event=>{const id=event.target.dataset&&event.target.dataset.stockId;const field=event.target.dataset&&event.target.dataset.stockField;if(!id||!field)return;const item=stockFlow.find(row=>row.id===id);if(!item)return;item[field]=event.target.value;saveStock();renderStock('Mise à jour enregistrée localement.')});
+  stockRows.addEventListener('click',event=>{const id=event.target.dataset&&event.target.dataset.stockRemove;if(!id)return;stockFlow=stockFlow.filter(item=>item.id!==id);saveStock();renderStock('Ligne retirée du suivi local.')});
+  document.getElementById('stock-clear').addEventListener('click',()=>{if(!stockFlow.length){renderStock('Aucune ligne locale à effacer.');return}if(confirm('Effacer toutes les lignes de stock et expédition ajoutées dans ce navigateur ?')){stockFlow=[];saveStock();renderStock('Lignes locales effacées.')}});renderStock();
+  const fbaCostIds={units:'fba-units',firstMile:'fba-first-mile',prepUnit:'fba-prep-unit',inbound:'fba-inbound',amazonUnit:'fba-amazon-unit',storage:'fba-storage'};
+  function renderFbaCost(save=true){
+    const raw={};Object.entries(fbaCostIds).forEach(([key,id])=>{raw[key]=document.getElementById(id).value.trim()});
+    const units=Math.max(1,Number(raw.units)||1);const prepTotal=units*(Number(raw.prepUnit)||0);
+    document.getElementById('fba-prep-total').textContent=euro(prepTotal);
+    const missing=[];if(raw.firstMile==='')missing.push('envoi vers prep center');if(raw.inbound==='')missing.push('prep center vers Amazon');if(raw.amazonUnit==='')missing.push('frais FBA par ASIN');
+    if(missing.length){document.getElementById('fba-logistics-total').textContent='HOLD';document.getElementById('fba-logistics-unit').textContent='Coût par unité indisponible';document.getElementById('fba-cost-status').textContent='HOLD';document.getElementById('fba-missing').textContent='Manque : '+missing.join(', ')+'.'}
+    else{const total=Number(raw.firstMile)+prepTotal+Number(raw.inbound)+units*Number(raw.amazonUnit)+Number(raw.storage||0);document.getElementById('fba-logistics-total').textContent=euro(total);document.getElementById('fba-logistics-unit').textContent=euro(total/units)+' par unité';document.getElementById('fba-cost-status').textContent='CALCULABLE';document.getElementById('fba-missing').textContent='Ajouter ensuite achat, prix de vente, commission et TVA pour tester la marge ≥20 %.'}
+    if(save)localStorage.setItem('dyonysos-fba-cost-v1',JSON.stringify(raw));
+  }
+  try{const savedFba=JSON.parse(localStorage.getItem('dyonysos-fba-cost-v1')||'null');if(savedFba)Object.entries(fbaCostIds).forEach(([key,id])=>{if(Object.prototype.hasOwnProperty.call(savedFba,key))document.getElementById(id).value=savedFba[key]})}catch(e){}
+  Object.values(fbaCostIds).forEach(id=>document.getElementById(id).addEventListener('input',()=>renderFbaCost(true)));renderFbaCost(false);
+  const cartonLiters=document.getElementById('carton-liters');
+  function renderVolumes(){const liters=Math.max(20,Math.min(150,Number(cartonLiters.value)||65));const fr=30*liters/1000;const be=4*liters/1000;document.getElementById('fr-volume').value=fr.toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2})+' m³';document.getElementById('be-volume').value=be.toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2})+' m³';document.getElementById('total-volume').textContent=(fr+be).toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2})+' m³'}
+  cartonLiters.addEventListener('input',renderVolumes);renderVolumes();
+  document.getElementById('copy-questions').addEventListener('click',async()=>{const text=document.getElementById('questions-copy').value;try{await navigator.clipboard.writeText(text);document.getElementById('copy-status').textContent='Copié.'}catch(e){document.getElementById('questions-copy').select();document.getElementById('copy-status').textContent='Texte sélectionné : copiez avec Ctrl/Cmd+C.'}});
+  const actionDefaults={A01:'attente',A02:'a_faire',A03:'en_cours',A04:'en_cours',A05:'bloque',A06:'a_faire',A07:'a_faire',A08:'hold',A09:'en_cours',A10:'attente'};
+  const actionSelects=[...document.querySelectorAll('#action-rows .task-status')];
+  const actionNote=document.getElementById('action-note');
+  function renderActions(save=true){const statuses={};let done=0,active=0;actionSelects.forEach(select=>{const id=select.closest('tr').dataset.action;statuses[id]=select.value;if(select.value==='termine')done++;if(select.value==='en_cours')active++});document.getElementById('action-progress').max=actionSelects.length;document.getElementById('action-progress').value=done;document.getElementById('action-progress-label').textContent=done+' / '+actionSelects.length+' terminées';document.getElementById('action-active-label').textContent=active+' en cours';if(save){localStorage.setItem('dyonysos-actions-v1',JSON.stringify({statuses,note:actionNote.value}));document.getElementById('action-saved').textContent='Mis à jour à '+new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}}
+  try{const savedActions=JSON.parse(localStorage.getItem('dyonysos-actions-v1')||'null');if(savedActions){actionSelects.forEach(select=>{const id=select.closest('tr').dataset.action;if(savedActions.statuses&&savedActions.statuses[id])select.value=savedActions.statuses[id]});actionNote.value=savedActions.note||''}}catch(e){}
+  actionSelects.forEach(select=>select.addEventListener('change',()=>renderActions(true)));actionNote.addEventListener('input',()=>renderActions(true));document.getElementById('action-reset').addEventListener('click',()=>{actionSelects.forEach(select=>{select.value=actionDefaults[select.closest('tr').dataset.action]});actionNote.value='';renderActions(true)});renderActions(false);
+  async function loadLiveSources(){try{const response=await fetch('/api/portfolio-pilotage',{credentials:'same-origin'});if(!response.ok)throw new Error('HTTP '+response.status);const data=await response.json();const up=data.projects.filter(project=>project.health&&project.health.ok).length;const analytics=data.projects.filter(project=>project.analytics&&project.analytics.live).length;const sitemaps=data.projects.filter(project=>project.sitemap&&project.sitemap.ok).length;document.getElementById('live-source-state').textContent=up+'/'+data.projects.length+' sites joignables';document.getElementById('live-source-note').textContent='Contrôle '+new Date(data.generatedAt).toLocaleString('fr-FR')+' · '+sitemaps+' sitemaps lus · '+analytics+' projets avec Vercel Analytics disponible. GA4 et Etsy restent signalés non configurés lorsqu’aucune lecture authentifiée n’est prouvée.'}catch(error){document.getElementById('live-source-state').textContent='Rapport local';document.getElementById('live-source-note').textContent='API privée non accessible depuis ce fichier local. Ouvrir /pilotage-portefeuille sur dyonysos.fr pour les contrôles dynamiques.'}}loadLiveSources();
+</script>
+</body>
+</html>

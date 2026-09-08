@@ -15,9 +15,13 @@ module.exports = function handler(req, res) {
   return res.status(200).json({
     groups: [
       { title: 'Pilotage', links: [
+        { name: 'Cockpit portefeuille · cash, runway, Amazon et décisions', url: '/pilotage-portefeuille', status: 'Interactif + contrôles dynamiques des productions et sitemaps' },
         { name: 'Cockpit ArbitragePro+ (tunnel, ventes, canaux, preuves)', url: '/pilotage-arbitragepro', status: 'Dynamique — données métier actualisées à la demande' },
         { name: 'Pilotage Social (calendrier, publications, erreurs)', url: '/pilotage-social' },
-        { name: 'Pilotage Odoo Apps (ventes, projections, vidéos)', url: '/pilotage-odoo' }
+        { name: 'Pilotage Odoo Apps (ventes, projections, vidéos)', url: '/pilotage-odoo' },
+        { name: 'Pilotage Agoeon', url: '/pilotage-agoeon', status: 'Production + sitemap + analytics disponibles' },
+        { name: 'Pilotage Linktrib', url: '/pilotage-linktrib', status: 'Production + sitemap + analytics disponibles' },
+        { name: 'Pilotage Etsy · PetStoneOriginal', url: '/pilotage-etsy', status: 'Snapshot daté ; API Etsy non configurée' }
       ]},
       { title: 'Éducation, formation et recrutement', links: [
         { name: 'CVDesignPro', url: 'https://www.cvdesignpro.com/fr' },
@@ -34,8 +38,8 @@ module.exports = function handler(req, res) {
         { name: 'Profit+', url: 'https://profit-plus-preview.vercel.app' }
       ]},
       { title: 'Création et médias', links: [
-        { name: 'Kreo', url: 'https://kreo-fawn.vercel.app', sensitive: true },
-        { name: 'Agoeon (remake Patreon)', url: 'https://remake-patreon-082026.vercel.app', sensitive: true, status: 'À rapprocher de Kreo — même famille de projet (Patreon/Linktree européen), build distinct' },
+        { name: 'Linktrib', url: 'https://www.linktrib.com', sensitive: true, status: 'Dépôt technique : Kreo' },
+        { name: 'Agoeon', url: 'https://www.agoeon.com', sensitive: true, status: 'Produit distinct de Linktrib' },
         { name: 'OpenArt Local Studio', url: 'https://openart-reconstruction-edu.vercel.app', status: 'Suite créative (vidéo/image/audio) — remake OpenArt' },
         { name: 'Création graphique', url: 'https://canva-remake-production.up.railway.app' },
         { name: 'Adaptation de contenus', url: 'https://reformateur-media-dyonysos.vercel.app', status: 'Déploiement actuellement indisponible' },

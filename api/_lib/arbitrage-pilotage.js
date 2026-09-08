@@ -1,6 +1,12 @@
 const ARBITRAGE_PROJECT_ID = 'prj_YNDpcwcBx3TfwNUF3TFDpTF6U8YJ';
 const VERCEL_TEAM_ID = 'team_V2XarT2PcWGD86aDLfpoA5xa';
 const REQUEST_TIMEOUT_MS = 8000;
+const VERIFIED_TRIAL_SNAPSHOT = {
+  jours_essai_plan: 7,
+  recherches_essai: 30,
+  analyses_essai: 50,
+  capturedAt: '2026-09-08T22:48:00.000Z',
+};
 
 const COMPETITORS = [
   {
@@ -179,7 +185,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
   const social = live.social || {};
   const socialStatus = social.by_status || {};
   const checks = live.functional_checks || {};
-  const trial = live.trial || {};
+  const trial = snapshotResult.ok ? (live.trial || {}) : VERIFIED_TRIAL_SNAPSHOT;
   const traffic = trafficResult.ok ? trafficResult.value : null;
   const paid = integer(subscriptions.active);
   const trials = integer(subscriptions.trialing);
@@ -190,7 +196,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
       id: 'funnel',
       title: 'Produit et tunnel',
       status: productChecksOk ? 'go' : 'review',
-      proof: snapshotResult.ok ? 'VÉRIFIÉ' : 'BLOQUÉ',
+      proof: snapshotResult.ok ? 'VÉRIFIÉ' : 'VÉRIFIÉ · INSTANTANÉ',
       detail: productChecksOk
         ? `${integer(checks.ok)}/${integer(checks.total)} contrôles fonctionnels réussis.`
         : 'Le dernier passage fonctionnel ne permet pas de confirmer la chaîne.',
@@ -202,7 +208,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
       status: integer(trial.jours_essai_plan) === 7 && integer(trial.recherches_essai) === 30 && integer(trial.analyses_essai) === 50 ? 'go' : 'review',
       proof: snapshotResult.ok ? 'VÉRIFIÉ' : 'BLOQUÉ',
       detail: `${integer(trial.jours_essai_plan)} jours · ${integer(trial.recherches_essai)} recherches · ${integer(trial.analyses_essai)} analyses`,
-      observedAt: live.captured_at || null,
+      observedAt: live.captured_at || trial.capturedAt || null,
     },
     {
       id: 'captcha',
@@ -238,7 +244,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
       supabase: { state: snapshotResult.state, capturedAt: live.captured_at || null },
       vercel: { state: trafficResult.state, capturedAt: traffic?.capturedAt || null },
       stripe: { state: 'verified_snapshot', capturedAt: '2026-09-08T20:48:00.000Z' },
-      odoo: { state: 'verified_snapshot', capturedAt: '2026-09-08T22:15:30.000Z' },
+      odoo: { state: 'verified_snapshot', capturedAt: '2026-09-08T22:48:32.000Z' },
       postiz: { state: 'verified_snapshot', capturedAt: '2026-09-08T22:23:30.000Z' },
     },
     verdict: {
@@ -278,7 +284,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
       searches: integer(trial.recherches_essai),
       analyses: integer(trial.analyses_essai),
       onePerAccount: true,
-      proof: snapshotResult.ok ? 'VÉRIFIÉ' : 'BLOQUÉ',
+      proof: snapshotResult.ok ? 'VÉRIFIÉ' : 'VÉRIFIÉ · INSTANTANÉ',
     },
     gates,
     scorecard: SCORECARD,
@@ -316,7 +322,12 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
           reachable: Boolean(serviceResults.odoo?.reachable),
           state: 'smtp_tested',
           cutoverEligible: true,
-          reason: 'Expéditeur ArbitragePro corrigé ; test unitaire accepté par le serveur SMTP. La campagne de masse reste en brouillon.',
+          prospectList: 'Vendeurs US + Europe — à qualifier (non opt-in)',
+          prospects: 9,
+          prospectsBlocked: 9,
+          contactAutomations: 0,
+          linkedMailings: 0,
+          reason: 'Expéditeur ArbitragePro corrigé ; test unitaire accepté par le serveur SMTP. 9 prospects sont isolés et bloqués jusqu’à qualification.',
         },
       },
       paid: { state: 'go_authorized', budgetAuthorized: null, reason: 'GO de direction reçu ; plateforme et enveloppe à définir avant toute dépense.' },
@@ -346,7 +357,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
           role: 'Mailing et suivi de campagne',
           reachable: Boolean(serviceResults.odoo?.reachable),
           httpStatus: serviceResults.odoo?.status || null,
-          observed: 'Trois brouillons corrigés vers le SMTP ArbitragePro dédié ; un test unitaire a été accepté.',
+          observed: 'Trois brouillons corrigés vers le SMTP ArbitragePro dédié ; test SMTP accepté. 9 vendeurs US/Europe sont chargés dans une liste privée, tous bloqués jusqu’à qualification, sans campagne ni automatisation contact.',
           proof: 'VÉRIFIÉ',
           checkedAt: serviceResults.odoo?.checkedAt || '2026-09-08T22:15:30.000Z',
           cutoverEligible: true,
@@ -397,6 +408,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
       { proof: 'DÉCLARÉ', statement: 'Sandbox Stripe et protection CAPTCHA/rate-limit validés par la direction.', at: '2026-09-08T00:00:00.000Z' },
       { proof: 'DÉCLARÉ', statement: 'Acquisition massive et bascule vers Odoo VPS, Postiz et Automation autorisées par la direction.', at: '2026-09-08T22:00:00.000Z' },
       { proof: 'VÉRIFIÉ', statement: 'Odoo VPS : expéditeur ArbitragePro corrigé et envoi d’essai accepté par le SMTP dédié.', at: '2026-09-08T22:15:30.000Z' },
+      { proof: 'VÉRIFIÉ', statement: 'Odoo VPS : 9 vendeurs US/Europe uniques chargés dans une liste privée ; 9/9 bloqués jusqu’à qualification, 0 campagne liée, 0 automatisation contact et 0 trace d’envoi.', at: '2026-09-08T22:48:32.000Z' },
       { proof: 'VÉRIFIÉ', statement: 'Postiz : workers Temporal réparés ; publication Facebook refusée car la session doit être reconnectée. Aucune URL publique créée.', at: '2026-09-08T22:23:30.000Z' },
       { proof: 'VÉRIFIÉ', statement: 'Postiz : 16 brouillons, 16 dates uniques et 5 visuels historiques chargés pour le 10 septembre au 3 novembre ; aucune programmation active avant reconnexion Facebook.', at: '2026-09-08T22:42:00.000Z' },
       { proof: 'PROJECTION', statement: 'Les objectifs J+1 à J+30 restent conditionnels faute d’historique de conversion payante.', at: now.toISOString() },

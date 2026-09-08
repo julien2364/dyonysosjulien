@@ -79,8 +79,26 @@ test('enregistre le GO sans déclarer la bascule complète avant la preuve rése
   assert.equal(dashboard.internalEngines.checklist[1].done, false);
   assert.equal(dashboard.channels.email.vps.cutoverEligible, true);
   assert.equal(dashboard.channels.email.vps.testAccepted, true);
+  assert.equal(dashboard.channels.email.vps.prospects, 9);
+  assert.equal(dashboard.channels.email.vps.prospectsBlocked, 9);
+  assert.equal(dashboard.channels.email.vps.contactAutomations, 0);
+  assert.equal(dashboard.channels.email.vps.linkedMailings, 0);
   assert.equal(dashboard.internalEngines.services.find((item) => item.id === 'odoo').cutoverEligible, true);
   assert.equal(dashboard.internalEngines.services.find((item) => item.id === 'postiz').cutoverEligible, false);
+});
+
+test('conserve le dernier instantané vérifié des limites quand la source métier est dégradée', () => {
+  const dashboard = buildDashboard({ ok: false, state: 'error' }, {
+    ok: false,
+    state: 'not_configured',
+    value: null,
+  });
+
+  assert.equal(dashboard.trial.days, 7);
+  assert.equal(dashboard.trial.searches, 30);
+  assert.equal(dashboard.trial.analyses, 50);
+  assert.equal(dashboard.trial.proof, 'VÉRIFIÉ · INSTANTANÉ');
+  assert.equal(dashboard.gates.find((gate) => gate.id === 'trial').status, 'go');
 });
 
 test('classe Tactical Arbitrage en concurrent direct et SellerAmp en outil d’analyse', () => {

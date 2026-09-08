@@ -252,7 +252,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
       execution: 'GO CONTRÔLÉ — maintien du repli Make',
       decision: 'HOLD PAYANT · PRODUIT ET ORGANIQUE SOUS CONTRÔLE',
       confidence: 'élevée sur le tunnel et le transport Odoo, faible sur la conversion payante et Postiz Facebook',
-      bottleneck: paid > 0 ? 'Rétention et montée en charge' : 'Première conversion payante + reconnexion Facebook Postiz',
+      bottleneck: paid > 0 ? 'Rétention produit' : 'Activation organique + reconnexion Facebook Postiz',
       reason: paid > 0
         ? 'Une conversion payante est observée ; le prochain enjeu est la répétabilité.'
         : 'Aucune acquisition payante n’est autorisée ni lancée. Un témoin Odoo VPS est reçu mais classé en indésirables ; Facebook exige une reconnexion dans Postiz.',
@@ -324,7 +324,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
           trackingConfirmed: false,
           reachable: Boolean(serviceResults.odoo?.reachable),
           state: 'witness_received_in_spam',
-          cutoverEligible: true,
+          cutoverEligible: false,
           prospectList: 'QUARANTAINE — NE PAS UTILISER — vendeurs US/Europe',
           prospects: 9,
           prospectsBlocked: 9,
@@ -363,7 +363,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
           observed: 'Trois brouillons utilisent le SMTP ArbitragePro dédié. Un témoin est reçu dans Gmail mais classé en indésirables. La liste de 9 contacts est renommée QUARANTAINE — NE PAS UTILISER, privée, bloquée à 9/9, sans campagne ni automatisation contact.',
           proof: 'VÉRIFIÉ',
           checkedAt: serviceResults.odoo?.checkedAt || '2026-09-08T22:18:02.000Z',
-          cutoverEligible: true,
+          cutoverEligible: false,
           blocker: 'Corriger le classement en indésirables, puis confirmer clic et statistiques sur un lot interne contrôlé.',
         },
         {
@@ -398,7 +398,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
       { id: 'AP-01', action: 'Mesurer chaque étape visite → compte → activation → checkout → paiement', status: traffic ? 'en_cours' : 'a_faire', priority: 'P0', owner: 'Produit / Analytics', horizon: 'J+1', success: '5 étapes visibles avec source et horodatage' },
       { id: 'AP-02', action: 'Rattacher la preuve technique CAPTCHA/rate-limit au journal', status: 'a_verifier', priority: 'P0', owner: 'Technique', horizon: 'J+1', success: 'preuve serveur + test abus contrôlé' },
       { id: 'AP-03', action: 'Confirmer le régime TVA et l’immatriculation attendue dans Stripe', status: 'a_verifier', priority: 'P0', owner: 'Finance / Conseil', horizon: 'J+1', success: 'avis daté + configuration cohérente' },
-      { id: 'AP-04', action: 'Faire parcourir l’essai à 10 vendeurs Amazon ciblés', status: 'pret', priority: 'P1', owner: 'Commercial', horizon: 'J+7', success: '≥ 5 activations et objections consignées' },
+      { id: 'AP-04', action: 'Observer uniquement les inscriptions volontaires issues du site et de l’organique', status: 'hold', priority: 'P1', owner: 'Produit', horizon: 'J+7', success: 'activations volontaires mesurées, sans prospection chargée ni publicité' },
       { id: 'AP-05', action: 'Valider réception, clic et statistiques du premier lot Odoo VPS contrôlé', status: 'en_cours', priority: 'P1', owner: 'CRM', horizon: 'J+1', success: 'réception, clic et statistiques confirmés sans doublon' },
       { id: 'AP-06', action: 'Reconnecter Facebook dans Postiz, publier un témoin puis planifier les 16 brouillons', status: 'a_verifier', priority: 'P0', owner: 'Automation / Social', horizon: 'J+1', success: '1 témoin publié une seule fois, puis calendrier activé sans doublon' },
     ],

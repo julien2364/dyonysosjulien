@@ -77,7 +77,7 @@ test('enregistre le GO sans déclarer la bascule complète avant la preuve rése
   assert.equal(dashboard.internalEngines.checklist[0].done, true);
   assert.equal(dashboard.internalEngines.checklist[3].done, true);
   assert.equal(dashboard.internalEngines.checklist[1].done, false);
-  assert.equal(dashboard.channels.email.vps.cutoverEligible, true);
+  assert.equal(dashboard.channels.email.vps.cutoverEligible, false);
   assert.equal(dashboard.channels.email.vps.testAccepted, true);
   assert.equal(dashboard.channels.email.vps.testReceived, true);
   assert.equal(dashboard.channels.email.vps.deliveryPlacement, 'indésirables');
@@ -86,7 +86,7 @@ test('enregistre le GO sans déclarer la bascule complète avant la preuve rése
   assert.equal(dashboard.channels.email.vps.prospectsBlocked, 9);
   assert.equal(dashboard.channels.email.vps.contactAutomations, 0);
   assert.equal(dashboard.channels.email.vps.linkedMailings, 0);
-  assert.equal(dashboard.internalEngines.services.find((item) => item.id === 'odoo').cutoverEligible, true);
+  assert.equal(dashboard.internalEngines.services.find((item) => item.id === 'odoo').cutoverEligible, false);
   assert.equal(dashboard.internalEngines.services.find((item) => item.id === 'postiz').cutoverEligible, false);
 });
 

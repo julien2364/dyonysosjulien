@@ -15,7 +15,8 @@ module.exports = function handler(req, res) {
   return res.status(200).json({
     groups: [
       { title: 'Pilotage', links: [
-        { name: 'Pilotage Social (calendrier, publications, erreurs)', url: '/pilotage-social' }
+        { name: 'Pilotage Social (calendrier, publications, erreurs)', url: '/pilotage-social' },
+        { name: 'Pilotage Odoo Apps (ventes, projections, vidéos)', url: '/pilotage-odoo' }
       ]},
       { title: 'Éducation, formation et recrutement', links: [
         { name: 'CVDesignPro', url: 'https://www.cvdesignpro.com/fr' },

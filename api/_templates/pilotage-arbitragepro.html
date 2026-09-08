@@ -69,7 +69,7 @@
 const esc=value=>String(value==null?'':value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const num=value=>value==null?'Non mesuré':new Intl.NumberFormat('fr-FR').format(Number(value)||0);
 const when=value=>value?new Intl.DateTimeFormat('fr-FR',{dateStyle:'short',timeStyle:'short',timeZone:'Europe/Brussels'}).format(new Date(value)):'—';
-const proofClass=value=>({'VÉRIFIÉ':'verified','OBSERVÉ':'observed','DÉCLARÉ':'declared','PROJECTION':'projected','À CONFIRMER':'confirm','BLOQUÉ':'confirm'}[value]||'');
+const proofClass=value=>({'VÉRIFIÉ':'verified','VÉRIFIÉ · INSTANTANÉ':'observed','OBSERVÉ':'observed','DÉCLARÉ':'declared','PROJECTION':'projected','À CONFIRMER':'confirm','BLOQUÉ':'confirm'}[value]||'');
 const proof=value=>`<span class="proof ${proofClass(value)}">${esc(value)}</span>`;
 
 function render(data){

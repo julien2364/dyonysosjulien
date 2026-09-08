@@ -196,7 +196,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
       id: 'funnel',
       title: 'Produit et tunnel',
       status: productChecksOk ? 'go' : 'review',
-      proof: snapshotResult.ok ? 'VÉRIFIÉ' : 'VÉRIFIÉ · INSTANTANÉ',
+      proof: snapshotResult.ok ? 'VÉRIFIÉ' : 'BLOQUÉ',
       detail: productChecksOk
         ? `${integer(checks.ok)}/${integer(checks.total)} contrôles fonctionnels réussis.`
         : 'Le dernier passage fonctionnel ne permet pas de confirmer la chaîne.',
@@ -206,7 +206,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
       id: 'trial',
       title: 'Essai sans carte',
       status: integer(trial.jours_essai_plan) === 7 && integer(trial.recherches_essai) === 30 && integer(trial.analyses_essai) === 50 ? 'go' : 'review',
-      proof: snapshotResult.ok ? 'VÉRIFIÉ' : 'BLOQUÉ',
+      proof: snapshotResult.ok ? 'VÉRIFIÉ' : 'VÉRIFIÉ · INSTANTANÉ',
       detail: `${integer(trial.jours_essai_plan)} jours · ${integer(trial.recherches_essai)} recherches · ${integer(trial.analyses_essai)} analyses`,
       observedAt: live.captured_at || trial.capturedAt || null,
     },

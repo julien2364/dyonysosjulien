@@ -273,6 +273,10 @@
     {
       "source": "/pilotage-social",
       "destination": "/pilotage-social"
+    },
+    {
+      "source": "/pilotage-odoo",
+      "destination": "/pilotage-odoo"
     }
   ],
   "headers": [

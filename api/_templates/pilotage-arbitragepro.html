@@ -84,13 +84,14 @@ function render(data){
   document.getElementById('liveDot').className=`dot ${live?'live':''}`;
   document.getElementById('sourceLabel').textContent=live?'Données métier live':'Source métier dégradée';
 
+  const businessProof=data.sources.supabase.state==='live'?'VÉRIFIÉ':'BLOQUÉ';
   const metrics=[
     ['Visiteurs · 30 j',data.kpis.visitors30d,'sky',data.sources.vercel.state==='live'?'VÉRIFIÉ':'À CONFIRMER'],
-    ['Comptes',data.kpis.accounts,'mint','VÉRIFIÉ'],
-    ['Essais actifs',data.kpis.activeTrials,'yellow','VÉRIFIÉ'],
-    ['Abonnements actifs',data.kpis.activePaid,'peach','VÉRIFIÉ'],
-    ['Publications publiées',data.kpis.socialPublished,'lav','VÉRIFIÉ'],
-    ['Contenus à valider',data.kpis.socialToReview,'yellow','VÉRIFIÉ'],
+    ['Comptes',data.kpis.accounts,'mint',businessProof],
+    ['Essais actifs',data.kpis.activeTrials,'yellow',businessProof],
+    ['Abonnements actifs',data.kpis.activePaid,'peach',businessProof],
+    ['Publications publiées',data.kpis.socialPublished,'lav',businessProof],
+    ['Contenus à valider',data.kpis.socialToReview,'yellow',businessProof],
   ];
   document.getElementById('kpis').innerHTML=metrics.map(([label,value,color,state])=>`<article class="card metric ${color}"><div class="label">${esc(label)}</div><strong>${num(value)}</strong><small>${proof(state)}</small></article>`).join('');
   document.getElementById('funnel').innerHTML=data.funnel.map(stage=>`<div class="stage"><div class="num">${num(stage.value)}</div><div class="name">${esc(stage.label)}</div>${proof(stage.proof)}</div>`).join('');

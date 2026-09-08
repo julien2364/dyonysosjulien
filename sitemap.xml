@@ -354,4 +354,7 @@
   <url><loc>https://dyonysos.fr/blog/odoo/dougs-bridge</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://dyonysos.fr/blog/odoo/dyo-mcp-server</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://dyonysos.fr/blog/odoo/dyo-packlink-connector</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://dyonysos.fr/odoo-connecteurs-ecommerce</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dyonysos.fr/odoo-mcp-ia</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dyonysos.fr/odoo-mrp-essentiel</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
 </urlset>

@@ -269,28 +269,32 @@ async function getPayload() {
     },
     releasePlan: {
       status: 'HOLD',
-      updatedAt: '2026-09-09T00:30:00+02:00',
+      updatedAt: '2026-09-09T00:55:00+02:00',
       designSystems: [
-        { family: 'Apps métiers', direction: 'Vendeur, vivant, produit', master: 'Boulangerie–Pâtisserie', status: 'À valider', locale: 'FR site / EN Store', proof: 'Capture Odoo réelle requise' },
-        { family: 'ERP / MRP', direction: 'Industriel, sobre, chiffré', master: 'MRP Essentiel', status: 'À valider', locale: 'FR site / EN Store', proof: 'Capture Cockpit réelle disponible' },
+        { family: 'Apps métiers', direction: 'Vendeur, vivant, produit', master: 'Boulangerie–Pâtisserie', status: 'Validé par Julien', locale: 'FR site / EN Store', proof: 'Capture Odoo réelle obligatoire' },
+        { family: 'ERP / MRP', direction: 'Industriel, sobre, chiffré', master: 'MRP Essentiel', status: 'Validé par Julien', locale: 'FR site / EN Store', proof: 'Capture Cockpit réelle disponible' },
       ],
       gates: [
         { label: 'Prix des packs MRP cohérents', state: 'correction-locale', detail: 'Cockpit corrigé à 600 € dans le tableau Essentiel ; CI à relancer.' },
         { label: 'Capacité Club protégée', state: 'correction-locale', detail: 'Création directe confirmée/présente bloquée ; test ajouté, CI à relancer.' },
-        { label: 'Masters visuels approuvés', state: 'hold', detail: 'Ancien design refusé ; deux nouvelles chartes en préparation dans Canva.' },
+        { label: 'Masters visuels approuvés', state: 'done', detail: 'GO Julien le 09/09/2026 : commercial produit pour les apps métiers ; industriel sobre pour ERP/MRP.' },
         { label: 'Fiches Odoo Apps en anglais', state: 'todo', detail: 'Déclinaison EN et captures réelles à finaliser avant analyse Store.' },
         { label: 'Fusion / analyse / publication', state: 'todo', detail: '0 / 0 / 0 — aucune action Store avant GO du contre-audit.' },
       ],
       canva: {
-        status: 'Brouillon',
+        status: 'Masters validés',
         url: 'https://www.canva.com/design/DAHUpbyPvDY/o4J-wXkP5pUW3JghXIx03w/edit',
-        note: 'Fichier Canva créé. Masters à construire après validation des deux directions visuelles.',
+        note: 'Exports et manifeste réutilisables conservés ; classement final dans Canva à relire après reconnexion du connecteur.',
       },
     },
+    youtubePlaylists: [
+      { locale: 'FR', name: 'Odoo Apps Dyonysos — Français', url: 'https://www.youtube.com/playlist?list=PLAJRwo0mIPBw', status: 'Publique' },
+      { locale: 'EN', name: 'Dyonysos Odoo Apps — English', url: 'https://www.youtube.com/playlist?list=PLNZJM-Sun_Bw', status: 'Publique' },
+    ],
     videoPlan: [
-      { product: 'Amazon + Packlink', priority: 1, demoReady: false, screenshots: false, script: false, video: false, youtube: false, listingLinked: false },
+      { product: 'Amazon + Packlink', priority: 1, demoReady: false, screenshots: true, script: true, video: true, youtube: false, listingLinked: false },
       { product: 'MCP Server for Odoo', priority: 2, demoReady: false, screenshots: false, script: false, video: false, youtube: false, listingLinked: false },
-      { product: 'MRP Essentiel', priority: 3, demoReady: false, screenshots: false, script: false, video: false, youtube: false, listingLinked: false },
+      { product: 'MRP Essentiel', priority: 3, demoReady: false, screenshots: true, script: true, video: true, youtube: false, listingLinked: false },
     ],
   };
 }

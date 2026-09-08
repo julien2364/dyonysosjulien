@@ -4,7 +4,18 @@ const REQUEST_TIMEOUT_MS = 8000;
 
 const COMPETITORS = [
   {
+    name: 'Tactical Arbitrage',
+    role: 'Concurrent direct',
+    trial: '14 jours (7 jours + 7 après connexion vendeur)',
+    price: 'Seller 365 dès $69/mois ($65/mois annuel)',
+    signal: 'Sourcing intégré : plus de 1 400 détaillants, recherches simultanées et planifiées.',
+    source: 'https://www.threecolts.com/seller-365',
+    proof: 'VÉRIFIÉ',
+    checkedAt: '2026-09-09',
+  },
+  {
     name: 'SourceMogul',
+    role: 'Concurrent direct',
     trial: '7 jours, sans carte, accès complet',
     price: '£79.99/mois',
     signal: 'Essai très proche, mais sans quota public annoncé.',
@@ -14,15 +25,17 @@ const COMPETITORS = [
   },
   {
     name: 'SellerAmp',
+    role: 'Outil d’analyse comparable — pas concurrent direct',
     trial: '14 jours',
     price: 'à partir de $19.95/mois',
-    signal: '1 000 analyses/mois sur le premier abonnement.',
+    signal: 'Analyse produit, profit, ROI et historique ; repère fonctionnel pour Analyzer+.',
     source: 'https://selleramp.com/pricing/',
     proof: 'VÉRIFIÉ',
     checkedAt: '2026-09-08',
   },
   {
     name: 'Actorio',
+    role: 'Concurrent direct',
     trial: '14 jours, carte requise, accès complet',
     price: '€79 à €597/mois',
     signal: 'Prix nettement plus élevé et engagement plus fort.',
@@ -277,6 +290,11 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
         rejected: integer(socialStatus.rejete),
         ignored: integer(socialStatus.ignore),
         byChannel: social.by_channel || {},
+        postizDrafts: 16,
+        postizVisuals: 5,
+        postizStart: '2026-09-10T08:30:00.000Z',
+        postizEnd: '2026-11-03T09:30:00.000Z',
+        postizProof: 'VÉRIFIÉ',
       },
       email: {
         state: 'verified_snapshot',
@@ -341,7 +359,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
           role: 'Planification et publication sociale',
           reachable: Boolean(serviceResults.postiz?.reachable),
           httpStatus: serviceResults.postiz?.status || null,
-          observed: 'API authentifiée, file et workers Temporal réparés ; le post témoin a atteint Facebook puis a échoué sur un jeton invalidé.',
+          observed: 'API authentifiée et workers Temporal réparés. 16 brouillons avec visuel couvrent le 10 septembre au 3 novembre ; le post témoin a atteint Facebook puis a échoué sur un jeton invalidé.',
           proof: 'VÉRIFIÉ',
           checkedAt: serviceResults.postiz?.checkedAt || '2026-09-08T22:23:30.000Z',
           cutoverEligible: false,
@@ -368,7 +386,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
       { id: 'AP-03', action: 'Confirmer le régime TVA et l’immatriculation attendue dans Stripe', status: 'a_verifier', priority: 'P0', owner: 'Finance / Conseil', horizon: 'J+1', success: 'avis daté + configuration cohérente' },
       { id: 'AP-04', action: 'Faire parcourir l’essai à 10 vendeurs Amazon ciblés', status: 'pret', priority: 'P1', owner: 'Commercial', horizon: 'J+7', success: '≥ 5 activations et objections consignées' },
       { id: 'AP-05', action: 'Valider réception, clic et statistiques du premier lot Odoo VPS contrôlé', status: 'en_cours', priority: 'P1', owner: 'CRM', horizon: 'J+1', success: 'réception, clic et statistiques confirmés sans doublon' },
-      { id: 'AP-06', action: 'Reconnecter Facebook dans Postiz puis rejouer le post témoin en erreur', status: 'a_verifier', priority: 'P0', owner: 'Automation / Social', horizon: 'J+1', success: '1 contenu témoin publié une seule fois avec URL publique' },
+      { id: 'AP-06', action: 'Reconnecter Facebook dans Postiz, publier un témoin puis planifier les 16 brouillons', status: 'a_verifier', priority: 'P0', owner: 'Automation / Social', horizon: 'J+1', success: '1 témoin publié une seule fois, puis calendrier activé sans doublon' },
     ],
     truthLog: [
       { proof: 'VÉRIFIÉ', statement: 'Limites d’essai stockées en base : 7 jours, 30 recherches, 50 analyses.', at: live.captured_at || null },
@@ -380,6 +398,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
       { proof: 'DÉCLARÉ', statement: 'Acquisition massive et bascule vers Odoo VPS, Postiz et Automation autorisées par la direction.', at: '2026-09-08T22:00:00.000Z' },
       { proof: 'VÉRIFIÉ', statement: 'Odoo VPS : expéditeur ArbitragePro corrigé et envoi d’essai accepté par le SMTP dédié.', at: '2026-09-08T22:15:30.000Z' },
       { proof: 'VÉRIFIÉ', statement: 'Postiz : workers Temporal réparés ; publication Facebook refusée car la session doit être reconnectée. Aucune URL publique créée.', at: '2026-09-08T22:23:30.000Z' },
+      { proof: 'VÉRIFIÉ', statement: 'Postiz : 16 brouillons, 16 dates uniques et 5 visuels historiques chargés pour le 10 septembre au 3 novembre ; aucune programmation active avant reconnexion Facebook.', at: '2026-09-08T22:42:00.000Z' },
       { proof: 'PROJECTION', statement: 'Les objectifs J+1 à J+30 restent conditionnels faute d’historique de conversion payante.', at: now.toISOString() },
     ],
   };

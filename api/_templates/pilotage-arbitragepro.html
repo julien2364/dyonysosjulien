@@ -40,7 +40,7 @@
       <div id="error" class="error-banner"></div>
       <section id="synthese" class="verdict">
         <div><span class="eyebrow">Décision de pilotage</span><h2 id="verdictTitle">Chargement du verdict…</h2><p id="verdictReason"></p></div>
-        <div class="decision"><div class="flag hold"><b id="acquisitionState">—</b><span>Acquisition payante ou massive</span></div><div class="flag go"><b id="executionState">—</b><span>Produit, organique et CRM</span></div></div>
+        <div class="decision"><div id="acquisitionFlag" class="flag go"><b id="acquisitionState">—</b><span>Acquisition payante ou massive</span></div><div class="flag go"><b id="executionState">—</b><span>Produit, organique et CRM</span></div></div>
       </section>
 
       <section class="section"><div class="section-head"><div><h3>Signaux à cette minute</h3><p>Sources métier agrégées, sans donnée personnelle.</p></div><span id="capturedAt" class="proof observed">—</span></div><div id="kpis" class="grid kpis"></div></section>
@@ -49,11 +49,11 @@
 
       <section id="garde-fous" class="section"><div class="section-head"><div><h3>Portes de mise en marché</h3><p>Une déclaration n’est pas une preuve technique.</p></div></div><div id="gates" class="grid gates"></div></section>
 
-      <section class="section"><div class="grid two"><article class="card"><div class="section-head"><div><h3>Scorecard / 100</h3><p>Évaluation prudente issue des mégaprompts.</p></div><span class="proof projected">Estimé</span></div><div id="scorecard" class="score-list"></div></article><article class="card mint"><span class="eyebrow">Goulot principal</span><h3 id="bottleneck" style="margin:8px 0 7px"></h3><p id="confidence" class="empty"></p><div class="warning" style="margin-top:16px">Le but des 15 prochains jours est d’obtenir un signal commercial mesurable, pas de maximiser le trafic.</div></article></div></section>
+      <section class="section"><div class="grid two"><article class="card"><div class="section-head"><div><h3>Scorecard / 100</h3><p>Évaluation prudente issue des mégaprompts.</p></div><span class="proof projected">Estimé</span></div><div id="scorecard" class="score-list"></div></article><article class="card mint"><span class="eyebrow">Goulot principal</span><h3 id="bottleneck" style="margin:8px 0 7px"></h3><p id="confidence" class="empty"></p><div class="warning" style="margin-top:16px">Le GO est acquis. Les 15 prochains jours doivent convertir le trafic en essais activés et en première vente mesurable.</div></article></div></section>
 
-      <section id="canaux" class="section"><div class="section-head"><div><h3>Canaux autorisés</h3><p>Social et CRM continuent ; le payant reste à zéro budget.</p></div></div><div id="channels" class="grid channel-grid"></div></section>
+      <section id="canaux" class="section"><div class="section-head"><div><h3>Canaux autorisés</h3><p>Social, CRM et acquisition massive sont en GO ; aucune dépense n’est inventée sans enveloppe définie.</p></div></div><div id="channels" class="grid channel-grid"></div></section>
 
-      <section id="moteurs" class="section"><div class="section-head"><div><h3>Moteurs internes & bascule</h3><p>Automation Dyonysos, Odoo VPS et Postiz sont privilégiés uniquement après preuve complète.</p></div><span id="cutoverState" class="proof confirm">Bascule verrouillée</span></div><div id="engines" class="grid engine-grid"></div><div class="cutover"><article class="card"><span class="eyebrow">Contrôle avant bascule</span><div id="cutoverChecklist" class="cutover-list"></div></article><aside id="cutoverBanner" class="cutover-banner"><strong>Bascule verrouillée</strong><span>Aucun moteur existant n’est désactivé tant que les cinq preuves ne sont pas vertes.</span></aside></div></section>
+      <section id="moteurs" class="section"><div class="section-head"><div><h3>Moteurs internes & bascule</h3><p>Le GO est enregistré ; Odoo avance, Automation tourne et Postiz attend la reconnexion Facebook.</p></div><span id="cutoverState" class="proof declared">GO décidé · validation</span></div><div id="engines" class="grid engine-grid"></div><div class="cutover"><article class="card"><span class="eyebrow">Contrôle avant coupure de Make</span><div id="cutoverChecklist" class="cutover-list"></div></article><aside id="cutoverBanner" class="cutover-banner"><strong>GO enregistré</strong><span>La transition est engagée, avec Make maintenu comme repli jusqu’à la preuve réseau Postiz.</span></aside></div></section>
 
       <section id="marche" class="section"><div class="section-head"><div><h3>Repères concurrents</h3><p>Offres officielles vérifiées le 8 septembre 2026.</p></div></div><div id="competitors" class="grid competitors"></div></section>
 
@@ -76,6 +76,7 @@ function render(data){
   document.getElementById('verdictTitle').textContent=data.verdict.decision;
   document.getElementById('verdictReason').textContent=data.verdict.reason;
   document.getElementById('acquisitionState').textContent=data.verdict.acquisition;
+  document.getElementById('acquisitionFlag').className=`flag ${data.channels.paid.state==='go_authorized'?'go':'hold'}`;
   document.getElementById('executionState').textContent=data.verdict.execution;
   document.getElementById('bottleneck').textContent=data.verdict.bottleneck;
   document.getElementById('confidence').textContent=`Confiance : ${data.verdict.confidence}`;
@@ -102,20 +103,20 @@ function render(data){
   const social=data.channels.social;
   channels.push(`<article class="card channel mint"><h4>Réseaux sociaux</h4><div class="big">${num(social.published)}</div><p>publications marquées publiées · ${num(social.toReview)} à valider</p>${Object.entries(social.byChannel).map(([name,row])=>`<div class="mini-row"><span>${esc(name)}</span><b>${num(row.published)} publiées</b></div>`).join('')}</article>`);
   const email=data.channels.email;
-  channels.push(`<article class="card channel sky"><h4>Email Odoo</h4><div class="big">${num(email.participants)}</div><p>participants sur la campagne SaaS actuelle · ${num(email.ongoing)} en cours</p><div class="mini-row"><span>SaaS · Email 1 envoyé</span><b>${num(email.e1Sent)}</b></div><div class="mini-row"><span>SaaS · Email 2 ouvert</span><b>${esc(email.e2OpenedPct)} %</b></div><div class="mini-row"><span>VPS · brouillons</span><b>${num(email.vps?.drafts)}</b></div><div class="mini-row"><span>VPS · envois prouvés</span><b>${num(email.vps?.sent)}</b></div><p>${esc(email.anomaly)} · La bascule VPS reste verrouillée.</p></article>`);
+  channels.push(`<article class="card channel sky"><h4>Email Odoo</h4><div class="big">${num(email.participants)}</div><p>participants sur la campagne SaaS actuelle · ${num(email.ongoing)} en cours</p><div class="mini-row"><span>SaaS · Email 1 envoyé</span><b>${num(email.e1Sent)}</b></div><div class="mini-row"><span>SaaS · Email 2 ouvert</span><b>${esc(email.e2OpenedPct)} %</b></div><div class="mini-row"><span>VPS · brouillons</span><b>${num(email.vps?.drafts)}</b></div><div class="mini-row"><span>VPS · test SMTP</span><b>${email.vps?.testAccepted?'Accepté':'À confirmer'}</b></div><p>${esc(email.vps?.reason||email.anomaly)}</p></article>`);
   const paid=data.channels.paid;
-  channels.push(`<article class="card channel peach"><h4>Acquisition payante</h4><div class="big">${num(paid.budgetAuthorized)} €</div><p>Budget autorisé · ${esc(paid.reason)}</p><span class="status a_verifier">Hold</span></article>`);
+  channels.push(`<article class="card channel peach"><h4>Acquisition payante</h4><div class="big">GO</div><p>${esc(paid.reason)}</p><div class="mini-row"><span>Budget</span><b>${paid.budgetAuthorized==null?'À définir':`${num(paid.budgetAuthorized)} €`}</b></div><span class="status pret">Autorisé</span></article>`);
   document.getElementById('channels').innerHTML=channels.join('');
 
   const engines=data.internalEngines||{services:[],checklist:[],allOperational:false};
   document.getElementById('engines').innerHTML=engines.services.map(item=>`<article class="card engine"><span class="engine-state">${proof(item.proof)}</span><h4>${esc(item.name)}</h4><p><b>${esc(item.role)}</b></p><p>${esc(item.observed)}</p><div class="mini-row"><span>Connexion</span><b>${item.reachable?'OK':'À vérifier'}</b></div><div class="mini-row"><span>Bascule</span><b>${item.cutoverEligible?'Autorisée':'Verrouillée'}</b></div><p><b>Blocage :</b> ${esc(item.blocker)}</p></article>`).join('');
   document.getElementById('cutoverChecklist').innerHTML=engines.checklist.map(item=>`<div class="cutover-item"><span class="cutover-icon ${item.done?'ok':''}">${item.done?'✓':'!'}</span><span><b>${esc(item.label)}</b></span></div>`).join('');
   const cutoverState=document.getElementById('cutoverState');
-  cutoverState.textContent=engines.allOperational?'Bascule autorisée':'Bascule verrouillée';
-  cutoverState.className=`proof ${engines.allOperational?'verified':'confirm'}`;
+  cutoverState.textContent=engines.allOperational?'Bascule complète':'GO décidé · validation en cours';
+  cutoverState.className=`proof ${engines.allOperational?'verified':'declared'}`;
   const cutoverBanner=document.getElementById('cutoverBanner');
   cutoverBanner.className=`cutover-banner ${engines.allOperational?'go':''}`;
-  cutoverBanner.innerHTML=engines.allOperational?'<strong>Bascule autorisée</strong><span>Les cinq preuves sont vertes. La transition peut être exécutée avec le plan de retour arrière.</span>':'<strong>Bascule verrouillée</strong><span>Aucun moteur existant n’est désactivé tant que les cinq preuves ne sont pas vertes.</span>';
+  cutoverBanner.innerHTML=engines.allOperational?'<strong>Bascule complète</strong><span>Les cinq preuves sont vertes et le repli est disponible.</span>':'<strong>GO enregistré</strong><span>Odoo VPS est testé. Make reste le repli actif jusqu’à la reconnexion Facebook et la preuve de publication Postiz.</span>';
 
   document.getElementById('competitors').innerHTML=data.competitors.map(item=>`<article class="card competitor"><div style="display:flex;justify-content:space-between;gap:8px"><h4>${esc(item.name)}</h4>${proof(item.proof)}</div><p><b>Essai :</b> ${esc(item.trial)}</p><p><b>Prix :</b> ${esc(item.price)}</p><p>${esc(item.signal)}</p><a href="${esc(item.source)}" target="_blank" rel="noopener noreferrer">Source officielle →</a></article>`).join('');
   document.getElementById('projectionWarning').textContent=data.projections.warning;

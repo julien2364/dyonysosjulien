@@ -36,6 +36,9 @@ test('construit un cockpit probant à partir des agrégats live', () => {
   assert.equal(dashboard.trial.analyses, 50);
   assert.equal(dashboard.gates.find((gate) => gate.id === 'funnel').status, 'go');
   assert.equal(dashboard.gates.find((gate) => gate.id === 'tax').proof, 'À CONFIRMER');
+  assert.match(dashboard.verdict.acquisition, /^GO/);
+  assert.equal(dashboard.channels.paid.state, 'go_authorized');
+  assert.equal(dashboard.channels.paid.budgetAuthorized, null);
   assert.match(dashboard.projections.warning, /pas des garanties de vente/);
 });
 
@@ -60,7 +63,7 @@ test('la réponse agrégée ne contient pas de donnée personnelle', () => {
   assert.doesNotMatch(serialized, /user_id/i);
 });
 
-test('verrouille la bascule interne tant que le bout en bout n’est pas prouvé', () => {
+test('enregistre le GO sans déclarer la bascule complète avant la preuve réseau', () => {
   const dashboard = buildDashboard(snapshot, { ok: false, state: 'not_configured', value: null }, new Date(), {
     automation: { reachable: true, status: 200, checkedAt: '2026-09-08T21:00:00.000Z' },
     odoo: { reachable: true, status: 200, checkedAt: '2026-09-08T21:00:00.000Z' },
@@ -68,8 +71,12 @@ test('verrouille la bascule interne tant que le bout en bout n’est pas prouvé
   });
 
   assert.equal(dashboard.internalEngines.allOperational, false);
+  assert.equal(dashboard.internalEngines.decision, 'GO');
   assert.equal(dashboard.internalEngines.checklist[0].done, true);
-  assert.equal(dashboard.internalEngines.checklist.slice(1).every((item) => item.done === false), true);
-  assert.equal(dashboard.channels.email.vps.cutoverEligible, false);
-  assert.equal(dashboard.internalEngines.services.every((item) => item.cutoverEligible === false), true);
+  assert.equal(dashboard.internalEngines.checklist[3].done, true);
+  assert.equal(dashboard.internalEngines.checklist[1].done, false);
+  assert.equal(dashboard.channels.email.vps.cutoverEligible, true);
+  assert.equal(dashboard.channels.email.vps.testAccepted, true);
+  assert.equal(dashboard.internalEngines.services.find((item) => item.id === 'odoo').cutoverEligible, true);
+  assert.equal(dashboard.internalEngines.services.find((item) => item.id === 'postiz').cutoverEligible, false);
 });

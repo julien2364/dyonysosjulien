@@ -6,7 +6,7 @@ const potential = require('./_data/dyonysos_catalog_potential.json');
 const SHEET = 'ODOO_PILOTAGE';
 const HISTORY_SHEET = 'ODOO_PILOTAGE_HISTORY';
 const SNAPSHOT_SHEET = 'ODOO_PUBLIC_SNAPSHOTS';
-const MODEL_VERSION = '2026-09-08.3';
+const MODEL_VERSION = '2026-09-09.1';
 const INITIAL_ACTUALS_OBSERVED_AT = '2026-09-08T20:00:00+02:00';
 const HEADER = ['key', 'label', 'value', 'updated_at', 'source', 'kind'];
 const DEFAULTS = [
@@ -265,7 +265,27 @@ async function getPayload() {
       merged: 0,
       scanned: 0,
       published: 0,
-      note: 'Les 5 nouvelles offres et les 3 wrappers de packs sont en branches de revue, pas encore sur Odoo Apps.',
+      note: 'Les 5 nouvelles offres et les 3 wrappers de packs sont en branches de revue. Les CI étaient vertes avant le dernier contre-audit ; aucune fusion ni analyse Odoo Apps n’a encore été lancée.',
+    },
+    releasePlan: {
+      status: 'HOLD',
+      updatedAt: '2026-09-09T00:30:00+02:00',
+      designSystems: [
+        { family: 'Apps métiers', direction: 'Vendeur, vivant, produit', master: 'Boulangerie–Pâtisserie', status: 'À valider', locale: 'FR site / EN Store', proof: 'Capture Odoo réelle requise' },
+        { family: 'ERP / MRP', direction: 'Industriel, sobre, chiffré', master: 'MRP Essentiel', status: 'À valider', locale: 'FR site / EN Store', proof: 'Capture Cockpit réelle disponible' },
+      ],
+      gates: [
+        { label: 'Prix des packs MRP cohérents', state: 'correction-locale', detail: 'Cockpit corrigé à 600 € dans le tableau Essentiel ; CI à relancer.' },
+        { label: 'Capacité Club protégée', state: 'correction-locale', detail: 'Création directe confirmée/présente bloquée ; test ajouté, CI à relancer.' },
+        { label: 'Masters visuels approuvés', state: 'hold', detail: 'Ancien design refusé ; deux nouvelles chartes en préparation dans Canva.' },
+        { label: 'Fiches Odoo Apps en anglais', state: 'todo', detail: 'Déclinaison EN et captures réelles à finaliser avant analyse Store.' },
+        { label: 'Fusion / analyse / publication', state: 'todo', detail: '0 / 0 / 0 — aucune action Store avant GO du contre-audit.' },
+      ],
+      canva: {
+        status: 'Brouillon',
+        url: 'https://www.canva.com/design/DAHUpbyPvDY/o4J-wXkP5pUW3JghXIx03w/edit',
+        note: 'Fichier Canva créé. Masters à construire après validation des deux directions visuelles.',
+      },
     },
     videoPlan: [
       { product: 'Amazon + Packlink', priority: 1, demoReady: false, screenshots: false, script: false, video: false, youtube: false, listingLinked: false },

@@ -281,6 +281,22 @@
     {
       "source": "/pilotage-arbitragepro",
       "destination": "/api/pilotage-arbitragepro-page"
+    },
+    {
+      "source": "/pilotage-portefeuille",
+      "destination": "/api/pilotage-portefeuille-page"
+    },
+    {
+      "source": "/pilotage-agoeon",
+      "destination": "/api/pilotage-project-page?slug=agoeon"
+    },
+    {
+      "source": "/pilotage-linktrib",
+      "destination": "/api/pilotage-project-page?slug=linktrib"
+    },
+    {
+      "source": "/pilotage-etsy",
+      "destination": "/api/pilotage-project-page?slug=etsy"
     }
   ],
   "headers": [

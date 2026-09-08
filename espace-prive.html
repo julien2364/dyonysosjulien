@@ -34,6 +34,7 @@
 @media(max-width:720px){.groups{grid-template-columns:1fr}.hero h1{font-size:36px}table.data{font-size:12.5px}details.proj .body dl{grid-template-columns:1fr}}</style><link rel="stylesheet" href="/common.css"><link rel="stylesheet" href="/theme.css"></head><body><header><nav class="wrap"><a href="/"><img src="/logo-dyonysos-wordmark.png" alt="Dyonysos"></a><a href="/">Retour au site public</a></nav></header><section class="hero"><div class="wrap"><h1>Espace privé Dyonysos</h1><p>Accès réservé à l’administration et aux projets internes.</p></div></section><main><form id="loginForm" class="login"><h2>Connexion</h2><div class="field"><label for="email">Identifiant</label><input id="email" name="email" type="email" required autocomplete="username"></div><div class="field"><label for="password">Mot de passe</label><input id="password" name="password" type="password" required autocomplete="current-password"></div><button type="submit">Se connecter</button><p id="loginStatus" role="status"></p></form><section id="dashboard" class="wrap dashboard hidden"><div class="dashhead"><div><h2>Pilotage Dyonysos</h2><p>Les liens et données sensibles ne sont pas affichés sur la vitrine publique.</p></div><button id="logout">Déconnexion</button></div>
 <div class="tabs" role="tablist">
 <button class="tab active" data-tab="liens">Modules &amp; liens</button>
+<button class="tab" data-tab="pilotages">Pilotages</button>
 <button class="tab" data-tab="api">API &amp; accès</button>
 <button class="tab" data-tab="social">Réseaux — Pilotage</button>
 <button class="tab" data-tab="projets">Projets</button>
@@ -45,6 +46,7 @@
 <button class="tab" data-tab="checklist">Check-list</button>
 </div>
 <div id="panel-liens" class="panel active"><div id="groups" class="groups"></div></div>
+<div id="panel-pilotages" class="panel"><div id="pilotages-content" class="muted">Chargement…</div></div>
 <div id="panel-api" class="panel"><div id="api-content" class="muted">Chargement…</div></div>
 <div id="panel-social" class="panel"><div id="social-content" class="muted">Chargement…</div></div>
 <div id="panel-projets" class="panel"><div id="projets-content" class="muted">Chargement…</div></div>
@@ -882,7 +884,16 @@ async function loadCvDesignPro(){
   }catch(e){el.innerHTML='<div class="note">'+esc(e.message||'Erreur de chargement.')+'</div>'}
 }
 
-const loaders={api:loadApiAcces,social:loadSocial,projets:loadProjets,finance:loadFinance,kpi:loadKpi,cvdesignpro:loadCvDesignPro,crm:loadCrm,strategie:loadStrategie,checklist:loadChecklist};
+async function loadPilotages(){
+  const el=document.getElementById('pilotages-content');
+  try{
+    const r=await fetch('/api/portfolio-pilotage',{credentials:'same-origin'});const d=await r.json();if(!r.ok)throw new Error(d.error||'Erreur API');
+    const priority=['agoeon','linktrib','odoo-apps','etsy','arbitragepro','propecto','cvdesignpro'];
+    const items=priority.map(slug=>d.projects.find(p=>p.slug===slug)).filter(Boolean);
+    el.innerHTML='<div class="note"><strong>Lecture seule.</strong> Site et sitemap sont contrôlés à chaque chargement. Vercel Analytics est affiché seulement lorsque le projet l’autorise ; GA4 et Etsy restent explicitement non configurés.</div><div class="groups">'+items.map(p=>{const visits=p.analytics&&p.analytics.live?p.analytics.periodes['7j'].visiteurs:'n.a.';const path=p.dedicatedPath||('/pilotage-'+p.slug);return '<section class="group"><h2>'+esc(p.name)+'</h2><p><span class="status-pill '+(p.health&&p.health.ok?'good':'crit')+'">'+(p.health&&p.health.ok?'production joignable':'à contrôler')+'</span></p><p><strong>'+esc(visits)+'</strong> visiteurs 7 j <span class="muted">(Vercel)</span><br><strong>'+(p.sitemap&&p.sitemap.ok?esc(p.sitemap.entries):'n.a.')+'</strong> URLs sitemap</p><p class="muted">'+esc(p.commercialGate)+'</p><a href="'+esc(path)+'">Ouvrir le pilotage →</a></section>'}).join('')+'</div><p class="muted">Dernier contrôle : '+new Date(d.generatedAt).toLocaleString('fr-FR')+'</p>';
+  }catch(e){el.innerHTML='<div class="note">Pilotages indisponibles : '+esc(e.message)+'</div>'}
+}
+const loaders={pilotages:loadPilotages,api:loadApiAcces,social:loadSocial,projets:loadProjets,finance:loadFinance,kpi:loadKpi,cvdesignpro:loadCvDesignPro,crm:loadCrm,strategie:loadStrategie,checklist:loadChecklist};
 document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{
   document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));

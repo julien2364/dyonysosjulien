@@ -113,4 +113,42 @@ async function getPortfolioTraffic(fallbackTraffic) {
   }
 }
 
-module.exports = { getPortfolioTraffic, isAnalyticsConfigured };
+async function getSelectedProjectTraffic(definitions) {
+  const until = new Date();
+  if (!isAnalyticsConfigured()) {
+    return {
+      capturedAt: until.toISOString(),
+      configured: false,
+      sourceState: 'not_configured',
+      rows: definitions.map((definition) => ({
+        name: definition.name,
+        vercelProjectId: definition.vercelProjectId,
+        live: false,
+        error: 'Jeton Vercel Analytics non configuré.',
+      })),
+    };
+  }
+  const rows = await Promise.all(definitions.map(async (definition) => {
+    try {
+      return await readProject(definition, until);
+    } catch (error) {
+      return {
+        name: definition.name,
+        vercelProjectId: definition.vercelProjectId,
+        live: false,
+        error: error.message || String(error),
+      };
+    }
+  }));
+  const liveCount = rows.filter((row) => row.live).length;
+  return {
+    capturedAt: until.toISOString(),
+    configured: true,
+    sourceState: liveCount === rows.length ? 'live' : (liveCount ? 'partial' : 'unavailable'),
+    liveCount,
+    total: rows.length,
+    rows,
+  };
+}
+
+module.exports = { getPortfolioTraffic, getSelectedProjectTraffic, isAnalyticsConfigured };

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Cockpit ArbitragePro+ — Dyonysos</title>
+  <style>
+    :root{--ink:#17324d;--muted:#6f7f8d;--line:#dce7ec;--paper:#fffdfa;--sky:#eaf5ff;--mint:#e8f7ef;--peach:#fff0e4;--lav:#f1edff;--yellow:#fff8d9;--blue:#3977c5;--green:#21845b;--orange:#c66b2c;--red:#bd4740;--nav:#133451;--shadow:0 14px 38px rgba(30,67,91,.09)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f5f8f7;color:var(--ink);font:15px/1.48 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.shell{min-height:100vh;display:grid;grid-template-columns:238px 1fr}.side{position:sticky;top:0;height:100vh;background:var(--nav);color:#fff;padding:24px 18px;display:flex;flex-direction:column}.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-size:18px;font-weight:850}.brand img{width:36px;height:36px;object-fit:contain;background:#fff;border-radius:10px;padding:4px}.side small{display:block;color:#a9c4d8;margin:20px 10px 8px;text-transform:uppercase;letter-spacing:.12em;font-size:10px;font-weight:800}.side nav a{display:flex;align-items:center;gap:9px;color:#cfe0ec;text-decoration:none;padding:9px 10px;border-radius:9px;margin:2px 0;font-size:13px;font-weight:700}.side nav a:hover,.side nav a.active{background:#ffffff16;color:#fff}.side nav i{width:8px;height:8px;border-radius:99px;background:#86b9db}.side-foot{margin-top:auto;border-top:1px solid #ffffff20;padding-top:15px}.side-foot a{color:#cfe0ec;text-decoration:none;font-weight:750;font-size:12px}.main{min-width:0}.top{height:72px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 30px;position:sticky;top:0;z-index:8}.top h1{font-size:19px;margin:0}.top p{margin:2px 0 0;color:var(--muted);font-size:12px}.tools{display:flex;align-items:center;gap:10px}.source{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:12px}.dot{width:8px;height:8px;border-radius:50%;background:#b4bdc3;box-shadow:0 0 0 4px #edf0f2}.dot.live{background:#23a36d;box-shadow:0 0 0 4px #e0f5eb}.btn{border:0;border-radius:10px;padding:9px 13px;font:inherit;font-weight:800;cursor:pointer;background:var(--nav);color:#fff}.btn:disabled{opacity:.55;cursor:wait}.content{padding:25px 30px 56px;max-width:1480px;margin:auto}.verdict{display:grid;grid-template-columns:1.4fr .8fr;gap:18px;background:linear-gradient(120deg,#fff9ee,#f0f7ff);border:1px solid #e8dcc5;border-radius:20px;padding:24px 26px;box-shadow:var(--shadow)}.eyebrow{text-transform:uppercase;letter-spacing:.11em;font-size:10px;font-weight:900;color:var(--orange)}.verdict h2{margin:6px 0 8px;font-size:29px;line-height:1.15}.verdict p{margin:0;color:#526878;max-width:780px}.decision{display:grid;align-content:center;gap:8px}.decision .flag{background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 13px}.decision b{display:block;font-size:12px}.decision span{color:var(--muted);font-size:11px}.flag.hold{border-left:5px solid var(--red)}.flag.go{border-left:5px solid var(--green)}.section{scroll-margin-top:92px;margin-top:28px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin:0 0 13px}.section h3{margin:0;font-size:20px}.section-head p{margin:2px 0 0;color:var(--muted);font-size:12px}.proof{display:inline-flex;align-items:center;border-radius:20px;padding:3px 8px;font-size:9px;line-height:1.4;font-weight:900;letter-spacing:.06em;text-transform:uppercase;background:#eef1f3;color:#596874;white-space:nowrap}.proof.verified{background:#ddf3e7;color:#1c704d}.proof.observed{background:#e4f0ff;color:#2c63a4}.proof.declared{background:#fff0d9;color:#925a18}.proof.projected{background:#ece6ff;color:#644b9c}.proof.confirm{background:#fee7e5;color:#963b36}.grid{display:grid;gap:14px}.kpis{grid-template-columns:repeat(6,minmax(0,1fr))}.card{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:17px;box-shadow:0 8px 24px rgba(38,67,80,.05)}.card.sky{background:var(--sky)}.card.mint{background:var(--mint)}.card.peach{background:var(--peach)}.card.lav{background:var(--lav)}.card.yellow{background:var(--yellow)}.metric .label{color:var(--muted);font-size:11px;font-weight:750}.metric strong{display:block;font-size:27px;line-height:1.15;margin:8px 0 5px}.metric small{font-size:10px;color:var(--muted)}.funnel{display:grid;grid-template-columns:repeat(5,1fr);gap:0;overflow:hidden;border-radius:16px;border:1px solid var(--line);background:#fff}.stage{min-width:0;padding:18px;position:relative;border-right:1px dashed #cbd9df}.stage:last-child{border:0}.stage:not(:last-child):after{content:'›';position:absolute;right:-7px;top:50%;transform:translateY(-50%);width:14px;height:28px;background:#fff;color:#85a1b2;font-size:22px;line-height:25px;z-index:2}.stage .num{font-size:29px;font-weight:880;letter-spacing:-.04em}.stage .name{min-height:35px;color:var(--muted);font-size:11px;font-weight:700}.gates{grid-template-columns:repeat(4,1fr)}.gate{position:relative;padding-top:42px}.gate:before{position:absolute;left:17px;top:15px;border-radius:20px;padding:4px 9px;font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.gate.go:before{content:'Go';background:#dcf4e7;color:#1e704e}.gate.declared:before{content:'Déclaré';background:#fff0d7;color:#925a18}.gate.review:before{content:'À confirmer';background:#fde5e3;color:#963a36}.gate h4{margin:4px 0 6px}.gate p{margin:0;color:var(--muted);font-size:12px}.gate time{display:block;margin-top:9px;color:#8b969e;font-size:10px}.two{grid-template-columns:1.05fr .95fr}.score-list{display:grid;grid-template-columns:1fr 1fr;gap:9px 20px}.score-row{display:grid;grid-template-columns:130px 1fr 28px;align-items:center;gap:8px;font-size:11px}.bar{height:8px;border-radius:10px;background:#e8edef;overflow:hidden}.bar i{display:block;height:100%;border-radius:10px;background:linear-gradient(90deg,#63b6cf,#536fd5)}.channel-grid{grid-template-columns:repeat(3,1fr)}.channel h4{margin:0 0 8px}.channel .big{font-size:30px;font-weight:880}.channel p{color:var(--muted);font-size:12px}.mini-row{display:flex;justify-content:space-between;border-top:1px dashed var(--line);padding:7px 0;font-size:11px}.competitors{grid-template-columns:repeat(3,1fr)}.competitor h4{margin:0 0 7px;font-size:17px}.competitor p{margin:5px 0;color:var(--muted);font-size:12px}.competitor a{color:var(--blue);text-decoration:none;font-weight:800;font-size:11px}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:15px;background:#fff}table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}th{background:#eef5f7;color:#4f6573;text-transform:uppercase;letter-spacing:.06em;font-size:9px;position:sticky;top:0}tr:last-child td{border-bottom:0}.status{display:inline-block;padding:4px 8px;border-radius:20px;background:#eef1f3;font-size:9px;font-weight:900;text-transform:uppercase}.status.pret,.status.en_cours{background:#dcf4e7;color:#1c704d}.status.a_verifier{background:#fdebd7;color:#925a18}.truth{display:grid;gap:8px}.truth-row{display:grid;grid-template-columns:105px 1fr 160px;gap:12px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:11px;padding:11px 13px}.truth-row p{margin:0;font-size:12px}.truth-row time{color:var(--muted);font-size:10px;text-align:right}.empty{color:var(--muted)}.warning{background:#fff4dd;border:1px solid #eed4a6;border-radius:12px;padding:11px 13px;color:#765523;font-weight:750;font-size:12px;margin-bottom:10px}.error-banner{display:none;background:#fee8e7;border:1px solid #efb7b3;color:#8d332e;border-radius:12px;padding:11px 14px;margin-bottom:14px}.loading .content{opacity:.58}.mobile-title{display:none}
+    .engine-grid{grid-template-columns:repeat(3,1fr)}.engine{position:relative;padding-top:48px}.engine .engine-state{position:absolute;left:17px;top:15px}.engine h4{margin:0 0 6px;font-size:16px}.engine p{margin:6px 0;color:var(--muted);font-size:12px}.cutover{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;margin-top:14px}.cutover-list{display:grid;gap:8px;margin-top:12px}.cutover-item{display:grid;grid-template-columns:22px 1fr;gap:9px;align-items:start;border-top:1px dashed var(--line);padding-top:8px;font-size:12px}.cutover-icon{width:19px;height:19px;border-radius:50%;display:grid;place-items:center;background:#fee7e5;color:#963b36;font-weight:900;font-size:10px}.cutover-icon.ok{background:#ddf3e7;color:#1c704d}.cutover-banner{display:grid;place-items:center;text-align:center;background:linear-gradient(145deg,#173a58,#24547a);color:#fff;border-radius:15px;padding:24px}.cutover-banner strong{font-size:26px}.cutover-banner span{color:#bed4e4;font-size:12px;max-width:320px}.cutover-banner.go{background:linear-gradient(145deg,#176b4b,#2d946d)}
+    @media(max-width:1180px){.kpis{grid-template-columns:repeat(3,1fr)}.gates{grid-template-columns:repeat(2,1fr)}.funnel{grid-template-columns:repeat(5,minmax(160px,1fr));overflow-x:auto}.competitors{grid-template-columns:1fr}.channel-grid{grid-template-columns:1fr 1fr}.engine-grid{grid-template-columns:1fr 1fr}.verdict{grid-template-columns:1fr}}
+    @media(max-width:820px){.shell{display:block}.side{display:none}.top{padding:0 16px;height:64px}.top h1{font-size:16px}.top p,.source span{display:none}.mobile-title{display:block}.content{padding:17px 14px 42px}.verdict{padding:19px;border-radius:16px}.verdict h2{font-size:23px}.kpis{grid-template-columns:repeat(2,1fr)}.gates,.channel-grid,.engine-grid,.cutover,.two{grid-template-columns:1fr}.score-list{grid-template-columns:1fr}.truth-row{grid-template-columns:92px 1fr}.truth-row time{grid-column:2;text-align:left}.section{margin-top:22px}}
+  </style>
+</head>
+<body>
+<div class="shell">
+  <aside class="side">
+    <a class="brand" href="/espace-prive"><img src="/logo-dyonysos-canva.png" alt=""><span>Dyonysos</span></a>
+    <small>Cockpit ArbitragePro+</small>
+    <nav>
+      <a href="#synthese" class="active"><i></i>Synthèse</a>
+      <a href="#tunnel"><i></i>Tunnel</a>
+      <a href="#garde-fous"><i></i>Garde-fous</a>
+      <a href="#canaux"><i></i>Canaux</a>
+      <a href="#moteurs"><i></i>Moteurs internes</a>
+      <a href="#marche"><i></i>Marché</a>
+      <a href="#projections"><i></i>Projections</a>
+      <a href="#backlog"><i></i>Backlog</a>
+      <a href="#verite"><i></i>Journal de vérité</a>
+    </nav>
+    <div class="side-foot"><a href="/espace-prive">← Pilotage Dyonysos</a></div>
+  </aside>
+  <main class="main">
+    <header class="top">
+      <div><h1>Cockpit acquisition & ventes</h1><p>ArbitragePro+ · Mégaprompts 0 à 6</p></div>
+      <div class="tools"><div class="source"><i id="liveDot" class="dot"></i><span id="sourceLabel">Connexion…</span></div><button id="refresh" class="btn">Actualiser</button></div>
+    </header>
+    <div class="content">
+      <div id="error" class="error-banner"></div>
+      <section id="synthese" class="verdict">
+        <div><span class="eyebrow">Décision de pilotage</span><h2 id="verdictTitle">Chargement du verdict…</h2><p id="verdictReason"></p></div>
+        <div class="decision"><div class="flag hold"><b id="acquisitionState">—</b><span>Acquisition payante ou massive</span></div><div class="flag go"><b id="executionState">—</b><span>Produit, organique et CRM</span></div></div>
+      </section>
+
+      <section class="section"><div class="section-head"><div><h3>Signaux à cette minute</h3><p>Sources métier agrégées, sans donnée personnelle.</p></div><span id="capturedAt" class="proof observed">—</span></div><div id="kpis" class="grid kpis"></div></section>
+
+      <section id="tunnel" class="section"><div class="section-head"><div><h3>Tunnel réel</h3><p>Le maillon sans mesure est affiché comme tel.</p></div></div><div id="funnel" class="funnel"></div></section>
+
+      <section id="garde-fous" class="section"><div class="section-head"><div><h3>Portes de mise en marché</h3><p>Une déclaration n’est pas une preuve technique.</p></div></div><div id="gates" class="grid gates"></div></section>
+
+      <section class="section"><div class="grid two"><article class="card"><div class="section-head"><div><h3>Scorecard / 100</h3><p>Évaluation prudente issue des mégaprompts.</p></div><span class="proof projected">Estimé</span></div><div id="scorecard" class="score-list"></div></article><article class="card mint"><span class="eyebrow">Goulot principal</span><h3 id="bottleneck" style="margin:8px 0 7px"></h3><p id="confidence" class="empty"></p><div class="warning" style="margin-top:16px">Le but des 15 prochains jours est d’obtenir un signal commercial mesurable, pas de maximiser le trafic.</div></article></div></section>
+
+      <section id="canaux" class="section"><div class="section-head"><div><h3>Canaux autorisés</h3><p>Social et CRM continuent ; le payant reste à zéro budget.</p></div></div><div id="channels" class="grid channel-grid"></div></section>
+
+      <section id="moteurs" class="section"><div class="section-head"><div><h3>Moteurs internes & bascule</h3><p>Automation Dyonysos, Odoo VPS et Postiz sont privilégiés uniquement après preuve complète.</p></div><span id="cutoverState" class="proof confirm">Bascule verrouillée</span></div><div id="engines" class="grid engine-grid"></div><div class="cutover"><article class="card"><span class="eyebrow">Contrôle avant bascule</span><div id="cutoverChecklist" class="cutover-list"></div></article><aside id="cutoverBanner" class="cutover-banner"><strong>Bascule verrouillée</strong><span>Aucun moteur existant n’est désactivé tant que les cinq preuves ne sont pas vertes.</span></aside></div></section>
+
+      <section id="marche" class="section"><div class="section-head"><div><h3>Repères concurrents</h3><p>Offres officielles vérifiées le 8 septembre 2026.</p></div></div><div id="competitors" class="grid competitors"></div></section>
+
+      <section id="projections" class="section"><div class="section-head"><div><h3>J+1 · J+7 · J+15 · J+30</h3><p>Faible confiance tant que la conversion payante reste à zéro.</p></div></div><div id="projectionWarning" class="warning"></div><div class="table-wrap"><table><thead><tr><th>Horizon</th><th>Prudent</th><th>Central</th><th>Haut plausible</th><th>Signal d’apprentissage</th><th>Preuve</th></tr></thead><tbody id="projectionsBody"></tbody></table></div></section>
+
+      <section id="backlog" class="section"><div class="section-head"><div><h3>Backlog exécutable</h3><p>Six actions maximum, classées par signal et risque.</p></div></div><div class="table-wrap"><table><thead><tr><th>ID</th><th>Action</th><th>État</th><th>Priorité</th><th>Responsable</th><th>Horizon</th><th>Seuil de succès</th></tr></thead><tbody id="backlogBody"></tbody></table></div></section>
+
+      <section id="verite" class="section"><div class="section-head"><div><h3>Journal de vérité</h3><p>Exécuté, observé, déclaré et projeté restent séparés.</p></div></div><div id="truth" class="truth"></div></section>
+    </div>
+  </main>
+</div>
+<script>
+const esc=value=>String(value==null?'':value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+const num=value=>value==null?'Non mesuré':new Intl.NumberFormat('fr-FR').format(Number(value)||0);
+const when=value=>value?new Intl.DateTimeFormat('fr-FR',{dateStyle:'short',timeStyle:'short',timeZone:'Europe/Brussels'}).format(new Date(value)):'—';
+const proofClass=value=>({'VÉRIFIÉ':'verified','OBSERVÉ':'observed','DÉCLARÉ':'declared','PROJECTION':'projected','À CONFIRMER':'confirm','BLOQUÉ':'confirm'}[value]||'');
+const proof=value=>`<span class="proof ${proofClass(value)}">${esc(value)}</span>`;
+
+function render(data){
+  document.getElementById('verdictTitle').textContent=data.verdict.decision;
+  document.getElementById('verdictReason').textContent=data.verdict.reason;
+  document.getElementById('acquisitionState').textContent=data.verdict.acquisition;
+  document.getElementById('executionState').textContent=data.verdict.execution;
+  document.getElementById('bottleneck').textContent=data.verdict.bottleneck;
+  document.getElementById('confidence').textContent=`Confiance : ${data.verdict.confidence}`;
+  document.getElementById('capturedAt').textContent=`Actualisé ${when(data.capturedAt)}`;
+  const live=data.sources.supabase.state==='live';
+  document.getElementById('liveDot').className=`dot ${live?'live':''}`;
+  document.getElementById('sourceLabel').textContent=live?'Données métier live':'Source métier dégradée';
+
+  const metrics=[
+    ['Visiteurs · 30 j',data.kpis.visitors30d,'sky',data.sources.vercel.state==='live'?'VÉRIFIÉ':'À CONFIRMER'],
+    ['Comptes',data.kpis.accounts,'mint','VÉRIFIÉ'],
+    ['Essais actifs',data.kpis.activeTrials,'yellow','VÉRIFIÉ'],
+    ['Abonnements actifs',data.kpis.activePaid,'peach','VÉRIFIÉ'],
+    ['Publications publiées',data.kpis.socialPublished,'lav','VÉRIFIÉ'],
+    ['Contenus à valider',data.kpis.socialToReview,'yellow','VÉRIFIÉ'],
+  ];
+  document.getElementById('kpis').innerHTML=metrics.map(([label,value,color,state])=>`<article class="card metric ${color}"><div class="label">${esc(label)}</div><strong>${num(value)}</strong><small>${proof(state)}</small></article>`).join('');
+  document.getElementById('funnel').innerHTML=data.funnel.map(stage=>`<div class="stage"><div class="num">${num(stage.value)}</div><div class="name">${esc(stage.label)}</div>${proof(stage.proof)}</div>`).join('');
+  document.getElementById('gates').innerHTML=data.gates.map(gate=>`<article class="card gate ${esc(gate.status)}"><h4>${esc(gate.title)}</h4><p>${esc(gate.detail)}</p><time>${proof(gate.proof)} · ${when(gate.observedAt)}</time></article>`).join('');
+  document.getElementById('scorecard').innerHTML=data.scorecard.map(row=>`<div class="score-row"><span>${esc(row.name)}</span><div class="bar"><i style="width:${Math.max(0,Math.min(100,row.score))}%"></i></div><b>${esc(row.score)}</b></div>`).join('');
+
+  const channels=[];
+  const social=data.channels.social;
+  channels.push(`<article class="card channel mint"><h4>Réseaux sociaux</h4><div class="big">${num(social.published)}</div><p>publications marquées publiées · ${num(social.toReview)} à valider</p>${Object.entries(social.byChannel).map(([name,row])=>`<div class="mini-row"><span>${esc(name)}</span><b>${num(row.published)} publiées</b></div>`).join('')}</article>`);
+  const email=data.channels.email;
+  channels.push(`<article class="card channel sky"><h4>Email Odoo</h4><div class="big">${num(email.participants)}</div><p>participants sur la campagne SaaS actuelle · ${num(email.ongoing)} en cours</p><div class="mini-row"><span>SaaS · Email 1 envoyé</span><b>${num(email.e1Sent)}</b></div><div class="mini-row"><span>SaaS · Email 2 ouvert</span><b>${esc(email.e2OpenedPct)} %</b></div><div class="mini-row"><span>VPS · brouillons</span><b>${num(email.vps?.drafts)}</b></div><div class="mini-row"><span>VPS · envois prouvés</span><b>${num(email.vps?.sent)}</b></div><p>${esc(email.anomaly)} · La bascule VPS reste verrouillée.</p></article>`);
+  const paid=data.channels.paid;
+  channels.push(`<article class="card channel peach"><h4>Acquisition payante</h4><div class="big">${num(paid.budgetAuthorized)} €</div><p>Budget autorisé · ${esc(paid.reason)}</p><span class="status a_verifier">Hold</span></article>`);
+  document.getElementById('channels').innerHTML=channels.join('');
+
+  const engines=data.internalEngines||{services:[],checklist:[],allOperational:false};
+  document.getElementById('engines').innerHTML=engines.services.map(item=>`<article class="card engine"><span class="engine-state">${proof(item.proof)}</span><h4>${esc(item.name)}</h4><p><b>${esc(item.role)}</b></p><p>${esc(item.observed)}</p><div class="mini-row"><span>Connexion</span><b>${item.reachable?'OK':'À vérifier'}</b></div><div class="mini-row"><span>Bascule</span><b>${item.cutoverEligible?'Autorisée':'Verrouillée'}</b></div><p><b>Blocage :</b> ${esc(item.blocker)}</p></article>`).join('');
+  document.getElementById('cutoverChecklist').innerHTML=engines.checklist.map(item=>`<div class="cutover-item"><span class="cutover-icon ${item.done?'ok':''}">${item.done?'✓':'!'}</span><span><b>${esc(item.label)}</b></span></div>`).join('');
+  const cutoverState=document.getElementById('cutoverState');
+  cutoverState.textContent=engines.allOperational?'Bascule autorisée':'Bascule verrouillée';
+  cutoverState.className=`proof ${engines.allOperational?'verified':'confirm'}`;
+  const cutoverBanner=document.getElementById('cutoverBanner');
+  cutoverBanner.className=`cutover-banner ${engines.allOperational?'go':''}`;
+  cutoverBanner.innerHTML=engines.allOperational?'<strong>Bascule autorisée</strong><span>Les cinq preuves sont vertes. La transition peut être exécutée avec le plan de retour arrière.</span>':'<strong>Bascule verrouillée</strong><span>Aucun moteur existant n’est désactivé tant que les cinq preuves ne sont pas vertes.</span>';
+
+  document.getElementById('competitors').innerHTML=data.competitors.map(item=>`<article class="card competitor"><div style="display:flex;justify-content:space-between;gap:8px"><h4>${esc(item.name)}</h4>${proof(item.proof)}</div><p><b>Essai :</b> ${esc(item.trial)}</p><p><b>Prix :</b> ${esc(item.price)}</p><p>${esc(item.signal)}</p><a href="${esc(item.source)}" target="_blank" rel="noopener noreferrer">Source officielle →</a></article>`).join('');
+  document.getElementById('projectionWarning').textContent=data.projections.warning;
+  document.getElementById('projectionsBody').innerHTML=data.projections.rows.map(row=>`<tr><td><b>${esc(row.horizon)}</b></td><td>${esc(row.prudent)}</td><td>${esc(row.central)}</td><td>${esc(row.high)}</td><td>${esc(row.learningTarget)}</td><td>${proof(row.proof)}</td></tr>`).join('');
+  document.getElementById('backlogBody').innerHTML=data.backlog.map(row=>`<tr><td><b>${esc(row.id)}</b></td><td>${esc(row.action)}</td><td><span class="status ${esc(row.status)}">${esc(row.status.replaceAll('_',' '))}</span></td><td>${esc(row.priority)}</td><td>${esc(row.owner)}</td><td>${esc(row.horizon)}</td><td>${esc(row.success)}</td></tr>`).join('');
+  document.getElementById('truth').innerHTML=data.truthLog.map(row=>`<div class="truth-row">${proof(row.proof)}<p>${esc(row.statement)}</p><time>${when(row.at)}</time></div>`).join('');
+}
+
+async function load(){
+  document.body.classList.add('loading');document.getElementById('refresh').disabled=true;document.getElementById('error').style.display='none';
+  try{const response=await fetch('/api/arbitrage-pilotage',{cache:'no-store',credentials:'same-origin'});if(response.status===401){location.href='/espace-prive?next=/pilotage-arbitragepro';return}const data=await response.json();if(!response.ok)throw new Error(data.error||`Erreur ${response.status}`);render(data)}catch(error){const banner=document.getElementById('error');banner.textContent=error.message||String(error);banner.style.display='block';document.getElementById('sourceLabel').textContent='Actualisation impossible'}finally{document.body.classList.remove('loading');document.getElementById('refresh').disabled=false}
+}
+document.getElementById('refresh').addEventListener('click',load);
+document.querySelectorAll('.side nav a').forEach(link=>link.addEventListener('click',()=>{document.querySelectorAll('.side nav a').forEach(a=>a.classList.remove('active'));link.classList.add('active')}));
+load();setInterval(load,60000);
+</script>
+</body>
+</html>

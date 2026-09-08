@@ -277,6 +277,10 @@
     {
       "source": "/pilotage-odoo",
       "destination": "/api/pilotage-odoo-page"
+    },
+    {
+      "source": "/pilotage-arbitragepro",
+      "destination": "/api/pilotage-arbitragepro-page"
     }
   ],
   "headers": [

@@ -15,6 +15,7 @@ module.exports = function handler(req, res) {
   return res.status(200).json({
     groups: [
       { title: 'Pilotage', links: [
+        { name: 'Cockpit ArbitragePro+ (tunnel, ventes, canaux, preuves)', url: '/pilotage-arbitragepro', status: 'Dynamique — données métier actualisées à la demande' },
         { name: 'Pilotage Social (calendrier, publications, erreurs)', url: '/pilotage-social' },
         { name: 'Pilotage Odoo Apps (ventes, projections, vidéos)', url: '/pilotage-odoo' }
       ]},

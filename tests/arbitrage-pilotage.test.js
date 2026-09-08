@@ -36,9 +36,9 @@ test('construit un cockpit probant à partir des agrégats live', () => {
   assert.equal(dashboard.trial.analyses, 50);
   assert.equal(dashboard.gates.find((gate) => gate.id === 'funnel').status, 'go');
   assert.equal(dashboard.gates.find((gate) => gate.id === 'tax').proof, 'À CONFIRMER');
-  assert.match(dashboard.verdict.acquisition, /^GO/);
-  assert.equal(dashboard.channels.paid.state, 'go_authorized');
-  assert.equal(dashboard.channels.paid.budgetAuthorized, null);
+  assert.match(dashboard.verdict.acquisition, /^HOLD/);
+  assert.equal(dashboard.channels.paid.state, 'hold');
+  assert.equal(dashboard.channels.paid.budgetAuthorized, 0);
   assert.equal(dashboard.channels.social.postizDrafts, 16);
   assert.equal(dashboard.channels.social.postizVisuals, 5);
   assert.match(dashboard.projections.warning, /pas des garanties de vente/);

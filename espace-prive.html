@@ -171,6 +171,18 @@ async function loadSocial(){
     const d=await r.json();
     socialData=d;
     let html='<p class="muted">Pilotage : ce que fait réellement l\'automatisation (planification, exécution). Pour renseigner ou modifier les identifiants réseaux par projet, c\'est dans l\'onglet <strong>API &amp; accès</strong>.</p>';
+    if(d.moteurAutomation){
+      const ma=d.moteurAutomation;
+      const etat=ma.healthy?'<span class="status-pill good">en ligne</span>':'<span class="status-pill crit">contrôle en échec</span>';
+      const acces=ma.authConfigured?'<span class="status-pill good">API serveur configurée</span>':'<span class="status-pill warn">inventaire des flux non connecté</span>';
+      html+='<div class="cat-block"><h3>Moteur principal — Activepieces sur le VPS</h3>'+
+        '<div class="kpi-cards"><div class="kpi-card"><b>'+etat+'</b><span>Santé du moteur</span></div><div class="kpi-card"><b>'+acces+'</b><span>Pilotage détaillé</span></div></div>'+
+        '<p><a href="'+esc(ma.url)+'" target="_blank" rel="noopener noreferrer">Ouvrir automation.dyonysos.fr →</a></p>'+
+        '<p class="muted">Contrôle direct : '+esc(ma.healthStatus)+' · '+esc(ma.checkedAt)+'</p><div class="note">'+esc(ma.note)+'</div>'+
+        (ma.recentRunCheck?'<div class="note"><strong>Exécutions contrôlées : '+esc(ma.recentRunCheck.result)+'.</strong> '+esc(ma.recentRunCheck.examples.join(' · '))+'. '+esc(ma.recentRunCheck.note)+'</div>':'')+
+        ((ma.services&&ma.services.length)?'<table class="data"><tr><th>Service interne</th><th>Serveur</th><th>Bascule</th><th>Preuve</th></tr>'+ma.services.map(s=>'<tr><td><a href="'+esc(s.url)+'" target="_blank" rel="noopener noreferrer">'+esc(s.name)+'</a></td><td>'+(s.reachable?'<span class="status-pill good">joignable · '+esc(s.status)+'</span>':'<span class="status-pill crit">indisponible</span>')+'</td><td>'+(s.operational?'<span class="status-pill good">autorisée</span>':'<span class="status-pill warn">non autorisée</span>')+'</td><td class="muted">'+esc(s.verification||'Aucun test fonctionnel complet enregistré.')+'</td></tr>').join('')+'</table>':'')+
+        '<p class="muted" style="font-size:12px">Règle de bascule : aucun remplacement de Make ou d’un canal existant avant succès source → exécution → livraison → journal, plus retour arrière vérifié.</p></div>';
+    }
     if(!d.sheetsConfigure){html+='<div class="note">Google Sheets (Content Engine) non configuré — l\'agenda de publication ne peut pas encore être lu.</div>'}
     html+='<div class="cat-block"><h3>Agenda de publication</h3>'+
       '<div style="display:flex;gap:8px;align-items:center;margin-bottom:10px"><label for="social-filtre-projet" class="muted" style="font-size:13px">Filtrer par projet :</label>'+
@@ -178,7 +190,7 @@ async function loadSocial(){
       '<div id="social-calendrier-box"></div></div>';
     if(d.moteurMake){
       const mm=d.moteurMake;
-      html+='<div class="cat-block"><h3>Moteur Make'+(mm.live?' — connecté en direct':' — vérifié le '+esc(mm.verifieLe))+'</h3>';
+      html+='<div class="cat-block"><h3>Moteur complémentaire — Make'+(mm.live?' · connecté en direct':' · vérifié le '+esc(mm.verifieLe))+'</h3>';
       if(mm.error){html+='<div class="note">Erreur : '+esc(mm.error)+'</div>'}
       else if(mm.live){html+=renderMoteurMakeLive(mm)}
       else{
@@ -317,7 +329,8 @@ async function loadFinance(){
     html+=`<div class="kpi-cards"><div class="kpi-card"><b>${d.totalRetenu.toFixed(2)} €</b><span>Total retenu (dépenses confirmées)</span></div></div>`;
     html+='<div class="cat-block"><h3>Dépenses (source : notifications Qonto)</h3><table class="data"><tr><th>Date</th><th>Fournisseur</th><th>Montant</th><th>Note</th></tr>'+
       d.depenses.map(dep=>`<tr><td>${esc(dep.date)}</td><td>${esc(dep.fournisseur)}</td><td class="num">${dep.annulee?'<s>':''}${dep.montant.toFixed(2)} ${esc(dep.devise)}${dep.annulee?'</s>':''}</td><td class="muted">${esc(dep.note||'')}</td></tr>`).join('')+'</table></div>';
-    if(d.stripe){html+=`<div class="cat-block"><h3>Revenus — Stripe</h3><p class="muted">${esc(d.stripe.note)}</p></div>`}
+    if(d.stripe){const st=d.stripe;html+='<div class="cat-block"><h3>Revenus — Stripe · '+esc(st.account||'compte')+'</h3>'+
+      '<div class="kpi-cards"><div class="kpi-card"><b>'+Number(st.paymentIntents||0)+'</b><span>Paiements vérifiés</span></div><div class="kpi-card"><b>'+Number(st.subscriptions||0)+'</b><span>Abonnements actifs vérifiés</span></div><div class="kpi-card"><b>'+(st.dashboardRefresh?'<span class="status-pill good">direct</span>':'<span class="status-pill warn">instantané vérifié</span>')+'</b><span>Mise à jour du tableau</span></div></div><p class="muted">Vérifié le '+esc(st.verifiedAt||'—')+'. '+esc(st.note)+'</p></div>'}
     html+='<div class="cat-block"><h3>À relier / à dépouiller</h3><table class="data"><tr><th>Sujet</th><th>Détail</th></tr>'+
       d.aRelier.map(a=>`<tr><td>${esc(a.sujet)}</td><td>${esc(a.detail)}</td></tr>`).join('')+'</table></div>';
     if(d.tcd){html+='<div class="cat-block"><h3>TCD achats/frais — mutualisé vs par projet</h3><div class="note">'+esc(d.tcd.note)+'</div><table class="data"><tr><th>Fournisseur</th><th>Mutualisé</th></tr>'+
@@ -359,8 +372,9 @@ async function loadKpi(){
     html+='<div class="cat-block"><h3>Répartition par catégorie</h3><table class="data"><tr><th>Catégorie</th><th>Projets</th></tr>'+
       Object.entries(p.parCategorie).map(([k,v])=>`<tr><td>${esc(k)}</td><td class="num">${v}</td></tr>`).join('')+'</table></div>';
     const t=d.trafic;
-    html+=`<div class="cat-block"><h3>Trafic (Vercel Web Analytics — instantané du ${esc(t.capturedAt)})</h3><table class="data"><tr><th>Projet</th><th>1j</th><th>7j</th><th>30j</th></tr>`+
-      t.parProjet.map(pr=>{const per=pr.periodes;const cell=x=>x?`${x.visiteurs} vis. / ${x.pageviews} vues`:'<span class="muted">—</span>';return `<tr><td>${esc(pr.name)}</td><td>${cell(per['1j'])}</td><td>${cell(per['7j'])}</td><td>${cell(per['30j'])}</td></tr>`}).join('')+'</table></div>';
+    const traficLabel=t.live?'mis à jour en direct':'dernier instantané de secours';
+    html+=`<div class="cat-block"><h3>Trafic — Vercel Web Analytics (${traficLabel}, ${esc(t.capturedAt)})</h3><table class="data"><tr><th>Projet</th><th>Source</th><th>1j</th><th>7j</th><th>30j</th></tr>`+
+      t.parProjet.map(pr=>{const per=pr.periodes;const cell=x=>x?`${x.visiteurs} vis. / ${x.pageviews} vues`:'<span class="muted">—</span>';const source=pr.live?'<span class="status-pill good">live</span>':'<span class="status-pill warn">secours</span>';return `<tr><td>${esc(pr.name)}</td><td>${source}</td><td>${cell(per['1j'])}</td><td>${cell(per['7j'])}</td><td>${cell(per['30j'])}</td></tr>`}).join('')+'</table></div>';
     const principal=t.parProjet[0];
     if(principal&&principal.pays30j){html+='<div class="cat-block"><h3>dyonysos.fr — visites par pays (30j)</h3><table class="data"><tr><th>Pays</th><th>Visiteurs</th><th>Pages vues</th></tr>'+principal.pays30j.map(c=>`<tr><td>${esc(c.pays)}</td><td class="num">${c.visiteurs}</td><td class="num">${c.pageviews}</td></tr>`).join('')+'</table></div>'}
     html+=`<div class="note">${esc(t.commentPasserEnLive)}</div>`;
@@ -580,27 +594,57 @@ async function loadCrm(){
   try{
     const r=await fetch('/api/crm',{credentials:'same-origin'});
     const d=await r.json();
-    let html='';
-    html+=`<p class="muted">Ci-dessous : ce que contient Odoo aujourd'hui (source : base connectée à pet-stone.shop) — instantané du ${esc(d.capturedAt)}. Affiché à titre de preuve du diagnostic, pas comme le vrai CRM.</p>`;
-    html+=`<div class="note">${esc(d.constat)}</div>`;
+    if(!r.ok)throw new Error(d.error||('HTTP '+r.status));
+    let html='<div class="cat-block"><h3>Suivi opérationnel — Taiga en direct</h3>';
+    if(d.taigaLive&&d.taigaLive.configured&&!d.taigaLive.error){
+      html+='<div class="kpi-cards"><div class="kpi-card"><b>'+d.taigaLive.totalProjets+'</b><span>Projets suivis</span></div></div>';
+      html+=d.taigaAvancement?renderAvancementBlock(d.taigaAvancement,d.taigaLive.totalProjets):'';
+      html+='<table class="data"><tr><th>Projet</th><th>Backlog</th><th>Kanban</th><th>Lien</th></tr>'+d.taigaLive.projets.map(p=>`<tr><td>${esc(p.nom)}</td><td>${p.isBacklogActivated?'oui':'non'}</td><td>${p.isKanbanActivated?'oui':'non'}</td><td><a href="${esc(p.url)}" target="_blank" rel="noopener">Ouvrir →</a></td></tr>`).join('')+'</table>';
+    }else html+='<div class="note">Taiga indisponible : '+esc(d.taigaLive?.error||'connexion non configurée')+'</div>';
+    html+='</div>';
+
+    const pl=d.pipeline||{ready:false,opportunities:[],stages:[],projects:[]};
+    html+='<div class="cat-block"><h3>Pipeline commercial Dyonysos</h3><p class="muted" style="font-size:13px">Source séparée de l’ancien Odoo · aucune suppression automatique · actualisé '+esc(pl.capturedAt||'—')+'</p>';
+    if(!pl.ready){
+      html+='<div class="note">La source commerciale dédiée n’est pas encore initialisée.</div><button onclick="crmBootstrap()">Initialiser le pipeline commercial</button><span id="crm-action-msg" class="muted"></span>';
+    }else{
+      const stageLabels={nouveau:'Nouveaux',qualifie:'Qualifiés',demo:'Démonstrations',proposition:'Propositions',gagne:'Gagnés',perdu:'Perdus'};
+      html+='<div class="kpi-cards">'+pl.stages.map(s=>`<div class="kpi-card"><b>${pl.opportunities.filter(o=>o.stage===s).length}</b><span>${stageLabels[s]||esc(s)}</span></div>`).join('')+'</div>';
+      if(pl.opportunities.length){html+='<table class="data"><tr><th>Société</th><th>Projet</th><th>Étape</th><th>Montant</th><th>Prochaine action</th><th>Échéance</th></tr>'+pl.opportunities.map(o=>`<tr><td>${esc(o.company)}</td><td>${esc(o.projectId||'—')}</td><td>${esc(stageLabels[o.stage]||o.stage)}</td><td class="num">${Number(o.amountEur||0).toLocaleString('fr-FR')} €</td><td>${esc(o.nextAction||'—')}</td><td>${esc(o.dueAt||'—')}</td></tr>`).join('')+'</table>'}else html+='<div class="note">Pipeline prêt — aucune opportunité commerciale enregistrée.</div>';
+      html+='<div class="suivi-wrap" style="margin-top:12px"><h4>Ajouter une opportunité</h4><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px">'+
+        '<input id="crm-company" placeholder="Société *">'+
+        '<select id="crm-project"><option value="">Projet</option>'+pl.projects.map(p=>`<option value="${esc(p)}">${esc(p)}</option>`).join('')+'</select>'+
+        '<select id="crm-stage">'+pl.stages.map(s=>`<option value="${esc(s)}">${esc(stageLabels[s]||s)}</option>`).join('')+'</select>'+
+        '<input id="crm-amount" type="number" min="0" step="0.01" placeholder="Montant €">'+
+        '<input id="crm-next" placeholder="Prochaine action">'+
+        '<input id="crm-due" type="date">'+
+        '</div><button style="margin-top:8px" onclick="crmAddOpportunity()">Ajouter</button> <span id="crm-action-msg" class="muted"></span></div>';
+    }
+    html+='</div>';
+
     const t=d.totaux;
-    html+='<div class="kpi-cards">'+
-      `<div class="kpi-card"><b>${t.leadsBruts}</b><span>Leads bruts (captures email)</span></div>`+
-      `<div class="kpi-card"><b>${t.opportunites}</b><span>Opportunités (type CRM)</span></div>`+
-      `<div class="kpi-card"><b>${t.perdues}</b><span>Marquées "Perdu"</span></div>`+
-      `<div class="kpi-card"><b>${t.partenaires.toLocaleString('fr-FR')}</b><span>Fiches partenaires (base entière)</span></div>`+
-      `<div class="kpi-card"><b>${t.partenairesDyonysos}</b><span>Contacts @dyonysos.be identifiés</span></div>`+
-      '</div>';
-    html+='<div class="cat-block"><h3>Étapes du pipeline Odoo</h3><table class="data"><tr><th>#</th><th>Étape</th></tr>'+
-      d.stages.map(s=>`<tr><td class="num">${s.id}</td><td>${esc(s.name)}</td></tr>`).join('')+'</table></div>';
-    html+='<div class="cat-block"><h3>Les 5 opportunités marquées "Perdu"</h3><table class="data"><tr><th>Titre</th><th>Contact</th></tr>'+
-      d.perdues.map(p=>`<tr><td>${esc(p.titre)}</td><td class="muted">${p.contact?esc(p.contact):'—'}</td></tr>`).join('')+'</table></div>';
-    html+='<div class="cat-block"><h3>Contacts @dyonysos.be identifiés dans Odoo</h3><table class="data"><tr><th>Adresse</th><th>Rôle</th></tr>'+
-      d.contactsDyonysos.map(c=>`<tr><td>${esc(c.nom)}</td><td class="muted">${esc(c.role)}</td></tr>`).join('')+'</table></div>';
-    html+=`<div class="cat-block"><h3>CRM par projet, piloté par email</h3><p class="muted">${esc(d.emailsScope.demande)}</p><p class="muted"><strong>État :</strong> ${esc(d.emailsScope.etat)}</p></div>`;
-    html+=`<div class="note">${esc(d.commentPasserEnLive)}</div>`;
+    html+='<details class="proj"><summary>Archive de diagnostic — ancien Odoo partagé ('+esc(d.capturedAt)+')</summary><div class="body">'+
+      `<div class="note">${esc(d.constat)}</div>`+
+      '<div class="kpi-cards">'+
+      `<div class="kpi-card"><b>${t.leadsBruts}</b><span>Captures email brutes</span></div>`+
+      `<div class="kpi-card"><b>${t.opportunites}</b><span>Anciennes opportunités</span></div>`+
+      `<div class="kpi-card"><b>${t.perdues}</b><span>Marquées perdues</span></div>`+
+      '</div><p class="muted">Ces valeurs sont conservées comme preuve historique et ne sont plus présentées comme le CRM Dyonysos.</p></div></details>';
     el.innerHTML=html;
   }catch(e){el.innerHTML='<div class="note">Erreur de chargement.</div>'}
+}
+
+async function crmBootstrap(){
+  const msg=document.getElementById('crm-action-msg');msg.textContent='Initialisation…';
+  try{const r=await fetch('/api/crm-actions',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'bootstrap'})});const d=await r.json();if(!r.ok)throw new Error(d.error||('HTTP '+r.status));loaded.crm=false;await loadCrm()}catch(e){msg.textContent='Erreur : '+e.message}
+}
+
+async function crmAddOpportunity(){
+  const msg=document.getElementById('crm-action-msg');
+  const opportunity={company:document.getElementById('crm-company').value.trim(),projectId:document.getElementById('crm-project').value,stage:document.getElementById('crm-stage').value,amountEur:Number(document.getElementById('crm-amount').value||0),nextAction:document.getElementById('crm-next').value.trim(),dueAt:document.getElementById('crm-due').value};
+  if(!opportunity.company){msg.textContent='Société requise.';return}
+  msg.textContent='Enregistrement…';
+  try{const r=await fetch('/api/crm-actions',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'upsert',opportunity})});const d=await r.json();if(!r.ok)throw new Error(d.error||('HTTP '+r.status));loaded.crm=false;await loadCrm()}catch(e){msg.textContent='Erreur : '+e.message}
 }
 
 async function taigaPilotCreateStory(){

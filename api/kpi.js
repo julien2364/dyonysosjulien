@@ -1,12 +1,11 @@
 // KPI — vue chiffrée d'ensemble, alimente l'onglet "KPI" de /espace-prive.
 // Portefeuille : calculé en direct depuis le registre (api/_lib/registry.js).
-// Trafic : snapshot RÉEL tiré de Vercel Web Analytics le 23/08/2026 (via le compte Vercel de Julien,
-// équipe Dyonysos) — pas un accès live depuis le site en production (il faudrait un VERCEL_API_TOKEN
-// en variable d'environnement + le code d'appel API Vercel ; voir note "commentPasserEnLive" ci-dessous).
-// Rien n'est extrapolé au-delà de ce que l'API Vercel a renvoyé.
+// Trafic : lecture live de Vercel Web Analytics ; le snapshot du 23/08/2026 ne sert plus que de
+// repli par projet si Analytics est indisponible ou non activé sur un produit.
 const { requireSession } = require('./_lib/session');
 const { PROJECTS } = require('./_lib/registry');
 const { TRAFIC_SNAPSHOT } = require('./_lib/kpi-data');
+const { getPortfolioTraffic } = require('./_lib/vercel-analytics');
 const { getTotaux } = require('./_lib/finance-data');
 const { OBJECTIFS_SOURCE, OBJECTIFS, OBJECTIFS_CUMUL_J189, objectifInterpoleAujourdhui, METRIQUES, SCENARIOS } = require('./_lib/kpi-objectifs-data');
 const { getAvancementPortefeuille } = require('./_lib/taiga-client');
@@ -21,6 +20,7 @@ module.exports = async function handler(req, res) {
   // direct (api/_lib/taiga-client.js), pas les champs taches[]/etat statiques du registre — ce même
   // bloc est repris tel quel dans Finance et Stratégie pour rester cohérent partout.
   const avancement = await getAvancementPortefeuille(PROJECTS.map((p) => p.name));
+  const trafic = await getPortfolioTraffic(TRAFIC_SNAPSHOT);
 
   const total = PROJECTS.length;
   const actifs = PROJECTS.filter(p => p.url).length;
@@ -35,10 +35,10 @@ module.exports = async function handler(req, res) {
   PROJECTS.forEach(p => { parCategorie[p.categorie] = (parCategorie[p.categorie] || 0) + 1; });
 
   return res.status(200).json({
-    updatedAt: '2026-08-23',
+    updatedAt: new Date().toISOString(),
     portefeuille: { total, actifs, avecGithub, avecDrive, avecLocal, aNettoyer, aIdentifier, parCategorie, urgents },
     avancement,
-    trafic: TRAFIC_SNAPSHOT,
+    trafic,
     indexation: {
       configured: false,
       note: 'Pas encore d’accès API Search Console — voici les alertes reçues par email, en attendant.',
@@ -71,14 +71,14 @@ module.exports = async function handler(req, res) {
       const objectifsParNom = {};
       OBJECTIFS.forEach((o) => { objectifsParNom[o.registreNom] = o; });
       const traficParNom = {};
-      TRAFIC_SNAPSHOT.parProjet.forEach((t) => { traficParNom[t.name] = t; });
+      trafic.parProjet.forEach((t) => { traficParNom[t.name] = t; });
 
       const projets = PROJECTS.map((p) => {
         // Le nom du projet dans TRAFIC_SNAPSHOT ne correspond pas toujours mot pour mot au registre
         // (ex. "Firmoscope / Prospeo" vs "Firmoscope / Prospeo (ex-Propecto)") — on rapproche donc
         // aussi par vercelProjectId quand les noms diffèrent, sans jamais inventer de correspondance.
         let traf = traficParNom[p.name];
-        if (!traf && p.vercelProjectId) traf = TRAFIC_SNAPSHOT.parProjet.find((t) => t.vercelProjectId === p.vercelProjectId);
+        if (!traf && p.vercelProjectId) traf = trafic.parProjet.find((t) => t.vercelProjectId === p.vercelProjectId);
         const obj = objectifsParNom[p.name];
         return {
           nom: p.name,
@@ -96,7 +96,7 @@ module.exports = async function handler(req, res) {
       // mesure d'adhésions/CA n'est branchée nulle part (pas de Stripe live), donc pas de "réel"
       // inventé pour ces deux métriques : le graphe côté client doit l'afficher comme non mesuré.
       const objectifsAvecAujourdhui = OBJECTIFS.map((o) => {
-        const traf = traficParNom[o.registreNom] || (o.vercelProjectId ? TRAFIC_SNAPSHOT.parProjet.find((t) => t.vercelProjectId === o.vercelProjectId) : null);
+        const traf = traficParNom[o.registreNom] || (o.vercelProjectId ? trafic.parProjet.find((t) => t.vercelProjectId === o.vercelProjectId) : null);
         return {
           ...o,
           aujourdhui: objectifInterpoleAujourdhui(o, aujourdhui),
@@ -116,9 +116,9 @@ module.exports = async function handler(req, res) {
         scenarios: SCENARIOS,
         projets,
         objectifsParProjet: objectifsAvecAujourdhui,
-        traficParProjet: TRAFIC_SNAPSHOT.parProjet,
+        traficParProjet: trafic.parProjet,
         cumulJ189: OBJECTIFS_CUMUL_J189,
-        note: `Seuls ${OBJECTIFS.length} projets sur ${PROJECTS.length} ont des objectifs chiffrés réels (e-mail du 21/08/2026) — les autres n'en ont aucun, ce n'est pas un oubli d'affichage. Le point "aujourd'hui" est recalculé à chaque chargement par interpolation entre les jalons de l'e-mail — le "réel" visites vient du même instantané Vercel Web Analytics que ci-dessus (23/08/2026, pas une série live) ; adhésions et CA n'ont aucune mesure réelle branchée (pas de connexion Stripe), donc aucun "réel" n'est affiché pour ces deux métriques.`,
+        note: `Seuls ${OBJECTIFS.length} projets sur ${PROJECTS.length} ont des objectifs chiffrés réels (e-mail du 21/08/2026) — les autres n'en ont aucun. Le point "aujourd'hui" est recalculé à chaque chargement ; les visites réelles viennent de Vercel Web Analytics (${trafic.sourceState}). Adhésions et CA restent non mesurés tant qu'une clé Stripe restreinte en lecture seule n'est pas branchée.`,
       };
     })(),
   });

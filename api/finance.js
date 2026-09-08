@@ -88,7 +88,8 @@ module.exports = async function handler(req, res) {
   };
 
   return res.status(200).json({
-    updatedAt: '2026-08-24',
+    updatedAt: new Date().toISOString(),
+    depensesCapturedAt: '2026-08-24',
     avancement,
     source: 'Qonto (carte "One", active depuis le 12/08/2026) + reçus Anthropic (Claude) + factures OVHcloud/IONOS — tout trouvé par recherche directe dans les emails, montants réels lus sur chaque reçu/facture.',
     avertissement: 'Historique réel mais partiel : Qonto ne couvre qu\'~1 semaine (carte récente) ; Anthropic/OVHcloud/IONOS couvrent début juillet à mi-août 2026 mais seules les factures effectivement ouvertes sont chiffrées ici — d\'autres existent (renouvellements de domaines réguliers) sans montant vérifié. Ne pas extrapoler sur un mois complet ni traiter ce total comme exhaustif. Des relevés Qonto mensuels (avril à juillet 2026) existent en pièce jointe email mais n’ont pas encore été ouverts/dépouillés.',
@@ -97,7 +98,15 @@ module.exports = async function handler(req, res) {
     parFournisseur,
     stripe: {
       configured: false,
-      note: 'Compte Stripe créé et configuré entre le 12 et le 18/08/2026 (emails Stripe : configuration du compte, premier produit récurrent créé le 17/08, paiements activés). Rattachement précis à un ou plusieurs projets non confirmé — un événement calendrier du 15/08 ("modification stripe pet stone") suggère Pet Stone, mais CVDesignPro a aussi un plan payant prévu (12,99€/mois). Pas de clé API fournie : identifié par recherche email uniquement, aucun montant de revenu récupéré.',
+      account: 'DYONYSOS',
+      accountId: 'acct_1UAFctCwvlOOEq5T',
+      mode: 'live',
+      verifiedAt: '2026-09-08',
+      paymentIntents: 0,
+      subscriptions: 0,
+      revenueMeasured: true,
+      dashboardRefresh: false,
+      note: 'Compte DYONYSOS vérifié directement dans Stripe le 08/09/2026 : aucun PaymentIntent et aucun abonnement. Ce zéro est un état réel du compte, pas une absence de mesure. Le rafraîchissement automatique depuis ce tableau nécessite encore une clé Stripe restreinte en lecture seule côté serveur.',
     },
     aRelier: [
       { sujet: 'Frais & TVA Amazon (Dyonysos BE)', detail: 'Analyse déjà réalisée par toi, rapport Q2 2026 envoyé par email les 20-21/08/2026 (11 lignes AMAZON_FEE) — pas encore intégrée ici en euros consolidés.' },

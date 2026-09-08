@@ -16,7 +16,7 @@ const TRAFIC_SNAPSHOT = {
     { name: 'École Connect', vercelProjectId: 'prj_6t8rABLHNlvQb0sUMb0gT55P50E7', periodes: { '30j': { visiteurs: 0, pageviews: 0 } } },
     { name: 'Firmoscope / Prospeo', vercelProjectId: 'prj_iTUKEu3BUVEGJpxm9nS0Km7vjIUs', periodes: { '30j': { visiteurs: 0, pageviews: 0 } } },
   ],
-  commentPasserEnLive: 'Pour que ce tableau se mette à jour tout seul (au lieu d’un instantané que je recapture manuellement) : créer un token API Vercel (scope lecture Web Analytics, équipe Dyonysos) et l’ajouter en variable d’environnement VERCEL_API_TOKEN sur le projet dyonysos-site, puis je branche l’appel direct depuis cette route.',
+  commentPasserEnLive: 'Dernier instantané de secours. En production, /api/kpi utilise VERCEL_ANALYTICS_TOKEN et remplace automatiquement ces valeurs par les données live.',
 };
 
 module.exports = { TRAFIC_SNAPSHOT };

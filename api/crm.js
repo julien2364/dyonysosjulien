@@ -5,8 +5,10 @@
 // production (il faudrait des identifiants Odoo en variable d'environnement — voir "commentPasserEnLive").
 // Rien n'est extrapolé au-delà de ce que les requêtes Odoo ont réellement renvoyé.
 const { requireSession } = require('./_lib/session');
-const { getTaigaSnapshot } = require('./_lib/taiga-client');
+const { PROJECTS } = require('./_lib/registry');
+const { getTaigaSnapshot, getAvancementPortefeuille } = require('./_lib/taiga-client');
 const { getOdooInterneStatus } = require('./_lib/odoo-interne-client');
+const { STAGES, getPipeline } = require('./_lib/crm-pipeline-store');
 
 const CRM_SNAPSHOT = {
   capturedAt: '2026-08-23',
@@ -55,14 +57,18 @@ module.exports = async function handler(req, res) {
   // snapshot Odoo/pet-stone.shop statique existant ci-dessus. Si TAIGA_USERNAME/TAIGA_PASSWORD ne
   // sont pas encore configurées dans Vercel, taigaLive.configured === false et le message statique
   // crmReel (ci-dessus) reste affiché tel quel — rien ne casse en attendant la config.
-  const [taigaLive, odooInterne] = await Promise.all([
+  const [taigaLive, taigaAvancement, odooInterne, pipeline] = await Promise.all([
     getTaigaSnapshot().catch((err) => ({ configured: true, error: err.message || String(err) })),
+    getAvancementPortefeuille(PROJECTS.map((p) => p.name)).catch((err) => ({ configured: true, error: err.message || String(err) })),
     getOdooInterneStatus().catch((err) => ({ reachable: false, error: err.message || String(err) })),
+    getPipeline().catch((err) => ({ ready: false, error: err.message || String(err), opportunities: [] })),
   ]);
 
   return res.status(200).json({
     ...CRM_SNAPSHOT,
     taigaLive,
+    taigaAvancement,
     odooInterneVps: odooInterne,
+    pipeline: { ...pipeline, stages: STAGES, projects: PROJECTS.map((p) => p.name), capturedAt: new Date().toISOString() },
   });
 };

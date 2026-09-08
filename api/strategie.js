@@ -1,12 +1,13 @@
 // Stratégie — vue portefeuille, alimente l'onglet "Stratégie" de /espace-prive.
 // Priorité demandée par Julien le 23/08/2026. Tout est calculé en direct depuis le registre réel
-// (api/_lib/registry.js) et le snapshot de trafic réel (api/_lib/kpi-data.js) — rien n'est extrapolé.
+// (api/_lib/registry.js) et le trafic Vercel Analytics live — rien n'est extrapolé.
 // La partie "Veille & tendances" est un scaffolding honnête : aucune source de données de tendance
 // (Google Trends, SerpApi, Similarweb…) n'est branchée aujourd'hui. Les mots-clés affichés sont des
 // pistes de veille manuelle par projet, pas des mesures réelles — voir "commentBrancherVeille".
 const { requireSession } = require('./_lib/session');
 const { PROJECTS } = require('./_lib/registry');
 const { TRAFIC_SNAPSHOT } = require('./_lib/kpi-data');
+const { getPortfolioTraffic } = require('./_lib/vercel-analytics');
 const { COMPETITORS_REAL, CONCURRENTS_PORTEFEUILLE, BMC_SWOT } = require('./_lib/strategie-data');
 const { getAvancementPortefeuille } = require('./_lib/taiga-client');
 
@@ -31,17 +32,18 @@ module.exports = async function handler(req, res) {
 
   // Même bloc d'avancement live que KPI/Finance (api/_lib/taiga-client.js).
   const avancement = await getAvancementPortefeuille(PROJECTS.map((p) => p.name));
+  const trafic = await getPortfolioTraffic(TRAFIC_SNAPSHOT);
 
   // --- Niveau 1 : portefeuille ---
   const traficParNom = {};
-  TRAFIC_SNAPSHOT.parProjet.forEach(p => { traficParNom[p.name] = p.periodes['30j'] || null; });
+  trafic.parProjet.forEach(p => { traficParNom[p.name] = p.periodes['30j'] || null; });
 
   const urgents = PROJECTS.filter(p => p.priorite && p.priorite.startsWith('urgent'));
-  const meilleurTrafic = TRAFIC_SNAPSHOT.parProjet.reduce((best, p) => {
+  const meilleurTrafic = trafic.parProjet.reduce((best, p) => {
     const v = p.periodes['30j'] ? p.periodes['30j'].visiteurs : -1;
     return (!best || v > best.v) ? { name: p.name, v } : best;
   }, null);
-  const projetsAZeroVisiteur = TRAFIC_SNAPSHOT.parProjet.filter(p => p.periodes['30j'] && p.periodes['30j'].visiteurs === 0).map(p => p.name);
+  const projetsAZeroVisiteur = trafic.parProjet.filter(p => p.live && p.periodes['30j'] && p.periodes['30j'].visiteurs === 0).map(p => p.name);
 
   // --- Niveau 2 : projets prioritaires (ceux qui ont un statut de priorité réel dans le registre) ---
   const rangPriorite = { 'urgent': 0, 'normal': 1, 'à auditer': 2 };
@@ -83,7 +85,8 @@ module.exports = async function handler(req, res) {
   ];
 
   return res.status(200).json({
-    capturedAt: '2026-08-23',
+    capturedAt: trafic.capturedAt,
+    traficSourceState: trafic.sourceState,
     avancement,
     portefeuille: {
       projetsActifs: PROJECTS.filter(p => p.url).length,

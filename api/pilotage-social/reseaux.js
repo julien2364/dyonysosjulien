@@ -8,6 +8,7 @@ const { requireSession } = require('../_lib/session');
 const { readRows } = require('../_lib/sheets');
 const { SHEET_PROJECTS, PROJECTS_RANGE, PROJECTS_COLS, SHEET_CONTENT_QUEUE, CONTENT_QUEUE_RANGE, CONTENT_QUEUE_COLS, rowToObject } = require('../_lib/schema');
 const { isMakeConfigured, getMakeSnapshot } = require('../_lib/make-client');
+const { getAutomationStatus } = require('../_lib/automation-client');
 const { GUIDE_URL, YOUTUBE_PREP, YOUTUBE_PREP_NOTE } = require('../_lib/youtube-prep-data');
 const { getExternalCalendarItems } = require('../_lib/social-calendars-external');
 
@@ -23,6 +24,11 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).json({ error: 'Méthode non autorisée.' });
   if (!requireSession(req, res)) return;
   res.setHeader('Cache-Control', 'private, no-store');
+
+  // Activepieces sur le VPS est le moteur principal. Le point de santé est public et peut donc être
+  // vérifié sans stocker de secret. La liste des flux n'est jamais inventée : elle reste masquée tant
+  // qu'une clé d'API en lecture seule n'est pas fournie au site.
+  const moteurAutomation = await getAutomationStatus();
 
   let projets = [];
   let sheetsConfigure = true;
@@ -107,8 +113,8 @@ module.exports = async function handler(req, res) {
     };
   }
 
-  // Moteur Make — connexion live si MAKE_API_TOKEN est configuré (cf. api/_lib/make-client.js),
-  // sinon repli sur l'instantané écrit à la main le 24/08/2026 (vérifié ce jour-là via l'API Make
+  // Moteur Make complémentaire — connexion live si MAKE_API_TOKEN est configuré (cf. api/_lib/make-client.js),
+  // sinon repli sur l'instantané vérifié le 08/09/2026 via l'app Make connectée
   // en session, pas inventé, mais figé tant que le token n'est pas posé côté Vercel).
   let makeSnapshot;
   if (isMakeConfigured()) {
@@ -118,26 +124,27 @@ module.exports = async function handler(req, res) {
     makeSnapshot = {
       configured: false,
       live: false,
-      verifieLe: '2026-08-24',
-      note: 'Snapshot corrigé le 24/08/2026 au soir après vérification directe de chaque scénario via l\'API Make en session (isActive/isinvalid/nextExec + historique d\'exécutions réels — plusieurs statuts de la version précédente de ce snapshot étaient faux, notamment Propecto et Arbitrage marqués "actif" alors qu\'ils sont désactivés). Toujours pas de connexion live automatique depuis ce site (nécessite MAKE_API_TOKEN en variable d\'environnement Vercel) — ce bloc reste un instantané à rafraîchir manuellement après toute modification faite dans Make.',
+      verifieLe: '2026-09-08',
+      note: 'Instantané vérifié le 08/09/2026 via le compte Make connecté. Make est un moteur complémentaire ; Activepieces sur automation.dyonysos.fr est le moteur VPS principal. Le rafraîchissement Make automatique depuis ce site nécessite toujours MAKE_API_TOKEN.',
       connexionsManquantes: ['Instagram Business', 'YouTube', 'TikTok (aucun connecteur natif de publication dans Make — nécessiterait une app développeur TikTok + un jeton stocké côté Make)'],
       // apps/source/relais ajoutés le 24/08/2026 (nuit) pour un rendu visuel type "pipeline" dans le
       // dashboard (demande de Julien : "un visuel de Make et notre automation connecté derrière prêt à
       // prendre le relai sur certaines tâches") — statutCode pilote la couleur, relais dit explicitement
       // si le scénario est prêt à publier tout seul aujourd'hui ou ce qui bloque encore.
       scenarios: [
-        { nom: 'Propecto Social net', statut: 'DÉSACTIVÉ — 0 publication', statutCode: 'crit', source: 'Data Store Make (calendrier Firmoscope/Prospeo)', apps: ['Facebook', 'LinkedIn', 'Instagram', 'YouTube'], relais: 'Bloqué — scénario éteint (isActive:false), rien ne partira tant qu\'il n\'est pas réactivé.', detail: 'isActive:false, nextExec:null — rien n\'est programmé malgré les 120 posts prêts. Connexions Facebook/LinkedIn saines (pas expirées). Porte un flag "isinvalid" dont la cause précise reste à confirmer en tentant une réactivation dans Make (risque : ça republierait immédiatement en direct, à faire uniquement sur ton feu vert).' },
+        { nom: 'Propecto Social net', statut: 'ACTIF — planifié', statutCode: 'ok', source: 'Data Store Make (calendrier Firmoscope/Prospeo)', apps: ['Facebook', 'LinkedIn', 'Instagram', 'YouTube'], relais: 'Actif et planifié au dernier contrôle ; résultat de la prochaine publication à contrôler dans l’historique Make.', detail: 'Scénario principal actif, avec deux scénarios actifs complémentaires pour l’injection et la boucle du calendrier. Aucun brouillon ou publication n’a été déclenché depuis ce tableau.' },
         { nom: 'Arbitrage Pro Social net', statut: 'DÉSACTIVÉ — 0 publication', statutCode: 'crit', source: 'arbitragepro.eu/api/social/file', apps: ['LinkedIn', 'Facebook'], relais: 'Bloqué — scénario éteint ET secret d\'authentification toujours un texte-placeholder, deux blocages cumulés.', detail: 'isActive:false, nextExec:null, ET le header d\'authentification contient toujours le texte "REMPLACER_PAR_CRON_SECRET" au lieu du vrai secret arbitragepro.eu — deux blocages cumulés, pas juste un secret à remplacer. Aucun fichier de contenu dédié Arbitrage+ trouvé par ailleurs (contrairement aux 3 autres projets).' },
-        { nom: 'Pet Stone — Social Publisher', statut: 'ACTIF — fonctionne', statutCode: 'ok', source: 'Google Sheets — calendrier Pet Stone (46 posts)', apps: ['Facebook', 'LinkedIn'], relais: 'Prêt — prend déjà le relai seul, jusqu\'à 6 publications/jour ouvré sans intervention.', detail: 'Créé le 21/08, tourne lun-ven 10h. Une seule exécution possible depuis sa création (lundi 24/08), et elle a réussi (1/1). Traite jusqu\'à 6 posts "Prêt" par jour ouvré — les 46 posts du calendrier seront tous publiés en ~1,5 semaine sans action requise.' },
-        { nom: 'CVDesignPro — Publish social calendar', statut: 'ACTIF mais échoue à chaque exécution', statutCode: 'warn', source: 'Google Sheets — cvdesignpro-social-calendar (60 posts)', apps: ['LinkedIn', 'Google Drive'], relais: 'Partiel — tourne seul tous les jours ouvrés mais échoue avant de publier ; ne prendra le relai qu\'après le correctif du module Drive.', detail: 'Tourne bien lun-ven 12h depuis le 04/08, mais échoue systématiquement (dernière fois : 24/08 22h30) sur le module de téléchargement d\'image Google Drive — erreur "Unsupported alt type media for non byte stream". Vérifié : le fichier ciblé (ex. w01-tue-buzzwords.png) existe réellement dans Drive en image/png valide, donc la cause exacte reste à confirmer via "Run this module only" dans l\'éditeur Make (30 secondes, affiche l\'ID/mimetype exact reçu).' },
-        { nom: '[Deals Social] 03 — Publication multi-canal', statut: 'ACTIF — fonctionne (toutes les ~5 min)', statutCode: 'ok', source: 'Supabase arb_social_posts + zernio.com', apps: ['Facebook', 'LinkedIn'], relais: 'Prêt — déjà en train de prendre le relai seul : dizaines d\'exécutions réussies (statut 1) toutes les 5 minutes le 24/08 au soir.', detail: 'Confirmé par Julien le 24/08 (nuit) : publication par affiliation des deals d\'arbitrage vers le grand public (C2B) — affiliation Amazon et autres. Page Facebook 1262454503622951, table Supabase "arb_social_posts", appelle aussi zernio.com/api/v1/posts. Sous-marque/canal d\'Arbitrage+ ("zernio" et "Deals" restent absents du registre projets — à ajouter si Julien confirme que c\'est bien rattaché à Arbitrage+ ou si c\'est un projet à part entière).' },
-        { nom: '[CE] A/B/C/D — Content Engine générique', statut: 'inactif', statutCode: 'muted', source: 'Google Sheets — Content Engine (PROJECTS vide)', apps: ['Google Sheets'], relais: 'Bloqué — backlog, déprioritisé par Julien le 24/08.', detail: 'Bloqué tant que la feuille PROJECTS du classeur Content Engine reste vide (xlsx pas importé) — backlog, déprioritisé par Julien le 24/08.' },
+        { nom: 'Pet Stone — Social Publisher', statut: 'PARTIEL — campagne J6 planifiée', statutCode: 'warn', source: 'Google Sheets — calendrier Pet Stone', apps: ['Facebook', 'LinkedIn'], relais: 'Le scénario principal est inactif ; un scénario de campagne J6 est actif et planifié, et un scénario LinkedIn reste disponible à la demande.', detail: 'État vérifié dans Make le 08/09. Ne pas assimiler les scénarios de campagne actifs à une chaîne principale entièrement opérationnelle.' },
+        { nom: 'CVDesignPro — Publish social calendar', statut: 'ACTIF — planifié', statutCode: 'ok', source: 'Google Sheets — cvdesignpro-social-calendar', apps: ['LinkedIn', 'Google Drive'], relais: 'Actif et planifié au dernier contrôle. Le statut d’activation ne prouve pas à lui seul qu’une publication a abouti.', detail: 'Zéro exécution incomplète visible au contrôle du 08/09 ; l’historique d’exécution reste nécessaire pour qualifier la prochaine publication comme réussie.' },
+        { nom: '[Deals Social] — publication multi-canal', statut: 'ACTIF — 4 canaux', statutCode: 'ok', source: 'Supabase arb_social_posts + zernio.com', apps: ['Facebook', 'Instagram', 'TikTok', 'YouTube'], relais: 'Quatre scénarios de publication sont actifs ; les scénarios d’ingestion sont inactifs.', detail: 'État d’activation vérifié le 08/09. La qualité et le résultat des publications restent à contrôler dans les exécutions.' },
+        { nom: 'Content Engine DYONYSOS', statut: 'ABSENT DE MAKE', statutCode: 'muted', source: 'Google Sheets — Content Engine', apps: ['Google Sheets'], relais: 'Aucun scénario portant ce nom n’a été trouvé au contrôle du 08/09.', detail: 'Le projet reste suivi dans Taiga. Son éventuelle exécution sur Activepieces ne sera visible ici qu’après branchement de l’API authentifiée du VPS.' },
       ],
     };
   }
 
   return res.status(200).json({
     sheetsConfigure,
+    moteurAutomation,
     calendrier,
     projets,
     comptesGoogle: {
@@ -172,7 +179,7 @@ module.exports = async function handler(req, res) {
         { titre: 'cvdesignpro-social-calendar', description: 'Calendrier hebdomadaire avec statut réel (plusieurs posts déjà marqués "Posted") — historique de ce qui a été publié pour CVDesignPro.', url: 'https://docs.google.com/spreadsheets/d/15X1j5LgV7-4q8TJ98QikX-HdLQYQJ3ggKD4ZvbHK_S8/edit' },
       ],
     },
-    // État du moteur Make — ajouté le 24/08/2026 à la demande de Julien ("Moteur Make / Je veux voir ça",
+    // État du moteur Make complémentaire — Activepieces/VPS est exposé séparément ci-dessus.
     // montré via une capture de sa vraie liste de scénarios). Connexion live à l'API Make si
     // MAKE_API_TOKEN est configuré côté Vercel ; sinon repli sur l'instantané écrit à la main le 24/08.
     moteurMake: makeSnapshot,

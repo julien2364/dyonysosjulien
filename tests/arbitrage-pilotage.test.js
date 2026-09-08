@@ -99,6 +99,8 @@ test('conserve le dernier instantané vérifié des limites quand la source mét
   assert.equal(dashboard.trial.analyses, 50);
   assert.equal(dashboard.trial.proof, 'VÉRIFIÉ · INSTANTANÉ');
   assert.equal(dashboard.gates.find((gate) => gate.id === 'trial').status, 'go');
+  assert.equal(dashboard.gates.find((gate) => gate.id === 'trial').proof, 'VÉRIFIÉ · INSTANTANÉ');
+  assert.equal(dashboard.gates.find((gate) => gate.id === 'funnel').proof, 'BLOQUÉ');
 });
 
 test('classe Tactical Arbitrage en concurrent direct et SellerAmp en outil d’analyse', () => {

@@ -39,6 +39,7 @@
 <button class="tab" data-tab="projets">Projets</button>
 <button class="tab" data-tab="finance">Finance</button>
 <button class="tab" data-tab="kpi">KPI</button>
+<button class="tab" data-tab="cvdesignpro">CVDesignPro</button>
 <button class="tab" data-tab="crm">CRM</button>
 <button class="tab" data-tab="strategie">Stratégie</button>
 <button class="tab" data-tab="checklist">Check-list</button>
@@ -49,6 +50,7 @@
 <div id="panel-projets" class="panel"><div id="projets-content" class="muted">Chargement…</div></div>
 <div id="panel-finance" class="panel"><div id="finance-content" class="muted">Chargement…</div></div>
 <div id="panel-kpi" class="panel"><div id="kpi-content" class="muted">Chargement…</div></div>
+<div id="panel-cvdesignpro" class="panel"><div id="cvdesignpro-content" class="muted">Chargement…</div></div>
 <div id="panel-crm" class="panel"><div id="crm-content" class="muted">Chargement…</div></div>
 <div id="panel-strategie" class="panel"><div id="strategie-content" class="muted">Chargement…</div></div>
 <div id="panel-checklist" class="panel"><div id="checklist-content" class="muted">Chargement…</div></div>
@@ -824,7 +826,63 @@ async function loadChecklist(){
   }catch(e){el.innerHTML='<div class="note">Erreur de chargement.</div>'}
 }
 
-const loaders={api:loadApiAcces,social:loadSocial,projets:loadProjets,finance:loadFinance,kpi:loadKpi,crm:loadCrm,strategie:loadStrategie,checklist:loadChecklist};
+function cvdpState(ok,labelOk,labelKo){return ok?`<span class="status-pill good">${esc(labelOk)}</span>`:`<span class="status-pill crit">${esc(labelKo)}</span>`}
+function cvdpImplState(state){
+  const labels={complete:'terminé',service_ready:'service prêt',validating:'validation',in_progress:'en cours',blocked:'bloqué'};
+  const klass=state==='complete'?'good':(state==='blocked'?'crit':'warn');
+  return `<span class="status-pill ${klass}">${esc(labels[state]||state)}</span>`;
+}
+async function loadCvDesignPro(){
+  const el=document.getElementById('cvdesignpro-content');
+  try{
+    const r=await fetch('/api/cvdesignpro-pilotage',{credentials:'same-origin',cache:'no-store'});
+    const d=await r.json();
+    if(!r.ok)throw Error(d.error||'Pilotage indisponible');
+    const f=d.funnel,c=d.commercial,s=d.stock,i=d.infrastructure;
+    const implementation=(d.implementation&&d.implementation.items)||[];
+    const smtpVerified=i.smtp.domainStatus==='verified';
+    const smtpDelivered=Boolean(i.smtp.delivered&&i.smtp.messageIdRecorded);
+    const ratio=(value,total)=>total?Math.round(value/total*1000)/10:0;
+    el.innerHTML=`
+      <div class="cat-block"><h3>État de l’intervention</h3>
+        <table class="data"><tr><th>Lot</th><th>État réel</th><th>Preuve / reste à faire</th></tr>
+          ${implementation.map(item=>`<tr><td>${esc(item.label)}</td><td>${cvdpImplState(item.state)}</td><td>${esc(item.evidence)}</td></tr>`).join('')}
+        </table>
+        <p class="muted">Dernière compilation : ${new Date((d.implementation&&d.implementation.updatedAt)||d.checkedAt).toLocaleString('fr-FR')}.</p>
+      </div>
+      <div class="cat-block"><h3>Objectif commercial J+7</h3>
+        <div class="kpi-cards">
+          <div class="kpi-card"><b>${c.candidatePaid} / ${c.objectiveJ7.candidatePaid}</b><span>clients candidats payés et rapprochés Odoo</span></div>
+          <div class="kpi-card"><b>${c.recruiterActivated} / ${c.objectiveJ7.recruiterActivated}</b><span>recruteurs activés avec candidat réel</span></div>
+          <div class="kpi-card"><b>${c.marketingOptIns}</b><span>contacts marketing consentis dans Odoo VPS</span></div>
+          <div class="kpi-card"><b>${c.crmSyncFailures}</b><span>échecs de synchronisation CRM sur 30 jours</span></div>
+        </div>
+        <div class="note"><strong>Règle de preuve :</strong> un compte, un clic ou un email ouvert n’est pas une vente. Une vente candidat n’est comptée qu’après paiement Stripe réel, Premium actif et même événement rapproché dans Odoo Community VPS.</div>
+      </div>
+      <div class="cat-block"><h3>Tunnel produit — 30 jours</h3>
+        <table class="data"><tr><th>Étape</th><th>Personnes</th><th>Taux vs visite</th><th>Lecture</th></tr>
+          <tr><td>Visiteurs suivis</td><td class="num">${f.visitors}</td><td class="num">100 %</td><td>Base mesurée</td></tr>
+          <tr><td>Démarrages CV / lettre</td><td class="num">${f.starts}</td><td class="num">${ratio(f.starts,f.visitors)} %</td><td>Intention produit</td></tr>
+          <tr><td>Premières modifications</td><td class="num">${f.firstEdits}</td><td class="num">${ratio(f.firstEdits,f.visitors)} %</td><td>${f.starts?Math.round((1-f.firstEdits/f.starts)*1000)/10:0} % perdus après démarrage</td></tr>
+          <tr><td>Paiements commencés</td><td class="num">${f.checkoutStarted}</td><td class="num">${ratio(f.checkoutStarted,f.visitors)} %</td><td>Demande tarifaire</td></tr>
+          <tr><td>Paiements terminés</td><td class="num">${f.checkoutCompleted}</td><td class="num">${ratio(f.checkoutCompleted,f.visitors)} %</td><td>Événement navigateur, distinct de la preuve commerciale ci-dessus</td></tr>
+        </table>
+      </div>
+      <div class="cat-block"><h3>Stock produit</h3><div class="kpi-cards">
+        <div class="kpi-card"><b>${s.accounts}</b><span>comptes externes</span></div><div class="kpi-card"><b>${s.premiumAccounts}</b><span>comptes Premium</span></div>
+        <div class="kpi-card"><b>${s.recruiters}</b><span>profils recruteurs</span></div><div class="kpi-card"><b>${s.recruitments}</b><span>recrutements</span></div><div class="kpi-card"><b>${s.candidates}</b><span>candidats dans le pipeline</span></div>
+      </div></div>
+      <div class="cat-block"><h3>Chaîne technique de vente</h3><table class="data"><tr><th>Composant</th><th>État contrôlé</th><th>Preuve / limite</th></tr>
+        <tr><td>CRM</td><td>${cvdpState(i.odoo.configured,'connecté','hors ligne')}</td><td>Odoo Community VPS · dernière écriture ${esc(i.odoo.lastWriteAt||'aucune')}</td></tr>
+        <tr><td>SMTP Odoo</td><td>${smtpVerified?cvdpState(smtpDelivered,'opérationnel','DNS vérifié, livraison à prouver'):'<span class="status-pill warn">DNS '+esc(i.smtp.domainStatus)+'</span>'}</td><td>${esc(i.smtp.provider)} · authentifié le ${esc(i.smtp.authenticatedAt||'non prouvé')} · réception Gmail ${esc(i.smtp.deliveredAt||'non prouvée')} · Message-ID ${i.smtp.messageIdRecorded?'conservé':'absent'} · DMARC ${esc(i.smtp.dmarcPolicy)}</td></tr>
+        <tr><td>Activepieces</td><td>${cvdpState(i.activepieces.reachable,'service joignable','indisponible')}</td><td>HTTP ${esc(i.activepieces.status)} · workflow commercial reste HOLD tant que l’aller-retour complet n’est pas prouvé</td></tr>
+        <tr><td>Postiz</td><td>${cvdpState(i.postiz.reachable,'service protégé joignable','indisponible')}</td><td>HTTP ${esc(i.postiz.status)} · comptes sociaux et publication native à contrôler séparément</td></tr>
+      </table></div>
+      <p class="muted">Source produit : ${esc(d.source.product)} · CRM : ${esc(d.source.crm)} · contrôle : ${new Date(d.checkedAt).toLocaleString('fr-FR')}</p>`;
+  }catch(e){el.innerHTML='<div class="note">'+esc(e.message||'Erreur de chargement.')+'</div>'}
+}
+
+const loaders={api:loadApiAcces,social:loadSocial,projets:loadProjets,finance:loadFinance,kpi:loadKpi,cvdesignpro:loadCvDesignPro,crm:loadCrm,strategie:loadStrategie,checklist:loadChecklist};
 document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{
   document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));

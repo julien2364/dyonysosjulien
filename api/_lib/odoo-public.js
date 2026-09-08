@@ -41,7 +41,7 @@ function parseCataloguePage(html, kind) {
       technicalBase: TECHNICAL_BASES.has(href[2]),
     };
   }).filter(Boolean);
-  return { total: Number(totalMatch?.[1] || items.length), items };
+  return { total: totalMatch ? Number(totalMatch[1]) : null, items };
 }
 
 async function fetchText(url) {
@@ -57,6 +57,7 @@ async function fetchAll(kind) {
   const segment = kind === 'app' ? 'modules' : 'themes';
   const firstUrl = `${BASE_URL}/apps/${segment}/browse?repo_maintainer_id=${MAINTAINER_ID}`;
   const first = parseCataloguePage(await fetchText(firstUrl), kind);
+  if (!Number.isFinite(first.total)) throw new Error(`Total ${segment} absent de la page Odoo`);
   const unique = new Map(first.items.map((item) => [item.slug, item]));
   let page = 2;
   while (unique.size < first.total && page <= 20) {

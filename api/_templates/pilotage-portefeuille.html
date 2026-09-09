@@ -16,7 +16,8 @@
     .budget-grid,.purchase-form{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.budget-grid label,.purchase-form label{display:flex;flex-direction:column;gap:6px;font-weight:750}.budget-grid input,.budget-grid select,.purchase-form input,.purchase-form select,textarea{width:100%;border:1px solid var(--line);background:white;color:var(--ink);border-radius:10px;padding:10px 12px;font:inherit}.budget-grid small,.purchase-form small{font-weight:400;color:var(--muted)}textarea{min-height:320px;resize:vertical}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}.actions button{border:0;border-radius:10px;background:var(--ink);color:white;padding:10px 14px;font:inherit;font-weight:750;cursor:pointer}.stamp{font-variant-numeric:tabular-nums}.money{font-variant-numeric:tabular-nums;white-space:nowrap}.decision-band{border-left:6px solid var(--accent)}
     .task-status{width:100%;min-width:145px;border:1px solid var(--line);background:white;color:var(--ink);border-radius:9px;padding:8px;font:inherit}.progress-line{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.progress-line progress{width:min(420px,100%);height:14px}.task-note{min-height:90px}
     .gauge{display:grid;gap:8px}.gauge progress{width:100%;height:18px;accent-color:var(--blue)}.gauge progress.danger{accent-color:var(--red)}.gauge progress.caution{accent-color:var(--amber)}.gauge progress.safe{accent-color:var(--green)}.gauge-head{display:flex;justify-content:space-between;gap:10px;align-items:baseline}.gauge-value{font-weight:850;font-size:24px;font-variant-numeric:tabular-nums}.inline-edit{min-width:130px;border:1px solid var(--line);border-radius:8px;padding:7px 8px;font:inherit;background:white}.stock-form{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stock-form label{display:flex;flex-direction:column;gap:6px;font-weight:750}.stock-form input,.stock-form select{width:100%;border:1px solid var(--line);background:white;color:var(--ink);border-radius:10px;padding:10px 12px;font:inherit}.stock-form small{font-weight:400;color:var(--muted)}
-    @media(max-width:900px){.quarter,.third,.half,.twothird{grid-column:span 12}.flow{grid-template-columns:1fr}.stock-form{grid-template-columns:1fr}.step:not(:last-child):after{content:'↓';right:auto;left:50%;top:auto;bottom:-15px}.hero h1{font-size:34px}}
+    .project-cockpit{display:grid;gap:16px}.project-cockpit header{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap}.project-cockpit header h3{font-size:24px}.project-cockpit .funnel-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.project-cockpit .funnel-cell{background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px}.project-cockpit .funnel-cell strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:5px}.project-cockpit .gap-box{border-left:5px solid var(--red);background:#fff;padding:13px 15px;border-radius:10px}.project-cockpit .decision-box{border-left:5px solid var(--green);background:#fff;padding:13px 15px;border-radius:10px}.project-meta{display:flex;gap:8px;flex-wrap:wrap}.project-meta .pill{border:1px solid var(--line);background:#fff}.refresh-state{min-height:22px}.refresh-button{border:0;border-radius:10px;background:var(--ink);color:white;padding:10px 14px;font:inherit;font-weight:750;cursor:pointer}.refresh-button:disabled{opacity:.55;cursor:wait}
+    @media(max-width:900px){.quarter,.third,.half,.twothird{grid-column:span 12}.flow{grid-template-columns:1fr}.stock-form{grid-template-columns:1fr}.project-cockpit .funnel-grid{grid-template-columns:1fr}.step:not(:last-child):after{content:'↓';right:auto;left:50%;top:auto;bottom:-15px}.hero h1{font-size:34px}}
   </style>
 </head>
 <body>
@@ -30,6 +31,7 @@
 
   <nav class="tabs" aria-label="Sections du rapport">
     <button class="tab active" data-tab="overview">Vue d’ensemble</button>
+    <button class="tab" data-tab="priority-cockpits">Agoeon &amp; Linktrib</button>
     <button class="tab" data-tab="portfolio">Toutes les solutions</button>
     <button class="tab" data-tab="acquisition">Acquisition &amp; ventes</button>
     <button class="tab" data-tab="actions">Décisions &amp; achats</button>
@@ -87,6 +89,46 @@
       <div class="step"><span class="pill purple">4</span><h3>Paiement</h3><p class="muted">Transaction réussie et produit identifié.</p></div>
       <div class="step"><span class="pill green">5</span><h3>Cash</h3><p class="muted">Payout encaissé, net de frais.</p></div>
     </div>
+  </section>
+
+  <section id="priority-cockpits" class="panel">
+    <h2>Agoeon &amp; Linktrib · cockpits intégrés</h2>
+    <p class="lead">Deux produits distincts, pilotés dans la même page. Les sondes techniques sont recalculées par l’API privée ; les données commerciales restent des snapshots datés jusqu’au branchement de leurs sources transactionnelles.</p>
+    <div class="card blue">
+      <div class="gauge-head"><div><span class="pill blue">Rafraîchissement sans IA</span><h3 style="margin-top:9px">État des sources</h3></div><button id="refresh-priority-cockpits" type="button" class="refresh-button">Rafraîchir maintenant</button></div>
+      <p id="priority-cockpits-state" class="muted refresh-state" aria-live="polite">Chargement des deux produits…</p>
+    </div>
+    <div class="grid">
+      <article class="card half project-cockpit" data-project-cockpit="agoeon">
+        <header><div><span class="pill purple">Produit distinct</span><h3>Agoeon</h3></div><span class="pill amber" data-field="technical">Sonde en cours…</span></header>
+        <div class="project-meta"><span class="pill" data-field="snapshot-date">Snapshot commercial</span><span class="pill" data-field="sitemap">Sitemap en cours…</span><span class="pill" data-field="analytics">Analytics en cours…</span></div>
+        <p><strong>État :</strong> <span data-field="state">Chargement…</span></p>
+        <div class="funnel-grid">
+          <div class="funnel-cell"><strong>Acquisition</strong><span data-field="acquisition">Chargement…</span></div>
+          <div class="funnel-cell"><strong>Activation</strong><span data-field="activation">Chargement…</span></div>
+          <div class="funnel-cell"><strong>Paiement</strong><span data-field="payment">Chargement…</span></div>
+          <div class="funnel-cell"><strong>Cash</strong><span data-field="cash">Chargement…</span></div>
+        </div>
+        <div class="gap-box"><strong>Premier gap</strong><br><span data-field="first-gap">Chargement…</span></div>
+        <div class="decision-box"><strong>Décision immédiate</strong><br><span data-field="decision">Chargement…</span></div>
+        <div class="actions"><a href="https://www.agoeon.com/" target="_blank" rel="noopener">Ouvrir le produit</a><a href="/pilotage-agoeon">Vue Agoeon détaillée</a></div>
+      </article>
+      <article class="card half project-cockpit" data-project-cockpit="linktrib">
+        <header><div><span class="pill purple">Produit distinct</span><h3>Linktrib</h3></div><span class="pill amber" data-field="technical">Sonde en cours…</span></header>
+        <div class="project-meta"><span class="pill" data-field="snapshot-date">Snapshot commercial</span><span class="pill" data-field="sitemap">Sitemap en cours…</span><span class="pill" data-field="analytics">Analytics en cours…</span></div>
+        <p><strong>État :</strong> <span data-field="state">Chargement…</span></p>
+        <div class="funnel-grid">
+          <div class="funnel-cell"><strong>Acquisition</strong><span data-field="acquisition">Chargement…</span></div>
+          <div class="funnel-cell"><strong>Activation</strong><span data-field="activation">Chargement…</span></div>
+          <div class="funnel-cell"><strong>Paiement</strong><span data-field="payment">Chargement…</span></div>
+          <div class="funnel-cell"><strong>Cash</strong><span data-field="cash">Chargement…</span></div>
+        </div>
+        <div class="gap-box"><strong>Premier gap</strong><br><span data-field="first-gap">Chargement…</span></div>
+        <div class="decision-box"><strong>Décision immédiate</strong><br><span data-field="decision">Chargement…</span></div>
+        <div class="actions"><a href="https://www.linktrib.com/" target="_blank" rel="noopener">Ouvrir le produit</a><a href="/pilotage-linktrib">Vue Linktrib détaillée</a></div>
+      </article>
+    </div>
+    <div class="card callout"><h3>Ordre de branchement Stripe</h3><p><strong>Agoeon :</strong> après preuve d’un créateur externe actif et d’un palier réellement achetable. <strong>Linktrib :</strong> après une réponse qualifiée et une activation attribuée. Le branchement technique pourra être réalisé de bout en bout ; Julien restera requis uniquement pour KYC/Connect, acceptation contractuelle et validation du paiement réel final.</p></div>
   </section>
 
   <section id="portfolio" class="panel">
@@ -696,7 +738,55 @@ RÉPONSES DÉJÀ PROUVÉES
   function renderActions(save=true){const statuses={};let done=0,active=0;actionSelects.forEach(select=>{const id=select.closest('tr').dataset.action;statuses[id]=select.value;if(select.value==='termine')done++;if(select.value==='en_cours')active++});document.getElementById('action-progress').max=actionSelects.length;document.getElementById('action-progress').value=done;document.getElementById('action-progress-label').textContent=done+' / '+actionSelects.length+' terminées';document.getElementById('action-active-label').textContent=active+' en cours';if(save){localStorage.setItem('dyonysos-actions-v1',JSON.stringify({statuses,note:actionNote.value}));document.getElementById('action-saved').textContent='Mis à jour à '+new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}}
   try{const savedActions=JSON.parse(localStorage.getItem('dyonysos-actions-v1')||'null');if(savedActions){actionSelects.forEach(select=>{const id=select.closest('tr').dataset.action;if(savedActions.statuses&&savedActions.statuses[id])select.value=savedActions.statuses[id]});actionNote.value=savedActions.note||''}}catch(e){}
   actionSelects.forEach(select=>select.addEventListener('change',()=>renderActions(true)));actionNote.addEventListener('input',()=>renderActions(true));document.getElementById('action-reset').addEventListener('click',()=>{actionSelects.forEach(select=>{select.value=actionDefaults[select.closest('tr').dataset.action]});actionNote.value='';renderActions(true)});renderActions(false);
-  async function loadLiveSources(){try{const response=await fetch('/api/portfolio-pilotage',{credentials:'same-origin'});if(!response.ok)throw new Error('HTTP '+response.status);const data=await response.json();const reachable=data.projects.filter(project=>project.health&&project.health.ok).length;const verified=data.projects.filter(project=>project.health&&project.health.verified).length;const analytics=data.projects.filter(project=>project.analytics&&project.analytics.live).length;const sitemaps=data.projects.filter(project=>project.sitemap&&project.sitemap.ok).length;document.getElementById('live-source-state').textContent=reachable+'/'+data.projects.length+' sites HTTP joignables';document.getElementById('live-source-note').textContent='Sondes techniques exécutées '+new Date(data.generatedAt).toLocaleString('fr-FR')+' · '+verified+' marqueurs produit vérifiés · '+sitemaps+' sitemaps XML lus (sans preuve d’indexation Google) · '+analytics+' projets avec lecture Vercel Analytics. Rafraîchissement toutes les 5 minutes, sans IA ; les tunnels commerciaux restent des snapshots datés.'}catch(error){document.getElementById('live-source-state').textContent='Rapport local';document.getElementById('live-source-note').textContent='API privée non accessible depuis ce fichier local. Ouvrir /pilotage-portefeuille sur dyonysos.fr pour les sondes techniques.'}}loadLiveSources();setInterval(loadLiveSources,300000);
+  function setProjectField(card,name,value){const field=card.querySelector('[data-field="'+name+'"]');if(field)field.textContent=value||'Non renseigné'}
+  function renderPriorityCockpits(data){
+    ['agoeon','linktrib'].forEach(slug=>{
+      const card=document.querySelector('[data-project-cockpit="'+slug+'"]');
+      const project=data.projects.find(item=>item.slug===slug);
+      if(!card||!project)return;
+      const technical=card.querySelector('[data-field="technical"]');
+      if(project.health&&project.health.verified){technical.textContent='Produit vérifié · HTTP '+project.health.status;technical.className='pill green'}
+      else if(project.health&&project.health.ok){technical.textContent='Site joignable · identité à confirmer';technical.className='pill amber'}
+      else{technical.textContent='Sonde technique en échec';technical.className='pill red'}
+      const snapshotDate=project.observedAt?new Date(project.observedAt+'T12:00:00').toLocaleDateString('fr-FR'):'date inconnue';
+      setProjectField(card,'snapshot-date','Snapshot commercial · '+snapshotDate);
+      setProjectField(card,'sitemap',project.sitemap&&project.sitemap.ok?project.sitemap.entries+' URL dans le sitemap XML':'Sitemap XML non vérifié');
+      setProjectField(card,'analytics',project.analytics&&project.analytics.live?'Lecture Vercel Analytics disponible':'Vercel Analytics non disponible');
+      setProjectField(card,'state',project.state);
+      setProjectField(card,'acquisition',project.funnel&&project.funnel.acquisition);
+      setProjectField(card,'activation',project.funnel&&project.funnel.activation);
+      setProjectField(card,'payment',project.funnel&&project.funnel.payment);
+      setProjectField(card,'cash',project.funnel&&project.funnel.cash);
+      setProjectField(card,'first-gap',project.funnel&&project.funnel.firstGap);
+      setProjectField(card,'decision',project.funnel&&project.funnel.decision);
+    });
+    document.getElementById('priority-cockpits-state').textContent='Sondes techniques exécutées '+new Date(data.generatedAt).toLocaleString('fr-FR')+' · prochain rafraîchissement automatique dans 5 minutes. Les chiffres commerciaux portent leur propre date d’observation.';
+  }
+  async function loadLiveSources(){
+    const refreshButton=document.getElementById('refresh-priority-cockpits');
+    if(refreshButton){refreshButton.disabled=true;refreshButton.textContent='Rafraîchissement…'}
+    try{
+      const response=await fetch('/api/portfolio-pilotage',{credentials:'same-origin'});
+      if(!response.ok)throw new Error('HTTP '+response.status);
+      const data=await response.json();
+      const reachable=data.projects.filter(project=>project.health&&project.health.ok).length;
+      const verified=data.projects.filter(project=>project.health&&project.health.verified).length;
+      const analytics=data.projects.filter(project=>project.analytics&&project.analytics.live).length;
+      const sitemaps=data.projects.filter(project=>project.sitemap&&project.sitemap.ok).length;
+      document.getElementById('live-source-state').textContent=reachable+'/'+data.projects.length+' sites HTTP joignables';
+      document.getElementById('live-source-note').textContent='Sondes techniques exécutées '+new Date(data.generatedAt).toLocaleString('fr-FR')+' · '+verified+' marqueurs produit vérifiés · '+sitemaps+' sitemaps XML lus (sans preuve d’indexation Google) · '+analytics+' projets avec lecture Vercel Analytics. Rafraîchissement toutes les 5 minutes, sans IA ; les tunnels commerciaux restent des snapshots datés.';
+      renderPriorityCockpits(data);
+    }catch(error){
+      document.getElementById('live-source-state').textContent='Rapport local';
+      document.getElementById('live-source-note').textContent='API privée non accessible depuis ce fichier local. Ouvrir /pilotage-portefeuille sur dyonysos.fr pour les sondes techniques.';
+      document.getElementById('priority-cockpits-state').textContent='Sources dynamiques indisponibles : '+(error.message||String(error))+'. Les valeurs éventuellement visibles ne doivent pas être considérées comme rafraîchies.';
+      document.querySelectorAll('[data-project-cockpit] [data-field="technical"]').forEach(field=>{field.textContent='Source dynamique indisponible';field.className='pill red'});
+    }finally{
+      if(refreshButton){refreshButton.disabled=false;refreshButton.textContent='Rafraîchir maintenant'}
+    }
+  }
+  document.getElementById('refresh-priority-cockpits').addEventListener('click',loadLiveSources);
+  loadLiveSources();setInterval(loadLiveSources,300000);
 </script>
 </body>
 </html>

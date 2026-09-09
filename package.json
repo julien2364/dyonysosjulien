@@ -1,5 +1,9 @@
 {
   "private": true,
+  "scripts": {
+    "videos:sync": "node scripts/sync-odoo-youtube.mjs --remote",
+    "videos:check": "node scripts/sync-odoo-youtube.mjs --check --remote"
+  },
   "dependencies": {
     "@vercel/blob": "2.8.0",
     "googleapis": "^176.0.0"

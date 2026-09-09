@@ -15,19 +15,19 @@ module.exports = function handler(req, res) {
   return res.status(200).json({
     groups: [
       { title: 'Pilotage', links: [
-        { name: 'Cockpit portefeuille · cash, runway, Amazon et décisions', url: '/pilotage-portefeuille', status: 'Interactif + contrôles dynamiques des productions et sitemaps' },
-        { name: 'Cockpit ArbitragePro+ (tunnel, ventes, canaux, preuves)', url: '/pilotage-arbitragepro', status: 'Dynamique — données métier actualisées à la demande' },
+        { name: 'Cockpit portefeuille · cash, runway, Amazon et décisions', url: '/pilotage-portefeuille', status: 'Snapshots commerciaux datés + sondes techniques à la demande' },
+        { name: 'Cockpit ArbitragePro+ (tunnel, ventes, canaux, preuves)', url: '/pilotage-arbitragepro', status: 'Supabase/Vercel actualisés à la demande ; Stripe, Odoo et Postiz datés' },
         { name: 'Pilotage Social (calendrier, publications, erreurs)', url: '/pilotage-social' },
         { name: 'Pilotage Odoo Apps (ventes, projections, vidéos)', url: '/pilotage-odoo' },
-        { name: 'Pilotage Agoeon', url: '/pilotage-agoeon', status: 'Production ; 0 e-mail envoyé, 755 en file ; tunnel et premier gap' },
-        { name: 'Pilotage Linktrib', url: '/pilotage-linktrib', status: 'Production ; 656 envois, 18 % ouverts, 1 % cliqués, 0 % répondu' },
-        { name: 'Pilotage Etsy · PetStoneOriginal', url: '/pilotage-etsy', status: 'Snapshot authentifié 09/09 ; 121 visites, 0 commande, solde −32,65 €' }
+        { name: 'Pilotage Agoeon', url: '/pilotage-agoeon', status: 'Snapshot Odoo 09/09 : 0 e-mail envoyé, 755 en file ; sondes techniques à la demande' },
+        { name: 'Pilotage Linktrib', url: '/pilotage-linktrib', status: 'Snapshot Odoo 09/09 : 656 envois, 18 % ouverts, 1 % cliqués, 0 % répondu' },
+        { name: 'Pilotage Etsy · PetStoneOriginal', url: '/pilotage-etsy', status: 'Instantané manuel authentifié 09/09 ; API Etsy absente ; solde −32,65 €' }
       ]},
       { title: 'Éducation, formation et recrutement', links: [
         { name: 'CVDesignPro', url: 'https://www.cvdesignpro.com/fr' },
         { name: 'QuizPlay', url: 'https://quizplay-production.up.railway.app/' },
-        { name: 'CoursHub', url: 'https://coursehub-dusky-seven.vercel.app' },
-        { name: 'École Connect', url: 'https://ecole-connect-pied.vercel.app' }
+        { name: 'CoursHub', url: 'https://coursehub-dyonysos.vercel.app', status: 'Domaine canonique' },
+        { name: 'École Connect', url: 'https://ecole-connect-dyonysos.vercel.app', status: 'Domaine canonique' }
       ]},
       { title: 'Annuaire entreprises C2B / B2B', links: [
         { name: 'Firmoscope / Prospeo', url: 'https://prospeo-drab.vercel.app/' }

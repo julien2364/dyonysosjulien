@@ -5,6 +5,7 @@ const FETCH_TIMEOUT_MS = 8000;
 const PROJECTS = [
   {
     slug: 'agoeon', name: 'Agoeon', url: 'https://www.agoeon.com',
+    expectedMarker: 'Agoeon',
     github: 'julien2364/remake-patreon-082026', vercelProjectId: 'prj_1SY0dtoQNJWuUKynv9Wvm12z8iaX',
     state: 'Production publique · mailing Odoo en file', commercialGate: 'Débloquer l’envoi, puis mesurer réponse → créateur actif → paiement',
     cashEvidence: 'Aucun encaissement attribué prouvé dans le cockpit.',
@@ -20,7 +21,8 @@ const PROJECTS = [
   },
   {
     slug: 'linktrib', name: 'Linktrib', url: 'https://www.linktrib.com',
-    github: 'julien2364/Kreo', vercelProjectId: 'prj_wMSAHpc5ISZm0H0QVkCfdsjkih92',
+    expectedMarker: 'Linktrib',
+    github: 'julien2364/Kreo', vercelProjectId: 'prj_bpLOwVJ6fPB7zi1MObQWWt4IfLIg',
     state: 'Production publique · automation Odoo en cours', commercialGate: 'Transformer clics/réponses en créateurs actifs puis en paiements',
     cashEvidence: 'Aucun encaissement attribué prouvé dans le cockpit.',
     observedAt: '2026-09-09',
@@ -35,6 +37,7 @@ const PROJECTS = [
   },
   {
     slug: 'odoo-apps', name: 'Odoo Apps', url: 'https://www.dyonysos.fr/applications-odoo',
+    expectedMarker: 'Applications Odoo',
     github: '4 dépôts publics Dyonysos', vercelProjectId: 'prj_9GUpX7bWsEM6JFXXOKMgf6dwE4EQ',
     analyticsScope: 'Trafic du site Dyonysos global, pas des seules pages Odoo',
     state: '32 apps et 39 thèmes Store observés', commercialGate: 'Vues Store → panier → paiement → payout',
@@ -51,6 +54,7 @@ const PROJECTS = [
   },
   {
     slug: 'etsy', name: 'Etsy · PetStoneOriginal', url: 'https://www.etsy.com/shop/PetStoneOriginal',
+    expectedMarker: 'PetStoneOriginal',
     github: null, vercelProjectId: null, sitemapUrl: null,
     state: 'Boutique active · 150 fiches',
     commercialGate: 'Visite → commande rentable → solde positif → virement',
@@ -68,6 +72,7 @@ const PROJECTS = [
   },
   {
     slug: 'arbitragepro', name: 'ArbitragePro+', url: 'https://www.arbitragepro.eu',
+    expectedMarker: 'ArbitragePro',
     github: 'julien2364/Arbitrage', vercelProjectId: 'prj_YNDpcwcBx3TfwNUF3TFDpTF6U8YJ',
     state: 'Production publique', commercialGate: 'Paiement live → webhook → accès → cash',
     cashEvidence: 'Aucun paiement attribué prouvé.', dedicatedPath: '/pilotage-arbitragepro',
@@ -83,6 +88,7 @@ const PROJECTS = [
   },
   {
     slug: 'propecto', name: 'Propecto', url: 'https://www.propecto.eu',
+    expectedMarker: 'Propecto',
     github: 'julien2364/annuaire', vercelProjectId: 'prj_iTUKEu3BUVEGJpxm9nS0Km7vjIUs',
     state: 'Production publique', commercialGate: 'Offre publique → checkout → paiement',
     cashEvidence: 'Aucun encaissement attribué prouvé dans ce cockpit.',
@@ -98,24 +104,28 @@ const PROJECTS = [
   },
   {
     slug: 'cvdesignpro', name: 'CVDesignPro', url: 'https://www.cvdesignpro.com/fr',
+    expectedMarker: 'CVDesignPro',
     github: 'julien2364/cvdesignpro', vercelProjectId: 'prj_sbz1BpKKEmUMe1qLASFYIFahRxKA',
     state: 'Production publique', commercialGate: 'Démarrage → checkout → abonnement',
     cashEvidence: 'Le cockpit dédié lit les métriques internes ; cash attribué non exposé ici.',
   },
   {
-    slug: 'ecole-connect', name: 'École Connect', url: 'https://ecole-connect-pied.vercel.app',
+    slug: 'ecole-connect', name: 'École Connect', url: 'https://ecole-connect-dyonysos.vercel.app',
+    expectedMarker: 'École Connect',
     github: 'julien2364/ecole-connect', vercelProjectId: 'prj_6t8rABLHNlvQb0sUMb0gT55P50E7',
     state: 'Production publique, non monétisée', commercialGate: 'Offre payante et checkout absents',
     cashEvidence: '0 € attendu tant que la monétisation n’est pas définie.',
   },
   {
-    slug: 'courshub', name: 'CoursHub', url: 'https://coursehub-dusky-seven.vercel.app',
+    slug: 'courshub', name: 'CoursHub', url: 'https://coursehub-dyonysos.vercel.app',
+    expectedMarker: 'CoursHub',
     github: 'julien2364/Coursehub', vercelProjectId: null,
     state: 'Production publique, non monétisée', commercialGate: 'Offre payante et checkout absents',
     cashEvidence: '0 € attendu tant que la monétisation n’est pas définie.',
   },
   {
     slug: 'quizplay', name: 'QuizPlay', url: 'https://quizplay-production.up.railway.app/',
+    expectedMarker: 'QuizPlay',
     github: null, vercelProjectId: null,
     state: 'Production publique, non monétisée', commercialGate: 'Offre payante et checkout absents',
     cashEvidence: '0 € attendu tant que la monétisation n’est pas définie.',
@@ -137,9 +147,26 @@ async function fetchWithTimeout(url, options = {}) {
 async function probe(project) {
   try {
     const { response, latencyMs } = await fetchWithTimeout(project.url, { method: 'GET' });
-    return { ok: response.ok, status: response.status, finalUrl: response.url, latencyMs, checkedAt: new Date().toISOString() };
+    const expectedHost = new URL(project.url).hostname.replace(/^www\./, '');
+    const finalHost = new URL(response.url).hostname.replace(/^www\./, '');
+    const hostMatches = expectedHost === finalHost;
+    const contentType = String(response.headers.get('content-type') || '').toLowerCase();
+    const body = response.ok && contentType.includes('text/html') ? await response.text() : '';
+    const markerMatched = Boolean(project.expectedMarker && body.toLowerCase().includes(project.expectedMarker.toLowerCase()));
+    return {
+      ok: response.ok && hostMatches,
+      verified: response.ok && hostMatches && markerMatched,
+      status: response.status,
+      finalUrl: response.url,
+      finalHost,
+      hostMatches,
+      contentType,
+      markerMatched,
+      latencyMs,
+      checkedAt: new Date().toISOString(),
+    };
   } catch (error) {
-    return { ok: false, status: null, error: error.message || String(error), checkedAt: new Date().toISOString() };
+    return { ok: false, verified: false, status: null, error: error.message || String(error), checkedAt: new Date().toISOString() };
   }
 }
 
@@ -149,9 +176,18 @@ async function readSitemap(project) {
   try {
     const { response, latencyMs } = await fetchWithTimeout(sitemapUrl, { method: 'GET' });
     const text = await response.text();
+    const expectedHost = new URL(sitemapUrl).hostname.replace(/^www\./, '');
+    const finalHost = new URL(response.url).hostname.replace(/^www\./, '');
+    const hostMatches = expectedHost === finalHost;
+    const contentType = String(response.headers.get('content-type') || '').toLowerCase();
+    const xmlContentType = contentType.includes('xml');
+    const rootMatch = text.match(/^\s*(?:<\?xml[^>]*>\s*)?<(urlset|sitemapindex)\b/i);
+    const xmlRoot = rootMatch ? rootMatch[1].toLowerCase() : null;
     const locCount = (text.match(/<loc(?:\s[^>]*)?>/gi) || []).length;
     const lastmods = [...text.matchAll(/<lastmod(?:\s[^>]*)?>([^<]+)<\/lastmod>/gi)].map((match) => match[1]).sort();
-    return { configured: true, ok: response.ok, status: response.status, url: response.url, entries: locCount, latestLastmod: lastmods.at(-1) || null, latencyMs, checkedAt: new Date().toISOString() };
+    const ok = response.ok && hostMatches && xmlContentType && Boolean(xmlRoot) && locCount > 0;
+    const reason = ok ? null : !response.ok ? `HTTP ${response.status}` : !hostMatches ? 'Redirection vers un autre domaine' : !xmlContentType ? `Type MIME non XML (${contentType || 'absent'})` : !xmlRoot ? 'Racine XML urlset/sitemapindex absente' : 'Sitemap XML vide';
+    return { configured: true, ok, httpOk: response.ok, status: response.status, url: response.url, entries: locCount, latestLastmod: lastmods.at(-1) || null, hostMatches, contentType, xmlRoot, reason, latencyMs, checkedAt: new Date().toISOString() };
   } catch (error) {
     return { configured: true, ok: false, url: sitemapUrl, error: error.message || String(error), checkedAt: new Date().toISOString() };
   }
@@ -171,7 +207,7 @@ async function getPortfolioPilotage() {
       vercelAnalytics: { state: analytics.sourceState, configured: analytics.configured, capturedAt: analytics.capturedAt },
       googleAnalytics: { state: 'not_configured', note: 'Aucun identifiant de propriété GA4 n’est configuré dans le projet Dyonysos. Ne pas confondre avec Vercel Web Analytics.' },
       odoo: { state: 'dedicated_dashboard', path: '/pilotage-odoo', note: 'Catalogue public et historique Google Sheets dans le cockpit Odoo dédié.' },
-      etsy: { state: 'manual_snapshot', note: 'Etsy bloque la lecture publique automatisée et aucune clé API/OAuth Etsy n’est configurée.' },
+      etsy: { state: 'authenticated_snapshot', note: 'Instantané manuel issu d’une session Etsy authentifiée le 09/09 ; aucune API Etsy/OAuth n’est configurée.' },
     },
     projects: PROJECTS.map((project, index) => ({
       ...project,

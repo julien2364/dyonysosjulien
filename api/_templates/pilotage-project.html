@@ -13,7 +13,7 @@
 <div>
 <a href="/espace-prive">← Espace privé</a>
 <h1>{{PROJECT_NAME}}</h1>
-<p>Production, acquisition, indexation et porte cash — données rechargées à la demande.</p>
+<p>Sondes techniques rechargées à la demande · tunnel commercial = snapshot daté.</p>
 </div>
 <button id="refresh" type="button">Actualiser</button>
 </div>
@@ -95,9 +95,9 @@ async function load(){
     if(!response.ok)throw new Error(data.error||'Erreur API');
     const p=data.projects.find(item=>item.slug===slug);
     if(!p)throw new Error('Projet absent du portefeuille');
-    elements.health.textContent=p.health?.ok?'EN LIGNE':'À CONTRÔLER';
-    elements.health.className='big '+(p.health?.ok?'ok':'bad');
-    elements.healthNote.textContent=p.health?.status?`HTTP ${p.health.status} · ${p.health.latencyMs} ms · ${new Date(p.health.checkedAt).toLocaleString('fr-FR')}`:(p.health?.error||'Aucune preuve');
+    elements.health.textContent=p.health?.verified?'PRODUIT VÉRIFIÉ':(p.health?.ok?'HTTP JOIGNABLE':'À CONTRÔLER');
+    elements.health.className='big '+(p.health?.verified?'ok':(p.health?.ok?'warn':'bad'));
+    elements.healthNote.textContent=p.health?.status?`HTTP ${p.health.status} · domaine ${p.health.hostMatches?'attendu':'inattendu'} · marqueur ${p.health.markerMatched?'trouvé':'absent'} · ${p.health.latencyMs} ms · ${new Date(p.health.checkedAt).toLocaleString('fr-FR')}`:(p.health?.error||'Aucune preuve');
     const a=p.analytics;
     elements.visits.textContent=a?.live?String(a.periodes?.['7j']?.visiteurs??0):(p.snapshot?.visits7d!=null?String(p.snapshot.visits7d):'n.a.');
     elements.analyticsNote.textContent=a?.live?((p.analyticsScope?p.analyticsScope+' · ':'')+'Vercel Web Analytics en direct.'):(p.snapshot?`${p.snapshot.views7d??'n.a.'} vues · snapshot ${p.snapshot.observedAt}`:(a?.error||'Aucune source de trafic connectée.'));
@@ -114,10 +114,12 @@ async function load(){
     elements.funnelGap.textContent='Premier gap : '+(funnel.firstGap||p.commercialGate);
     elements.funnelDecision.textContent='Décision : '+(funnel.decision||'Mesurer le premier passage non prouvé avant toute dépense.');
     elements.sources.replaceChildren();
-    const rows=[['Site public',p.health?.ok?'connecté':'échec',p.health?.ok?`HTTP ${p.health.status}, contrôle à la demande`:(p.health?.error||'Non joignable')],['Vercel Web Analytics',a?.live?'connecté':(a?'indisponible':'non applicable'),a?.live?'Visiteurs et pages vues 1/7/30 jours':(a?.error||'Projet sans identifiant Vercel')],['Google Analytics 4',data.sources.googleAnalytics.state,data.sources.googleAnalytics.note],['Sitemap',p.sitemap?.ok?'connecté':'indisponible',p.sitemap?.ok?`${p.sitemap.entries} entrées publiques`:(p.sitemap?.reason||p.sitemap?.error||'Non lu')]];
+    const siteState=p.health?.verified?'marqueur produit vérifié':(p.health?.ok?'HTTP joignable':'échec');
+    const sitemapState=p.sitemap?.ok?'lu par le portail':(p.sitemap?.httpOk?'HTTP joignable, XML invalide':'indisponible');
+    const rows=[['Site public',siteState,p.health?.status?`HTTP ${p.health.status} · domaine ${p.health.hostMatches?'attendu':'inattendu'}`:(p.health?.error||'Non joignable')],['Vercel Web Analytics',a?.live?'lecture disponible':(a?'indisponible':'non applicable'),a?.live?'Visiteurs et pages vues 1/7/30 jours':(a?.error||'Projet sans identifiant Vercel')],['Google Analytics 4',data.sources.googleAnalytics.state,data.sources.googleAnalytics.note],['Sitemap',sitemapState,p.sitemap?.ok?`${p.sitemap.entries} entrées XML lues ; ne prouve ni soumission ni indexation Google`:(p.sitemap?.reason||p.sitemap?.error||'Non lu')]];
     if(slug==='etsy')rows.push(['Etsy Shop Manager + Payments','snapshot authentifié',p.snapshot?`${p.snapshot.visits7d} visites, ${p.snapshot.orders7d} commande, solde ${p.snapshot.balanceEur.toLocaleString('fr-FR',{style:'currency',currency:'EUR'})} · ${p.snapshot.observedAt}`:'Export requis']);
     rows.forEach(values=>addRow(elements.sources,values));
-    elements.status.textContent='Mis à jour le '+new Date(data.generatedAt).toLocaleString('fr-FR')+(p.observedAt?` · données commerciales observées le ${new Date(p.observedAt).toLocaleDateString('fr-FR')}`:'');
+    elements.status.textContent='Sondes techniques exécutées le '+new Date(data.generatedAt).toLocaleString('fr-FR')+(p.observedAt?` · snapshot commercial observé le ${new Date(p.observedAt).toLocaleDateString('fr-FR')}`:'');
     elements.content.hidden=false;
   }catch(error){elements.status.textContent='Impossible d’actualiser : '+error.message}
 }

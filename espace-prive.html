@@ -841,6 +841,9 @@ async function loadCvDesignPro(){
     const d=await r.json();
     if(!r.ok)throw Error(d.error||'Pilotage indisponible');
     const f=d.funnel,c=d.commercial,s=d.stock,i=d.infrastructure;
+    const social=i.socialOperations||{},registry=social.registry||{},registryCounts=registry.counts||{};
+    const channels=Array.isArray(social.channels)?social.channels:[];
+    const odooMailings=i.odooMailings||{};
     const implementation=(d.implementation&&d.implementation.items)||[];
     const smtpVerified=i.smtp.domainStatus==='verified';
     const smtpDelivered=Boolean(i.smtp.delivered&&i.smtp.messageIdRecorded);
@@ -859,6 +862,7 @@ async function loadCvDesignPro(){
           <div class="kpi-card"><b>${c.marketingOptIns}</b><span>contacts marketing consentis dans Odoo VPS</span></div>
           <div class="kpi-card"><b>${c.crmSyncFailures}</b><span>échecs de synchronisation CRM sur 30 jours</span></div>
         </div>
+        <p class="muted">Échéance : ${c.objectiveJ7.deadlineAt?new Date(c.objectiveJ7.deadlineAt).toLocaleString('fr-FR'):'non renseignée'} · reste ${c.objectiveJ7.remainingCandidatePaid??c.objectiveJ7.candidatePaid} vente(s) candidat et ${c.objectiveJ7.remainingRecruiterActivated??c.objectiveJ7.recruiterActivated} activation(s) recruteur.</p>
         <div class="note"><strong>Règle de preuve :</strong> un compte, un clic ou un email ouvert n’est pas une vente. Une vente candidat n’est comptée qu’après paiement Stripe réel, Premium actif et même événement rapproché dans Odoo Community VPS.</div>
       </div>
       <div class="cat-block"><h3>Tunnel produit — 30 jours</h3>
@@ -880,6 +884,22 @@ async function loadCvDesignPro(){
         <tr><td>Activepieces</td><td>${cvdpState(i.activepieces.reachable,'service joignable','indisponible')}</td><td>HTTP ${esc(i.activepieces.status)} · workflow commercial reste HOLD tant que l’aller-retour complet n’est pas prouvé</td></tr>
         <tr><td>Postiz</td><td>${cvdpState(i.postiz.reachable,'service protégé joignable','indisponible')}</td><td>HTTP ${esc(i.postiz.status)} · comptes sociaux et publication native à contrôler séparément</td></tr>
       </table></div>
+      <div class="cat-block"><h3>Distribution sociale interne</h3>
+        <div class="kpi-cards">
+          <div class="kpi-card"><b>${registryCounts.scheduled||0}</b><span>tâches planifiées par réseau</span></div>
+          <div class="kpi-card"><b>${registryCounts.shadowed||0}</b><span>passages shadow contrôlés</span></div>
+          <div class="kpi-card"><b>${social.duplicateProtection&&social.duplicateProtection.duplicateCount!=null?social.duplicateProtection.duplicateCount:'?'}</b><span>doublons détectés</span></div>
+          <div class="kpi-card"><b>${(social.duplicateProtection&&social.duplicateProtection.failedCount)||0}</b><span>erreurs à traiter</span></div>
+        </div>
+        <table class="data"><tr><th>Réseau</th><th>Propriétaire</th><th>État</th><th>Dernière preuve</th></tr>
+          ${channels.map(ch=>`<tr><td>${esc(ch.channel)}</td><td>${esc(ch.owner)}</td><td>${esc(ch.status)}</td><td>${esc(ch.lastVerifiedNativeId||'identifiant non encore observé')}</td></tr>`).join('')||'<tr><td colspan="4">État des canaux indisponible.</td></tr>'}
+        </table>
+        <p class="muted">Registre VPS : ${registry.reachable?'joignable':'indisponible'} · mode ${esc(registry.mode||'inconnu')} · heartbeat ${registry.heartbeatAt?new Date(registry.heartbeatAt).toLocaleString('fr-FR'):'non observé'} · prochain contenu ${registry.next&&registry.next[0]?esc(registry.next[0].content_id)+' le '+new Date(registry.next[0].due_at).toLocaleString('fr-FR'):'non observé'}.</p>
+      </div>
+      <div class="cat-block"><h3>Campagnes Odoo Community VPS</h3><table class="data"><tr><th>Canal</th><th>État prouvé</th><th>Volume</th><th>Dernier contrôle</th></tr>
+        <tr><td>Relais emploi FR/BE</td><td>${esc(odooMailings.status||'inconnu')}</td><td>${odooMailings.scheduledRecipients||0} planifiés · ${odooMailings.sentRecipients||0} envoyés</td><td>${odooMailings.lastVerifiedAt?new Date(odooMailings.lastVerifiedAt).toLocaleString('fr-FR'):'non observé'}</td></tr>
+        <tr><td>Séquence candidats consentis</td><td>${esc((odooMailings.candidateSequence&&odooMailings.candidateSequence.status)||'inconnu')}</td><td>${(odooMailings.candidateSequence&&odooMailings.candidateSequence.marketingOptIns)||0} opt-in · ${(odooMailings.candidateSequence&&odooMailings.candidateSequence.sentRecipients)||0} envoyé</td><td>${odooMailings.candidateSequence&&odooMailings.candidateSequence.lastVerifiedAt?new Date(odooMailings.candidateSequence.lastVerifiedAt).toLocaleString('fr-FR'):'non observé'}</td></tr>
+      </table><p class="muted">Planifié n’est pas envoyé; envoyé n’est pas livré; livré n’est pas vendu. Le pilotage conserve ces états séparés.</p></div>
       <p class="muted">Source produit : ${esc(d.source.product)} · CRM : ${esc(d.source.crm)} · contrôle : ${new Date(d.checkedAt).toLocaleString('fr-FR')}</p>`;
   }catch(e){el.innerHTML='<div class="note">'+esc(e.message||'Erreur de chargement.')+'</div>'}
 }

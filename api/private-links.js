@@ -19,9 +19,9 @@ module.exports = function handler(req, res) {
         { name: 'Cockpit ArbitragePro+ (tunnel, ventes, canaux, preuves)', url: '/pilotage-arbitragepro', status: 'Dynamique — données métier actualisées à la demande' },
         { name: 'Pilotage Social (calendrier, publications, erreurs)', url: '/pilotage-social' },
         { name: 'Pilotage Odoo Apps (ventes, projections, vidéos)', url: '/pilotage-odoo' },
-        { name: 'Pilotage Agoeon', url: '/pilotage-agoeon', status: 'Production + sitemap + analytics disponibles' },
-        { name: 'Pilotage Linktrib', url: '/pilotage-linktrib', status: 'Production + sitemap + analytics disponibles' },
-        { name: 'Pilotage Etsy · PetStoneOriginal', url: '/pilotage-etsy', status: 'Snapshot daté ; API Etsy non configurée' }
+        { name: 'Pilotage Agoeon', url: '/pilotage-agoeon', status: 'Production ; 0 e-mail envoyé, 755 en file ; tunnel et premier gap' },
+        { name: 'Pilotage Linktrib', url: '/pilotage-linktrib', status: 'Production ; 656 envois, 18 % ouverts, 1 % cliqués, 0 % répondu' },
+        { name: 'Pilotage Etsy · PetStoneOriginal', url: '/pilotage-etsy', status: 'Snapshot authentifié 09/09 ; 121 visites, 0 commande, solde −32,65 €' }
       ]},
       { title: 'Éducation, formation et recrutement', links: [
         { name: 'CVDesignPro', url: 'https://www.cvdesignpro.com/fr' },

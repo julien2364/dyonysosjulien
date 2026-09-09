@@ -854,12 +854,14 @@ async function loadCvDesignPro(){
       </div>
       <div class="cat-block"><h3>Objectif commercial J+7</h3>
         <div class="kpi-cards">
+          <div class="kpi-card"><b>${c.qualifiedCandidateEmails||0} / ${c.candidateEmailTarget||8000}</b><span>particuliers avec besoin emploi identifiable, email exploitable et consentement</span></div>
           <div class="kpi-card"><b>${c.candidatePaid} / ${c.objectiveJ7.candidatePaid}</b><span>clients candidats payés et rapprochés Odoo</span></div>
           <div class="kpi-card"><b>${c.recruiterActivated} / ${c.objectiveJ7.recruiterActivated}</b><span>recruteurs activés avec candidat réel</span></div>
-          <div class="kpi-card"><b>${c.marketingOptIns}</b><span>contacts marketing consentis dans Odoo VPS</span></div>
+          <div class="kpi-card"><b>${c.candidateAcquisitionRelays||0}</b><span>relais emploi/formation dans le pipe — jamais comptés comme candidats</span></div>
+          <div class="kpi-card"><b>${c.paidAdBudgetEur||0} €</b><span>publicité payante — règle permanente</span></div>
           <div class="kpi-card"><b>${c.crmSyncFailures}</b><span>échecs de synchronisation CRM sur 30 jours</span></div>
         </div>
-        <div class="note"><strong>Règle de preuve :</strong> un compte, un clic ou un email ouvert n’est pas une vente. Une vente candidat n’est comptée qu’après paiement Stripe réel, Premium actif et même événement rapproché dans Odoo Community VPS.</div>
+        <div class="note"><strong>Règle de preuve :</strong> l’objectif reste 8 000 particuliers en recherche d’emploi. Une organisation relais, une adresse publique, un compte, un clic ou un email ouvert n’est pas un candidat qualifié et n’est jamais ajouté au compteur. Une vente candidat n’est comptée qu’après paiement Stripe réel, Premium actif et même événement rapproché dans Odoo Community VPS.</div>
       </div>
       <div class="cat-block"><h3>Tunnel produit — 30 jours</h3>
         <table class="data"><tr><th>Étape</th><th>Personnes</th><th>Taux vs visite</th><th>Lecture</th></tr>

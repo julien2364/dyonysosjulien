@@ -881,8 +881,9 @@ async function loadCvDesignPro(){
       <div class="cat-block"><h3>Chaîne technique de vente</h3><table class="data"><tr><th>Composant</th><th>État contrôlé</th><th>Preuve / limite</th></tr>
         <tr><td>CRM</td><td>${cvdpState(i.odoo.configured,'connecté','hors ligne')}</td><td>Odoo Community VPS · dernière écriture ${esc(i.odoo.lastWriteAt||'aucune')}</td></tr>
         <tr><td>SMTP Odoo</td><td>${smtpVerified?cvdpState(smtpDelivered,'opérationnel','DNS vérifié, livraison à prouver'):'<span class="status-pill warn">DNS '+esc(i.smtp.domainStatus)+'</span>'}</td><td>${esc(i.smtp.provider)} · authentifié le ${esc(i.smtp.authenticatedAt||'non prouvé')} · réception Gmail ${esc(i.smtp.deliveredAt||'non prouvée')} · Message-ID ${i.smtp.messageIdRecorded?'conservé':'absent'} · DMARC ${esc(i.smtp.dmarcPolicy)}</td></tr>
-        <tr><td>Activepieces</td><td>${cvdpState(i.activepieces.reachable,'service joignable','indisponible')}</td><td>HTTP ${esc(i.activepieces.status)} · workflow commercial reste HOLD tant que l’aller-retour complet n’est pas prouvé</td></tr>
-        <tr><td>Postiz</td><td>${cvdpState(i.postiz.reachable,'service protégé joignable','indisponible')}</td><td>HTTP ${esc(i.postiz.status)} · comptes sociaux et publication native à contrôler séparément</td></tr>
+        <tr><td>Activepieces</td><td>${cvdpState(i.activepieces.reachable,'production planifiée','indisponible')}</td><td>HTTP ${esc(i.activepieces.status)} · propriétaire ${esc(social.productionOwner||'inconnu')} · ${esc(social.productionStatus||'état inconnu')}</td></tr>
+        <tr><td>Make</td><td>${cvdpState(social.makeRollback&&social.makeRollback.status==='inactive','inactif — rollback','à contrôler')}</td><td>Scénario ${esc((social.makeRollback&&social.makeRollback.scenarioId)||'inconnu')} conservé, mais hors production</td></tr>
+        <tr><td>Postiz</td><td>${cvdpState(i.postiz.reachable,'service protégé joignable','indisponible')}</td><td>HTTP ${esc(i.postiz.status)} · non propriétaire des publications CVDesignPro</td></tr>
       </table></div>
       <div class="cat-block"><h3>Distribution sociale interne</h3>
         <div class="kpi-cards">

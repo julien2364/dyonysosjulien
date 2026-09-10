@@ -7,16 +7,16 @@ const PROJECTS = [
     slug: 'agoeon', name: 'Agoeon', url: 'https://www.agoeon.com',
     expectedMarker: 'Agoeon',
     github: 'julien2364/remake-patreon-082026', vercelProjectId: 'prj_1SY0dtoQNJWuUKynv9Wvm12z8iaX',
-    state: 'Production publique · mailing Odoo en file', commercialGate: 'Débloquer l’envoi, puis mesurer réponse → créateur actif → paiement',
+    state: 'Production publique · compte Stripe distinct créé, onboarding incomplet · mailing Odoo en file', commercialGate: 'Débloquer l’envoi, puis mesurer réponse → créateur actif → paiement',
     cashEvidence: 'Aucun encaissement attribué prouvé dans le cockpit.',
-    observedAt: '2026-09-09',
+    observedAt: '2026-09-10',
     funnel: {
       acquisition: '3 661 contacts ciblés ; mailing marqué envoyé mais 0 e-mail envoyé et 755 en file.',
       activation: '2 fiches créateur reliées à des IDs auth ; connexion externe active non prouvée.',
-      payment: '3 paliers sur @ania ; Stripe Connect 0/2 ; 0 paiement attribué.',
+      payment: '3 paliers sur @ania. Un compte Stripe Agoeon distinct a été créé le 10/09, mais activation/KYC et paiement live restent incomplets ; 0 paiement attribué.',
       cash: '0 € prouvé.',
       firstGap: 'Distribution e-mail : la campagne n’a encore envoyé aucun message.',
-      decision: 'Ne pas élargir la cible. Résoudre la file/SMTP, dédupliquer et supprimer des campagnes les adresses invalides avant reprise.',
+      decision: 'Ne pas élargir la cible. Terminer l’onboarding Stripe sans compter de revenu, puis résoudre la file/SMTP, dédupliquer et filtrer les adresses invalides avant reprise.',
     },
   },
   {
@@ -25,7 +25,7 @@ const PROJECTS = [
     github: 'julien2364/Kreo', vercelProjectId: 'prj_bpLOwVJ6fPB7zi1MObQWWt4IfLIg',
     state: 'Production publique · automation Odoo en cours', commercialGate: 'Transformer clics/réponses en créateurs actifs puis en paiements',
     cashEvidence: 'Aucun encaissement attribué prouvé dans le cockpit.',
-    observedAt: '2026-09-09',
+    observedAt: '2026-09-10',
     funnel: {
       acquisition: '1 057 participants ; 656 e-mails envoyés ; 18 % ouverts ; 1 % cliqués ; 0 % répondu. Odoo affiche 25 clics agrégés.',
       activation: 'Aucun créateur réel actif attribué à cette campagne.',
@@ -60,7 +60,7 @@ const PROJECTS = [
     commercialGate: 'Visite → commande rentable → solde positif → virement',
     cashEvidence: '121 visites / 7 j, 0 commande, 0 € de CA ; solde Etsy −32,65 €.',
     observedAt: '2026-09-09',
-    snapshot: { visits7d: 121, views7d: 171, orders7d: 0, revenue7d: 0, activeListings: 150, listingsWithVideo: 149, historicalSales: 9, balanceEur: -32.65, listingAndOtherFeesMonthEur: -31.45, marketingMonthEur: -0.77, amountDueEur: 0.43, paymentCardStatus: 'failed', observedAt: '2026-09-09', source: 'Etsy Shop Manager et Etsy Payments authentifiés' },
+    snapshot: { visits7d: 121, views7d: 171, orders7d: 0, revenue7d: 0, activeListings: 150, listingsWithVideo: 149, historicalSales: 9, balanceEur: -32.65, listingAndOtherFeesMonthEur: -31.45, marketingMonthEur: -0.77, amountDueEur: 0.43, paymentCardStatus: 'failed', observedAt: '2026-09-10', source: 'Etsy Shop Manager et Etsy Payments authentifiés' },
     funnel: {
       acquisition: '171 vues et 121 visites sur 7 jours ; 150 fiches actives, dont 149 avec vidéo.',
       activation: '0 commande sur 7 jours ; 9 ventes historiques au total.',
@@ -207,7 +207,7 @@ async function getPortfolioPilotage() {
       vercelAnalytics: { state: analytics.sourceState, configured: analytics.configured, capturedAt: analytics.capturedAt },
       googleAnalytics: { state: 'not_configured', note: 'Aucun identifiant de propriété GA4 n’est configuré dans le projet Dyonysos. Ne pas confondre avec Vercel Web Analytics.' },
       odoo: { state: 'dedicated_dashboard', path: '/pilotage-odoo', note: 'Catalogue public et historique Google Sheets dans le cockpit Odoo dédié.' },
-      etsy: { state: 'authenticated_snapshot', note: 'Instantané manuel issu d’une session Etsy authentifiée le 09/09 ; aucune API Etsy/OAuth n’est configurée.' },
+      etsy: { state: 'authenticated_snapshot', note: 'Instantané manuel issu d’une session Etsy authentifiée le 10/09 ; aucune API Etsy/OAuth n’est configurée.' },
     },
     projects: PROJECTS.map((project, index) => ({
       ...project,

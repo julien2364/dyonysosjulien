@@ -357,7 +357,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
         byChannel: social.by_channel || {},
         postizDrafts: 0,
         postizQueued: integer(socialGrowth.queued_count) + integer(youtubeGrowth.queued_count),
-        postizVisuals: 17 + integer(youtubeGrowth.queued_count),
+        postizVisuals: integer(socialGrowth.queued_count) + integer(youtubeGrowth.queued_count),
         facebookPublished: integer(socialGrowth.published_count),
         facebookQueued: integer(socialGrowth.queued_count),
         youtubePublished: integer(youtubeGrowth.published_count),

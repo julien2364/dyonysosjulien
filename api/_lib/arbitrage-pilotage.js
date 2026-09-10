@@ -362,14 +362,16 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
         facebookQueued: integer(socialGrowth.queued_count),
         youtubePublished: integer(youtubeGrowth.published_count),
         youtubeQueued: integer(youtubeGrowth.queued_count),
-        tiktokState: 'Non connecté — hors périmètre Pareto actuel',
+        tiktokState: 'Création préparée — date de naissance et confirmation finale requises',
         postizStart: socialGrowth.last_published_at || '2026-09-10T04:31:09.000Z',
         postizEnd: '2026-11-03T09:30:00.000Z',
+        dailyWindowEnd: '2026-10-01T10:00:00.000Z',
+        dailyCadence: '1 publication/jour/canal du 11 septembre au 1er octobre',
         postizProof: 'VÉRIFIÉ',
       },
       email: {
         state: 'verified_snapshot',
-        campaign: 'AUTO — ArbitragePro — Prospection 3 emails (EN)',
+        campaign: 'Automatisation commerciale TPE — vendeurs Amazon Europe (EN)',
         currentPlatform: 'Odoo SaaS',
         participants: 1104,
         ongoing: 407,
@@ -392,6 +394,14 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
           prospectsBlocked: 0,
           contactAutomations: mailingOperational ? 1 : 0,
           linkedMailings: integer(mailingGrowth.queued_count),
+          plan21Days: 2008,
+          dailyPlan: [
+            ['2026-09-11',80],['2026-09-12',100],['2026-09-13',90],['2026-09-14',90],['2026-09-15',208],
+            ['2026-09-16',90],['2026-09-17',90],['2026-09-18',90],['2026-09-19',90],['2026-09-20',90],
+            ['2026-09-21',90],['2026-09-22',90],['2026-09-23',90],['2026-09-24',90],['2026-09-25',90],
+            ['2026-09-26',90],['2026-09-27',90],['2026-09-28',90],['2026-09-29',90],['2026-09-30',90],['2026-10-01',90],
+          ].map(([date, planned]) => ({ date, planned })),
+          markets: ['ES','DE','NL','BE','IT','UK'],
           reason: mailingGrowth.details || 'Le contrôle mailing Odoo est en attente.',
           deliverability: 'Boîte Gmail témoin : spam lié à des signalements antérieurs du domaine ; mailed-by et signed-by arbitragepro.eu, TLS confirmé. Surveiller échecs, désinscriptions et réponses avant toute hausse de volume.',
         },
@@ -400,7 +410,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
     },
     internalEngines: {
       decision: 'GO',
-      policy: 'Automation, Postiz et Odoo Community constituent la chaîne prioritaire. Toute panne déclenche une alerte e-mail sur changement d’état.',
+      policy: 'Automatisation commerciale TPE : Automation, Postiz et Odoo Community constituent la chaîne prioritaire. Toute panne déclenche une alerte e-mail sur changement d’état.',
       allOperational: internalOperational,
       services: [
         {

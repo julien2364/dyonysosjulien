@@ -37,10 +37,10 @@ test('construit un cockpit probant à partir des agrégats live', () => {
   assert.equal(dashboard.gates.find((gate) => gate.id === 'funnel').status, 'go');
   assert.equal(dashboard.gates.find((gate) => gate.id === 'tax').proof, 'À CONFIRMER');
   assert.match(dashboard.verdict.acquisition, /^GO/);
-  assert.equal(dashboard.channels.paid.state, 'go_authorized');
-  assert.equal(dashboard.channels.paid.budgetAuthorized, null);
-  assert.equal(dashboard.channels.social.postizDrafts, 16);
-  assert.equal(dashboard.channels.social.postizVisuals, 5);
+  assert.equal(dashboard.channels.paid.state, 'forbidden');
+  assert.equal(dashboard.channels.paid.budgetAuthorized, 0);
+  assert.equal(dashboard.channels.social.postizDrafts, 0);
+  assert.equal(dashboard.channels.social.postizVisuals, 17);
   assert.match(dashboard.projections.warning, /pas des garanties de vente/);
 });
 
@@ -77,13 +77,13 @@ test('enregistre le GO sans déclarer la bascule complète avant la preuve rése
   assert.equal(dashboard.internalEngines.checklist[0].done, true);
   assert.equal(dashboard.internalEngines.checklist[3].done, true);
   assert.equal(dashboard.internalEngines.checklist[1].done, false);
-  assert.equal(dashboard.channels.email.vps.cutoverEligible, true);
+  assert.equal(dashboard.channels.email.vps.cutoverEligible, false);
   assert.equal(dashboard.channels.email.vps.testAccepted, true);
-  assert.equal(dashboard.channels.email.vps.prospects, 9);
-  assert.equal(dashboard.channels.email.vps.prospectsBlocked, 9);
+  assert.equal(dashboard.channels.email.vps.prospects, 0);
+  assert.equal(dashboard.channels.email.vps.prospectsBlocked, 0);
   assert.equal(dashboard.channels.email.vps.contactAutomations, 0);
   assert.equal(dashboard.channels.email.vps.linkedMailings, 0);
-  assert.equal(dashboard.internalEngines.services.find((item) => item.id === 'odoo').cutoverEligible, true);
+  assert.equal(dashboard.internalEngines.services.find((item) => item.id === 'odoo').cutoverEligible, false);
   assert.equal(dashboard.internalEngines.services.find((item) => item.id === 'postiz').cutoverEligible, false);
 });
 

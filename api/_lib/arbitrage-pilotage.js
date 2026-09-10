@@ -214,6 +214,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
   const crmGrowth = growthServices.find((item) => item.name === 'Odoo CRM') || {};
   const socialGrowth = growthServices.find((item) => item.name === 'Réseaux sociaux / Postiz') || {};
   const socialCrmGrowth = growthServices.find((item) => item.name === 'Conversions sociales → Odoo') || {};
+  const paymentGrowth = growthServices.find((item) => item.name === 'Paiement Stripe') || {};
   const automationGrowth = growthServices.find((item) => item.name === 'Automation Dyonysos') || {};
   const growthHealthy = serviceResults.growth?.state === 'live';
   const crmOperational = crmGrowth.state === 'healthy' && integer(crmGrowth.leads_linked) > 0;
@@ -222,6 +223,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
     && integer(socialGrowth.queued_count) > 0;
   const automationOperational = automationGrowth.state === 'healthy';
   const socialCrmOperational = socialCrmGrowth.state === 'healthy';
+  const paymentOperational = paymentGrowth.state === 'healthy';
   const internalOperational = Boolean(
     serviceResults.automation?.reachable
     && serviceResults.odoo?.reachable
@@ -229,6 +231,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
     && growthHealthy
     && automationOperational
     && socialCrmOperational
+    && paymentOperational
     && crmOperational
     && socialOperational
   );
@@ -290,6 +293,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
       postiz: { state: socialOperational ? 'live' : 'error', capturedAt: socialGrowth.last_run_at || null },
       automation: { state: automationOperational ? 'live' : 'error', capturedAt: automationGrowth.last_run_at || serviceResults.automation?.checkedAt || null },
       socialCrm: { state: socialCrmOperational ? 'live' : 'error', capturedAt: socialCrmGrowth.last_run_at || null },
+      payment: { state: paymentOperational ? 'live' : 'error', capturedAt: paymentGrowth.last_run_at || null },
     },
     verdict: {
       acquisition: 'GO — acquisition organique interne',
@@ -461,6 +465,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
       { proof: crmOperational ? 'VÉRIFIÉ' : 'BLOQUÉ', statement: `Odoo Community : ${integer(crmGrowth.leads_linked)} opportunités ArbitragePro liées automatiquement au CRM sur ${integer(crmGrowth.contacts_seen)} contacts qualifiés.`, at: crmGrowth.last_run_at || null },
       { proof: socialOperational ? 'VÉRIFIÉ' : 'BLOQUÉ', statement: `Postiz : ${integer(socialGrowth.published_count)} publication Facebook confirmée par URL native et ${integer(socialGrowth.queued_count)} publications planifiées.`, at: socialGrowth.last_run_at || null },
       { proof: socialCrmOperational ? 'VÉRIFIÉ' : 'BLOQUÉ', statement: `Conversions sociales → Odoo : synchronisation active ; ${integer(socialCrmGrowth.leads_linked)} inscription attribuée à ce jour.`, at: socialCrmGrowth.last_run_at || null },
+      { proof: paymentOperational ? 'VÉRIFIÉ' : 'BLOQUÉ', statement: 'Paiement : disponibilité et configuration Stripe contrôlées automatiquement toutes les cinq minutes.', at: paymentGrowth.last_run_at || null },
       { proof: 'VÉRIFIÉ', statement: 'Publicité payante : budget fixé à 0 € ; aucune activation autorisée.', at: now.toISOString() },
       { proof: 'PROJECTION', statement: 'Les objectifs J+1 à J+30 restent conditionnels faute d’historique de conversion payante.', at: now.toISOString() },
     ],

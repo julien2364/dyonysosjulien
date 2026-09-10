@@ -31,9 +31,11 @@
 .cl-free textarea{width:100%;font:inherit;font-size:13px;padding:8px;border:1px solid #b9cad7;border-radius:6px;min-height:56px;margin-bottom:10px}
 .cl-pivot td.cl-cell{text-align:center}
 .cl-save-msg{font-size:12.5px}
+.decision-hero{background:linear-gradient(135deg,#071f39,#0d5682);color:#fff;border-radius:14px;padding:22px;margin-bottom:18px}.decision-hero h3{font-size:25px;margin:5px 0}.decision-hero p{margin:6px 0;color:#d9edf8}.decision-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:18px}.decision-card{background:#fff;border:1px solid var(--l);border-radius:10px;padding:16px}.decision-card strong{display:block;color:var(--n);font-size:18px;margin:5px 0}.decision-card small{color:var(--m)}.decision-card.urgent{border-left:5px solid #c63d35}.decision-card.warn{border-left:5px solid #d28a00}.decision-actions{display:flex;gap:8px;flex-wrap:wrap}.decision-actions a{display:inline-block;background:var(--b);color:#fff;text-decoration:none;font-weight:800;padding:10px 14px;border-radius:7px}.integration-state{font-weight:900;font-size:11px;text-transform:uppercase}.integration-state.ok{color:#1e7a3d}.integration-state.warn{color:#a9700d}.integration-state.crit{color:#a7332b}
 @media(max-width:720px){.groups{grid-template-columns:1fr}.hero h1{font-size:36px}table.data{font-size:12.5px}details.proj .body dl{grid-template-columns:1fr}}</style><link rel="stylesheet" href="/common.css"><link rel="stylesheet" href="/theme.css"></head><body><header><nav class="wrap"><a href="/"><img src="/logo-dyonysos-wordmark.png" alt="Dyonysos"></a><a href="/">Retour au site public</a></nav></header><section class="hero"><div class="wrap"><h1>Espace privé Dyonysos</h1><p>Accès réservé à l’administration et aux projets internes.</p></div></section><main><form id="loginForm" class="login"><h2>Connexion</h2><div class="field"><label for="email">Identifiant</label><input id="email" name="email" type="email" required autocomplete="username"></div><div class="field"><label for="password">Mot de passe</label><input id="password" name="password" type="password" required autocomplete="current-password"></div><button type="submit">Se connecter</button><p id="loginStatus" role="status"></p></form><section id="dashboard" class="wrap dashboard hidden"><div class="dashhead"><div><h2>Pilotage Dyonysos</h2><p>Les liens et données sensibles ne sont pas affichés sur la vitrine publique.</p></div><button id="logout">Déconnexion</button></div>
 <div class="tabs" role="tablist">
-<button class="tab active" data-tab="liens">Modules &amp; liens</button>
+<button class="tab active" data-tab="decision">Décision J+1</button>
+<button class="tab" data-tab="liens">Modules &amp; liens</button>
 <button class="tab" data-tab="pilotages">Pilotages</button>
 <button class="tab" data-tab="api">API &amp; accès</button>
 <button class="tab" data-tab="social">Réseaux — Pilotage</button>
@@ -45,7 +47,8 @@
 <button class="tab" data-tab="strategie">Stratégie</button>
 <button class="tab" data-tab="checklist">Check-list</button>
 </div>
-<div id="panel-liens" class="panel active"><div id="groups" class="groups"></div></div>
+<div id="panel-decision" class="panel active"><div id="decision-content" class="muted">Chargement de l’état réel…</div></div>
+<div id="panel-liens" class="panel"><div id="groups" class="groups"></div></div>
 <div id="panel-pilotages" class="panel"><div id="pilotages-content" class="muted">Chargement…</div></div>
 <div id="panel-api" class="panel"><div id="api-content" class="muted">Chargement…</div></div>
 <div id="panel-social" class="panel"><div id="social-content" class="muted">Chargement…</div></div>
@@ -71,7 +74,7 @@ const NETWORK_ICONS={
   youtube:'<svg width="14" height="14" viewBox="0 0 24 24" fill="#FF0000" style="vertical-align:-2px"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>',
 };
 const loaded={};
-const render=async()=>{const r=await fetch('/api/private-links',{credentials:'same-origin'});if(!r.ok){loginForm.classList.remove('hidden');dashboard.classList.add('hidden');return}const data=await r.json();loginForm.classList.add('hidden');dashboard.classList.remove('hidden');groups.innerHTML=data.groups.map(g=>`<section class="group"><h2>${g.title}</h2>${g.links.map(l=>`<div class="link">${l.url?`<a href="${l.url}" target="_blank" rel="noopener noreferrer">${l.name} →</a>`:`<strong>${l.name}</strong>`}${l.sensitive?'<span class="sensitive">Confidentiel</span>':''}${l.status?`<span class="status">${l.status}</span>`:''}</div>`).join('')}</section>`).join('')};
+const render=async()=>{const r=await fetch('/api/private-links',{credentials:'same-origin'});if(!r.ok){loginForm.classList.remove('hidden');dashboard.classList.add('hidden');return}const data=await r.json();loginForm.classList.add('hidden');dashboard.classList.remove('hidden');groups.innerHTML=data.groups.map(g=>`<section class="group"><h2>${g.title}</h2>${g.links.map(l=>`<div class="link">${l.url?`<a href="${l.url}" target="_blank" rel="noopener noreferrer">${l.name} →</a>`:`<strong>${l.name}</strong>`}${l.sensitive?'<span class="sensitive">Confidentiel</span>':''}${l.status?`<span class="status">${l.status}</span>`:''}</div>`).join('')}</section>`).join('');if(!loaded.decision){loaded.decision=true;loadDecision()}};
 loginForm.addEventListener('submit',async e=>{e.preventDefault();loginStatus.textContent='Connexion…';loginStatus.className='';const body=Object.fromEntries(new FormData(loginForm));const r=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const data=await r.json();if(!r.ok){loginStatus.textContent=data.error||'Connexion impossible.';loginStatus.className='error';return}loginForm.reset();const next=new URLSearchParams(location.search).get('next');if(next&&next.startsWith('/')&&!next.startsWith('//')){location.assign(next);return}await render()});
 logout.addEventListener('click',async()=>{await fetch('/api/logout',{method:'POST'});location.reload()});
 
@@ -479,15 +482,44 @@ function renderTcdBlock(tcd){
   return html;
 }
 
+function integrationClass(state){
+  const normalized=String(state||'').toUpperCase();
+  if(normalized.includes('A_CONFIGURER')||normalized.includes('REAUTHENTIFIER')||normalized.includes('CONTROLER'))return'crit';
+  if(normalized==='LECTURE_TESTEE'||normalized==='AUTH_TESTEE'||normalized==='SANTE_PUBLIQUE_TESTEE')return'ok';
+  return'warn';
+}
+
+async function loadDecision(){
+  const el=document.getElementById('decision-content');
+  try{
+    const r=await fetch('/api/portfolio-pilotage',{credentials:'same-origin',cache:'no-store'});
+    const d=await r.json();if(!r.ok)throw new Error(d.error||'Erreur API');
+    const it=d.decision,order=it.confirmedOrder,cash=it.cash;
+    el.innerHTML=`<div class="decision-hero"><span class="pill pill-crit">${esc(it.state)}</span><h3>${esc(it.priority.project)} · ${esc(it.priority.offer)}</h3><p>${esc(it.priority.reason)}</p><p><strong>Goulot :</strong> ${esc(it.priority.bottleneck)}</p></div>`+
+      `<div class="decision-grid"><div class="decision-card urgent"><small>Commande à traiter</small><strong>${esc(order.orderId)}</strong><span>${esc(order.sku)} · ${esc(order.asin)} · expédier avant le ${new Date(order.shipBy+'T12:00:00').toLocaleDateString('fr-FR')}</span></div>`+
+      `<div class="decision-card"><small>Produit Amazon avant coûts</small><strong>${Number(order.amazonRevenueBeforeCogsAndShippingEur).toFixed(2)} €</strong><span>COGS et port encore inconnus : ce n’est pas la marge nette.</span></div>`+
+      `<div class="decision-card warn"><small>Cash libre prudent</small><strong>${Number(cash.prudentFreeCashEur).toFixed(2)} €</strong><span>Règle de décision, pas solde bancaire. ${Number(cash.bankObservedEur).toFixed(2)} € observés ; Redcare ${Number(cash.overlapPendingAuthorisationsAndStockEur).toFixed(2)} € chevauche autorisations et stock.</span></div>`+
+      `<div class="decision-card urgent"><small>Contrôle action</small><strong>${new Date(it.nextActionCheck).toLocaleString('fr-FR')}</strong><span>Localiser le produit et décider l’expédition avant l’échéance Amazon.</span></div>`+
+      `<div class="decision-card"><small>Revue portefeuille J+7</small><strong>${new Date(it.nextReview).toLocaleDateString('fr-FR')}</strong><span>Cash bancaire, payout Amazon et conversion des offres.</span></div></div>`+
+      `<div class="cat-block"><h3>Classement cash · rangs 2–3 provisoires</h3><p class="muted">${esc(it.rankingBasis)}</p><table class="data"><tr><th>Rang</th><th>Projet / offre</th><th>Cash net prouvé</th><th>Vitesse</th><th>Confiance / décision</th></tr>${it.ranking.map(x=>`<tr><td>${x.rank}</td><td><strong>${esc(x.project)}</strong><br><span class="muted">${esc(x.offer)}</span></td><td>${esc(x.netCash)}</td><td>${esc(x.cashSpeed)}</td><td><span class="muted">${esc(x.confidence||'—')}</span><br>${esc(x.decision)}</td></tr>`).join('')}</table></div>`+
+      `<div class="note"><strong>Action J+1 :</strong> ${esc(it.priority.nextAction)}<br><strong>Succès :</strong> ${esc(it.priority.successMetric)}</div>`+
+      `<div class="decision-actions"><a href="/pilotage-portefeuille">Ouvrir le cockpit complet →</a><a href="/pilotage-arbitragepro">ArbitragePro+ →</a><a href="/pilotage-odoo">Odoo Apps →</a></div>`+
+      `<p class="muted">État généré ${new Date(d.generatedAt).toLocaleString('fr-FR')} · décision observée ${new Date(it.observedAt).toLocaleString('fr-FR')}.</p>`;
+  }catch(e){el.innerHTML='<div class="note">Décision J+1 indisponible : '+esc(e.message)+'</div>'}
+}
+
 async function loadApiAcces(){
   const el=document.getElementById('api-content');
   try{
-    const [rCrm,rReseaux]=await Promise.all([
+    const [rCrm,rReseaux,rPortfolio]=await Promise.all([
       fetch('/api/crm',{credentials:'same-origin'}),
-      fetch('/api/pilotage-social/reseaux',{credentials:'same-origin'})
+      fetch('/api/pilotage-social/reseaux',{credentials:'same-origin'}),
+      fetch('/api/portfolio-pilotage',{credentials:'same-origin',cache:'no-store'})
     ]);
     const d=await rCrm.json();
-    let html='<p class="muted">Statut des accès API vers les outils internes (Taiga, Odoo self-hébergé) et les comptes réseaux sociaux par projet — piloté depuis cet onglet, propagé vers les vraies automatisations.</p>';
+    const portfolio=await rPortfolio.json();
+    let html='<p class="muted">Statut des accès API vers les outils internes et des comptes réseaux sociaux par projet. Les secrets restent exclusivement côté serveur ; seul leur état est affiché.</p>';
+    if(rPortfolio.ok&&portfolio.integrations){html+='<div class="cat-block"><h3>Connexions du cockpit</h3><table class="data"><tr><th>Source</th><th>État</th><th>Mode</th><th>Limite actuelle</th></tr>'+portfolio.integrations.map(i=>`<tr><td><strong>${esc(i.name)}</strong></td><td><span class="integration-state ${integrationClass(i.state)}">${esc(i.state)}</span></td><td>${esc(i.mode)}</td><td class="muted">${esc(i.note)}</td></tr>`).join('')+'</table><p class="muted" style="font-size:12px">Aucune clé n’est envoyée au navigateur. Une variable présente reste NON TESTÉE tant qu’une lecture authentifiée n’a pas réussi ; cela ne prouve jamais une vente ni une publication livrée.</p></div>'}
     if(d.taigaLive&&d.taigaLive.configured&&!d.taigaLive.error){
       html+='<div class="cat-block"><h3>Taiga (vrai CRM/suivi) — connecté en direct</h3>'+
         '<div class="kpi-cards"><div class="kpi-card"><b>'+d.taigaLive.totalProjets+'</b><span>Projets Taiga visibles</span></div></div>'+
@@ -914,7 +946,7 @@ async function loadPilotages(){
     el.innerHTML='<div class="note"><strong>Lecture seule.</strong> Site et sitemap sont contrôlés à chaque chargement. Vercel Analytics est affiché seulement lorsque le projet l’autorise ; GA4 et Etsy restent explicitement non configurés.</div><div class="groups">'+items.map(p=>{const visits=p.analytics&&p.analytics.live?p.analytics.periodes['7j'].visiteurs:'n.a.';const path=p.dedicatedPath||('/pilotage-'+p.slug);return '<section class="group"><h2>'+esc(p.name)+'</h2><p><span class="status-pill '+(p.health&&p.health.ok?'good':'crit')+'">'+(p.health&&p.health.ok?'production joignable':'à contrôler')+'</span></p><p><strong>'+esc(visits)+'</strong> visiteurs 7 j <span class="muted">(Vercel)</span><br><strong>'+(p.sitemap&&p.sitemap.ok?esc(p.sitemap.entries):'n.a.')+'</strong> URLs sitemap</p><p class="muted">'+esc(p.commercialGate)+'</p><a href="'+esc(path)+'">Ouvrir le pilotage →</a></section>'}).join('')+'</div><p class="muted">Dernier contrôle : '+new Date(d.generatedAt).toLocaleString('fr-FR')+'</p>';
   }catch(e){el.innerHTML='<div class="note">Pilotages indisponibles : '+esc(e.message)+'</div>'}
 }
-const loaders={pilotages:loadPilotages,api:loadApiAcces,social:loadSocial,projets:loadProjets,finance:loadFinance,kpi:loadKpi,cvdesignpro:loadCvDesignPro,crm:loadCrm,strategie:loadStrategie,checklist:loadChecklist};
+const loaders={decision:loadDecision,pilotages:loadPilotages,api:loadApiAcces,social:loadSocial,projets:loadProjets,finance:loadFinance,kpi:loadKpi,cvdesignpro:loadCvDesignPro,crm:loadCrm,strategie:loadStrategie,checklist:loadChecklist};
 document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{
   document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));

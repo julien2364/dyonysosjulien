@@ -1,6 +1,95 @@
 const { getSelectedProjectTraffic } = require('./vercel-analytics');
+const { getAutomationStatus } = require('./automation-client');
 
 const FETCH_TIMEOUT_MS = 8000;
+
+const DECISION_SNAPSHOT = {
+  iterationId: 'DYO-2026-09-10-J1',
+  observedAt: '2026-09-10T21:29:00.000Z',
+  state: 'ACCORD_REQUIS',
+  objective: 'Transformer le stock déjà détenu en cash sans augmenter les dépenses.',
+  priority: {
+    project: 'Amazon arbitrage',
+    offer: 'Stock existant · FBM',
+    reason: 'Une commande client réelle est non expédiée et doit partir avant le 11/09.',
+    bottleneck: 'Retrouver l’unité, chiffrer le port et le coût d’achat, puis acheter l’étiquette et confirmer l’expédition.',
+    nextAction: 'Traiter la commande 171-5028264-3421946 avant toute nouvelle production ou acquisition.',
+    successMetric: 'Commande expédiée à temps avec suivi, marge contributive calculée et payout suivi séparément du CA.',
+  },
+  cash: {
+    bankObservedEur: 654,
+    bankSource: 'Dougs · Qonto',
+    bankObservedAt: '2026-09-10T21:29:00.000Z',
+    bankReconciled: false,
+    monthOperatingChargesToDateEur: 647,
+    operatingChargesYtdEur: 2964,
+    cardAuthorisationsPendingEur: 875.46,
+    stockPurchasesConfirmedEur: 1339.43,
+    overlapPendingAuthorisationsAndStockEur: 866.88,
+    supplierRefundPendingEur: 45.38,
+    amazonDeferredSnapshotEur: 142.85,
+    prudentFreeCashEur: 0,
+    note: 'Les 647 € sont des charges comptabilisées en septembre à date, pas des charges restantes. Redcare 866,88 € figure à la fois dans les autorisations en attente et dans le coût économique du stock : ces deux vues ne doivent jamais être additionnées. Le cash libre prudent à 0 € est une règle de décision, pas un solde bancaire observé.',
+  },
+  confirmedOrder: {
+    state: 'NON_EXPEDIEE',
+    orderId: '171-5028264-3421946',
+    orderDate: '2026-09-10',
+    shipBy: '2026-09-11',
+    channel: 'Amazon.fr',
+    fulfilment: 'FBM',
+    sku: 'STK-FR-FEUILLE1-0073',
+    asin: 'B000Q87YLE',
+    quantity: 1,
+    grossInclTaxEur: 9.99,
+    amazonRevenueBeforeCogsAndShippingEur: 9.01,
+    cogsEur: null,
+    outboundShippingEur: null,
+    netMarginEur: null,
+    evidence: 'Seller Central authentifié et e-mail Amazon du 10/09.',
+  },
+  ranking: [
+    {
+      rank: 1,
+      project: 'Amazon arbitrage',
+      offer: 'Stock existant · FBM',
+      evidence: '1 commande réelle non expédiée ; 142,85 € différés dans le snapshot du 08/09.',
+      netCash: '9,01 € avant COGS et port ; net final inconnu.',
+      cashSpeed: 'Expédition J+1 ; payout ensuite selon le cycle Amazon.',
+      confidence: 'Élevée sur la commande ; marge non vérifiable.',
+      decision: 'PRIORITÉ À TRAITER — ACCORD REQUIS ; HOLD sur tout nouvel achat.',
+    },
+    {
+      rank: 2,
+      project: 'ArbitragePro+',
+      offer: 'Starter · 71 €/mois',
+      evidence: '3 386 sessions, 4 inscriptions, 1 recherche ; entrée d’achat présente.',
+      netCash: '0 € prouvé.',
+      cashSpeed: 'Inconnue tant que paiement → webhook → droit n’est pas rejoué.',
+      confidence: 'Faible : aucune conversion ni vitesse observée.',
+      decision: 'Ordre d’investigation provisoire · HOLD commercial ; préparer un test live borné, sans trafic payant.',
+    },
+    {
+      rank: 3,
+      project: 'Odoo Apps',
+      offer: '2–3 applications Pareto',
+      evidence: '32 apps et 39 thèmes publiés ; au moins 5 téléchargements gratuits observés.',
+      netCash: 'Commandes et payout Store non réconciliés.',
+      cashSpeed: 'Inconnue ; mesurer avant de produire davantage.',
+      confidence: 'Faible : téléchargements gratuits seulement, ventes/payout absents.',
+      decision: 'Ordre d’investigation provisoire · HOLD commercial ; instrumenter vues → panier → commande → payout.',
+    },
+  ],
+  preparedExternalActions: [
+    'Acheter l’expédition Amazon puis confirmer l’envoi avec suivi, après validation humaine du coût complet.',
+    'Mettre en pause Etsy Ads à 1 USD/jour si Julien confirme ; 0 commande et solde négatif au dernier contrôle.',
+    'Renseigner des jetons API à portée lecture seule seulement après identification de leur source et de leur destination exactes.',
+  ],
+  rankingBasis: 'Amazon est premier sur une commande réelle et urgente. Les rangs 2 et 3 sont un ordre d’investigation provisoire : cash, vitesse, probabilité, effort et coût ne disposent pas encore d’une base comparable.',
+  nextActionCheck: '2026-09-11T08:30:00+02:00',
+  nextReview: '2026-09-17T09:00:00+02:00',
+  nextWake: '2026-09-17T09:00:00+02:00',
+};
 
 const PROJECTS = [
   {
@@ -222,12 +311,52 @@ async function readSitemap(project) {
   }
 }
 
+function buildIntegrations(analytics, automation, env = process.env) {
+  const sheetsVariablesPresent = Boolean(env.GOOGLE_SERVICE_ACCOUNT_EMAIL && env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY && env.SPREADSHEET_ID);
+  const odooVariablesPresent = Boolean(env.ODOO_INTERNE_DB && env.ODOO_INTERNE_LOGIN && env.ODOO_INTERNE_PASSWORD);
+  const odooPublicReachable = Boolean(automation.services?.find((service) => service.name.startsWith('Odoo'))?.reachable);
+  return [
+    {
+      id: 'vercel-analytics', name: 'Vercel Web Analytics', state: analytics.liveCount > 0 ? 'LECTURE_TESTEE' : (analytics.configured ? 'VARIABLES_PRESENTES_NON_TESTEES' : 'A_CONFIGURER'),
+      configured: Boolean(analytics.configured), mode: 'lecture seule',
+      note: analytics.configured ? `${analytics.liveCount || 0}/${analytics.total || 0} projets lisibles lors de ce contrôle.` : 'VERCEL_ANALYTICS_TOKEN absent.',
+    },
+    {
+      id: 'google-sheets', name: 'Google Sheets · Content Engine',
+      state: sheetsVariablesPresent ? 'VARIABLES_PRESENTES_NON_TESTEES' : 'A_CONFIGURER',
+      configured: sheetsVariablesPresent, mode: 'lecture/écriture contrôlée',
+      note: 'Les valeurs sensibles restent côté serveur. Les identifiants sociaux sont stockés par projet dans PROJECTS.',
+    },
+    {
+      id: 'activepieces', name: 'Activepieces · automation.dyonysos.fr',
+      state: automation.healthy ? 'SANTE_PUBLIQUE_TESTEE' : 'A_CONTROLER',
+      configured: Boolean(automation.authConfigured), mode: automation.authConfigured ? 'API serveur non testée' : 'sonde publique',
+      note: automation.note,
+    },
+    {
+      id: 'make', name: 'Make', state: env.MAKE_API_TOKEN ? 'VARIABLE_PRESENTE_NON_TESTEE' : 'A_CONFIGURER',
+      configured: Boolean(env.MAKE_API_TOKEN), mode: 'lecture/commandes bornées',
+      note: env.MAKE_API_TOKEN ? 'Jeton serveur présent ; authentification non testée.' : 'MAKE_API_TOKEN absent ; le cockpit ne doit afficher qu’un snapshot daté.',
+    },
+    {
+      id: 'odoo-vps', name: 'Odoo Community · VPS',
+      state: odooVariablesPresent ? 'VARIABLES_PRESENTES_NON_TESTEES' : (odooPublicReachable ? 'INTERFACE_PUBLIQUE_TESTEE' : 'A_CONTROLER'),
+      configured: odooVariablesPresent, mode: odooVariablesPresent ? 'JSON-RPC serveur non testé' : 'interface publique seulement',
+      note: 'Les variables historiques Api_Odoo ne prouvent pas la présence du triplet ODOO_INTERNE_DB/LOGIN/PASSWORD attendu par le cockpit.',
+    },
+    { id: 'ga4', name: 'Google Analytics 4', state: 'A_CONFIGURER', configured: false, mode: 'aucun', note: 'Aucune propriété GA4 n’est branchée dans ce projet.' },
+    { id: 'etsy', name: 'Etsy API', state: 'A_CONFIGURER', configured: false, mode: 'snapshot authentifié', note: 'Aucun OAuth Etsy serveur ; les chiffres restent des snapshots datés.' },
+    { id: 'stripe', name: 'Stripe portefeuille', state: 'A_REAUTHENTIFIER', configured: false, mode: 'snapshots datés', note: 'Le connecteur live a demandé une nouvelle authentification lors du contrôle du 10/09.' },
+  ];
+}
+
 async function getPortfolioPilotage() {
   const analyticsDefinitions = PROJECTS.filter((project) => project.vercelProjectId).map((project) => ({ name: project.name, vercelProjectId: project.vercelProjectId }));
-  const [analytics, healthRows, sitemapRows] = await Promise.all([
+  const [analytics, healthRows, sitemapRows, automation] = await Promise.all([
     getSelectedProjectTraffic(analyticsDefinitions),
     Promise.all(PROJECTS.map(probe)),
     Promise.all(PROJECTS.map(readSitemap)),
+    getAutomationStatus(),
   ]);
   const analyticsById = Object.fromEntries((analytics.rows || []).map((row) => [row.vercelProjectId, row]));
   return {
@@ -238,6 +367,8 @@ async function getPortfolioPilotage() {
       odoo: { state: 'dedicated_dashboard', path: '/pilotage-odoo', note: 'Catalogue public et historique Google Sheets dans le cockpit Odoo dédié.' },
       etsy: { state: 'authenticated_snapshot', note: 'Instantané manuel issu d’une session Etsy authentifiée le 10/09 ; aucune API Etsy/OAuth n’est configurée.' },
     },
+    decision: DECISION_SNAPSHOT,
+    integrations: buildIntegrations(analytics, automation),
     projects: PROJECTS.map((project, index) => ({
       ...project,
       health: healthRows[index],
@@ -247,4 +378,4 @@ async function getPortfolioPilotage() {
   };
 }
 
-module.exports = { PROJECTS, getPortfolioPilotage };
+module.exports = { PROJECTS, DECISION_SNAPSHOT, buildIntegrations, getPortfolioPilotage };

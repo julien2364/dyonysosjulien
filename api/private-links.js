@@ -15,7 +15,8 @@ module.exports = function handler(req, res) {
   return res.status(200).json({
     groups: [
       { title: 'Pilotage', links: [
-        { name: 'Cockpit portefeuille · cash, runway, Amazon et décisions', url: '/pilotage-portefeuille', status: 'Snapshots commerciaux datés + sondes techniques à la demande' },
+        { name: 'Décision J+1 · cash, Amazon et goulot', url: '/pilotage-portefeuille', status: 'Commande Amazon réelle à expédier avant le 11/09 ; achats nouveaux en HOLD' },
+        { name: 'Registre officiel des mégaprompts', url: 'https://drive.google.com/file/d/14CBJ7cDnLe2i03Aolo64mp_152ajWk3H/view', status: 'PROMPT_REGISTRY.md · v1.0 · APPROVED' },
         { name: 'Cockpit ArbitragePro+ (tunnel, ventes, canaux, preuves)', url: '/pilotage-arbitragepro', status: 'Supabase/Vercel actualisés à la demande ; Stripe, Odoo et Postiz datés' },
         { name: 'Pilotage Social (calendrier, publications, erreurs)', url: '/pilotage-social' },
         { name: 'Pilotage Odoo Apps (ventes, projections, vidéos)', url: '/pilotage-odoo' },
@@ -30,10 +31,10 @@ module.exports = function handler(req, res) {
         { name: 'École Connect', url: 'https://ecole-connect-dyonysos.vercel.app', status: 'Domaine canonique' }
       ]},
       { title: 'Annuaire entreprises C2B / B2B', links: [
-        { name: 'Firmoscope / Prospeo', url: 'https://prospeo-drab.vercel.app/' }
+        { name: 'Propecto', url: 'https://www.propecto.eu/', status: 'Production publique ; paiement live attribué non prouvé' }
       ]},
       { title: 'Commerce et performance', links: [
-        { name: 'Arbitrage+', url: 'https://arbitrage-pro-app.vercel.app' },
+        { name: 'ArbitragePro+', url: 'https://www.arbitragepro.eu', status: 'Production publique · Starter 71 €/mois' },
         { name: 'Analyzer+', url: 'https://analyzer-plus-preview.vercel.app' },
         { name: 'Profit+', url: 'https://profit-plus-preview.vercel.app' }
       ]},

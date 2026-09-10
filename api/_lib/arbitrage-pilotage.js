@@ -213,16 +213,19 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
   const growthServices = serviceResults.growth?.value?.services || [];
   const crmGrowth = growthServices.find((item) => item.name === 'Odoo CRM') || {};
   const socialGrowth = growthServices.find((item) => item.name === 'Réseaux sociaux / Postiz') || {};
+  const automationGrowth = growthServices.find((item) => item.name === 'Automation Dyonysos') || {};
   const growthHealthy = serviceResults.growth?.state === 'live';
   const crmOperational = crmGrowth.state === 'healthy' && integer(crmGrowth.leads_linked) > 0;
   const socialOperational = socialGrowth.state === 'healthy'
     && integer(socialGrowth.published_count) > 0
     && integer(socialGrowth.queued_count) > 0;
+  const automationOperational = automationGrowth.state === 'healthy';
   const internalOperational = Boolean(
     serviceResults.automation?.reachable
     && serviceResults.odoo?.reachable
     && serviceResults.postiz?.reachable
     && growthHealthy
+    && automationOperational
     && crmOperational
     && socialOperational
   );
@@ -282,7 +285,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
       stripe: { state: 'verified_snapshot', capturedAt: '2026-09-08T20:48:00.000Z' },
       odoo: { state: crmOperational ? 'live' : 'error', capturedAt: crmGrowth.last_run_at || null },
       postiz: { state: socialOperational ? 'live' : 'error', capturedAt: socialGrowth.last_run_at || null },
-      automation: { state: serviceResults.automation?.reachable ? 'live' : 'error', capturedAt: serviceResults.automation?.checkedAt || null },
+      automation: { state: automationOperational ? 'live' : 'error', capturedAt: automationGrowth.last_run_at || serviceResults.automation?.checkedAt || null },
     },
     verdict: {
       acquisition: 'GO — acquisition organique interne',
@@ -386,11 +389,11 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
           role: 'Ingestion et génération des contenus',
           reachable: Boolean(serviceResults.automation?.reachable),
           httpStatus: serviceResults.automation?.status || null,
-          observed: 'Le flux [ARBITRAGEPRO] Supervision acquisition sociale → Odoo est publié et actif toutes les 5 minutes.',
+          observed: automationGrowth.details || 'Le flux [ARBITRAGEPRO] Supervision acquisition sociale → Odoo est publié et actif toutes les 5 minutes.',
           proof: 'VÉRIFIÉ',
           checkedAt: serviceResults.automation?.checkedAt || '2026-09-08T22:12:01.000Z',
-          cutoverEligible: Boolean(serviceResults.automation?.reachable),
-          blocker: serviceResults.automation?.reachable ? 'Aucun.' : 'Interface Automation indisponible.',
+          cutoverEligible: Boolean(serviceResults.automation?.reachable && automationOperational),
+          blocker: serviceResults.automation?.reachable && automationOperational ? 'Aucun.' : (automationGrowth.details || 'Flux Automation indisponible.'),
         },
         {
           id: 'odoo',

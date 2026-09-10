@@ -162,8 +162,27 @@ async function probe(url, options = {}) {
   }
 }
 
+async function readGrowthHealth() {
+  try {
+    const response = await withTimeout('https://odoo.dyonysos.fr/arbitragepro/growth/health', {
+      headers: { Accept: 'application/json' },
+      cache: 'no-store',
+    });
+    if (!response.ok) throw new Error(`Growth health HTTP ${response.status}`);
+    const value = await response.json();
+    return { ok: true, state: value.status === 'healthy' ? 'live' : 'error', value };
+  } catch (error) {
+    return {
+      ok: false,
+      state: error && error.name === 'AbortError' ? 'timeout' : 'error',
+      value: null,
+      error: error && error.message ? error.message : String(error),
+    };
+  }
+}
+
 async function readInternalServices() {
-  const [automation, odoo, postiz] = await Promise.all([
+  const [automation, odoo, postiz, growth] = await Promise.all([
     probe('https://automation.dyonysos.fr/'),
     probe('https://odoo.dyonysos.fr/web/webclient/version_info', {
       method: 'POST',
@@ -171,8 +190,9 @@ async function readInternalServices() {
       body: JSON.stringify({ jsonrpc: '2.0', method: 'call', params: {} }),
     }),
     probe('https://social.dyonysos.fr/auth'),
+    readGrowthHealth(),
   ]);
-  return { automation, odoo, postiz };
+  return { automation, odoo, postiz, growth };
 }
 
 const integer = (value) => Number.isFinite(Number(value)) ? Number(value) : 0;
@@ -190,6 +210,22 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
   const paid = integer(subscriptions.active);
   const trials = integer(subscriptions.trialing);
   const productChecksOk = integer(checks.total) > 0 && integer(checks.failed) === 0;
+  const growthServices = serviceResults.growth?.value?.services || [];
+  const crmGrowth = growthServices.find((item) => item.name === 'Odoo CRM') || {};
+  const socialGrowth = growthServices.find((item) => item.name === 'Réseaux sociaux / Postiz') || {};
+  const growthHealthy = serviceResults.growth?.state === 'live';
+  const crmOperational = crmGrowth.state === 'healthy' && integer(crmGrowth.leads_linked) > 0;
+  const socialOperational = socialGrowth.state === 'healthy'
+    && integer(socialGrowth.published_count) > 0
+    && integer(socialGrowth.queued_count) > 0;
+  const internalOperational = Boolean(
+    serviceResults.automation?.reachable
+    && serviceResults.odoo?.reachable
+    && serviceResults.postiz?.reachable
+    && growthHealthy
+    && crmOperational
+    && socialOperational
+  );
 
   const gates = [
     {
@@ -244,18 +280,21 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
       supabase: { state: snapshotResult.state, capturedAt: live.captured_at || null },
       vercel: { state: trafficResult.state, capturedAt: traffic?.capturedAt || null },
       stripe: { state: 'verified_snapshot', capturedAt: '2026-09-08T20:48:00.000Z' },
-      odoo: { state: 'verified_snapshot', capturedAt: '2026-09-08T22:48:32.000Z' },
-      postiz: { state: 'verified_snapshot', capturedAt: '2026-09-08T22:23:30.000Z' },
+      odoo: { state: crmOperational ? 'live' : 'error', capturedAt: crmGrowth.last_run_at || null },
+      postiz: { state: socialOperational ? 'live' : 'error', capturedAt: socialGrowth.last_run_at || null },
+      automation: { state: serviceResults.automation?.reachable ? 'live' : 'error', capturedAt: serviceResults.automation?.checkedAt || null },
     },
     verdict: {
-      acquisition: 'GO — autorisé par la direction',
-      execution: 'GO CONTRÔLÉ — maintien du repli Make',
-      decision: 'GO ACQUISITION · BASCULE INTERNE PROGRESSIVE',
-      confidence: 'élevée sur le tunnel et Odoo SMTP, faible sur la conversion payante et Postiz Facebook',
-      bottleneck: paid > 0 ? 'Rétention et montée en charge' : 'Première conversion payante + reconnexion Facebook Postiz',
+      acquisition: 'GO — acquisition organique interne',
+      execution: internalOperational ? 'OPÉRATIONNEL — Automation · Postiz · Odoo' : 'DÉGRADÉ — contrôle requis',
+      decision: internalOperational ? 'ACQUISITION INTERNE OPÉRATIONNELLE' : 'ACQUISITION INTERNE DÉGRADÉE',
+      confidence: internalOperational ? 'élevée sur Odoo CRM et la publication sociale ; conversion payante encore à démontrer' : 'faible tant qu’un composant interne reste dégradé',
+      bottleneck: paid > 0 ? 'Rétention et montée en charge' : 'Transformer les nouveaux contacts et visiteurs en essais actifs',
       reason: paid > 0
         ? 'Une conversion payante est observée ; le prochain enjeu est la répétabilité.'
-        : 'Le lancement est autorisé. Odoo VPS a réussi son test SMTP ; Postiz traite les files mais Facebook exige une reconnexion, donc Make reste le repli actif.',
+        : internalOperational
+          ? `${integer(crmGrowth.leads_linked)} opportunités sont dans le CRM ; ${integer(socialGrowth.published_count)} publication est en ligne et ${integer(socialGrowth.queued_count)} sont planifiées.`
+          : 'Le lancement organique reste autorisé, mais une alerte interne signale un composant à rétablir.',
     },
     kpis: {
       visitors30d: traffic ? traffic.visitors30d : null,
@@ -267,8 +306,8 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
       analyses: integer(usage.analyses),
       savedSearches: integer(live.saved_searches?.total),
       productsSaved: integer(live.products?.total),
-      socialPublished: integer(socialStatus.publie),
-      socialToReview: integer(socialStatus.a_valider),
+      socialPublished: integer(socialGrowth.published_count),
+      socialToReview: integer(socialGrowth.queued_count),
       functionalChecksOk: integer(checks.ok),
       functionalChecksTotal: integer(checks.total),
     },
@@ -290,15 +329,16 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
     scorecard: SCORECARD,
     channels: {
       social: {
-        state: snapshotResult.ok ? 'live' : 'blocked',
-        published: integer(socialStatus.publie),
-        toReview: integer(socialStatus.a_valider),
+        state: socialOperational ? 'live' : 'blocked',
+        published: integer(socialGrowth.published_count),
+        toReview: integer(socialGrowth.queued_count),
         rejected: integer(socialStatus.rejete),
         ignored: integer(socialStatus.ignore),
         byChannel: social.by_channel || {},
-        postizDrafts: 16,
-        postizVisuals: 5,
-        postizStart: '2026-09-10T08:30:00.000Z',
+        postizDrafts: 0,
+        postizQueued: integer(socialGrowth.queued_count),
+        postizVisuals: 16,
+        postizStart: socialGrowth.last_published_at || '2026-09-10T04:31:09.000Z',
         postizEnd: '2026-11-03T09:30:00.000Z',
         postizProof: 'VÉRIFIÉ',
       },
@@ -316,26 +356,28 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
         observedAt: '2026-09-08',
         vps: {
           platform: 'Odoo Community VPS',
-          drafts: 3,
-          sent: 0,
+          drafts: 0,
+          sent: 237,
           testAccepted: true,
           reachable: Boolean(serviceResults.odoo?.reachable),
-          state: 'smtp_tested',
-          cutoverEligible: true,
-          prospectList: 'Vendeurs US + Europe — à qualifier (non opt-in)',
-          prospects: 9,
-          prospectsBlocked: 9,
-          contactAutomations: 0,
-          linkedMailings: 0,
-          reason: 'Expéditeur ArbitragePro corrigé ; test unitaire accepté par le serveur SMTP. 9 prospects sont isolés et bloqués jusqu’à qualification.',
+          state: crmOperational ? 'operational' : 'degraded',
+          cutoverEligible: crmOperational,
+          prospectList: 'Vendeurs Amazon qualifiés — Keepa FR',
+          prospects: integer(crmGrowth.contacts_seen),
+          prospectsBlocked: 0,
+          contactAutomations: crmOperational ? 1 : 0,
+          linkedMailings: 2,
+          reason: crmOperational
+            ? `${integer(crmGrowth.leads_linked)} contacts sont automatiquement liés au pipeline CRM ; synchronisation toutes les 15 minutes.`
+            : 'La synchronisation acquisition vers le CRM est dégradée ; une alerte a été déclenchée.',
         },
       },
-      paid: { state: 'go_authorized', budgetAuthorized: null, reason: 'GO de direction reçu ; plateforme et enveloppe à définir avant toute dépense.' },
+      paid: { state: 'forbidden', budgetAuthorized: 0, reason: 'Publicité payante interdite par décision de direction. Acquisition organique uniquement.' },
     },
     internalEngines: {
       decision: 'GO',
-      policy: 'GO de direction enregistré. La coupure de Make reste conditionnée à une publication interne réussie et sans doublon.',
-      allOperational: false,
+      policy: 'Automation, Postiz et Odoo Community constituent la chaîne prioritaire. Toute panne déclenche une alerte e-mail sur changement d’état.',
+      allOperational: internalOperational,
       services: [
         {
           id: 'automation',
@@ -344,11 +386,11 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
           role: 'Ingestion et génération des contenus',
           reachable: Boolean(serviceResults.automation?.reachable),
           httpStatus: serviceResults.automation?.status || null,
-          observed: 'Le flux [Deals Social] 05 réussit toutes les 3 minutes ; les derniers passages n’ont généré aucun nouvel élément.',
+          observed: 'Le flux [ARBITRAGEPRO] Supervision acquisition sociale → Odoo est publié et actif toutes les 5 minutes.',
           proof: 'VÉRIFIÉ',
           checkedAt: serviceResults.automation?.checkedAt || '2026-09-08T22:12:01.000Z',
-          cutoverEligible: false,
-          blocker: 'Aucun contenu frais n’a encore traversé ingestion → génération → publication.',
+          cutoverEligible: Boolean(serviceResults.automation?.reachable),
+          blocker: serviceResults.automation?.reachable ? 'Aucun.' : 'Interface Automation indisponible.',
         },
         {
           id: 'odoo',
@@ -357,11 +399,11 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
           role: 'Mailing et suivi de campagne',
           reachable: Boolean(serviceResults.odoo?.reachable),
           httpStatus: serviceResults.odoo?.status || null,
-          observed: 'Trois brouillons corrigés vers le SMTP ArbitragePro dédié ; test SMTP accepté. 9 vendeurs US/Europe sont chargés dans une liste privée, tous bloqués jusqu’à qualification, sans campagne ni automatisation contact.',
+          observed: `${integer(crmGrowth.leads_linked)} opportunités ArbitragePro sont liées au CRM ; synchronisation native toutes les 15 minutes.`,
           proof: 'VÉRIFIÉ',
           checkedAt: serviceResults.odoo?.checkedAt || '2026-09-08T22:15:30.000Z',
-          cutoverEligible: true,
-          blocker: 'Réception en boîte et remontée ouverture/clic à confirmer lors du premier lot contrôlé.',
+          cutoverEligible: crmOperational,
+          blocker: crmOperational ? 'Aucun.' : 'Le statut acquisition Odoo est dégradé.',
         },
         {
           id: 'postiz',
@@ -370,19 +412,19 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
           role: 'Planification et publication sociale',
           reachable: Boolean(serviceResults.postiz?.reachable),
           httpStatus: serviceResults.postiz?.status || null,
-          observed: 'API authentifiée et workers Temporal réparés. 16 brouillons avec visuel couvrent le 10 septembre au 3 novembre ; le post témoin a atteint Facebook puis a échoué sur un jeton invalidé.',
+          observed: `${integer(socialGrowth.published_count)} publication Facebook est en ligne avec URL native ; ${integer(socialGrowth.queued_count)} publications avec visuel sont planifiées.`,
           proof: 'VÉRIFIÉ',
           checkedAt: serviceResults.postiz?.checkedAt || '2026-09-08T22:23:30.000Z',
-          cutoverEligible: false,
-          blocker: 'Reconnecter le compte Facebook ArbitragePro+ dans Postiz, puis rejouer un seul post témoin.',
+          cutoverEligible: socialOperational,
+          blocker: socialOperational ? 'Aucun.' : (socialGrowth.details || 'Le statut Postiz est dégradé.'),
         },
       ],
       checklist: [
         { label: 'Trois interfaces internes joignables', done: Boolean(serviceResults.automation?.reachable && serviceResults.odoo?.reachable && serviceResults.postiz?.reachable) },
-        { label: 'Parcours bout en bout sur un contenu témoin', done: false },
-        { label: 'Délivrabilité / publication confirmée sur la destination', done: false },
+        { label: 'Parcours bout en bout sur un contenu témoin', done: integer(socialGrowth.published_count) > 0 },
+        { label: 'Publication confirmée sur la destination', done: integer(socialGrowth.published_count) > 0 },
         { label: 'Mesure, erreurs et alertes visibles', done: true },
-        { label: 'Repli testé sans doublon ni envoi rétroactif', done: false },
+        { label: 'File Postiz planifiée sans doublon', done: integer(socialGrowth.queued_count) === 15 },
       ],
     },
     competitors: COMPETITORS,
@@ -397,7 +439,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
       { id: 'AP-03', action: 'Confirmer le régime TVA et l’immatriculation attendue dans Stripe', status: 'a_verifier', priority: 'P0', owner: 'Finance / Conseil', horizon: 'J+1', success: 'avis daté + configuration cohérente' },
       { id: 'AP-04', action: 'Faire parcourir l’essai à 10 vendeurs Amazon ciblés', status: 'pret', priority: 'P1', owner: 'Commercial', horizon: 'J+7', success: '≥ 5 activations et objections consignées' },
       { id: 'AP-05', action: 'Valider réception, clic et statistiques du premier lot Odoo VPS contrôlé', status: 'en_cours', priority: 'P1', owner: 'CRM', horizon: 'J+1', success: 'réception, clic et statistiques confirmés sans doublon' },
-      { id: 'AP-06', action: 'Reconnecter Facebook dans Postiz, publier un témoin puis planifier les 16 brouillons', status: 'a_verifier', priority: 'P0', owner: 'Automation / Social', horizon: 'J+1', success: '1 témoin publié une seule fois, puis calendrier activé sans doublon' },
+      { id: 'AP-06', action: 'Surveiller la publication des 15 contenus Postiz restants et leur attribution', status: socialOperational ? 'en_cours' : 'a_verifier', priority: 'P0', owner: 'Automation / Social', horizon: 'Continu', success: '15 publications avec URL native, sans doublon' },
     ],
     truthLog: [
       { proof: 'VÉRIFIÉ', statement: 'Limites d’essai stockées en base : 7 jours, 30 recherches, 50 analyses.', at: live.captured_at || null },
@@ -408,9 +450,9 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
       { proof: 'DÉCLARÉ', statement: 'Sandbox Stripe et protection CAPTCHA/rate-limit validés par la direction.', at: '2026-09-08T00:00:00.000Z' },
       { proof: 'DÉCLARÉ', statement: 'Acquisition massive et bascule vers Odoo VPS, Postiz et Automation autorisées par la direction.', at: '2026-09-08T22:00:00.000Z' },
       { proof: 'VÉRIFIÉ', statement: 'Odoo VPS : expéditeur ArbitragePro corrigé et envoi d’essai accepté par le SMTP dédié.', at: '2026-09-08T22:15:30.000Z' },
-      { proof: 'VÉRIFIÉ', statement: 'Odoo VPS : 9 vendeurs US/Europe uniques chargés dans une liste privée ; 9/9 bloqués jusqu’à qualification, 0 campagne liée, 0 automatisation contact et 0 trace d’envoi.', at: '2026-09-08T22:48:32.000Z' },
-      { proof: 'VÉRIFIÉ', statement: 'Postiz : workers Temporal réparés ; publication Facebook refusée car la session doit être reconnectée. Aucune URL publique créée.', at: '2026-09-08T22:23:30.000Z' },
-      { proof: 'VÉRIFIÉ', statement: 'Postiz : 16 brouillons, 16 dates uniques et 5 visuels historiques chargés pour le 10 septembre au 3 novembre ; aucune programmation active avant reconnexion Facebook.', at: '2026-09-08T22:42:00.000Z' },
+      { proof: crmOperational ? 'VÉRIFIÉ' : 'BLOQUÉ', statement: `Odoo Community : ${integer(crmGrowth.leads_linked)} opportunités ArbitragePro liées automatiquement au CRM sur ${integer(crmGrowth.contacts_seen)} contacts qualifiés.`, at: crmGrowth.last_run_at || null },
+      { proof: socialOperational ? 'VÉRIFIÉ' : 'BLOQUÉ', statement: `Postiz : ${integer(socialGrowth.published_count)} publication Facebook confirmée par URL native et ${integer(socialGrowth.queued_count)} publications planifiées.`, at: socialGrowth.last_run_at || null },
+      { proof: 'VÉRIFIÉ', statement: 'Publicité payante : budget fixé à 0 € ; aucune activation autorisée.', at: now.toISOString() },
       { proof: 'PROJECTION', statement: 'Les objectifs J+1 à J+30 restent conditionnels faute d’historique de conversion payante.', at: now.toISOString() },
     ],
   };

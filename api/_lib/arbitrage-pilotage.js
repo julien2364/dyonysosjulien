@@ -362,6 +362,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
         facebookQueued: integer(socialGrowth.queued_count),
         youtubePublished: integer(youtubeGrowth.published_count),
         youtubeQueued: integer(youtubeGrowth.queued_count),
+        tiktokState: 'Non connecté — hors périmètre Pareto actuel',
         postizStart: socialGrowth.last_published_at || '2026-09-10T04:31:09.000Z',
         postizEnd: '2026-11-03T09:30:00.000Z',
         postizProof: 'VÉRIFIÉ',
@@ -466,7 +467,6 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
     truthLog: [
       { proof: 'VÉRIFIÉ', statement: 'Limites d’essai stockées en base : 7 jours, 30 recherches, 50 analyses.', at: live.captured_at || null },
       { proof: 'VÉRIFIÉ', statement: `${paid} abonnement payé actif dans la source métier.`, at: subscriptions.last_update || live.captured_at || null },
-      { proof: 'VÉRIFIÉ', statement: `${integer(socialStatus.publie)} publications sociales marquées publiées et ${integer(socialStatus.a_valider)} à valider.`, at: live.captured_at || null },
       { proof: 'OBSERVÉ', statement: 'Stripe Tax actif et calcul de taxe complet sur le dernier checkout live observé.', at: '2026-09-08T20:48:00.000Z' },
       { proof: 'À CONFIRMER', statement: 'Aucune immatriculation fiscale Stripe trouvée au contrôle ; vérifier la cohérence avec le régime TVA réel.', at: '2026-09-08T20:48:00.000Z' },
       { proof: 'DÉCLARÉ', statement: 'Sandbox Stripe et protection CAPTCHA/rate-limit validés par la direction.', at: '2026-09-08T00:00:00.000Z' },

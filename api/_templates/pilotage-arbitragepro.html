@@ -92,7 +92,8 @@ function render(data){
     ['Essais actifs',data.kpis.activeTrials,'yellow',businessProof],
     ['Abonnements actifs',data.kpis.activePaid,'peach',businessProof],
     ['Publications publiées',data.kpis.socialPublished,'lav',businessProof],
-    ['Contenus à valider',data.kpis.socialToReview,'yellow',businessProof],
+    ['Publications planifiées',data.kpis.socialToReview,'yellow',businessProof],
+    ['Inscriptions sociales → Odoo',data.kpis.socialAttributedSignups,'green',businessProof],
   ];
   document.getElementById('kpis').innerHTML=metrics.map(([label,value,color,state])=>`<article class="card metric ${color}"><div class="label">${esc(label)}</div><strong>${num(value)}</strong><small>${proof(state)}</small></article>`).join('');
   document.getElementById('funnel').innerHTML=data.funnel.map(stage=>`<div class="stage"><div class="num">${num(stage.value)}</div><div class="name">${esc(stage.label)}</div>${proof(stage.proof)}</div>`).join('');

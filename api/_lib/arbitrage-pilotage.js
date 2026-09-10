@@ -213,6 +213,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
   const growthServices = serviceResults.growth?.value?.services || [];
   const crmGrowth = growthServices.find((item) => item.name === 'Odoo CRM') || {};
   const socialGrowth = growthServices.find((item) => item.name === 'Réseaux sociaux / Postiz') || {};
+  const socialCrmGrowth = growthServices.find((item) => item.name === 'Conversions sociales → Odoo') || {};
   const automationGrowth = growthServices.find((item) => item.name === 'Automation Dyonysos') || {};
   const growthHealthy = serviceResults.growth?.state === 'live';
   const crmOperational = crmGrowth.state === 'healthy' && integer(crmGrowth.leads_linked) > 0;
@@ -220,12 +221,14 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
     && integer(socialGrowth.published_count) > 0
     && integer(socialGrowth.queued_count) > 0;
   const automationOperational = automationGrowth.state === 'healthy';
+  const socialCrmOperational = socialCrmGrowth.state === 'healthy';
   const internalOperational = Boolean(
     serviceResults.automation?.reachable
     && serviceResults.odoo?.reachable
     && serviceResults.postiz?.reachable
     && growthHealthy
     && automationOperational
+    && socialCrmOperational
     && crmOperational
     && socialOperational
   );
@@ -286,17 +289,18 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
       odoo: { state: crmOperational ? 'live' : 'error', capturedAt: crmGrowth.last_run_at || null },
       postiz: { state: socialOperational ? 'live' : 'error', capturedAt: socialGrowth.last_run_at || null },
       automation: { state: automationOperational ? 'live' : 'error', capturedAt: automationGrowth.last_run_at || serviceResults.automation?.checkedAt || null },
+      socialCrm: { state: socialCrmOperational ? 'live' : 'error', capturedAt: socialCrmGrowth.last_run_at || null },
     },
     verdict: {
       acquisition: 'GO — acquisition organique interne',
       execution: internalOperational ? 'OPÉRATIONNEL — Automation · Postiz · Odoo' : 'DÉGRADÉ — contrôle requis',
       decision: internalOperational ? 'ACQUISITION INTERNE OPÉRATIONNELLE' : 'ACQUISITION INTERNE DÉGRADÉE',
-      confidence: internalOperational ? 'élevée sur Odoo CRM et la publication sociale ; conversion payante encore à démontrer' : 'faible tant qu’un composant interne reste dégradé',
+      confidence: internalOperational ? 'élevée sur Odoo CRM, publication et synchronisation des inscriptions sociales ; conversion payante encore à démontrer' : 'faible tant qu’un composant interne reste dégradé',
       bottleneck: paid > 0 ? 'Rétention et montée en charge' : 'Transformer les nouveaux contacts et visiteurs en essais actifs',
       reason: paid > 0
         ? 'Une conversion payante est observée ; le prochain enjeu est la répétabilité.'
         : internalOperational
-          ? `${integer(crmGrowth.leads_linked)} opportunités sont dans le CRM ; ${integer(socialGrowth.published_count)} publication est en ligne et ${integer(socialGrowth.queued_count)} sont planifiées.`
+          ? `${integer(crmGrowth.leads_linked)} opportunités sont dans le CRM ; ${integer(socialGrowth.published_count)} publication est en ligne, ${integer(socialGrowth.queued_count)} sont planifiées et ${integer(socialCrmGrowth.leads_linked)} inscription sociale est attribuée.`
           : 'Le lancement organique reste autorisé, mais une alerte interne signale un composant à rétablir.',
     },
     kpis: {
@@ -311,6 +315,7 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
       productsSaved: integer(live.products?.total),
       socialPublished: integer(socialGrowth.published_count),
       socialToReview: integer(socialGrowth.queued_count),
+      socialAttributedSignups: integer(socialCrmGrowth.leads_linked),
       functionalChecksOk: integer(checks.ok),
       functionalChecksTotal: integer(checks.total),
     },
@@ -451,10 +456,11 @@ function buildDashboard(snapshotResult, trafficResult, now = new Date(), service
       { proof: 'OBSERVÉ', statement: 'Stripe Tax actif et calcul de taxe complet sur le dernier checkout live observé.', at: '2026-09-08T20:48:00.000Z' },
       { proof: 'À CONFIRMER', statement: 'Aucune immatriculation fiscale Stripe trouvée au contrôle ; vérifier la cohérence avec le régime TVA réel.', at: '2026-09-08T20:48:00.000Z' },
       { proof: 'DÉCLARÉ', statement: 'Sandbox Stripe et protection CAPTCHA/rate-limit validés par la direction.', at: '2026-09-08T00:00:00.000Z' },
-      { proof: 'DÉCLARÉ', statement: 'Acquisition massive et bascule vers Odoo VPS, Postiz et Automation autorisées par la direction.', at: '2026-09-08T22:00:00.000Z' },
+      { proof: 'DÉCLARÉ', statement: 'Acquisition organique et bascule vers Odoo VPS, Postiz et Automation autorisées par la direction.', at: '2026-09-08T22:00:00.000Z' },
       { proof: 'VÉRIFIÉ', statement: 'Odoo VPS : expéditeur ArbitragePro corrigé et envoi d’essai accepté par le SMTP dédié.', at: '2026-09-08T22:15:30.000Z' },
       { proof: crmOperational ? 'VÉRIFIÉ' : 'BLOQUÉ', statement: `Odoo Community : ${integer(crmGrowth.leads_linked)} opportunités ArbitragePro liées automatiquement au CRM sur ${integer(crmGrowth.contacts_seen)} contacts qualifiés.`, at: crmGrowth.last_run_at || null },
       { proof: socialOperational ? 'VÉRIFIÉ' : 'BLOQUÉ', statement: `Postiz : ${integer(socialGrowth.published_count)} publication Facebook confirmée par URL native et ${integer(socialGrowth.queued_count)} publications planifiées.`, at: socialGrowth.last_run_at || null },
+      { proof: socialCrmOperational ? 'VÉRIFIÉ' : 'BLOQUÉ', statement: `Conversions sociales → Odoo : synchronisation active ; ${integer(socialCrmGrowth.leads_linked)} inscription attribuée à ce jour.`, at: socialCrmGrowth.last_run_at || null },
       { proof: 'VÉRIFIÉ', statement: 'Publicité payante : budget fixé à 0 € ; aucune activation autorisée.', at: now.toISOString() },
       { proof: 'PROJECTION', statement: 'Les objectifs J+1 à J+30 restent conditionnels faute d’historique de conversion payante.', at: now.toISOString() },
     ],

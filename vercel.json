@@ -309,15 +309,6 @@
   ],
   "headers": [
     {
-      "source": "/:template(localized|localized-secondary|localized-articles|product|category|seo-article)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, follow"
-        }
-      ]
-    },
-    {
       "source": "/:lang(en|es|nl|de)/:path*",
       "headers": [
         {

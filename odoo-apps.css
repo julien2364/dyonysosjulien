@@ -2,3 +2,5 @@
 .pareto-focus{padding:54px 0;background:#fff8ef;border-top:1px solid #eadbc9;border-bottom:1px solid #eadbc9}.pareto-focus h2{margin:8px 0 12px}.pareto-focus .pareto-intro{max-width:760px;color:#52697b;line-height:1.55}.pareto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}.pareto-grid a{display:flex;flex-direction:column;gap:8px;padding:22px;background:#fff;border-top:4px solid #1688d8;color:#071f39;text-decoration:none}.pareto-grid a:nth-child(2){border-color:#65d6ee}.pareto-grid a:nth-child(3){border-color:#d87a33}.pareto-grid strong{font-size:20px}.pareto-grid span{font-size:14px;line-height:1.45;color:#52697b}@media(max-width:760px){.pareto-grid{grid-template-columns:1fr}}
 
 .app-badge{display:inline-block;margin-left:.5em;padding:.15em .55em;border-radius:999px;background:#e8f3ee;color:#1a7f4b;font-size:.62em;font-weight:700;letter-spacing:.04em;text-transform:uppercase;vertical-align:middle}
+
+.app-bientot{color:#7a8494;font-size:.92em}

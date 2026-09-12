@@ -1,6 +1,14 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.dyonysos.fr" }],
+      "destination": "https://dyonysos.fr/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/",
@@ -300,6 +308,42 @@
     }
   ],
   "headers": [
+    {
+      "source": "/:template(localized|localized-secondary|localized-articles|product|category|seo-article)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, follow"
+        }
+      ]
+    },
+    {
+      "source": "/:lang(en|es|nl|de)/:path*",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://dyonysos.fr/:lang/:path*>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/solutions/:product",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://dyonysos.fr/solutions/:product>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/blog/:article",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://dyonysos.fr/blog/:article>; rel=\"canonical\""
+        }
+      ]
+    },
     {
       "source": "/common.js",
       "headers": [

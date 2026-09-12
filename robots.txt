@@ -1,4 +1,12 @@
 User-agent: *
 Allow: /
+Disallow: /localized
+Disallow: /localized-secondary
+Disallow: /localized-articles
+Disallow: /product
+Disallow: /category
+Disallow: /seo-article
+Disallow: /espace-prive
+Disallow: /pilotage-
 
 Sitemap: https://dyonysos.fr/sitemap.xml

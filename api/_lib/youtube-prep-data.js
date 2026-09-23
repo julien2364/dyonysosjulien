@@ -18,7 +18,7 @@ const YOUTUBE_PREP = [
   { projet: 'Odoo web / NOVA ERP WEB', avatarPret: true, dossierLogos: 'https://drive.google.com/drive/folders/1gNQzAD1oDfV7oIy2soA-LauRubzNBh8X', note: 'Nom de marque public à définir avant création (éviter "Odoo").' },
   { projet: 'CapCut remake', avatarPret: true, dossierLogos: 'https://drive.google.com/drive/folders/1mS_eV7VTUcbMAeYGtcRLySKpHpBQDwiA', note: 'Nom de marque public à définir avant création (éviter "CapCut").' },
   { projet: 'CVDesignPro', avatarPret: false, dossierLogos: 'https://drive.google.com/drive/folders/1_-mINB_NPDQ69dOgoETRFw_ts6Zcn4wI', note: 'Pipeline en cours au 24/08 — seul LinkedIn était prêt au moment de la vérification.' },
-  { projet: 'Prospeo / Firmoscope (ex-Propecto)', avatarPret: false, dossierLogos: 'https://drive.google.com/drive/folders/1yZrZG7NxsTEXKzOcBq5CKygo_Lu9L24r', note: 'Pipeline pas encore démarré pour ce projet.' },
+  { projet: 'Prospeo / Propecto (ex-Propecto)', avatarPret: false, dossierLogos: 'https://drive.google.com/drive/folders/1yZrZG7NxsTEXKzOcBq5CKygo_Lu9L24r', note: 'Pipeline pas encore démarré pour ce projet.' },
   { projet: 'ArbitragePro+', avatarPret: false, dossierLogos: 'https://drive.google.com/drive/folders/1M9SrU3Mxq-TG4buitmBEzWKTlgGq79t1', note: 'Pipeline pas encore démarré pour ce projet.' },
 ];
 

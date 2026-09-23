@@ -94,7 +94,7 @@ const PROJECT_LINKS = {
     taigaProjectSlug: null,
     odooCompanyId: null
   },
-  "Firmoscope / Prospeo (ex-Propecto)": {
+  "Propecto": {
     typeProjet: "live_vitrine",
     taigaEligible: true,
     taigaReason: "Activité de développement réelle et active, très documentée : tâches 'en cours' attribuées à codex (T-093, T-094, T-090, T-085, T-080, T-081, T-073, T-075, T-096), tâches bloquées avec responsable identifié (codex/Julien), une décision produit appliquée et consignée le jour même (P10, commit 1c6d728), et une liste de livraisons du jour avec commits horodatés (1d3b5a7, 72d5aa0, d5bbef0, 9563b7c). C'est le seul projet du lot avec un pilotage granulaire actif à suivre.",

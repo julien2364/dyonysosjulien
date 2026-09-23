@@ -119,7 +119,7 @@ const PROPECTO = {
 const OBJECTIFS = [
   { projet: 'CVDesignPro', registreNom: 'CVDesignPro', vercelProjectId: 'prj_sbz1BpKKEmUMe1qLASFYIFahRxKA', scenarios: CVDESIGNPRO },
   { projet: 'ArbitragePro+', registreNom: 'Arbitrage+', vercelProjectId: 'prj_YNDpcwcBx3TfwNUF3TFDpTF6U8YJ', scenarios: ARBITRAGEPRO_PLUS },
-  { projet: 'Propecto', registreNom: 'Firmoscope / Prospeo (ex-Propecto)', vercelProjectId: 'prj_iTUKEu3BUVEGJpxm9nS0Km7vjIUs', scenarios: PROPECTO },
+  { projet: 'Propecto', registreNom: 'Propecto', vercelProjectId: 'prj_iTUKEu3BUVEGJpxm9nS0Km7vjIUs', scenarios: PROPECTO },
 ];
 
 // Cumuls à J189 par scénario, tous projets confondus — recopiés tels quels de l'e-mail (colonne

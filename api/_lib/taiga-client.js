@@ -230,8 +230,8 @@ async function getAvancementPortefeuille(registryNames) {
     const nomsRegistreNormalises = new Set((registryNames || []).map(normaliserNom));
     (registryNames || []).forEach((nomRegistre) => {
       const n = normaliserNom(nomRegistre);
-      // correspondance exacte d'abord, puis inclusion dans un sens ou l'autre (ex. "Firmoscope / Prospeo"
-      // vs "Firmoscope / Prospeo (ex-Propecto)") — jamais de correspondance devinée au hasard.
+      // correspondance exacte d'abord, puis inclusion dans un sens ou l'autre (ex. "Propecto"
+      // vs "Propecto") — jamais de correspondance devinée au hasard.
       let match = parNomNormalise[n];
       if (!match) {
         match = detailParProjet.find((d) => {

@@ -51,7 +51,7 @@ module.exports = async function handler(req, res) {
       { date: '2026-08-24', item: 'Pet Stone — Social Publisher réactivé sur Make après vérification RPC des IDs Facebook/LinkedIn' },
       { date: '2026-08-24', item: 'Diagnostic du scénario Make cassé "CVDesignPro — Publish social calendar" (erreur Google Drive identifiée, non corrigée en direct pour éviter un post LinkedIn non revu)' },
       { date: '2026-08-24', item: 'Dépenses Anthropic/OVHcloud/IONOS réelles ajoutées à Finance (6 lignes, montants lus sur reçus/factures)' },
-      { date: '2026-08-24', item: 'Doublon "Annuaire entreprises C2B/B2B" fusionné dans le registre (Propecto = Firmoscope/Prospeo renommé)' },
+      { date: '2026-08-24', item: 'Doublon "Annuaire entreprises C2B/B2B" fusionné dans le registre (Propecto = Propecto/Prospeo renommé)' },
       { date: '2026-08-24', item: 'Backlog granulaire réel importé (525 lignes, Pilotage-des-projets.xlsx) pour 8 projets jusque-là sans détail de tâches' },
       { date: '2026-08-24', item: 'CRM : constat Odoo non exploitable clarifié + Taiga identifié comme outil demandé (non connecté)' },
       { date: '2026-08-24', item: 'Stratégie : concurrents réels + BMC/SWOT sourcés pour CVDesignPro, Pet Stone, Content Engine DYONYSOS ; correction factuelle Pet Stone (pas de la lithothérapie, produit "pet rock")' },

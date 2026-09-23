@@ -66,7 +66,7 @@ module.exports = async function handler(req, res) {
     // tâche/fonctionnalité précise, pas juste un résumé. Rattaché au projet du registre par nom quand
     // possible (voir SUIVI_NAME_MAP) ; sinon affiché sous son propre nom.
     suiviGranulaire: {
-      note: 'Détail tâche par tâche réel, importé de Pilotage-des-projets.xlsx (onglet Suivi) — pas un résumé recalculé. 8 projets couverts pour l\'instant : Nova ERP Web, École Connect, CoursHub, Mym++, Marketplace-Sharetribe-Clone, QuizPlay, Vinted remake (Frip\'), Tinder++. Les autres projets du portefeuille (CVDesignPro, Pet Stone, Firmoscope/Prospeo, Arbitrage+/Analyzer+/Profit+…) n\'ont pas de fichier Suivi équivalent trouvé — leur détail reste celui du champ taches[] du registre.',
+      note: 'Détail tâche par tâche réel, importé de Pilotage-des-projets.xlsx (onglet Suivi) — pas un résumé recalculé. 8 projets couverts pour l\'instant : Nova ERP Web, École Connect, CoursHub, Mym++, Marketplace-Sharetribe-Clone, QuizPlay, Vinted remake (Frip\'), Tinder++. Les autres projets du portefeuille (CVDesignPro, Pet Stone, Propecto/Prospeo, Arbitrage+/Analyzer+/Profit+…) n\'ont pas de fichier Suivi équivalent trouvé — leur détail reste celui du champ taches[] du registre.',
       totalLignes: SUIVI_PROJETS.length,
       parProjet: buildSuiviParProjet(),
     },

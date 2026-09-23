@@ -1,6 +1,6 @@
 // Planificateurs réseaux sociaux RÉELS trouvés dans Drive le 24/08/2026, séparés du classeur Content
 // Engine (encore vide, bloqué par un import xlsx que Julien doit faire lui-même). Ces 3 fichiers
-// contiennent du contenu déjà rédigé — 120 posts Firmoscope/Prospeo (ex-Propecto), 46 posts Pet
+// contiennent du contenu déjà rédigé — 120 posts Propecto/Prospeo (ex-Propecto), 46 posts Pet
 // Stone, 60 posts CVDesignPro — vérifiés ligne par ligne le 24/08. Lus ici EN DIRECT depuis leur
 // classeur d'origine (pas copiés/importés) pour rester dynamiques : toute modification faite par
 // Julien dans un de ces fichiers Drive se répercute au prochain chargement du dashboard.
@@ -30,8 +30,8 @@ function trouverColonne(headerNorm, token) {
 const SOURCES = [
   {
     key: 'propecto',
-    label: 'Firmoscope / Prospeo — Communication omnicanale 3 mois (ex-Propecto)',
-    projetRegistre: 'Firmoscope / Prospeo (ex-Propecto)',
+    label: 'Propecto — Communication omnicanale 3 mois (ex-Propecto)',
+    projetRegistre: 'Propecto',
     spreadsheetId: '13JczIOdEbVshRJ5RW0ewhYvnWwIi93emKtHunATUfKU',
     driveUrl: 'https://docs.google.com/spreadsheets/d/13JczIOdEbVshRJ5RW0ewhYvnWwIi93emKtHunATUfKU/edit',
     signature: ['date', 'statut', 'accroche'],

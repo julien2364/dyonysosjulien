@@ -75,7 +75,7 @@ module.exports = async function handler(req, res) {
 
       const projets = PROJECTS.map((p) => {
         // Le nom du projet dans TRAFIC_SNAPSHOT ne correspond pas toujours mot pour mot au registre
-        // (ex. "Firmoscope / Prospeo" vs "Firmoscope / Prospeo (ex-Propecto)") — on rapproche donc
+        // (ex. "Propecto" vs "Propecto") — on rapproche donc
         // aussi par vercelProjectId quand les noms diffèrent, sans jamais inventer de correspondance.
         let traf = traficParNom[p.name];
         if (!traf && p.vercelProjectId) traf = trafic.parProjet.find((t) => t.vercelProjectId === p.vercelProjectId);

@@ -29,7 +29,7 @@ const COMPETITORS_REAL = {
     ],
     positionnement: 'Aucun concurrent français direct identifié combinant « pet rock humoristique + éditions saisonnières » à l\'échelle de Pet Stone — angle produit peu disputé, mais catégorie de niche (petit marché).',
   },
-  'Firmoscope / Prospeo (ex-Propecto)': {
+  'Propecto': {
     marche: 'Lead generation B2B (mondial) : 3,34 Md$ (2026) → 9,18 Md$ (2035), CAGR 11,9%. Baromètre du Lead France 2026 : volumes leads BtoB +4% (2024→2025) ; CPL Finance/Gestion BtoB 90€ (+69,8%). Taille du marché français spécifique de la vente de fichiers/annuaires B2B (hors lead gen) : non trouvé.',
     sourcesMarche: ['https://www.businessresearchinsights.com/market-reports/b2b-lead-generation-services-market-102402', 'https://www.effinity.fr/blog/barometre-lead-indicateurs-secteur/'],
     concurrents: [

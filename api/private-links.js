@@ -30,12 +30,12 @@ module.exports = function handler(req, res) {
         { name: 'École Connect', url: 'https://ecole-connect-dyonysos.vercel.app', status: 'Domaine canonique' }
       ]},
       { title: 'Annuaire entreprises C2B / B2B', links: [
-        { name: 'Firmoscope / Prospeo', url: 'https://prospeo-drab.vercel.app/' }
+        { name: 'Propecto', url: 'https://www.propecto.eu/' }
       ]},
       { title: 'Commerce et performance', links: [
-        { name: 'Arbitrage+', url: 'https://arbitrage-pro-app.vercel.app' },
-        { name: 'Analyzer+', url: 'https://analyzer-plus-preview.vercel.app' },
-        { name: 'Profit+', url: 'https://profit-plus-preview.vercel.app' }
+        { name: 'Arbitrage+', url: 'https://www.arbitragepro.eu' },
+        { name: 'Analyzer+', url: 'https://www.analyzer-plus.eu' },
+        { name: 'Profit+', url: 'https://www.profit-plus.tech' }
       ]},
       { title: 'Création et médias', links: [
         { name: 'Linktrib', url: 'https://www.linktrib.com', sensitive: true, status: 'Dépôt technique : Kreo' },

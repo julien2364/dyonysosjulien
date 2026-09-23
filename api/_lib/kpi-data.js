@@ -14,7 +14,7 @@ const TRAFIC_SNAPSHOT = {
     { name: 'Profit+', vercelProjectId: 'prj_hTcxKWwRPCATVgMAiEDlrh2hev6Q', periodes: { '30j': { visiteurs: 30, pageviews: 50 } } },
     { name: 'Arbitrage+', vercelProjectId: 'prj_YNDpcwcBx3TfwNUF3TFDpTF6U8YJ', periodes: { '30j': { visiteurs: 0, pageviews: 0 } }, note: 'Web Analytics non actif ou trafic nul sur la période.' },
     { name: 'École Connect', vercelProjectId: 'prj_6t8rABLHNlvQb0sUMb0gT55P50E7', periodes: { '30j': { visiteurs: 0, pageviews: 0 } } },
-    { name: 'Firmoscope / Prospeo', vercelProjectId: 'prj_iTUKEu3BUVEGJpxm9nS0Km7vjIUs', periodes: { '30j': { visiteurs: 0, pageviews: 0 } } },
+    { name: 'Propecto', vercelProjectId: 'prj_iTUKEu3BUVEGJpxm9nS0Km7vjIUs', periodes: { '30j': { visiteurs: 0, pageviews: 0 } } },
   ],
   commentPasserEnLive: 'Dernier instantané de secours. En production, /api/kpi utilise VERCEL_ANALYTICS_TOKEN et remplace automatiquement ces valeurs par les données live.',
 };

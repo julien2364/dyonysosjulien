@@ -92,7 +92,7 @@ function renderCalendrier(){
   const box=document.getElementById('social-calendrier-box');
   if(!d.calendrier.configured){box.innerHTML='<div class="note">Agenda non disponible — '+esc(d.calendrier.error||'Google Sheets non configuré')+'</div>';return}
   let html='';
-  // Sources externes — ajouté le 24/08/2026 : Firmoscope/Prospeo, Pet Stone et CVDesignPro ont du vrai
+  // Sources externes — ajouté le 24/08/2026 : Propecto/Prospeo, Pet Stone et CVDesignPro ont du vrai
   // contenu rédigé dans des fichiers Drive séparés du Content Engine (encore vide). Statut par source
   // affiché en transparence : "non partagé" tant que le fichier n'a pas été partagé en lecture avec le
   // compte de service (voir Vercel > Environment Variables > GOOGLE_SERVICE_ACCOUNT_EMAIL).

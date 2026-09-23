@@ -1,0 +1,8 @@
+# DYONYSOS
+> Cabinet de conseil basé à Tournai (Belgique) / Mouguerre (France) : conseil ERP Odoo, formation professionnelle certifiée Qualiopi, et e-commerce.
+
+DYONYSOS (SASU dirigée par Julien Daures) accompagne les entreprises sur trois domaines : le conseil et l'intégration ERP (Odoo, Open-Prod, transformation digitale), la formation professionnelle certifiée Qualiopi, et l'e-commerce (Amazon EU, Shopify, Etsy). Plus de 17 ans d'expérience, missions incluant la Commission européenne. Certifications PMP, PM², ITIL V4, Agile.
+
+## Contact
+- Site : https://www.dyonysos.fr
+- Email : welcome@dyonysos.fr

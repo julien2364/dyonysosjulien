@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { loadData, renderArticle, LANGS } = require('../api/_lib/seo-article');
+const { loadData, renderArticle, renderProduct, renderBlogIndex, LANGS } = require('../api/_lib/seo-article');
 
 const data = loadData();
 const slugs = data.articles.map((a) => a[0]);
@@ -68,4 +68,44 @@ test('formation-conseil pointe vers la page d’offre', () => {
   const { html } = renderArticle(data, 'de', slug);
   assert.ok(html.includes('href="/de/formation-conseil"'));
   assert.ok(!html.includes('/solutions/formation-conseil'));
+});
+
+const ROUTED_PRODUCTS = ['cvdesignpro', 'quizplay', 'courshub', 'ecole-connect', 'firmoscope', 'arbitrage-plus', 'analyzer-plus', 'profit-plus', 'erpbridge', 'marketplace', 'creation-graphique', 'applications-mobiles'];
+
+test('fiches solutions : HTML complet, canonique, hreflang et lien direct vers le produit', () => {
+  for (const lang of LANGS) {
+    const titles = new Set();
+    for (const id of ROUTED_PRODUCTS) {
+      const { status, html } = renderProduct(data, lang, id);
+      const url = `https://dyonysos.fr${lang === 'fr' ? '' : '/' + lang}/solutions/${id}`;
+      assert.equal(status, 200, `${lang}/${id}`);
+      assert.match(html, new RegExp(`<html lang="${lang}">`));
+      assert.ok(html.includes(`<link rel="canonical" href="${url}">`));
+      for (const l of LANGS) assert.ok(html.includes(`hreflang="${l}"`));
+      assert.doesNotMatch(html, /<title>Solution Dyonysos<\/title>|undefined|\/out\//);
+      assert.equal((html.match(/<li>/g) || []).length, data.products[id].features.length);
+      titles.add(html.match(/<title>([^<]+)/)[1]);
+      const u = data.products[id].url;
+      if (u.startsWith('http')) assert.ok(html.includes(`href="${u}"`), `lien direct ${id}`);
+    }
+    assert.equal(titles.size, ROUTED_PRODUCTS.length, `titres uniques ${lang}`);
+  }
+  const en = renderProduct(data, 'en', 'cvdesignpro').html;
+  assert.match(en, /Resume creation and formatting/);
+  assert.doesNotMatch(en, /Création et mise en forme|Le niveau de disponibilité/);
+  assert.equal(renderProduct(data, 'fr', 'nexiste-pas').status, 404);
+});
+
+test('liste du blog : les 34 guides dans chaque langue, titres traduits', () => {
+  for (const lang of LANGS) {
+    const { status, html } = renderBlogIndex(data, lang);
+    const url = `https://dyonysos.fr${lang === 'fr' ? '' : '/' + lang}/blog`;
+    assert.equal(status, 200);
+    assert.match(html, new RegExp(`<html lang="${lang}">`));
+    assert.ok(html.includes(`<link rel="canonical" href="${url}">`));
+    assert.equal((html.match(/<article class="card">/g) || []).length, slugs.length, lang);
+    for (const s of slugs) assert.ok(html.includes(`href="${lang === 'fr' ? '' : '/' + lang}/blog/${s}"`));
+    assert.ok(html.includes('href="/applications-odoo"'));
+  }
+  assert.ok(renderBlogIndex(data, 'en').html.includes('How Do You Tailor Your Resume to a Job Posting?'));
 });

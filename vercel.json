@@ -62,20 +62,24 @@
       "destination": "/localized"
     },
     {
+      "source": "/blog",
+      "destination": "/api/seo-article?page=blog"
+    },
+    {
       "source": "/en/blog",
-      "destination": "/blog"
+      "destination": "/api/seo-article?page=blog&lang=en"
     },
     {
       "source": "/es/blog",
-      "destination": "/blog"
+      "destination": "/api/seo-article?page=blog&lang=es"
     },
     {
       "source": "/nl/blog",
-      "destination": "/blog"
+      "destination": "/api/seo-article?page=blog&lang=nl"
     },
     {
       "source": "/de/blog",
-      "destination": "/blog"
+      "destination": "/api/seo-article?page=blog&lang=de"
     },
     {
       "source": "/en/contact",
@@ -243,11 +247,11 @@
     },
     {
       "source": "/solutions/:product(cvdesignpro|quizplay|courshub|ecole-connect|firmoscope|arbitrage-plus|analyzer-plus|profit-plus|erpbridge|marketplace|creation-graphique|applications-mobiles)",
-      "destination": "/product"
+      "destination": "/api/seo-article?page=product&slug=:product"
     },
     {
       "source": "/:lang(en|es|nl|de)/solutions/:product(cvdesignpro|quizplay|courshub|ecole-connect|firmoscope|arbitrage-plus|analyzer-plus|profit-plus|erpbridge|marketplace|creation-graphique|applications-mobiles)",
-      "destination": "/product"
+      "destination": "/api/seo-article?page=product&lang=:lang&slug=:product"
     },
     {
       "source": "/blog/articles",

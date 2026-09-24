@@ -48,6 +48,13 @@
      "Preparing a first job application",
      "Repositioning an experienced profile",
      "Tailoring a resume to a specific job posting"
+    ],
+    "features": [
+     "Resume creation and formatting",
+     "ATS compatibility check",
+     "Tailoring to a job posting",
+     "Cover letter",
+     "Multilingual support"
     ]
    },
    "quizplay": {
@@ -61,6 +68,13 @@
      "Formative assessment",
      "Exam review",
      "Training facilitation"
+    ],
+    "features": [
+     "Quick question creation",
+     "Group facilitation",
+     "Instant results",
+     "In-class or remote use",
+     "Learning progress tracking"
     ]
    },
    "courshub": {
@@ -74,6 +88,13 @@
      "School-wide library",
      "Training catalog",
      "Sharing between teachers"
+    ],
+    "features": [
+     "Resource creation",
+     "Topic-based organization",
+     "Search",
+     "Course sharing",
+     "Shared knowledge base"
     ]
    },
    "ecole-connect": {
@@ -87,6 +108,13 @@
      "School-to-parent communication",
      "Document distribution",
      "Event planning"
+    ],
+    "features": [
+     "News and messages",
+     "School calendar",
+     "Shared documents",
+     "Information tracking",
+     "Role-based access"
     ]
    },
    "firmoscope": {
@@ -100,6 +128,13 @@
      "Targeted prospecting",
      "Market mapping",
      "Partner search"
+    ],
+    "features": [
+     "Company search",
+     "Business filters",
+     "Contextualized company profiles",
+     "B2B opportunities",
+     "Traceable sources"
     ]
    },
    "arbitrage-plus": {
@@ -113,6 +148,13 @@
      "Online arbitrage",
      "Product selection",
      "Purchase planning"
+    ],
+    "features": [
+     "Price comparison",
+     "Margin calculation",
+     "Fee accounting",
+     "Opportunity qualification",
+     "Analysis history"
     ]
    },
    "analyzer-plus": {
@@ -126,6 +168,13 @@
      "Pre-listing research",
      "Product comparison",
      "Portfolio review"
+    ],
+    "features": [
+     "Analysis sheet",
+     "Costs and competition",
+     "Comparable criteria",
+     "Visible assumptions",
+     "Decision support"
     ]
    },
    "profit-plus": {
@@ -139,6 +188,13 @@
      "Monthly performance management",
      "Profitability analysis",
      "Portfolio decisions"
+    ],
+    "features": [
+     "Dashboard",
+     "Expense tracking",
+     "Margin calculation",
+     "Per-product analysis",
+     "Drift alerts"
     ]
    },
    "erpbridge": {
@@ -152,6 +208,13 @@
      "CRM-to-invoicing sync",
      "Approval workflow",
      "Automated reporting"
+    ],
+    "features": [
+     "Process audit",
+     "API connectors",
+     "Automations",
+     "Business workflows",
+     "Team support"
     ]
    },
    "marketplace": {
@@ -165,6 +228,13 @@
      "Services marketplace",
      "B2B portal",
      "Rental platform"
+    ],
+    "features": [
+     "Profiles and listings",
+     "Search and filters",
+     "Transaction flow",
+     "Administration",
+     "Brand customization"
     ]
    },
    "creation-graphique": {
@@ -178,6 +248,13 @@
      "Social media posts",
      "Sales collateral",
      "Campaign visuals"
+    ],
+    "features": [
+     "Multichannel formats",
+     "Reusable templates",
+     "Resizing",
+     "Asset library",
+     "Export"
     ]
    },
    "applications-mobiles": {
@@ -191,6 +268,13 @@
      "Field operations tool",
      "Consumer service",
      "Mobile extension of a platform"
+    ],
+    "features": [
+     "Needs scoping",
+     "Interactive prototype",
+     "Mobile design",
+     "Incremental development",
+     "Usage analytics"
     ]
    },
    "formation-conseil": {
@@ -204,6 +288,13 @@
      "In-house corporate training",
      "University teaching engagement",
      "Coaching for a project manager"
+    ],
+    "features": [
+     "Microsoft Project",
+     "Project management",
+     "PM² and PMP best practices",
+     "Business analysis",
+     "Tailored consulting"
     ]
    }
   }
@@ -257,6 +348,13 @@
      "Preparar una primera candidatura",
      "Reorientar un perfil con experiencia",
      "Adaptar un CV a una oferta concreta"
+    ],
+    "features": [
+     "Creación y maquetación del CV",
+     "Análisis de compatibilidad ATS",
+     "Adaptación a una oferta de empleo",
+     "Carta de presentación",
+     "Asistencia multilingüe"
     ]
    },
    "quizplay": {
@@ -270,6 +368,13 @@
      "Evaluación formativa",
      "Repaso antes del examen",
      "Dinamización de formaciones"
+    ],
+    "features": [
+     "Creación rápida de preguntas",
+     "Dinamización grupal",
+     "Resultados inmediatos",
+     "Uso en el aula o a distancia",
+     "Progresión pedagógica"
     ]
    },
    "courshub": {
@@ -283,6 +388,13 @@
      "Biblioteca del centro",
      "Catálogo de formación",
      "Intercambio entre docentes"
+    ],
+    "features": [
+     "Creación de recursos",
+     "Clasificación temática",
+     "Búsqueda",
+     "Compartir cursos",
+     "Conocimiento colectivo"
     ]
    },
    "ecole-connect": {
@@ -296,6 +408,13 @@
      "Comunicación entre el centro y las familias",
      "Difusión de documentos",
      "Organización de eventos"
+    ],
+    "features": [
+     "Noticias y mensajes",
+     "Agenda escolar",
+     "Documentos compartidos",
+     "Seguimiento de la información",
+     "Acceso según perfiles"
     ]
    },
    "firmoscope": {
@@ -309,6 +428,13 @@
      "Prospección segmentada",
      "Mapeo de un mercado",
      "Búsqueda de socios"
+    ],
+    "features": [
+     "Búsqueda de empresas",
+     "Filtros profesionales",
+     "Fichas contextualizadas",
+     "Oportunidades B2B",
+     "Fuentes identificables"
     ]
    },
    "arbitrage-plus": {
@@ -322,6 +448,13 @@
      "Arbitraje online",
      "Selección de productos",
      "Preparación de una compra"
+    ],
+    "features": [
+     "Comparación de precios",
+     "Cálculo de margen",
+     "Inclusión de comisiones y gastos",
+     "Calificación de oportunidades",
+     "Historial de análisis"
     ]
    },
    "analyzer-plus": {
@@ -335,6 +468,13 @@
      "Estudio previo a la publicación",
      "Comparación de productos",
      "Revisión del catálogo"
+    ],
+    "features": [
+     "Ficha de análisis",
+     "Costes y competencia",
+     "Criterios comparables",
+     "Hipótesis visibles",
+     "Ayuda a la decisión"
     ]
    },
    "profit-plus": {
@@ -348,6 +488,13 @@
      "Seguimiento mensual",
      "Análisis de rentabilidad",
      "Priorización del catálogo"
+    ],
+    "features": [
+     "Panel de control",
+     "Seguimiento de gastos",
+     "Cálculo de margen",
+     "Análisis por producto",
+     "Alertas de desviación"
     ]
    },
    "erpbridge": {
@@ -361,6 +508,13 @@
      "Sincronización CRM-facturación",
      "Circuito de validación",
      "Informes automatizados"
+    ],
+    "features": [
+     "Auditoría de procesos",
+     "Conectores API",
+     "Automatizaciones",
+     "Flujos de trabajo de negocio",
+     "Acompañamiento de equipos"
     ]
    },
    "marketplace": {
@@ -374,6 +528,13 @@
      "Marketplace de servicios",
      "Portal B2B",
      "Plataforma de alquiler"
+    ],
+    "features": [
+     "Perfiles y anuncios",
+     "Búsqueda y filtros",
+     "Proceso de transacción",
+     "Administración",
+     "Personalización de marca"
     ]
    },
    "creation-graphique": {
@@ -387,6 +548,13 @@
      "Publicaciones en redes sociales",
      "Materiales comerciales",
      "Visuales de campaña"
+    ],
+    "features": [
+     "Formatos multicanal",
+     "Plantillas reutilizables",
+     "Adaptación de dimensiones",
+     "Biblioteca de recursos",
+     "Exportación"
     ]
    },
    "applications-mobiles": {
@@ -400,6 +568,13 @@
      "Herramienta profesional de campo",
      "Servicio para el gran público",
      "Extensión móvil de una plataforma"
+    ],
+    "features": [
+     "Definición de necesidades",
+     "Prototipo interactivo",
+     "Diseño móvil",
+     "Desarrollo progresivo",
+     "Medición del uso"
     ]
    },
    "formation-conseil": {
@@ -413,6 +588,13 @@
      "Formación in company",
      "Intervención universitaria",
      "Acompañamiento de un jefe de proyecto"
+    ],
+    "features": [
+     "Microsoft Project",
+     "Gestión de proyectos",
+     "PM² y buenas prácticas PMP",
+     "Business analysis",
+     "Consultoría a medida"
     ]
    }
   }
@@ -466,6 +648,13 @@
      "Een eerste sollicitatie voorbereiden",
      "Een ervaren profiel herpositioneren",
      "Een cv afstemmen op een specifieke vacature"
+    ],
+    "features": [
+     "Cv opstellen en opmaken",
+     "ATS-compatibiliteitsanalyse",
+     "Afstemming op een vacature",
+     "Motivatiebrief",
+     "Meertalige ondersteuning"
     ]
    },
    "quizplay": {
@@ -479,6 +668,13 @@
      "Formatief toetsen",
      "Herhalen voor een examen",
      "Trainingen levendig begeleiden"
+    ],
+    "features": [
+     "Snel vragen maken",
+     "Groepsactiviteiten",
+     "Directe resultaten",
+     "In de klas of op afstand",
+     "Leervoortgang"
     ]
    },
    "courshub": {
@@ -492,6 +688,13 @@
      "Bibliotheek van de onderwijsinstelling",
      "Opleidingscatalogus",
      "Delen tussen docenten"
+    ],
+    "features": [
+     "Leermiddelen maken",
+     "Thematische indeling",
+     "Zoeken",
+     "Lessen delen",
+     "Gedeelde kennisbank"
     ]
    },
    "ecole-connect": {
@@ -505,6 +708,13 @@
      "Communicatie tussen school en ouders",
      "Documenten verspreiden",
      "Evenementen organiseren"
+    ],
+    "features": [
+     "Nieuws en berichten",
+     "Schoolagenda",
+     "Gedeelde documenten",
+     "Opvolging van informatie",
+     "Toegang per profiel"
     ]
    },
    "firmoscope": {
@@ -518,6 +728,13 @@
      "Gerichte prospectie",
      "Een markt in kaart brengen",
      "Partners zoeken"
+    ],
+    "features": [
+     "Bedrijven zoeken",
+     "Zakelijke filters",
+     "Bedrijfsprofielen met context",
+     "B2B-kansen",
+     "Herleidbare bronnen"
     ]
    },
    "arbitrage-plus": {
@@ -531,6 +748,13 @@
      "Online arbitrage",
      "Productselectie",
      "Een inkoop voorbereiden"
+    ],
+    "features": [
+     "Prijsvergelijking",
+     "Margeberekening",
+     "Rekening houden met kosten",
+     "Kansen kwalificeren",
+     "Analysegeschiedenis"
     ]
    },
    "analyzer-plus": {
@@ -544,6 +768,13 @@
      "Onderzoek vóór een listing",
      "Producten vergelijken",
      "Portfolioreview"
+    ],
+    "features": [
+     "Analysefiche",
+     "Kosten en concurrentie",
+     "Vergelijkbare criteria",
+     "Zichtbare aannames",
+     "Beslissingsondersteuning"
     ]
    },
    "profit-plus": {
@@ -557,6 +788,13 @@
      "Maandelijkse sturing",
      "Rendementsanalyse",
      "Portfoliokeuzes maken"
+    ],
+    "features": [
+     "Dashboard",
+     "Uitgaven bijhouden",
+     "Margeberekening",
+     "Analyse per product",
+     "Afwijkingsmeldingen"
     ]
    },
    "erpbridge": {
@@ -570,6 +808,13 @@
      "Synchronisatie tussen CRM en facturatie",
      "Goedkeuringsproces",
      "Geautomatiseerde rapportage"
+    ],
+    "features": [
+     "Procesaudit",
+     "API-connectoren",
+     "Automatiseringen",
+     "Bedrijfsworkflows",
+     "Begeleiding van teams"
     ]
    },
    "marketplace": {
@@ -583,6 +828,13 @@
      "Marketplace voor diensten",
      "B2B-portaal",
      "Verhuurplatform"
+    ],
+    "features": [
+     "Profielen en advertenties",
+     "Zoeken en filters",
+     "Transactieproces",
+     "Beheer",
+     "Huisstijl op maat"
     ]
    },
    "creation-graphique": {
@@ -596,6 +848,13 @@
      "Socialemediaberichten",
      "Commercieel materiaal",
      "Campagnebeelden"
+    ],
+    "features": [
+     "Multichannelformaten",
+     "Herbruikbare sjablonen",
+     "Formaten aanpassen",
+     "Bibliotheek met bestanden",
+     "Exporteren"
     ]
    },
    "applications-mobiles": {
@@ -609,6 +868,13 @@
      "Vakapplicatie voor buitendienst",
      "Consumentendienst",
      "Mobiele uitbreiding van een platform"
+    ],
+    "features": [
+     "Behoeften in kaart brengen",
+     "Interactief prototype",
+     "Mobiel ontwerp",
+     "Stapsgewijze ontwikkeling",
+     "Gebruiksmeting"
     ]
    },
    "formation-conseil": {
@@ -622,6 +888,13 @@
      "Incompanytraining",
      "Gastcolleges aan universiteiten",
      "Begeleiding van een projectleider"
+    ],
+    "features": [
+     "Microsoft Project",
+     "Projectmanagement",
+     "PM² en PMP-best practices",
+     "Business analysis",
+     "Advies op maat"
     ]
    }
   }
@@ -675,6 +948,13 @@
      "Die erste Bewerbung vorbereiten",
      "Ein erfahrenes Profil neu positionieren",
      "Den Lebenslauf auf eine bestimmte Stelle zuschneiden"
+    ],
+    "features": [
+     "Lebenslauf erstellen und gestalten",
+     "ATS-Kompatibilitätsanalyse",
+     "Anpassung an eine Stellenanzeige",
+     "Anschreiben",
+     "Mehrsprachige Unterstützung"
     ]
    },
    "quizplay": {
@@ -688,6 +968,13 @@
      "Formative Lernstandserhebung",
      "Wiederholung vor der Prüfung",
      "Moderation von Schulungen"
+    ],
+    "features": [
+     "Schnelle Fragenerstellung",
+     "Gruppenmoderation",
+     "Sofortige Ergebnisse",
+     "Im Unterricht oder online",
+     "Lernfortschritt"
     ]
    },
    "courshub": {
@@ -701,6 +988,13 @@
      "Bibliothek einer Bildungseinrichtung",
      "Schulungskatalog",
      "Austausch zwischen Lehrkräften"
+    ],
+    "features": [
+     "Erstellung von Materialien",
+     "Thematische Ordnung",
+     "Suche",
+     "Kurse teilen",
+     "Gemeinsamer Wissensbestand"
     ]
    },
    "ecole-connect": {
@@ -714,6 +1008,13 @@
      "Kommunikation zwischen Schule und Eltern",
      "Verteilung von Dokumenten",
      "Organisation von Veranstaltungen"
+    ],
+    "features": [
+     "Neuigkeiten und Nachrichten",
+     "Schulkalender",
+     "Geteilte Dokumente",
+     "Informationsverfolgung",
+     "Rollenbasierter Zugriff"
     ]
    },
    "firmoscope": {
@@ -727,6 +1028,13 @@
      "Gezielte Neukundenakquise",
      "Marktanalyse und -kartierung",
      "Suche nach Partnern"
+    ],
+    "features": [
+     "Unternehmenssuche",
+     "Branchenfilter",
+     "Kontextbezogene Unternehmensprofile",
+     "B2B-Chancen",
+     "Nachvollziehbare Quellen"
     ]
    },
    "arbitrage-plus": {
@@ -740,6 +1048,13 @@
      "Online-Arbitrage",
      "Produktauswahl",
      "Einkaufsvorbereitung"
+    ],
+    "features": [
+     "Preisvergleich",
+     "Margenberechnung",
+     "Berücksichtigung von Gebühren",
+     "Bewertung von Chancen",
+     "Analyseverlauf"
     ]
    },
    "analyzer-plus": {
@@ -753,6 +1068,13 @@
      "Prüfung vor der Listung",
      "Produktvergleich",
      "Sortimentsüberprüfung"
+    ],
+    "features": [
+     "Analyseblatt",
+     "Kosten und Wettbewerb",
+     "Vergleichbare Kriterien",
+     "Transparente Annahmen",
+     "Entscheidungshilfe"
     ]
    },
    "profit-plus": {
@@ -766,6 +1088,13 @@
      "Monatliche Steuerung",
      "Rentabilitätsanalyse",
      "Sortimentsentscheidungen"
+    ],
+    "features": [
+     "Dashboard",
+     "Ausgabenverfolgung",
+     "Margenberechnung",
+     "Analyse pro Produkt",
+     "Abweichungswarnungen"
     ]
    },
    "erpbridge": {
@@ -779,6 +1108,13 @@
      "Synchronisierung von CRM und Rechnungsstellung",
      "Freigabeprozesse",
      "Automatisiertes Reporting"
+    ],
+    "features": [
+     "Prozessaudit",
+     "API-Konnektoren",
+     "Automatisierungen",
+     "Geschäftsworkflows",
+     "Begleitung der Teams"
     ]
    },
    "marketplace": {
@@ -792,6 +1128,13 @@
      "Marktplatz für Dienstleistungen",
      "B2B-Portal",
      "Vermietungsplattform"
+    ],
+    "features": [
+     "Profile und Angebote",
+     "Suche und Filter",
+     "Transaktionsablauf",
+     "Verwaltung",
+     "Individuelles Branding"
     ]
    },
    "creation-graphique": {
@@ -805,6 +1148,13 @@
      "Social-Media-Beiträge",
      "Vertriebsunterlagen",
      "Kampagnenmotive"
+    ],
+    "features": [
+     "Multichannel-Formate",
+     "Wiederverwendbare Vorlagen",
+     "Anpassung der Formate",
+     "Asset-Bibliothek",
+     "Export"
     ]
    },
    "applications-mobiles": {
@@ -818,6 +1168,13 @@
      "Fachanwendung für den Außendienst",
      "Service für Endverbraucher",
      "Mobile Erweiterung einer Plattform"
+    ],
+    "features": [
+     "Bedarfsanalyse",
+     "Interaktiver Prototyp",
+     "Mobiles Design",
+     "Schrittweise Entwicklung",
+     "Nutzungsanalyse"
     ]
    },
    "formation-conseil": {
@@ -831,6 +1188,13 @@
      "Firmeninterne Schulung",
      "Lehrauftrag an einer Hochschule",
      "Begleitung einer Projektleitung"
+    ],
+    "features": [
+     "Microsoft Project",
+     "Projektmanagement",
+     "PM² und PMP-Best-Practices",
+     "Business Analysis",
+     "Individuelle Beratung"
     ]
    }
   }

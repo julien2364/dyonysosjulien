@@ -4,6 +4,9 @@
   "functions": {
     "api/seo-article.js": {
       "includeFiles": "{seo-data.js,api/_data/seo-article-i18n.json}"
+    },
+    "api/prerender.js": {
+      "includeFiles": "{localized.html,localized-secondary.html,localized-articles.html,category.html,formation-conseil.html,partenaires.html,emploi.html,category-translations.js,formation-conseil-i18n.js,corporate-pages-i18n.js,public-forms.js}"
     }
   },
   "redirects": [
@@ -31,35 +34,35 @@
     },
     {
       "source": "/en",
-      "destination": "/localized"
+      "destination": "/api/prerender?p=/en"
     },
     {
       "source": "/en/solutions",
-      "destination": "/localized"
+      "destination": "/api/prerender?p=/en/solutions"
     },
     {
       "source": "/es",
-      "destination": "/localized"
+      "destination": "/api/prerender?p=/es"
     },
     {
       "source": "/es/solutions",
-      "destination": "/localized"
+      "destination": "/api/prerender?p=/es/solutions"
     },
     {
       "source": "/nl",
-      "destination": "/localized"
+      "destination": "/api/prerender?p=/nl"
     },
     {
       "source": "/nl/solutions",
-      "destination": "/localized"
+      "destination": "/api/prerender?p=/nl/solutions"
     },
     {
       "source": "/de",
-      "destination": "/localized"
+      "destination": "/api/prerender?p=/de"
     },
     {
       "source": "/de/solutions",
-      "destination": "/localized"
+      "destination": "/api/prerender?p=/de/solutions"
     },
     {
       "source": "/blog",
@@ -83,35 +86,35 @@
     },
     {
       "source": "/en/contact",
-      "destination": "/localized-secondary"
+      "destination": "/api/prerender?p=/en/contact"
     },
     {
       "source": "/es/contact",
-      "destination": "/localized-secondary"
+      "destination": "/api/prerender?p=/es/contact"
     },
     {
       "source": "/nl/contact",
-      "destination": "/localized-secondary"
+      "destination": "/api/prerender?p=/nl/contact"
     },
     {
       "source": "/de/contact",
-      "destination": "/localized-secondary"
+      "destination": "/api/prerender?p=/de/contact"
     },
     {
       "source": "/en/legal",
-      "destination": "/localized-secondary"
+      "destination": "/api/prerender?p=/en/legal"
     },
     {
       "source": "/es/legal",
-      "destination": "/localized-secondary"
+      "destination": "/api/prerender?p=/es/legal"
     },
     {
       "source": "/nl/legal",
-      "destination": "/localized-secondary"
+      "destination": "/api/prerender?p=/nl/legal"
     },
     {
       "source": "/de/legal",
-      "destination": "/localized-secondary"
+      "destination": "/api/prerender?p=/de/legal"
     },
     {
       "source": "/partenaires",
@@ -119,19 +122,19 @@
     },
     {
       "source": "/en/partenaires",
-      "destination": "/partenaires"
+      "destination": "/api/prerender?p=/en/partenaires"
     },
     {
       "source": "/es/partenaires",
-      "destination": "/partenaires"
+      "destination": "/api/prerender?p=/es/partenaires"
     },
     {
       "source": "/nl/partenaires",
-      "destination": "/partenaires"
+      "destination": "/api/prerender?p=/nl/partenaires"
     },
     {
       "source": "/de/partenaires",
-      "destination": "/partenaires"
+      "destination": "/api/prerender?p=/de/partenaires"
     },
     {
       "source": "/emploi",
@@ -139,19 +142,19 @@
     },
     {
       "source": "/en/emploi",
-      "destination": "/emploi"
+      "destination": "/api/prerender?p=/en/emploi"
     },
     {
       "source": "/es/emploi",
-      "destination": "/emploi"
+      "destination": "/api/prerender?p=/es/emploi"
     },
     {
       "source": "/nl/emploi",
-      "destination": "/emploi"
+      "destination": "/api/prerender?p=/nl/emploi"
     },
     {
       "source": "/de/emploi",
-      "destination": "/emploi"
+      "destination": "/api/prerender?p=/de/emploi"
     },
     {
       "source": "/formation-conseil",
@@ -159,91 +162,91 @@
     },
     {
       "source": "/en/formation-conseil",
-      "destination": "/formation-conseil"
+      "destination": "/api/prerender?p=/en/formation-conseil"
     },
     {
       "source": "/es/formation-conseil",
-      "destination": "/formation-conseil"
+      "destination": "/api/prerender?p=/es/formation-conseil"
     },
     {
       "source": "/nl/formation-conseil",
-      "destination": "/formation-conseil"
+      "destination": "/api/prerender?p=/nl/formation-conseil"
     },
     {
       "source": "/de/formation-conseil",
-      "destination": "/formation-conseil"
+      "destination": "/api/prerender?p=/de/formation-conseil"
     },
     {
       "source": "/en/blog/articles",
-      "destination": "/localized-articles"
+      "destination": "/api/prerender?p=/en/blog/articles"
     },
     {
       "source": "/es/blog/articles",
-      "destination": "/localized-articles"
+      "destination": "/api/prerender?p=/es/blog/articles"
     },
     {
       "source": "/nl/blog/articles",
-      "destination": "/localized-articles"
+      "destination": "/api/prerender?p=/nl/blog/articles"
     },
     {
       "source": "/de/blog/articles",
-      "destination": "/localized-articles"
+      "destination": "/api/prerender?p=/de/blog/articles"
     },
     {
       "source": "/emploi-carriere",
-      "destination": "/category"
+      "destination": "/api/prerender?p=/emploi-carriere"
     },
     {
       "source": "/education",
-      "destination": "/category"
+      "destination": "/api/prerender?p=/education"
     },
     {
       "source": "/commerce",
-      "destination": "/category"
+      "destination": "/api/prerender?p=/commerce"
     },
     {
       "source": "/gestion",
-      "destination": "/category"
+      "destination": "/api/prerender?p=/gestion"
     },
     {
       "source": "/marketplaces",
-      "destination": "/category"
+      "destination": "/api/prerender?p=/marketplaces"
     },
     {
       "source": "/video",
-      "destination": "/category"
+      "destination": "/api/prerender?p=/video"
     },
     {
       "source": "/graphisme",
-      "destination": "/category"
+      "destination": "/api/prerender?p=/graphisme"
     },
     {
       "source": "/annuaire",
-      "destination": "/category"
+      "destination": "/api/prerender?p=/annuaire"
     },
     {
       "source": "/createurs",
-      "destination": "/category"
+      "destination": "/api/prerender?p=/createurs"
     },
     {
       "source": "/applications",
-      "destination": "/category"
+      "destination": "/api/prerender?p=/applications"
     },
     {
       "source": "/en/:category(emploi-carriere|education|commerce|gestion|marketplaces|video|graphisme|annuaire|createurs|applications)",
-      "destination": "/category"
+      "destination": "/api/prerender?p=/en/:category"
     },
     {
       "source": "/es/:category(emploi-carriere|education|commerce|gestion|marketplaces|video|graphisme|annuaire|createurs|applications)",
-      "destination": "/category"
+      "destination": "/api/prerender?p=/es/:category"
     },
     {
       "source": "/nl/:category(emploi-carriere|education|commerce|gestion|marketplaces|video|graphisme|annuaire|createurs|applications)",
-      "destination": "/category"
+      "destination": "/api/prerender?p=/nl/:category"
     },
     {
       "source": "/de/:category(emploi-carriere|education|commerce|gestion|marketplaces|video|graphisme|annuaire|createurs|applications)",
-      "destination": "/category"
+      "destination": "/api/prerender?p=/de/:category"
     },
     {
       "source": "/solutions/:product(cvdesignpro|quizplay|courshub|ecole-connect|firmoscope|arbitrage-plus|analyzer-plus|profit-plus|erpbridge|marketplace|creation-graphique|applications-mobiles)",

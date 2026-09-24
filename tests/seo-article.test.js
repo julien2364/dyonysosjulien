@@ -34,13 +34,15 @@ test('les titres sont uniques dans chaque langue', () => {
 });
 
 test('la version anglaise est en anglais', () => {
-  const { html } = renderArticle(data, 'en', 'adapter-cv-offre-emploi');
+  const noBodies = { ...data, bodies: { fr: {}, en: {}, es: {}, nl: {}, de: {} } };
+  const { html } = renderArticle(noBodies, 'en', 'adapter-cv-offre-emploi');
   assert.match(html, /The answer depends first on the objective/);
   assert.doesNotMatch(html, /La réponse dépend|Dans ce scénario|Une phase pilote/);
 });
 
-test('le texte français reste celui de l’ancien rendu', () => {
-  const { html } = renderArticle(data, 'fr', 'adapter-cv-offre-emploi');
+test('sans corps rédigé, le gabarit générique reprend le texte de l’ancien rendu', () => {
+  const noBodies = { ...data, bodies: { fr: {}, en: {}, es: {}, nl: {}, de: {} } };
+  const { html } = renderArticle(noBodies, 'fr', 'adapter-cv-offre-emploi');
   assert.ok(html.includes('La réponse dépend d’abord de l’objectif, des utilisateurs et des informations réellement disponibles.'));
   assert.ok(html.includes('<title>Comment adapter son CV à une offre d’emploi ? | Dyonysos</title>'));
 });
@@ -108,4 +110,26 @@ test('liste du blog : les 34 guides dans chaque langue, titres traduits', () => 
     assert.ok(html.includes('href="/applications-odoo"'));
   }
   assert.ok(renderBlogIndex(data, 'en').html.includes('How Do You Tailor Your Resume to a Job Posting?'));
+});
+
+test('corps rédigés : chaque article a son propre contenu, sommaire et FAQ', () => {
+  for (const lang of LANGS) {
+    const written = data.bodies[lang] || {};
+    const intros = new Set();
+    for (const slug of Object.keys(written)) {
+      const w = written[slug];
+      const { status, html } = renderArticle(data, lang, slug);
+      assert.equal(status, 200, `${lang}/${slug}`);
+      assert.ok(w.sections.length >= 4 && w.faq.length === 3, `${lang}/${slug} structure`);
+      assert.ok(html.includes(`<p class="answer">`) && html.includes(w.intro.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')), `${lang}/${slug} intro`);
+      w.sections.forEach((s, i) => assert.ok(html.includes(`<section id="s${i + 1}"><h2>`) && html.includes(`<a href="#s${i + 1}">`), `${lang}/${slug} section ${i + 1}`));
+      assert.equal((html.match(/<details>/g) || []).length, 3);
+      assert.doesNotMatch(html, /Dans ce scénario|In this scenario|La réponse dépend d’abord/, `${lang}/${slug} gabarit générique`);
+      const ld = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/)[1].replace(/\\u003c/g, '<'));
+      assert.equal(ld[1].mainEntity[0].name, w.faq[0].q, `${lang}/${slug} FAQ JSON-LD`);
+      assert.ok(!intros.has(w.intro), `${lang}/${slug} intro dupliquée`);
+      intros.add(w.intro);
+    }
+  }
+  assert.equal(Object.keys(data.bodies.fr).length, slugs.length, 'les 34 articles français ont un corps rédigé');
 });

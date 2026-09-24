@@ -13,7 +13,9 @@ function loadData() {
   const sandbox = { window: {} };
   vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', '..', 'seo-data.js'), 'utf8'), sandbox);
   const i18n = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '_data', 'seo-article-i18n.json'), 'utf8'));
-  return { products: sandbox.window.DY_PRODUCTS, articles: sandbox.window.DY_ARTICLES, i18n };
+  // Corps rédigés article par article ({ langue: { slug: { intro, sections, faq } } }) ; à défaut, gabarit générique.
+  const bodies = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '_data', 'seo-article-bodies.json'), 'utf8'));
+  return { products: sandbox.window.DY_PRODUCTS, articles: sandbox.window.DY_ARTICLES, i18n, bodies };
 }
 
 const UI = {
@@ -78,6 +80,14 @@ const COPY = {
   },
 };
 
+const READ_TIME = {
+  fr: (n) => `${n} minutes de lecture`,
+  en: (n) => `${n}-minute read`,
+  es: (n) => `${n} minutos de lectura`,
+  nl: (n) => `${n} minuten leestijd`,
+  de: (n) => `${n} Minuten Lesezeit`,
+};
+
 const STYLE = `*{box-sizing:border-box}body{margin:0;background:#f6f7fb;color:#293b4d;font:17px/1.78 Inter,Arial,sans-serif}.wrap{width:min(920px,calc(100% - 40px));margin:auto}.nav{height:78px;display:flex;align-items:center}.nav img{width:168px}.nav a:last-child{margin-left:auto;color:#24364b;text-decoration:none;font-weight:800}.article-hero{padding:68px 0 48px;background:linear-gradient(120deg,#091c35,#172858 58%,#583ca1);color:#fff}.crumb{color:#cbd5e6;font-size:13px}.crumb a{color:#fff}.article-hero h1{font-size:clamp(38px,6vw,62px);line-height:1.08;margin:20px 0}.answer{font-size:20px;color:#dce5f1;max-width:820px}.meta{margin-top:24px;color:#b9c9dc;font-size:13px}.article-main{padding:54px 0}.toc,.article-body,.related{background:#fff;border:1px solid #e1e4ef;border-radius:16px;padding:30px;margin-bottom:20px}.toc a{display:block;padding:5px 0;color:#6847c5}.article-body h2{font-size:31px;line-height:1.2;color:#132b4b;margin-top:45px}.article-body h3{font-size:22px;color:#243d66}.article-body img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:top;border-radius:12px;margin:28px 0}.mid-cta,.final-cta{padding:26px;border-radius:14px;background:#f1edff;margin:32px 0}.mid-cta a,.final-cta a{display:inline-flex;margin-top:8px}.checklist li{margin:10px 0}.faq details{padding:14px 0;border-top:1px solid #e3e7ef}.faq summary{font-weight:850;cursor:pointer}.related-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.related a{padding:14px;border:1px solid #e1ddf0;border-radius:10px;color:#6847c5;text-decoration:none;font-weight:750}.final-cta{background:linear-gradient(110deg,#714bce,#1688d8);color:#fff}.final-cta h2{color:#fff;margin-top:0}@media(max-width:600px){.article-hero{padding:48px 0 36px}.answer{font-size:18px}.article-main{padding:36px 0}.toc,.article-body,.related{padding:20px}.article-body h2{font-size:27px}.related-grid{grid-template-columns:1fr}}`;
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -120,6 +130,23 @@ function renderNotFound(lang) {
   });
 }
 
+const words = (t) => t.split(/\s+/).filter(Boolean).length;
+function readingMinutes(w) {
+  const all = [w.intro, ...w.sections.flatMap((x) => [x.h2, ...x.paragraphs, ...(x.list || [])]), ...w.faq.flatMap((x) => [x.q, x.a])].join(' ');
+  return Math.max(2, Math.round(words(all) / 220));
+}
+
+// Corps rédigé : sommaire tiré des intertitres, capture après la 1re section, appel à l'action après la 2e.
+function writtenBody(w, { ui, p, c, offerPath }) {
+  const toc = w.sections.map((x, i) => `<a href="#s${i + 1}">${esc(x.h2)}</a>`).join('') + '<a href="#faq">FAQ</a>';
+  const sections = w.sections.map((x, i) => `<section id="s${i + 1}"><h2>${esc(x.h2)}</h2>${x.paragraphs.map((t) => `<p>${esc(t)}</p>`).join('')}${x.list ? `<ul class="checklist">${x.list.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}</section>`
+    + (i === 0 ? `<img src="/captures/${esc(p.img)}.jpg" width="800" height="600" loading="lazy" decoding="async" alt="${esc(`${c.title} — ${ui.example} ${p.name}`)}">` : '')
+    + (i === 1 ? `<div class="mid-cta"><strong>${esc(ui.mid)}</strong><p>${esc(p.value)}</p><a class="btn" href="${offerPath}">${esc(ui.discover)}</a></div>` : '')).join('');
+  return `<div class="wrap article-main"><nav class="toc"><strong>${esc(ui.toc)}</strong>${toc}</nav>`
+    + `<article class="article-body">${sections}`
+    + `<section id="faq" class="faq"><h2>FAQ</h2><div>${w.faq.map((x) => `<details><summary>${esc(x.q)}</summary><p>${esc(x.a)}</p></details>`).join('')}</div></section>`;
+}
+
 function renderArticle(data, requestedLang, slug) {
   if (!LANGS.includes(requestedLang) || !/^[a-z0-9-]+$/.test(slug || '')) return { status: 404, html: renderNotFound(requestedLang) };
   // Traduction absente : on sert la version française, déclarée comme telle et canonisée vers l'URL française.
@@ -134,7 +161,9 @@ function renderArticle(data, requestedLang, slug) {
   const base = prefix(requestedLang);
   const canonical = articleUrl(lang, slug);
   const alternates = LANGS.filter((l) => localized(data, l, slug));
-  const answer = copy.answer(c.title, p.name);
+  const written = data.bodies[lang] && data.bodies[lang][slug];
+  const answer = written ? written.intro : copy.answer(c.title, p.name);
+  const faq = written ? written.faq.map((x) => [x.q, x.a]) : copy.faq;
   const description = truncate(answer, 158);
   const image = `${ORIGIN}/captures/${p.img}.jpg`;
   const offerPath = c.productId === 'formation-conseil' ? `${base}/formation-conseil` : `${base}/solutions/${c.productId}`;
@@ -149,7 +178,7 @@ function renderArticle(data, requestedLang, slug) {
 
   const ld = [
     { '@context': 'https://schema.org', '@type': 'Article', headline: c.title, description: answer, inLanguage: lang, image, author: { '@type': 'Organization', name: 'Dyonysos' }, publisher: { '@type': 'Organization', name: 'Dyonysos', logo: { '@type': 'ImageObject', url: `${ORIGIN}/logo-dyonysos-wordmark.png` } }, mainEntityOfPage: canonical },
-    { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: lang, mainEntity: copy.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+    { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: lang, mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
   ];
 
   const head = [
@@ -167,15 +196,17 @@ function renderArticle(data, requestedLang, slug) {
     `<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>`,
   ].join('');
 
-  const body = `<header><div class="wrap nav"><a href="${base || '/'}"><img src="/logo-dyonysos-wordmark.png" width="338" height="96" alt="Dyonysos"></a><a id="blogBack" href="${base}/blog">${esc(ui.blog)}</a></div></header>`
-    + `<main id="main-content"><section class="article-hero"><div class="wrap"><div class="crumb"><a href="${base || '/'}">${esc(ui.home)}</a> / <a href="${base}/blog">${esc(ui.blog)}</a> / <span>${esc(p.name)}</span></div><h1>${esc(c.title)}</h1><p class="answer">${esc(answer)}</p><div class="meta">${esc(p.tag)} · ${esc(ui.read)} · Dyonysos</div></div></section>`
+  const genericBody = ``
     + `<div class="wrap article-main"><nav class="toc"><strong>${esc(ui.toc)}</strong><a href="#comprendre">${esc(ui.understand)}</a><a href="#methode">${esc(ui.method)}</a><a href="#exemples">${esc(ui.examples)}</a><a href="#limites">${esc(ui.limits)}</a><a href="#faq">FAQ</a></nav>`
     + `<article class="article-body"><section id="comprendre"><h2>${esc(ui.understand)}</h2><p>${esc(p.problem)}</p><p>${esc(copy.understand(p.audience))}</p></section>`
     + `<img src="/captures/${esc(p.img)}.jpg" width="800" height="600" loading="lazy" decoding="async" alt="${esc(`${c.title} — ${ui.example} ${p.name}`)}">`
     + `<section id="methode"><h2>${esc(ui.method)}</h2><p>${esc(copy.method(p.value))}</p><h3>${esc(ui.steps)}</h3><ol class="checklist">${copy.steps.map((x) => `<li>${esc(x)}</li>`).join('')}</ol><div class="mid-cta"><strong>${esc(ui.mid)}</strong><p>${esc(p.value)}</p><a class="btn" href="${offerPath}">${esc(ui.discover)}</a></div></section>`
     + `<section id="exemples"><h2>${esc(ui.examples)}</h2><div>${p.uses.map((x) => `<h3>${esc(x)}</h3><p>${esc(copy.example(p.name))}</p>`).join('')}</div></section>`
     + `<section id="limites"><h2>${esc(ui.limits)}</h2><p>${esc(copy.limits(p.name))}</p><h3>${esc(ui.compare)}</h3><p>${esc(p.compare)}</p></section>`
-    + `<section id="faq" class="faq"><h2>FAQ</h2><div>${copy.faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}</div></section>`
+    + `<section id="faq" class="faq"><h2>FAQ</h2><div>${copy.faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}</div></section>`;
+  const body = `<header><div class="wrap nav"><a href="${base || '/'}"><img src="/logo-dyonysos-wordmark.png" width="338" height="96" alt="Dyonysos"></a><a id="blogBack" href="${base}/blog">${esc(ui.blog)}</a></div></header>`
+    + `<main id="main-content"><section class="article-hero"><div class="wrap"><div class="crumb"><a href="${base || '/'}">${esc(ui.home)}</a> / <a href="${base}/blog">${esc(ui.blog)}</a> / <span>${esc(p.name)}</span></div><h1>${esc(c.title)}</h1><p class="answer">${esc(answer)}</p><div class="meta">${esc(p.tag)} · ${esc(written ? READ_TIME[lang](readingMinutes(written)) : ui.read)} · Dyonysos</div></div></section>`
+    + (written ? writtenBody(written, { ui, p, c, offerPath }) : genericBody)
     + `<section class="final-cta"><h2>${esc(ui.final)}</h2><p>${esc(copy.final(p.name))}</p><a class="btn" href="${base}/contact">${esc(ui.contact)}</a></section></article>`
     + `<aside class="related"><h2>${esc(ui.related)}</h2><div class="related-grid">${related}</div></aside></div></main><footer><div class="wrap">© 2026 Dyonysos</div></footer>`;
 

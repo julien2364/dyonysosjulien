@@ -1,0 +1,71 @@
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const { loadData, renderArticle, LANGS } = require('../api/_lib/seo-article');
+
+const data = loadData();
+const slugs = data.articles.map((a) => a[0]);
+
+test('chaque article et chaque langue produit un HTML complet et autonome', () => {
+  for (const lang of LANGS) {
+    for (const slug of slugs) {
+      const { status, html, canonical } = renderArticle(data, lang, slug);
+      const url = `https://dyonysos.fr${lang === 'fr' ? '' : '/' + lang}/blog/${slug}`;
+      assert.equal(status, 200, `${lang}/${slug}`);
+      assert.equal(canonical, url);
+      assert.match(html, new RegExp(`<html lang="${lang}">`));
+      assert.ok(html.includes(`<link rel="canonical" href="${url}">`), `canonique ${lang}/${slug}`);
+      assert.doesNotMatch(html, /<title>Guide Dyonysos<\/title>/);
+      assert.match(html, /<meta name="description" content="[^"]{40,}">/);
+      for (const l of LANGS) assert.ok(html.includes(`hreflang="${l}"`), `hreflang ${l} sur ${lang}/${slug}`);
+      assert.ok(html.includes('hreflang="x-default"'));
+      assert.match(html, /<h1>[^<]{10,}<\/h1>/);
+      assert.equal((html.match(/<details>/g) || []).length, 3);
+      assert.doesNotMatch(html, /undefined|\$\{/);
+      assert.doesNotMatch(html, /DY_ARTICLES|seo-data\.js/, 'plus de rendu client');
+    }
+  }
+});
+
+test('les titres sont uniques dans chaque langue', () => {
+  for (const lang of LANGS) {
+    const titles = slugs.map((s) => renderArticle(data, lang, s).html.match(/<title>([^<]+)<\/title>/)[1]);
+    assert.equal(new Set(titles).size, titles.length, lang);
+  }
+});
+
+test('la version anglaise est en anglais', () => {
+  const { html } = renderArticle(data, 'en', 'adapter-cv-offre-emploi');
+  assert.match(html, /The answer depends first on the objective/);
+  assert.doesNotMatch(html, /La réponse dépend|Dans ce scénario|Une phase pilote/);
+});
+
+test('le texte français reste celui de l’ancien rendu', () => {
+  const { html } = renderArticle(data, 'fr', 'adapter-cv-offre-emploi');
+  assert.ok(html.includes('La réponse dépend d’abord de l’objectif, des utilisateurs et des informations réellement disponibles.'));
+  assert.ok(html.includes('<title>Comment adapter son CV à une offre d’emploi ? | Dyonysos</title>'));
+});
+
+test('slug inconnu ou langue inconnue : vraie 404 non indexable', () => {
+  for (const [lang, slug] of [['fr', 'nexiste-pas'], ['en', 'nexiste-pas'], ['it', slugs[0]], ['fr', '../etc']]) {
+    const { status, html } = renderArticle(data, lang, slug);
+    assert.equal(status, 404, `${lang}/${slug}`);
+    assert.match(html, /<meta name="robots" content="noindex">/);
+  }
+});
+
+test('traduction manquante : version française déclarée en français et canonisée vers /blog', () => {
+  const partial = { ...data, i18n: { ...data.i18n, en: { titles: {}, products: {} } } };
+  const { status, html, lang } = renderArticle(partial, 'en', 'adapter-cv-offre-emploi');
+  assert.equal(status, 200);
+  assert.equal(lang, 'fr');
+  assert.match(html, /<html lang="fr">/);
+  assert.ok(html.includes('<link rel="canonical" href="https://dyonysos.fr/blog/adapter-cv-offre-emploi">'));
+  assert.ok(!html.includes('hreflang="en"'));
+});
+
+test('formation-conseil pointe vers la page d’offre', () => {
+  const slug = data.articles.find((a) => a[1] === 'formation-conseil')[0];
+  const { html } = renderArticle(data, 'de', slug);
+  assert.ok(html.includes('href="/de/formation-conseil"'));
+  assert.ok(!html.includes('/solutions/formation-conseil'));
+});

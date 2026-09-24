@@ -1,0 +1,838 @@
+{
+ "en": {
+  "titles": {
+   "optimiser-cv-ats": "How Do You Optimize a Resume for ATS?",
+   "adapter-cv-offre-emploi": "How Do You Tailor Your Resume to a Job Posting?",
+   "outils-ia-ameliorer-cv": "Which AI Tools Can Help You Improve Your Resume?",
+   "cvdesignpro-vs-outils-cv": "CVDesignPro or a Resume Builder: Which Should You Choose?",
+   "comment-recruteurs-analysent-cv": "How Do Recruiters Review a Resume?",
+   "digitaliser-communication-ecole-parents": "How Can Schools Digitize Parent Communication?",
+   "plateforme-numerique-ecole": "Which Digital Platform Should a School Choose?",
+   "centraliser-devoirs-notes-agenda": "Bringing Homework, Schedules and School Communication Together",
+   "alternative-applications-scolaires": "An Alternative to the Growing Number of School Apps",
+   "creer-quiz-interactif-classe": "How Do You Create an Interactive Quiz for Your Class?",
+   "alternative-kahoot-wooclap": "QuizPlay, Kahoot or Wooclap: How Do You Choose?",
+   "rendre-formation-interactive": "How Can You Make Training More Interactive?",
+   "creer-partager-cours-en-ligne": "How Do You Create and Share Online Courses?",
+   "plateforme-ressources-pedagogiques": "Choosing a Platform for Educational Resources",
+   "annuaire-entreprises-prospection-b2b": "How Do You Use a Business Directory for B2B Prospecting?",
+   "firmoscope-alternative-pappers": "Propecto and Pappers: Complementary Use Cases",
+   "calculer-rentabilite-arbitrage": "How Do You Calculate the Profitability of an Arbitrage Opportunity?",
+   "alternative-selleramp": "Arbitrage+ and SellerAmp: Comparing Different Use Cases",
+   "analyser-produit-avant-achat": "How Do You Analyze a Product Before Buying It?",
+   "keepa-analyse-produit": "Keepa and Product Analysis Tools: How Do You Combine Them?",
+   "suivre-marge-ecommerce": "How Do You Track Your Real Margin in E-commerce?",
+   "tableau-bord-profit-amazon": "Building a Marketplace Profit Dashboard",
+   "automatiser-processus-pme": "How Can a Small Business Automate Its Processes Without the Complexity?",
+   "odoo-ou-solution-ciblee": "Odoo or a Targeted Business Solution: How Do You Choose?",
+   "creer-marketplace": "How Do You Build a Marketplace for Services or Products?",
+   "alternative-sharetribe": "Looking for a Sharetribe Alternative? Key Selection Criteria",
+   "alternative-canva-entreprise": "Canva or a Design Tool Built for Business?",
+   "adapter-contenus-multicanaux": "How Do You Adapt Content for Multiple Channels?",
+   "reussir-prototype-application-mobile": "How Do You Build a Successful Mobile App Prototype?",
+   "application-mobile-sur-mesure": "Custom Mobile App or SaaS Solution?",
+   "formation-ms-project-entreprise": "Corporate MS Project Training: Curriculum and Benefits",
+   "formation-gestion-projet-organisme": "How Do You Design Effective Project Management Training?",
+   "formateur-gestion-projet-universite-ecole": "Bringing a Project Management Trainer Into a University or School",
+   "conseil-gestion-projet-sur-mesure": "When Should You Hire a Project Management Consultant?"
+  },
+  "products": {
+   "cvdesignpro": {
+    "name": "CVDesignPro",
+    "tag": "Resume · ATS · Recruitment",
+    "problem": "Create a clear, credible resume tailored to a job posting without wasting time redoing the entire layout.",
+    "audience": "Job seekers, training organizations, career coaching firms and recruitment teams.",
+    "value": "A guided workflow to structure your resume, tailor it to each application, check its consistency and prepare the accompanying documents.",
+    "compare": "Unlike a general-purpose design editor, the approach puts application content, readability and hiring criteria first.",
+    "uses": [
+     "Preparing a first job application",
+     "Repositioning an experienced profile",
+     "Tailoring a resume to a specific job posting"
+    ]
+   },
+   "quizplay": {
+    "name": "QuizPlay",
+    "tag": "Interactive quizzes",
+    "problem": "Keep a class or group engaged and check understanding without weighing down the session.",
+    "audience": "Teachers, trainers, facilitators and instructional leads.",
+    "value": "Create and run quizzes with instant feedback, turning assessment into a learning activity.",
+    "compare": "An alternative focused on simplicity and instructional design, worth weighing against Kahoot or Wooclap depending on your needs.",
+    "uses": [
+     "Formative assessment",
+     "Exam review",
+     "Training facilitation"
+    ]
+   },
+   "courshub": {
+    "name": "CoursHub",
+    "tag": "Educational resources",
+    "problem": "Courses and materials end up scattered across folders, inboxes and hard-to-browse storage spaces.",
+    "audience": "Teachers, trainers, schools and learners.",
+    "value": "Centralize, organize, find and share educational resources in one coherent library.",
+    "compare": "Unlike a simple shared folder, the platform adds editorial structure and navigation designed for educational content.",
+    "uses": [
+     "School-wide library",
+     "Training catalog",
+     "Sharing between teachers"
+    ]
+   },
+   "ecole-connect": {
+    "name": "École Connect",
+    "tag": "School communication",
+    "problem": "Messages, homework, documents and events get scattered across multiple apps, emails and group chats.",
+    "audience": "Schools, school leaders, teaching staff, students and families.",
+    "value": "A configurable space that centralizes communication and makes school information easier to follow.",
+    "compare": "The platform aims to reduce fragmentation rather than add yet another app to families' routines.",
+    "uses": [
+     "School-to-parent communication",
+     "Document distribution",
+     "Event planning"
+    ]
+   },
+   "firmoscope": {
+    "name": "Propecto",
+    "tag": "B2B directory",
+    "problem": "Finding a relevant company and understanding its context often means cross-checking multiple sources.",
+    "audience": "Sales teams, business owners, consultants and economic development teams.",
+    "value": "Make business information searchable, filterable and immediately actionable.",
+    "compare": "Compared with directories such as Pappers, the focus is on exploration paths and turning information into action.",
+    "uses": [
+     "Targeted prospecting",
+     "Market mapping",
+     "Partner search"
+    ]
+   },
+   "arbitrage-plus": {
+    "name": "Arbitrage+",
+    "tag": "Price comparison",
+    "problem": "An apparent price gap alone doesn't prove that a business opportunity is profitable.",
+    "audience": "Online sellers, buyers, analysts and entrepreneurs.",
+    "value": "Compare prices and factor in the main costs to qualify an opportunity before you buy.",
+    "compare": "The analysis can complement data from platforms such as Keepa or sourcing tools like SellerAmp, without claiming to replace them for every use case.",
+    "uses": [
+     "Online arbitrage",
+     "Product selection",
+     "Purchase planning"
+    ]
+   },
+   "analyzer-plus": {
+    "name": "Analyzer+",
+    "tag": "Product analysis",
+    "problem": "Deciding on the basis of a single price or an opaque score hides costs, competition and uncertainty.",
+    "audience": "Marketplace sellers, e-commerce managers and product analysts.",
+    "value": "Bring together the criteria that matter to compare multiple products using a transparent method.",
+    "compare": "The tool structures internal decision-making; specialized historical data from services such as Keepa can remain complementary.",
+    "uses": [
+     "Pre-listing research",
+     "Product comparison",
+     "Portfolio review"
+    ]
+   },
+   "profit-plus": {
+    "name": "Profit+",
+    "tag": "E-commerce profitability",
+    "problem": "Revenue reveals neither your real margin nor which products have costs drifting out of line.",
+    "audience": "E-commerce sellers, marketplace entrepreneurs and portfolio managers.",
+    "value": "Track sales, expenses, margins and variances against your initial assumptions.",
+    "compare": "A view dedicated to operational profitability that complements the dashboards provided by marketplaces.",
+    "uses": [
+     "Monthly performance management",
+     "Profitability analysis",
+     "Portfolio decisions"
+    ]
+   },
+   "erpbridge": {
+    "name": "Connected Business Management Solutions",
+    "tag": "Operations · Automation",
+    "problem": "Duplicate data entry and siloed tools slow teams down and undermine data quality.",
+    "audience": "Small and midsize businesses, nonprofits, training organizations and operations teams.",
+    "value": "Map the process, connect your tools and automate only the steps that deliver a measurable gain.",
+    "compare": "Depending on the context, an Odoo-based integration may make sense; a more targeted solution is a better fit when the need centers on a few specific workflows.",
+    "uses": [
+     "CRM-to-invoicing sync",
+     "Approval workflow",
+     "Automated reporting"
+    ]
+   },
+   "marketplace": {
+    "name": "Customizable Marketplace",
+    "tag": "Marketplace · White label",
+    "problem": "Building a full-featured marketplace requires profiles, listings, search, payments, transaction rules and administration.",
+    "audience": "Entrepreneurs, federations, professional networks and vertical businesses.",
+    "value": "Start from a customizable foundation to validate a model, then adapt the experience, transactions and branding.",
+    "compare": "Sharetribe provides a complete no-code and headless engine; a Dyonysos foundation is worth considering when control over the product, deployment or specific workflows is a priority.",
+    "uses": [
+     "Services marketplace",
+     "B2B portal",
+     "Rental platform"
+    ]
+   },
+   "creation-graphique": {
+    "name": "Graphic Design",
+    "tag": "Design · Adaptation",
+    "problem": "Quickly repurpose content across multiple formats without losing visual consistency.",
+    "audience": "Marketing teams, creators and small organizations.",
+    "value": "Create, resize and adapt visual content through a streamlined workflow.",
+    "compare": "Canva offers a very broad suite; this approach targets focused, customizable workflows for a specific organization.",
+    "uses": [
+     "Social media posts",
+     "Sales collateral",
+     "Campaign visuals"
+    ]
+   },
+   "applications-mobiles": {
+    "name": "Mobile Apps",
+    "tag": "Mobile · Prototypes",
+    "problem": "A mobile project becomes costly when it launches with too many features before the core use case has been validated.",
+    "audience": "Businesses, entrepreneurs and organizations with a specific mobile use case.",
+    "value": "Prototype the essential user journey, test its value and build out step by step.",
+    "compare": "The priority is on usage and validation before adding more features.",
+    "uses": [
+     "Field operations tool",
+     "Consumer service",
+     "Mobile extension of a platform"
+    ]
+   },
+   "formation-conseil": {
+    "name": "Training & Consulting",
+    "tag": "Training · Project management · Consulting",
+    "problem": "Generic training has little impact when it doesn't match participants' skill levels, the organization's tools or its real-world projects.",
+    "audience": "Businesses, training organizations, universities, schools, managers, project managers and operations teams.",
+    "value": "Design a directly applicable program that combines methodology, context-specific exercises, skills transfer and coaching.",
+    "compare": "The right format depends on the intended outcome: getting started with a tool, building professional skills, solving a project problem or driving broader transformation.",
+    "uses": [
+     "In-house corporate training",
+     "University teaching engagement",
+     "Coaching for a project manager"
+    ]
+   }
+  }
+ },
+ "es": {
+  "titles": {
+   "optimiser-cv-ats": "¿Cómo optimizar un CV para los ATS?",
+   "adapter-cv-offre-emploi": "¿Cómo adaptar su CV a una oferta de empleo?",
+   "outils-ia-ameliorer-cv": "¿Qué herramientas de IA utilizar para mejorar su CV?",
+   "cvdesignpro-vs-outils-cv": "CVDesignPro u otra herramienta para crear CV: ¿cuál elegir?",
+   "comment-recruteurs-analysent-cv": "¿Cómo analizan los reclutadores un CV?",
+   "digitaliser-communication-ecole-parents": "¿Cómo digitalizar la comunicación entre el centro escolar y las familias?",
+   "plateforme-numerique-ecole": "¿Qué plataforma digital elegir para un centro educativo?",
+   "centraliser-devoirs-notes-agenda": "Centralizar deberes, agenda y comunicación escolar",
+   "alternative-applications-scolaires": "Una alternativa a la proliferación de aplicaciones escolares",
+   "creer-quiz-interactif-classe": "¿Cómo crear un quiz interactivo para el aula?",
+   "alternative-kahoot-wooclap": "QuizPlay, Kahoot o Wooclap: ¿cómo elegir?",
+   "rendre-formation-interactive": "¿Cómo hacer una formación más interactiva?",
+   "creer-partager-cours-en-ligne": "¿Cómo crear y compartir cursos en línea?",
+   "plateforme-ressources-pedagogiques": "Cómo elegir una plataforma de recursos educativos",
+   "annuaire-entreprises-prospection-b2b": "¿Cómo utilizar un directorio de empresas para la prospección B2B?",
+   "firmoscope-alternative-pappers": "Propecto y Pappers: usos complementarios",
+   "calculer-rentabilite-arbitrage": "¿Cómo calcular la rentabilidad de una oportunidad de arbitraje?",
+   "alternative-selleramp": "Arbitrage+ y SellerAmp: dos usos distintos que conviene comparar",
+   "analyser-produit-avant-achat": "¿Cómo analizar un producto antes de comprarlo?",
+   "keepa-analyse-produit": "Keepa y herramientas de análisis de producto: ¿cómo combinarlas?",
+   "suivre-marge-ecommerce": "¿Cómo controlar el margen real en e-commerce?",
+   "tableau-bord-profit-amazon": "Crear un cuadro de mando de rentabilidad para marketplaces",
+   "automatiser-processus-pme": "¿Cómo automatizar los procesos de una pyme sin complicaciones?",
+   "odoo-ou-solution-ciblee": "Odoo o una solución sectorial específica: ¿cómo elegir?",
+   "creer-marketplace": "¿Cómo crear un marketplace de servicios o de productos?",
+   "alternative-sharetribe": "Alternativa a Sharetribe: ¿qué criterios tener en cuenta?",
+   "alternative-canva-entreprise": "¿Canva o una herramienta de diseño adaptada a la empresa?",
+   "adapter-contenus-multicanaux": "¿Cómo adaptar un contenido a varios canales?",
+   "reussir-prototype-application-mobile": "¿Cómo crear con éxito el prototipo de una aplicación móvil?",
+   "application-mobile-sur-mesure": "¿Aplicación móvil a medida o solución SaaS?",
+   "formation-ms-project-entreprise": "Formación en MS Project para empresas: programa y beneficios",
+   "formation-gestion-projet-organisme": "¿Cómo diseñar una formación eficaz en gestión de proyectos?",
+   "formateur-gestion-projet-universite-ecole": "Contar con un formador en gestión de proyectos en una universidad o escuela",
+   "conseil-gestion-projet-sur-mesure": "¿Cuándo recurrir a un consultor en gestión de proyectos?"
+  },
+  "products": {
+   "cvdesignpro": {
+    "name": "CVDesignPro",
+    "tag": "CV · ATS · selección de personal",
+    "problem": "Crear un CV legible, creíble y adaptado a una oferta sin perder tiempo rehaciendo todo el diseño.",
+    "audience": "Candidatos, centros de formación, consultoras de orientación profesional y equipos de selección.",
+    "value": "Un recorrido guiado para estructurar el CV, adaptarlo a cada candidatura, comprobar su coherencia y preparar los documentos asociados.",
+    "compare": "Frente a un editor gráfico generalista, el enfoque prioriza el contenido de la candidatura, la legibilidad y los criterios de selección.",
+    "uses": [
+     "Preparar una primera candidatura",
+     "Reorientar un perfil con experiencia",
+     "Adaptar un CV a una oferta concreta"
+    ]
+   },
+   "quizplay": {
+    "name": "QuizPlay",
+    "tag": "Quiz interactivos",
+    "problem": "Mantener la atención de una clase o de un grupo y comprobar la comprensión sin sobrecargar la sesión.",
+    "audience": "Docentes, formadores, dinamizadores y responsables pedagógicos.",
+    "value": "Crear y dirigir quiz con respuesta inmediata para convertir la evaluación en una secuencia de aprendizaje.",
+    "compare": "Una alternativa centrada en la sencillez y en el diseño pedagógico, que conviene valorar frente a Kahoot o Wooclap según las necesidades.",
+    "uses": [
+     "Evaluación formativa",
+     "Repaso antes del examen",
+     "Dinamización de formaciones"
+    ]
+   },
+   "courshub": {
+    "name": "CoursHub",
+    "tag": "Recursos educativos",
+    "problem": "Los cursos y materiales están dispersos entre carpetas, correos y espacios de almacenamiento difíciles de explorar.",
+    "audience": "Docentes, formadores, centros educativos y alumnos.",
+    "value": "Centralizar, organizar, localizar y compartir los recursos educativos en una biblioteca coherente.",
+    "compare": "A diferencia de una simple carpeta compartida, la plataforma aporta una estructura editorial y una navegación pensada para los contenidos educativos.",
+    "uses": [
+     "Biblioteca del centro",
+     "Catálogo de formación",
+     "Intercambio entre docentes"
+    ]
+   },
+   "ecole-connect": {
+    "name": "École Connect",
+    "tag": "Comunicación escolar",
+    "problem": "Mensajes, deberes, documentos y eventos se dispersan entre varias aplicaciones, correos electrónicos y grupos de chat.",
+    "audience": "Centros educativos, equipos directivos, equipos docentes, alumnos y familias.",
+    "value": "Un espacio configurable para centralizar la comunicación y facilitar el seguimiento de la información escolar.",
+    "compare": "La plataforma busca reducir la fragmentación en lugar de añadir una aplicación más al día a día de las familias.",
+    "uses": [
+     "Comunicación entre el centro y las familias",
+     "Difusión de documentos",
+     "Organización de eventos"
+    ]
+   },
+   "firmoscope": {
+    "name": "Propecto",
+    "tag": "Directorio B2B",
+    "problem": "Encontrar una empresa relevante y comprender su contexto suele exigir cruzar varias fuentes.",
+    "audience": "Comerciales, directivos, consultores y equipos de desarrollo económico.",
+    "value": "Hacer que la información empresarial sea fácil de buscar, filtrar y aprovechar directamente.",
+    "compare": "Frente a directorios como Pappers, el valor reside en los recorridos de exploración y en la puesta en práctica de la información.",
+    "uses": [
+     "Prospección segmentada",
+     "Mapeo de un mercado",
+     "Búsqueda de socios"
+    ]
+   },
+   "arbitrage-plus": {
+    "name": "Arbitrage+",
+    "tag": "Comparación de precios",
+    "problem": "Una diferencia de precio aparente no basta para demostrar que una oportunidad comercial es rentable.",
+    "audience": "Vendedores online, compradores, analistas y emprendedores.",
+    "value": "Comparar precios e integrar los principales costes para valorar una oportunidad antes de comprar.",
+    "compare": "El análisis puede complementar los datos de plataformas como Keepa o de herramientas de sourcing como SellerAmp, sin pretender sustituirlas en todos sus usos.",
+    "uses": [
+     "Arbitraje online",
+     "Selección de productos",
+     "Preparación de una compra"
+    ]
+   },
+   "analyzer-plus": {
+    "name": "Analyzer+",
+    "tag": "Análisis de producto",
+    "problem": "Decidir a partir de un único precio o de una puntuación opaca oculta los costes, la competencia y las incertidumbres.",
+    "audience": "Vendedores en marketplaces, responsables de e-commerce y analistas de producto.",
+    "value": "Reunir los criterios útiles para comparar varios productos con un método explicable.",
+    "compare": "La herramienta estructura una decisión interna; los datos históricos especializados de servicios como Keepa pueden seguir siendo complementarios.",
+    "uses": [
+     "Estudio previo a la publicación",
+     "Comparación de productos",
+     "Revisión del catálogo"
+    ]
+   },
+   "profit-plus": {
+    "name": "Profit+",
+    "tag": "Rentabilidad e-commerce",
+    "problem": "La facturación no revela ni el margen real ni los productos cuyos costes se desvían.",
+    "audience": "Vendedores de e-commerce, emprendedores en marketplaces y responsables de catálogo.",
+    "value": "Controlar ventas, gastos, márgenes y desviaciones respecto a las hipótesis iniciales.",
+    "compare": "Una vista dedicada a la rentabilidad operativa, complementaria a los informes que ofrecen los propios marketplaces.",
+    "uses": [
+     "Seguimiento mensual",
+     "Análisis de rentabilidad",
+     "Priorización del catálogo"
+    ]
+   },
+   "erpbridge": {
+    "name": "Soluciones de gestión conectada",
+    "tag": "Gestión · automatización",
+    "problem": "La doble introducción de datos y las herramientas aisladas ralentizan a los equipos y comprometen la calidad de los datos.",
+    "audience": "Pymes, asociaciones, centros de formación y equipos operativos.",
+    "value": "Mapear el proceso, conectar las herramientas y automatizar únicamente los pasos que aportan una mejora medible.",
+    "compare": "Según el contexto, una integración en torno a Odoo puede ser pertinente; una solución más específica resulta más adecuada cuando la necesidad se limita a unos pocos flujos de trabajo concretos.",
+    "uses": [
+     "Sincronización CRM-facturación",
+     "Circuito de validación",
+     "Informes automatizados"
+    ]
+   },
+   "marketplace": {
+    "name": "Marketplace personalizable",
+    "tag": "Marketplace · marca blanca",
+    "problem": "Crear un marketplace completo exige perfiles, anuncios, búsqueda, pagos, reglas de transacción y administración.",
+    "audience": "Emprendedores, federaciones, redes profesionales y empresas verticales.",
+    "value": "Partir de una base personalizable para validar un modelo y, después, adaptar la experiencia, las transacciones y la marca.",
+    "compare": "Sharetribe ofrece un motor no-code y headless completo; una base Dyonysos es la opción a considerar cuando el control del producto, del despliegue o de flujos de trabajo específicos es prioritario.",
+    "uses": [
+     "Marketplace de servicios",
+     "Portal B2B",
+     "Plataforma de alquiler"
+    ]
+   },
+   "creation-graphique": {
+    "name": "Diseño gráfico",
+    "tag": "Creación · adaptación",
+    "problem": "Adaptar rápidamente un contenido a varios formatos sin perder la coherencia visual.",
+    "audience": "Equipos de marketing, creadores y pequeñas organizaciones.",
+    "value": "Crear, redimensionar y adaptar contenidos visuales en un proceso simplificado.",
+    "compare": "Canva ofrece una suite muy amplia; este enfoque apuesta por flujos de trabajo específicos y personalizables para cada organización.",
+    "uses": [
+     "Publicaciones en redes sociales",
+     "Materiales comerciales",
+     "Visuales de campaña"
+    ]
+   },
+   "applications-mobiles": {
+    "name": "Aplicaciones móviles",
+    "tag": "Móvil · prototipos",
+    "problem": "Un proyecto móvil se encarece cuando arranca con demasiadas funciones sin haber validado el uso principal.",
+    "audience": "Empresas, emprendedores y organizaciones con un uso móvil concreto.",
+    "value": "Prototipar el recorrido esencial, comprobar su valor y desarrollar de forma progresiva.",
+    "compare": "La prioridad es el uso y la validación antes de multiplicar las funcionalidades.",
+    "uses": [
+     "Herramienta profesional de campo",
+     "Servicio para el gran público",
+     "Extensión móvil de una plataforma"
+    ]
+   },
+   "formation-conseil": {
+    "name": "Formación y consultoría",
+    "tag": "Formación · gestión de proyectos · consultoría",
+    "problem": "Una formación genérica tiene poco impacto cuando no se ajusta ni al nivel de los participantes, ni a las herramientas, ni a los proyectos reales de la organización.",
+    "audience": "Empresas, centros de formación, universidades, escuelas, mánagers, jefes de proyecto y equipos operativos.",
+    "value": "Diseñar un itinerario de aplicación directa que combine método, ejercicios contextualizados, transferencia de competencias y acompañamiento.",
+    "compare": "El formato adecuado depende del resultado esperado: dominio de una herramienta, profesionalización, resolución de un problema de proyecto o una transformación más amplia.",
+    "uses": [
+     "Formación in company",
+     "Intervención universitaria",
+     "Acompañamiento de un jefe de proyecto"
+    ]
+   }
+  }
+ },
+ "nl": {
+  "titles": {
+   "optimiser-cv-ats": "Hoe optimaliseert u een cv voor ATS-systemen?",
+   "adapter-cv-offre-emploi": "Hoe stemt u uw cv af op een vacature?",
+   "outils-ia-ameliorer-cv": "Welke AI-tools helpen u uw cv te verbeteren?",
+   "cvdesignpro-vs-outils-cv": "CVDesignPro of een andere cv-maker: wat kiest u?",
+   "comment-recruteurs-analysent-cv": "Hoe beoordelen recruiters een cv?",
+   "digitaliser-communication-ecole-parents": "Hoe digitaliseert u de communicatie tussen school en ouders?",
+   "plateforme-numerique-ecole": "Welk digitaal platform kiest u voor een school?",
+   "centraliser-devoirs-notes-agenda": "Huiswerk, agenda en schoolcommunicatie op één plek",
+   "alternative-applications-scolaires": "Een alternatief voor steeds meer school-apps",
+   "creer-quiz-interactif-classe": "Hoe maakt u een interactieve quiz voor de klas?",
+   "alternative-kahoot-wooclap": "QuizPlay, Kahoot of Wooclap: hoe maakt u de juiste keuze?",
+   "rendre-formation-interactive": "Hoe maakt u een training interactiever?",
+   "creer-partager-cours-en-ligne": "Hoe maakt en deelt u online lessen?",
+   "plateforme-ressources-pedagogiques": "Een platform voor lesmateriaal kiezen",
+   "annuaire-entreprises-prospection-b2b": "Hoe gebruikt u een bedrijvengids voor B2B-prospectie?",
+   "firmoscope-alternative-pappers": "Propecto en Pappers: twee aanvullende toepassingen",
+   "calculer-rentabilite-arbitrage": "Hoe berekent u de winstgevendheid van een arbitragekans?",
+   "alternative-selleramp": "Arbitrage+ en SellerAmp: verschillende toepassingen vergeleken",
+   "analyser-produit-avant-achat": "Hoe analyseert u een product voordat u het inkoopt?",
+   "keepa-analyse-produit": "Keepa en productanalysetools: hoe combineert u ze?",
+   "suivre-marge-ecommerce": "Hoe houdt u uw werkelijke marge in e-commerce bij?",
+   "tableau-bord-profit-amazon": "Een winstdashboard voor marketplaces opzetten",
+   "automatiser-processus-pme": "Hoe automatiseert u de processen van een mkb-bedrijf zonder complexiteit?",
+   "odoo-ou-solution-ciblee": "Odoo of een gerichte branchesoftware: hoe kiest u?",
+   "creer-marketplace": "Hoe bouwt u een marketplace voor diensten of producten?",
+   "alternative-sharetribe": "Een alternatief voor Sharetribe: op welke criteria kiest u?",
+   "alternative-canva-entreprise": "Canva of een ontwerptool die past bij uw bedrijf?",
+   "adapter-contenus-multicanaux": "Hoe past u content aan voor meerdere kanalen?",
+   "reussir-prototype-application-mobile": "Hoe maakt u een geslaagd prototype van een mobiele app?",
+   "application-mobile-sur-mesure": "Mobiele app op maat of een SaaS-oplossing?",
+   "formation-ms-project-entreprise": "MS Project-training voor bedrijven: programma en voordelen",
+   "formation-gestion-projet-organisme": "Hoe zet u een effectieve training projectmanagement op?",
+   "formateur-gestion-projet-universite-ecole": "Een trainer projectmanagement inzetten aan een universiteit of hogeschool",
+   "conseil-gestion-projet-sur-mesure": "Wanneer schakelt u een projectmanagementconsultant in?"
+  },
+  "products": {
+   "cvdesignpro": {
+    "name": "CVDesignPro",
+    "tag": "Cv · ATS · werving",
+    "problem": "Een leesbaar, geloofwaardig en op de vacature afgestemd cv maken zonder telkens de hele opmaak te hoeven aanpassen.",
+    "audience": "Sollicitanten, opleidingsinstituten, loopbaanbegeleiders en recruitmentteams.",
+    "value": "Een begeleid traject om uw cv te structureren, af te stemmen op een sollicitatie, op samenhang te controleren en de bijbehorende documenten voor te bereiden.",
+    "compare": "Anders dan een algemene grafische editor legt deze aanpak de nadruk op de inhoud van de sollicitatie, de leesbaarheid en de selectiecriteria van recruiters.",
+    "uses": [
+     "Een eerste sollicitatie voorbereiden",
+     "Een ervaren profiel herpositioneren",
+     "Een cv afstemmen op een specifieke vacature"
+    ]
+   },
+   "quizplay": {
+    "name": "QuizPlay",
+    "tag": "Interactieve quizzen",
+    "problem": "De aandacht van een klas of groep vasthouden en het begrip toetsen zonder de les te verzwaren.",
+    "audience": "Docenten, trainers, begeleiders en onderwijscoördinatoren.",
+    "value": "Quizzen maken en afnemen met directe feedback, zodat toetsing een leermoment wordt.",
+    "compare": "Een alternatief dat draait om eenvoud en een didactisch scenario, af te wegen tegen Kahoot of Wooclap afhankelijk van uw behoeften.",
+    "uses": [
+     "Formatief toetsen",
+     "Herhalen voor een examen",
+     "Trainingen levendig begeleiden"
+    ]
+   },
+   "courshub": {
+    "name": "CoursHub",
+    "tag": "Lesmateriaal",
+    "problem": "Lessen en materialen raken verspreid over mappen, mailboxen en opslagruimtes waarin moeilijk te zoeken is.",
+    "audience": "Docenten, trainers, onderwijsinstellingen en cursisten.",
+    "value": "Lesmateriaal centraliseren, ordenen, terugvinden en delen in één samenhangende bibliotheek.",
+    "compare": "In tegenstelling tot een gewone gedeelde map biedt het platform een redactionele structuur en een navigatie die is ontworpen voor lesmateriaal.",
+    "uses": [
+     "Bibliotheek van de onderwijsinstelling",
+     "Opleidingscatalogus",
+     "Delen tussen docenten"
+    ]
+   },
+   "ecole-connect": {
+    "name": "École Connect",
+    "tag": "Schoolcommunicatie",
+    "problem": "Berichten, huiswerk, documenten en evenementen raken verspreid over diverse apps, e-mails en chatgroepen.",
+    "audience": "Scholen, schoolleiding, onderwijsteams, leerlingen en gezinnen.",
+    "value": "Een configureerbare omgeving die de communicatie centraliseert en schoolinformatie gemakkelijker te volgen maakt.",
+    "compare": "Het platform wil versnippering tegengaan in plaats van gezinnen nog een extra app te bezorgen.",
+    "uses": [
+     "Communicatie tussen school en ouders",
+     "Documenten verspreiden",
+     "Evenementen organiseren"
+    ]
+   },
+   "firmoscope": {
+    "name": "Propecto",
+    "tag": "B2B-bedrijvengids",
+    "problem": "Een relevant bedrijf vinden en de context ervan begrijpen vraagt vaak om het combineren van meerdere bronnen.",
+    "audience": "Salesmedewerkers, directeuren, consultants en teams voor economische ontwikkeling.",
+    "value": "Zakelijke informatie doorzoekbaar, filterbaar en direct bruikbaar maken.",
+    "compare": "Ten opzichte van bedrijvengidsen als Pappers ligt de meerwaarde in de manier waarop u informatie verkent en direct omzet in actie.",
+    "uses": [
+     "Gerichte prospectie",
+     "Een markt in kaart brengen",
+     "Partners zoeken"
+    ]
+   },
+   "arbitrage-plus": {
+    "name": "Arbitrage+",
+    "tag": "Prijsvergelijking",
+    "problem": "Een ogenschijnlijk prijsverschil is nog geen bewijs dat een commerciële kans winstgevend is.",
+    "audience": "Online verkopers, inkopers, analisten en ondernemers.",
+    "value": "Prijzen vergelijken en de belangrijkste kosten meenemen om een kans te beoordelen voordat u inkoopt.",
+    "compare": "De analyse kan gegevens van platforms als Keepa of sourcingtools als SellerAmp aanvullen, zonder te pretenderen deze voor al hun toepassingen te vervangen.",
+    "uses": [
+     "Online arbitrage",
+     "Productselectie",
+     "Een inkoop voorbereiden"
+    ]
+   },
+   "analyzer-plus": {
+    "name": "Analyzer+",
+    "tag": "Productanalyse",
+    "problem": "Beslissen op basis van één prijs of een ondoorzichtige score verhult kosten, concurrentie en onzekerheden.",
+    "audience": "Marketplace-verkopers, e-commercemanagers en productanalisten.",
+    "value": "De relevante criteria bundelen om meerdere producten te vergelijken met een verklaarbare methode.",
+    "compare": "De tool structureert een interne beslissing; gespecialiseerde historische gegevens van diensten als Keepa kunnen een aanvulling blijven.",
+    "uses": [
+     "Onderzoek vóór een listing",
+     "Producten vergelijken",
+     "Portfolioreview"
+    ]
+   },
+   "profit-plus": {
+    "name": "Profit+",
+    "tag": "Winstgevendheid in e-commerce",
+    "problem": "De omzet laat niet zien wat de werkelijke marge is of bij welke producten de kosten ontsporen.",
+    "audience": "E-commerceverkopers, marketplace-ondernemers en portfoliomanagers.",
+    "value": "Verkopen, uitgaven, marges en afwijkingen ten opzichte van de oorspronkelijke aannames bijhouden.",
+    "compare": "Een overzicht dat volledig gericht is op operationele winstgevendheid, als aanvulling op de dashboards van de marketplaces zelf.",
+    "uses": [
+     "Maandelijkse sturing",
+     "Rendementsanalyse",
+     "Portfoliokeuzes maken"
+    ]
+   },
+   "erpbridge": {
+    "name": "Verbonden bedrijfsoplossingen",
+    "tag": "Bedrijfsvoering · automatisering",
+    "problem": "Dubbele invoer en losstaande tools vertragen teams en ondermijnen de kwaliteit van gegevens.",
+    "audience": "Mkb-bedrijven, verenigingen, opleidingsinstituten en operationele teams.",
+    "value": "Het proces in kaart brengen, tools koppelen en alleen de stappen automatiseren die aantoonbaar winst opleveren.",
+    "compare": "Afhankelijk van de context kan een integratie rond Odoo zinvol zijn; een gerichtere oplossing past beter wanneer de behoefte enkele specifieke workflows betreft.",
+    "uses": [
+     "Synchronisatie tussen CRM en facturatie",
+     "Goedkeuringsproces",
+     "Geautomatiseerde rapportage"
+    ]
+   },
+   "marketplace": {
+    "name": "Aanpasbare marketplace",
+    "tag": "Marketplace · white label",
+    "problem": "Een complete marketplace bouwen vraagt om profielen, advertenties, zoekfuncties, betalingen, transactieregels en beheer.",
+    "audience": "Ondernemers, federaties, beroepsnetwerken en verticale bedrijven.",
+    "value": "Vertrekken vanaf een aanpasbare basis om een model te valideren en vervolgens de ervaring, de transacties en het merk aan te passen.",
+    "compare": "Sharetribe biedt een complete no-code- en headless-engine; een Dyonysos-basis is het overwegen waard wanneer controle over het product, de uitrol of specifieke workflows voorop staat.",
+    "uses": [
+     "Marketplace voor diensten",
+     "B2B-portaal",
+     "Verhuurplatform"
+    ]
+   },
+   "creation-graphique": {
+    "name": "Grafisch ontwerp",
+    "tag": "Ontwerp · aanpassing",
+    "problem": "Content snel omzetten naar meerdere formaten zonder de visuele samenhang te verliezen.",
+    "audience": "Marketingteams, makers en kleine organisaties.",
+    "value": "Visuele content maken, van formaat veranderen en aanpassen in een vereenvoudigde workflow.",
+    "compare": "Canva biedt een zeer uitgebreide suite; deze aanpak richt zich op gerichte workflows die een organisatie naar eigen wens kan inrichten.",
+    "uses": [
+     "Socialemediaberichten",
+     "Commercieel materiaal",
+     "Campagnebeelden"
+    ]
+   },
+   "applications-mobiles": {
+    "name": "Mobiele apps",
+    "tag": "Mobiel · prototypes",
+    "problem": "Een mobiel project wordt kostbaar wanneer het met te veel functies begint zonder dat het belangrijkste gebruik is gevalideerd.",
+    "audience": "Bedrijven, ondernemers en organisaties met een duidelijk omschreven mobiele toepassing.",
+    "value": "De kernflow als prototype uitwerken, de waarde testen en stapsgewijs doorontwikkelen.",
+    "compare": "Gebruik en validatie krijgen voorrang boven het stapelen van functionaliteiten.",
+    "uses": [
+     "Vakapplicatie voor buitendienst",
+     "Consumentendienst",
+     "Mobiele uitbreiding van een platform"
+    ]
+   },
+   "formation-conseil": {
+    "name": "Training & advies",
+    "tag": "Training · projectmanagement · advies",
+    "problem": "Een generieke training heeft weinig effect als die niet aansluit bij het niveau van de deelnemers, de gebruikte tools of de echte projecten van de organisatie.",
+    "audience": "Bedrijven, opleidingsinstituten, universiteiten, hogescholen, managers, projectleiders en operationele teams.",
+    "value": "Een direct toepasbaar traject opbouwen dat methode, praktijkgerichte oefeningen, kennisoverdracht en begeleiding combineert.",
+    "compare": "De juiste vorm hangt af van het beoogde resultaat: een tool leren gebruiken, professionaliseren, een projectprobleem oplossen of een bredere transformatie.",
+    "uses": [
+     "Incompanytraining",
+     "Gastcolleges aan universiteiten",
+     "Begeleiding van een projectleider"
+    ]
+   }
+  }
+ },
+ "de": {
+  "titles": {
+   "optimiser-cv-ats": "Wie optimieren Sie Ihren Lebenslauf für ATS?",
+   "adapter-cv-offre-emploi": "Wie passen Sie Ihren Lebenslauf an eine Stellenanzeige an?",
+   "outils-ia-ameliorer-cv": "Welche KI-Tools helfen, den Lebenslauf zu verbessern?",
+   "cvdesignpro-vs-outils-cv": "CVDesignPro oder ein anderer Lebenslauf-Generator: Was passt besser?",
+   "comment-recruteurs-analysent-cv": "Wie prüfen Recruiter einen Lebenslauf?",
+   "digitaliser-communication-ecole-parents": "Wie lässt sich die Kommunikation zwischen Schule und Eltern digitalisieren?",
+   "plateforme-numerique-ecole": "Welche digitale Plattform eignet sich für eine Schule?",
+   "centraliser-devoirs-notes-agenda": "Hausaufgaben, Termine und Schulkommunikation an einem Ort bündeln",
+   "alternative-applications-scolaires": "Eine Alternative zur Flut an Schul-Apps",
+   "creer-quiz-interactif-classe": "Wie erstellen Sie ein interaktives Quiz für den Unterricht?",
+   "alternative-kahoot-wooclap": "QuizPlay, Kahoot oder Wooclap: Wie treffen Sie die richtige Wahl?",
+   "rendre-formation-interactive": "Wie gestalten Sie eine Schulung interaktiver?",
+   "creer-partager-cours-en-ligne": "Wie erstellen und teilen Sie Online-Kurse?",
+   "plateforme-ressources-pedagogiques": "Die passende Plattform für Lehr- und Lernmaterialien wählen",
+   "annuaire-entreprises-prospection-b2b": "Wie nutzen Sie ein Firmenverzeichnis für die B2B-Akquise?",
+   "firmoscope-alternative-pappers": "Propecto und Pappers: zwei Tools, die sich ergänzen",
+   "calculer-rentabilite-arbitrage": "Wie berechnen Sie die Rentabilität einer Arbitrage-Gelegenheit?",
+   "alternative-selleramp": "Arbitrage+ und SellerAmp: unterschiedliche Einsatzzwecke im Vergleich",
+   "analyser-produit-avant-achat": "Wie analysieren Sie ein Produkt vor dem Einkauf?",
+   "keepa-analyse-produit": "Keepa und Tools zur Produktanalyse: Wie lassen sie sich kombinieren?",
+   "suivre-marge-ecommerce": "Wie behalten Sie Ihre tatsächliche Marge im E-Commerce im Blick?",
+   "tableau-bord-profit-amazon": "Ein Gewinn-Dashboard für Marktplätze aufbauen",
+   "automatiser-processus-pme": "Wie automatisieren KMU ihre Prozesse ohne großen Aufwand?",
+   "odoo-ou-solution-ciblee": "Odoo oder eine spezialisierte Branchenlösung: Wie entscheiden Sie?",
+   "creer-marketplace": "Wie bauen Sie einen Marktplatz für Dienstleistungen oder Produkte auf?",
+   "alternative-sharetribe": "Alternative zu Sharetribe: Welche Kriterien zählen bei der Auswahl?",
+   "alternative-canva-entreprise": "Canva oder ein Gestaltungstool, das auf Ihr Unternehmen zugeschnitten ist?",
+   "adapter-contenus-multicanaux": "Wie passen Sie Inhalte an mehrere Kanäle an?",
+   "reussir-prototype-application-mobile": "Wie gelingt der Prototyp einer mobilen App?",
+   "application-mobile-sur-mesure": "Individuelle App-Entwicklung oder SaaS-Lösung?",
+   "formation-ms-project-entreprise": "MS-Project-Schulung im Unternehmen: Inhalte und Nutzen",
+   "formation-gestion-projet-organisme": "Wie konzipieren Sie eine wirksame Projektmanagement-Schulung?",
+   "formateur-gestion-projet-universite-ecole": "Einen Projektmanagement-Trainer an Hochschule oder Schule holen",
+   "conseil-gestion-projet-sur-mesure": "Wann lohnt sich ein Berater für Projektmanagement?"
+  },
+  "products": {
+   "cvdesignpro": {
+    "name": "CVDesignPro",
+    "tag": "Lebenslauf · ATS · Recruiting",
+    "problem": "Einen gut lesbaren, glaubwürdigen und auf die Stelle zugeschnittenen Lebenslauf erstellen, ohne jedes Mal das gesamte Layout neu aufsetzen zu müssen.",
+    "audience": "Bewerberinnen und Bewerber, Bildungsträger, Karriereberatungen und Recruiting-Teams.",
+    "value": "Ein geführter Ablauf, um den Lebenslauf zu strukturieren, ihn an eine Bewerbung anzupassen, seine Stimmigkeit zu prüfen und die zugehörigen Unterlagen vorzubereiten.",
+    "compare": "Anders als ein allgemeines Grafikprogramm stellt dieser Ansatz den Bewerbungsinhalt, die Lesbarkeit und die Auswahlkriterien im Recruiting in den Vordergrund.",
+    "uses": [
+     "Die erste Bewerbung vorbereiten",
+     "Ein erfahrenes Profil neu positionieren",
+     "Den Lebenslauf auf eine bestimmte Stelle zuschneiden"
+    ]
+   },
+   "quizplay": {
+    "name": "QuizPlay",
+    "tag": "Interaktive Quizze",
+    "problem": "Die Aufmerksamkeit einer Klasse oder Gruppe halten und das Verständnis überprüfen, ohne die Einheit zu überfrachten.",
+    "audience": "Lehrkräfte, Trainerinnen und Trainer, Moderierende und pädagogische Verantwortliche.",
+    "value": "Quizze mit sofortigem Feedback erstellen und durchführen – so wird die Lernkontrolle selbst zum Lernschritt.",
+    "compare": "Eine Alternative, die auf Einfachheit und didaktischen Ablauf setzt – je nach Bedarf im Vergleich zu Kahoot oder Wooclap zu prüfen.",
+    "uses": [
+     "Formative Lernstandserhebung",
+     "Wiederholung vor der Prüfung",
+     "Moderation von Schulungen"
+    ]
+   },
+   "courshub": {
+    "name": "CoursHub",
+    "tag": "Lehr- und Lernmaterialien",
+    "problem": "Kurse und Unterlagen sind über Ordner, Nachrichtendienste und schwer durchsuchbare Speicherorte verstreut.",
+    "audience": "Lehrkräfte, Trainerinnen und Trainer, Bildungseinrichtungen und Lernende.",
+    "value": "Lehr- und Lernmaterialien in einer einheitlichen Bibliothek bündeln, ordnen, schnell wiederfinden und teilen.",
+    "compare": "Im Unterschied zu einem einfachen geteilten Ordner bietet die Plattform eine redaktionelle Struktur und eine Navigation, die speziell auf Lerninhalte ausgelegt ist.",
+    "uses": [
+     "Bibliothek einer Bildungseinrichtung",
+     "Schulungskatalog",
+     "Austausch zwischen Lehrkräften"
+    ]
+   },
+   "ecole-connect": {
+    "name": "École Connect",
+    "tag": "Schulkommunikation",
+    "problem": "Nachrichten, Hausaufgaben, Dokumente und Termine verteilen sich auf mehrere Apps, E-Mails und Chatgruppen.",
+    "audience": "Schulen, Schulleitungen, pädagogische Teams, Schülerinnen und Schüler sowie Familien.",
+    "value": "Ein konfigurierbarer Bereich, der die Kommunikation bündelt und schulische Informationen leichter nachvollziehbar macht.",
+    "compare": "Ziel der Plattform ist es, die Zersplitterung zu verringern, statt Familien eine weitere App zuzumuten.",
+    "uses": [
+     "Kommunikation zwischen Schule und Eltern",
+     "Verteilung von Dokumenten",
+     "Organisation von Veranstaltungen"
+    ]
+   },
+   "firmoscope": {
+    "name": "Propecto",
+    "tag": "B2B-Firmenverzeichnis",
+    "problem": "Ein passendes Unternehmen zu finden und sein Umfeld zu verstehen, erfordert oft den Abgleich mehrerer Quellen.",
+    "audience": "Vertriebsteams, Geschäftsführende, Beraterinnen und Berater sowie Teams der Wirtschaftsförderung.",
+    "value": "Unternehmensinformationen durchsuchbar, filterbar und direkt nutzbar machen.",
+    "compare": "Gegenüber Verzeichnissen wie Pappers liegt der Mehrwert in geführten Recherchewegen und darin, die Informationen direkt in konkrete Schritte umzusetzen.",
+    "uses": [
+     "Gezielte Neukundenakquise",
+     "Marktanalyse und -kartierung",
+     "Suche nach Partnern"
+    ]
+   },
+   "arbitrage-plus": {
+    "name": "Arbitrage+",
+    "tag": "Preisvergleich",
+    "problem": "Ein scheinbarer Preisunterschied allein beweist noch nicht, dass sich ein Geschäft auch rechnet.",
+    "audience": "Online-Händler, Einkäufer, Analysten und Unternehmer.",
+    "value": "Preise vergleichen und die wichtigsten Kosten einbeziehen, um eine Gelegenheit vor dem Einkauf fundiert zu bewerten.",
+    "compare": "Die Analyse kann Daten von Plattformen wie Keepa oder Sourcing-Tools wie SellerAmp ergänzen, ohne den Anspruch zu erheben, sie in allen Anwendungsfällen zu ersetzen.",
+    "uses": [
+     "Online-Arbitrage",
+     "Produktauswahl",
+     "Einkaufsvorbereitung"
+    ]
+   },
+   "analyzer-plus": {
+    "name": "Analyzer+",
+    "tag": "Produktanalyse",
+    "problem": "Wer nur anhand eines einzelnen Preises oder eines intransparenten Scores entscheidet, übersieht Kosten, Wettbewerb und Unsicherheiten.",
+    "audience": "Marktplatz-Händler, E-Commerce-Verantwortliche und Produktanalysten.",
+    "value": "Die relevanten Kriterien zusammenführen, um mehrere Produkte nach einer nachvollziehbaren Methode zu vergleichen.",
+    "compare": "Das Tool strukturiert interne Entscheidungen; spezialisierte historische Daten von Diensten wie Keepa können weiterhin eine sinnvolle Ergänzung sein.",
+    "uses": [
+     "Prüfung vor der Listung",
+     "Produktvergleich",
+     "Sortimentsüberprüfung"
+    ]
+   },
+   "profit-plus": {
+    "name": "Profit+",
+    "tag": "Rentabilität im E-Commerce",
+    "problem": "Der Umsatz zeigt weder die tatsächliche Marge noch, bei welchen Produkten die Kosten aus dem Ruder laufen.",
+    "audience": "E-Commerce-Händler, Marktplatz-Unternehmer und Sortimentsverantwortliche.",
+    "value": "Umsätze, Ausgaben, Margen und Abweichungen von den ursprünglichen Annahmen im Blick behalten.",
+    "compare": "Eine eigene Sicht auf die operative Rentabilität, die die Auswertungen der Marktplätze ergänzt.",
+    "uses": [
+     "Monatliche Steuerung",
+     "Rentabilitätsanalyse",
+     "Sortimentsentscheidungen"
+    ]
+   },
+   "erpbridge": {
+    "name": "Vernetzte Unternehmenssoftware",
+    "tag": "Verwaltung · Automatisierung",
+    "problem": "Doppelte Dateneingaben und isolierte Tools bremsen Teams aus und gefährden die Datenqualität.",
+    "audience": "KMU, Vereine, Bildungsträger und operative Teams.",
+    "value": "Prozesse abbilden, Tools miteinander verbinden und nur die Schritte automatisieren, die einen messbaren Nutzen bringen.",
+    "compare": "Je nach Ausgangslage kann eine Integration rund um Odoo sinnvoll sein; geht es nur um einige klar umrissene Workflows, ist eine gezieltere Lösung oft besser geeignet.",
+    "uses": [
+     "Synchronisierung von CRM und Rechnungsstellung",
+     "Freigabeprozesse",
+     "Automatisiertes Reporting"
+    ]
+   },
+   "marketplace": {
+    "name": "Anpassbarer Marktplatz",
+    "tag": "Marktplatz · White Label",
+    "problem": "Ein vollständiger Marktplatz erfordert Profile, Inserate, Suche, Zahlungen, Transaktionsregeln und eine Verwaltung.",
+    "audience": "Gründerinnen und Gründer, Verbände, Berufsnetzwerke und Unternehmen in vertikalen Märkten.",
+    "value": "Auf einer anpassbaren Basis aufbauen, um ein Geschäftsmodell zu validieren, und anschließend Nutzererlebnis, Transaktionen und Markenauftritt anpassen.",
+    "compare": "Sharetribe bietet eine vollständige No-Code- und Headless-Engine; eine Basis von Dyonysos lohnt sich, wenn die Kontrolle über Produkt, Deployment oder spezifische Workflows Vorrang hat.",
+    "uses": [
+     "Marktplatz für Dienstleistungen",
+     "B2B-Portal",
+     "Vermietungsplattform"
+    ]
+   },
+   "creation-graphique": {
+    "name": "Grafikdesign",
+    "tag": "Gestaltung · Anpassung",
+    "problem": "Inhalte schnell in verschiedene Formate übertragen, ohne die visuelle Einheitlichkeit zu verlieren.",
+    "audience": "Marketingteams, Content Creator und kleine Organisationen.",
+    "value": "Visuelle Inhalte in einem vereinfachten Ablauf erstellen, skalieren und anpassen.",
+    "compare": "Canva bietet eine sehr umfangreiche Suite; dieser Ansatz zielt auf fokussierte, an die jeweilige Organisation anpassbare Workflows.",
+    "uses": [
+     "Social-Media-Beiträge",
+     "Vertriebsunterlagen",
+     "Kampagnenmotive"
+    ]
+   },
+   "applications-mobiles": {
+    "name": "Mobile Apps",
+    "tag": "Mobile · Prototypen",
+    "problem": "Ein Mobile-Projekt wird teuer, wenn es mit zu vielen Funktionen startet, ohne den zentralen Anwendungsfall validiert zu haben.",
+    "audience": "Unternehmen, Gründerinnen und Gründer sowie Organisationen mit einem klar definierten mobilen Anwendungsfall.",
+    "value": "Den zentralen Nutzerpfad als Prototyp umsetzen, den Mehrwert testen und schrittweise weiterentwickeln.",
+    "compare": "Nutzung und Validierung haben Vorrang, bevor weitere Funktionen hinzukommen.",
+    "uses": [
+     "Fachanwendung für den Außendienst",
+     "Service für Endverbraucher",
+     "Mobile Erweiterung einer Plattform"
+    ]
+   },
+   "formation-conseil": {
+    "name": "Schulung & Beratung",
+    "tag": "Schulung · Projektmanagement · Beratung",
+    "problem": "Eine Standardschulung bewirkt wenig, wenn sie weder zum Niveau der Teilnehmenden noch zu den Tools oder den realen Projekten der Organisation passt.",
+    "audience": "Unternehmen, Bildungsträger, Hochschulen, Schulen, Führungskräfte, Projektleiterinnen und Projektleiter sowie operative Teams.",
+    "value": "Ein direkt umsetzbares Programm entwickeln, das Methodik, praxisnahe Übungen, Kompetenztransfer und Begleitung miteinander verbindet.",
+    "compare": "Das passende Format hängt vom angestrebten Ergebnis ab: Einarbeitung in ein Tool, Professionalisierung, Lösung eines konkreten Projektproblems oder eine umfassendere Transformation.",
+    "uses": [
+     "Firmeninterne Schulung",
+     "Lehrauftrag an einer Hochschule",
+     "Begleitung einer Projektleitung"
+    ]
+   }
+  }
+ }
+}

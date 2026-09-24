@@ -1,6 +1,11 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "functions": {
+    "api/seo-article.js": {
+      "includeFiles": "{seo-data.js,api/_data/seo-article-i18n.json}"
+    }
+  },
   "redirects": [
     {
       "source": "/",
@@ -266,11 +271,11 @@
     },
     {
       "source": "/blog/:article",
-      "destination": "/seo-article"
+      "destination": "/api/seo-article?slug=:article"
     },
     {
       "source": "/:lang(en|es|nl|de)/blog/:article",
-      "destination": "/seo-article"
+      "destination": "/api/seo-article?lang=:lang&slug=:article"
     },
     {
       "source": "/out/:solution",

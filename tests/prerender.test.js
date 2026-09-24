@@ -75,3 +75,10 @@ test('le formulaire de contact reste branché après reprise', () => {
 test('routes non gérées : aucun pré-rendu', () => {
   for (const r of ['/', '/solutions', '/contact', '/fr/contact', '/it', '/en/inconnu', '/blog/articles']) assert.equal(resolve(r), null, r);
 });
+
+test('jsdom se charge sans require(ESM) : le chargeur des fonctions Vercel ne le permet pas', () => {
+  // jsdom 30 passait en local (Node 24) et renvoyait 500 sur Vercel (ERR_REQUIRE_ESM).
+  const { execFileSync } = require('child_process');
+  const out = execFileSync(process.execPath, ['--no-experimental-require-module', '-e', "require('./api/_lib/prerender').prerender('/en/contact');console.log('ok')"], { cwd: path.join(__dirname, '..') });
+  assert.equal(String(out).trim(), 'ok');
+});

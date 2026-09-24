@@ -6,7 +6,7 @@
       "includeFiles": "{seo-data.js,api/_data/seo-article-i18n.json}"
     },
     "api/prerender.js": {
-      "includeFiles": "{localized.html,localized-secondary.html,localized-articles.html,category.html,formation-conseil.html,partenaires.html,emploi.html,category-translations.js,formation-conseil-i18n.js,corporate-pages-i18n.js,public-forms.js}"
+      "includeFiles": "{localized.html,localized-secondary.html,localized-articles.html,category.html,formation-conseil.html,partenaires.html,emploi.html,category-translations.js,formation-conseil-i18n.js,corporate-pages-i18n.js,public-forms.js,static-pages-i18n.js}"
     }
   },
   "redirects": [

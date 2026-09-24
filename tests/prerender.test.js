@@ -82,3 +82,30 @@ test('jsdom se charge sans require(ESM) : le chargeur des fonctions Vercel ne le
   const out = execFileSync(process.execPath, ['--no-experimental-require-module', '-e', "require('./api/_lib/prerender').prerender('/en/contact');console.log('ok')"], { cwd: path.join(__dirname, '..') });
   assert.equal(String(out).trim(), 'ok');
 });
+
+test('formation-conseil, partenaires, emploi : corps traduit et menu vers la langue', () => {
+  const fr = new JSDOM(fs.readFileSync(path.join(__dirname, '..', 'formation-conseil.html'), 'utf8')).window.document;
+  const frText = new Set();
+  const collect = (d, set) => { const w = d.createTreeWalker(d.body, 4); let n; while ((n = w.nextNode())) { const t = n.nodeValue.replace(/\s+/g, ' ').trim(); if (t.length > 25 && !/^(SCRIPT|STYLE)$/.test(n.parentElement.tagName)) set.add(t); } };
+  collect(fr, frText);
+  for (const lang of LANGS) {
+    for (const page of ['formation-conseil', 'partenaires', 'emploi']) {
+      const d = new JSDOM(prerender(`/${lang}/${page}`).html).window.document;
+      const left = new Set();
+      collect(d, left);
+      const french = [...left].filter((t) => frText.has(t));
+      assert.deepEqual(french, [], `${lang}/${page} : phrases restées en français`);
+      assert.equal(d.querySelector('header a[href="/"]'), null, `${lang}/${page} : menu vers l’accueil français`);
+    }
+  }
+});
+
+test('sitemap : script idempotent, six alternatives par page traduite', () => {
+  const { run } = require('../scripts/sitemap-hreflang');
+  const xml = fs.readFileSync(path.join(__dirname, '..', 'sitemap.xml'), 'utf8');
+  assert.equal(run(xml), xml, 'sitemap.xml à régénérer : node scripts/sitemap-hreflang.js');
+  const block = (loc) => xml.match(new RegExp(`<url><loc>https://dyonysos.fr${loc}</loc>.*?</url>`))[0];
+  for (const loc of ['/en/contact', '/blog/adapter-cv-offre-emploi', '/de/solutions/cvdesignpro', '/nl/commerce', '/es', '/mentions-legales']) {
+    assert.equal((block(loc).match(/<xhtml:link /g) || []).length, 6, loc);
+  }
+});

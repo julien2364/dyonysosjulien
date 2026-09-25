@@ -359,7 +359,7 @@
      "h2": "Choisir une plateforme qui réduit la fragmentation",
      "paragraphs": [
       "Le critère principal est simple : la plateforme doit remplacer des canaux, pas s’ajouter à eux. Vérifiez qu’elle réunit les usages essentiels, messages, agenda et documents, et qu’elle permet de gérer les accès selon les profils : direction, enseignants, familles, élèves.",
-      "École Connect, par exemple, a été conçue dans cette logique. Elle propose un espace configurable réunissant actualités et messages, agenda scolaire, documents partagés, suivi des informations et accès selon les profils. D’autres solutions existent ; comparez-les sur la simplicité d’usage pour les familles, notamment sur téléphone, et sur la facilité de paramétrage pour l’équipe."
+      "[École Connect](https://ecole-connect-pied.vercel.app/), par exemple, a été conçue dans cette logique. Elle propose un espace configurable réunissant actualités et messages, agenda scolaire, documents partagés, suivi des informations et accès selon les profils. D’autres solutions existent ; comparez-les sur la simplicité d’usage pour les familles, notamment sur téléphone, et sur la facilité de paramétrage pour l’équipe."
      ]
     },
     {
@@ -422,7 +422,7 @@
      "h2": "Gouvernance, droits d’accès et protection des données",
      "paragraphs": [
       "Une plateforme scolaire manipule des données concernant des mineurs. Le principe de minimisation doit guider la configuration : ne collecter que ce qui est utile, limiter la visibilité de chaque information aux personnes concernées et prévoir la suppression des comptes en fin de scolarité. Interrogez le fournisseur sur l’hébergement des données, la gestion des sauvegardes et les modalités de réversibilité.",
-      "Désignez également un responsable interne de la plateforme. Sans référent, les comptes d’anciens élèves s’accumulent, les rubriques se multiplient et l’outil perd sa lisibilité. Une solution comme École Connect, qui repose sur un accès selon les profils, facilite ce cadrage, mais la règle du jeu reste à définir par l’établissement."
+      "Désignez également un responsable interne de la plateforme. Sans référent, les comptes d’anciens élèves s’accumulent, les rubriques se multiplient et l’outil perd sa lisibilité. Une solution comme [École Connect](https://ecole-connect-pied.vercel.app/), qui repose sur un accès selon les profils, facilite ce cadrage, mais la règle du jeu reste à définir par l’établissement."
      ]
     },
     {
@@ -489,7 +489,7 @@
      "h2": "Construire un agenda scolaire lisible par tous",
      "paragraphs": [
       "Un agenda utile distingue clairement les niveaux : événements de toute l’école, événements d’un niveau, événements d’une classe. Chaque famille ne doit voir que ce qui la concerne, sinon l’agenda devient un bruit de fond que plus personne ne consulte.",
-      "Fixez quelques règles simples : un titre explicite, une heure et un lieu, et un document joint lorsqu’une action est attendue des parents, comme une autorisation à signer. Publiez les événements le plus tôt possible et évitez de les modifier sans notification. Dans École Connect, l’agenda scolaire et les documents partagés se trouvent dans le même espace, ce qui évite de renvoyer vers un autre outil."
+      "Fixez quelques règles simples : un titre explicite, une heure et un lieu, et un document joint lorsqu’une action est attendue des parents, comme une autorisation à signer. Publiez les événements le plus tôt possible et évitez de les modifier sans notification. Dans [École Connect](https://ecole-connect-pied.vercel.app/), l’agenda scolaire et les documents partagés se trouvent dans le même espace, ce qui évite de renvoyer vers un autre outil."
      ]
     },
     {
@@ -562,7 +562,7 @@
      "h2": "Rationaliser, unifier ou orchestrer : trois stratégies",
      "paragraphs": [
       "Rationaliser consiste à conserver les outils existants mais à réduire leur nombre en supprimant les doublons. C’est la voie la plus rapide, mais elle laisse souvent plusieurs points d’entrée.",
-      "Unifier revient à choisir un portail unique pour tout ce qui relève de la communication : actualités, messages, agenda et documents. Les outils métier très spécifiques restent en place, mais les familles n’ont plus qu’un réflexe à acquérir. C’est l’approche de solutions comme École Connect, qui visent à réduire la fragmentation plutôt qu’à ajouter une application au parcours des familles.",
+      "Unifier revient à choisir un portail unique pour tout ce qui relève de la communication : actualités, messages, agenda et documents. Les outils métier très spécifiques restent en place, mais les familles n’ont plus qu’un réflexe à acquérir. C’est l’approche de solutions comme [École Connect](https://ecole-connect-pied.vercel.app/), qui visent à réduire la fragmentation plutôt qu’à ajouter une application au parcours des familles.",
       "Orchestrer, enfin, consiste à garder plusieurs outils mais à publier une page d’accueil qui les recense et explique à quoi sert chacun. Cette solution peut convenir en phase transitoire, mais elle ne diminue pas la charge cognitive."
      ]
     },
@@ -624,7 +624,7 @@
      "h2": "Choisir le format et la durée adaptés à la classe",
      "paragraphs": [
       "Pour une vérification rapide au milieu d’un cours, cinq à huit questions suffisent généralement. Pour une séance de révision, un quiz plus long découpé en thèmes permet de faire des pauses et de revenir sur les points fragiles. Ajustez le temps de réponse à la difficulté : une question de calcul ou d’analyse mérite plus de temps qu’une question de vocabulaire.",
-      "Un outil de création rapide de questions, comme QuizPlay, permet de préparer ces variantes sans y passer la soirée et de réutiliser les questions d’une séquence à l’autre."
+      "Un outil de création rapide de questions, comme [QuizPlay](https://quizplay-production.up.railway.app/), permet de préparer ces variantes sans y passer la soirée et de réutiliser les questions d’une séquence à l’autre."
      ]
     },
     {
@@ -666,7 +666,7 @@
      "paragraphs": [
       "Kahoot s’est fait connaître par une approche de jeu : questions projetées, réponses depuis les appareils des participants, classement et ambiance de compétition. Il est très répandu dans les classes et apprécié pour dynamiser un groupe.",
       "Wooclap est largement utilisé dans l’enseignement supérieur et en formation professionnelle pour rendre un cours ou une présentation participatifs, avec différents types d’interactions au-delà du quiz classique.",
-      "QuizPlay se positionne comme une alternative centrée sur la simplicité et le scénario pédagogique : création rapide de questions, animation collective, résultats immédiats et suivi de la progression, en classe ou à distance. Ces positionnements ne sont pas exclusifs, et de nombreux enseignants utilisent plusieurs outils selon les moments."
+      "[QuizPlay](https://quizplay-production.up.railway.app/) se positionne comme une alternative centrée sur la simplicité et le scénario pédagogique : création rapide de questions, animation collective, résultats immédiats et suivi de la progression, en classe ou à distance. Ces positionnements ne sont pas exclusifs, et de nombreux enseignants utilisent plusieurs outils selon les moments."
      ]
     },
     {
@@ -757,7 +757,7 @@
      "h2": "Des quiz comme points de contrôle, pas comme décor",
      "paragraphs": [
       "Un quiz placé au bon moment donne une information précieuse : la notion est-elle comprise par l’ensemble du groupe ou seulement par les plus rapides ? Utilisé après un apport clé, il permet de décider immédiatement de revenir sur un point ou d’avancer.",
-      "Un outil comme QuizPlay permet d’animer ces quiz collectivement et d’afficher les résultats immédiatement, ce qui transforme la vérification en discussion. Le plus important reste de commenter les réponses, notamment les erreurs partagées par plusieurs participants."
+      "Un outil comme [QuizPlay](https://quizplay-production.up.railway.app/) permet d’animer ces quiz collectivement et d’afficher les résultats immédiatement, ce qui transforme la vérification en discussion. Le plus important reste de commenter les réponses, notamment les erreurs partagées par plusieurs participants."
      ]
     },
     {
@@ -826,7 +826,7 @@
      "h2": "Organiser le partage pour que les ressources soient retrouvées",
      "paragraphs": [
       "Le principal échec du partage de cours n’est pas technique, il est organisationnel : un document envoyé par messagerie en septembre est introuvable en décembre. Mieux vaut un point d’accès unique, stable, dont l’adresse ne change pas, et un classement par thème ou par séquence plutôt que par date d’envoi.",
-      "Une bibliothèque pédagogique comme CoursHub répond à ce besoin en permettant de créer des ressources, de les classer par thème, de les retrouver grâce à la recherche et de partager des cours avec vos apprenants ou vos collègues. Un espace de stockage partagé peut aussi convenir pour un petit volume, à condition de fixer des règles de nommage et de rangement dès le départ."
+      "Une bibliothèque pédagogique comme [CoursHub](https://coursehub-dusky-seven.vercel.app/) répond à ce besoin en permettant de créer des ressources, de les classer par thème, de les retrouver grâce à la recherche et de partager des cours avec vos apprenants ou vos collègues. Un espace de stockage partagé peut aussi convenir pour un petit volume, à condition de fixer des règles de nommage et de rangement dès le départ."
      ]
     },
     {
@@ -900,7 +900,7 @@
     {
      "h2": "Où se situe CoursHub parmi les options",
      "paragraphs": [
-      "CoursHub est conçu pour centraliser, organiser, retrouver et partager des ressources pédagogiques dans une bibliothèque cohérente. Ses fonctions portent sur la création de ressources, le classement thématique, la recherche, le partage de cours et la capitalisation collective, pour des usages comme une bibliothèque d’établissement, un catalogue de formation ou le partage entre enseignants.",
+      "[CoursHub](https://coursehub-dusky-seven.vercel.app/) est conçu pour centraliser, organiser, retrouver et partager des ressources pédagogiques dans une bibliothèque cohérente. Ses fonctions portent sur la création de ressources, le classement thématique, la recherche, le partage de cours et la capitalisation collective, pour des usages comme une bibliothèque d’établissement, un catalogue de formation ou le partage entre enseignants.",
       "Si votre besoin principal est la gestion des inscriptions, des notes ou des parcours évalués, une plateforme d’apprentissage complète sera plus adaptée, et une bibliothèque de ressources pourra venir en complément. L’important est de ne pas demander à un seul outil de tout faire."
      ]
     },
@@ -1586,7 +1586,7 @@
      "h2": "Commencer par l’audit, pas par l’outil",
      "paragraphs": [
       "L’erreur la plus fréquente consiste à choisir un logiciel avant d’avoir décrit les processus qu’il doit servir. Un audit, même léger, cartographie les flux, identifie les doubles saisies et chiffre les gains attendus. Il révèle parfois qu’une suite complète serait surdimensionnée, ou au contraire qu’une accumulation de connecteurs deviendrait plus lourde qu’un système unique.",
-      "Les Solutions de gestion connectée de Dyonysos partent de cet audit des processus. Selon le contexte, elles peuvent déboucher sur une intégration autour d’Odoo ou sur des connecteurs API et des workflows métiers ciblés, avec un accompagnement des équipes dans les deux cas. Les deux voies ne s’opposent pas : un projet ciblé bien documenté prépare aussi une éventuelle migration ultérieure."
+      "Les Solutions de gestion connectée de Dyonysos partent de cet audit des processus. Selon le contexte, elles peuvent déboucher sur une [intégration autour d’Odoo](https://dyonysos.fr/applications-odoo) ou sur des connecteurs API et des workflows métiers ciblés, avec un accompagnement des équipes dans les deux cas. Les deux voies ne s’opposent pas : un projet ciblé bien documenté prépare aussi une éventuelle migration ultérieure."
      ]
     }
    ],
@@ -1647,7 +1647,8 @@
      "h2": "Choisir la voie technique : no-code, solution packagée ou socle personnalisable",
      "paragraphs": [
       "Plusieurs approches coexistent. Les outils no-code permettent de tester une idée très vite, avec des limites dès que les règles métier se complexifient. Les solutions packagées dédiées aux marketplaces, comme Sharetribe, couvrent l’essentiel des besoins et évoluent régulièrement. Un développement sur mesure offre une liberté totale, au prix d’un délai et d’un budget plus importants.",
-      "Entre ces options, un socle personnalisable comme la Marketplace personnalisable de Dyonysos part de briques existantes (profils, annonces, recherche et filtres, parcours de transaction, administration) et permet d’adapter ensuite la marque et les workflows. Le bon choix dépend surtout du degré de spécificité de votre transaction et du contrôle que vous souhaitez garder sur le produit et son déploiement."
+      "Entre ces options, un socle personnalisable comme la Marketplace personnalisable de Dyonysos part de briques existantes (profils, annonces, recherche et filtres, parcours de transaction, administration) et permet d’adapter ensuite la marque et les workflows. Le bon choix dépend surtout du degré de spécificité de votre transaction et du contrôle que vous souhaitez garder sur le produit et son déploiement.",
+      "Dans l’écosystème Dyonysos, [Tribuplace](https://tribuplace.com/) décline cette approche sous la forme d’un socle marketplace clé en main à trois rôles : client, prestataire et opérateur. Il intègre la recherche avec filtres, la réservation par créneau, la négociation de prix et les paiements via Stripe Connect, et chaque client dispose d’un environnement de test distinct de la production. Une démonstration en ligne permet de parcourir les trois espaces avant de s’engager, et le code source est remis à partir de l’offre Extend."
      ]
     },
     {
@@ -1707,7 +1708,8 @@
      "h2": "Panorama des types d’alternatives",
      "paragraphs": [
       "Les alternatives se rangent en trois familles. Les plateformes SaaS de marketplace, dont Sharetribe fait partie, privilégient la rapidité. Les frameworks et extensions de e-commerce multi-vendeurs conviennent quand vous disposez déjà d’une boutique et d’une équipe technique. Les socles personnalisables et le développement sur mesure visent les projets où le contrôle prime.",
-      "Dans cette dernière famille, la Marketplace personnalisable de Dyonysos est à envisager lorsque le contrôle du produit, du déploiement ou de workflows spécifiques est prioritaire. Elle part d’un socle avec profils et annonces, recherche et filtres, parcours de transaction, administration et personnalisation de marque, pour des usages comme une marketplace de services, un portail B2B ou une plateforme de location."
+      "Dans cette dernière famille, la Marketplace personnalisable de Dyonysos est à envisager lorsque le contrôle du produit, du déploiement ou de workflows spécifiques est prioritaire. Elle part d’un socle avec profils et annonces, recherche et filtres, parcours de transaction, administration et personnalisation de marque, pour des usages comme une marketplace de services, un portail B2B ou une plateforme de location.",
+      "[Tribuplace](https://tribuplace.com/), le socle marketplace de l’écosystème Dyonysos, se positionne explicitement sur ce terrain. Il reprend le modèle à trois rôles popularisé par Sharetribe (client, prestataire, opérateur), avec un moteur de transaction configurable et des paiements via Stripe Connect, mais laisse le choix de l’hébergement et livre le code source à partir de son palier Extend. C’est une piste à inscrire dans votre grille si la réversibilité et la propriété du code font partie de vos critères."
      ]
     },
     {
@@ -2334,6 +2336,139 @@
      "a": "Oui, et le plus tôt possible. Une intervention mal expliquée est souvent perçue comme un contrôle ou une remise en cause, ce qui ferme l’accès à l’information. Présenter l’objectif de la mission et ce qu’elle apportera aux équipes favorise leur coopération."
     }
    ]
+  },
+  "lancer-site-boutique-en-ligne-evolutif": {
+   "intro": "Pour lancer un site et une boutique en ligne sans devoir tout reconstruire quelques années plus tard, choisissez dès le départ un socle capable d’accueillir la gestion qui viendra ensuite : catalogue, stock, clients, achats. Démarrez petit, avec les pages et les produits essentiels, mais vérifiez que vos données resteront au même endroit et exportables lorsque l’activité grandira.",
+   "sections": [
+    {
+     "h2": "Pourquoi tant d’entreprises finissent par refaire leur site",
+     "paragraphs": [
+      "Le scénario est fréquent : un site vitrine monté rapidement avec un constructeur en ligne, puis une boutique ajoutée avec une autre solution, puis un tableur pour le stock et un logiciel de facturation à part. Chaque outil fonctionne, mais aucun ne parle aux autres. Les commandes sont ressaisies, les stocks divergent et les fiches clients se dupliquent.",
+      "Le jour où l’entreprise veut gérer ses achats fournisseurs, vendre dans plusieurs pays ou suivre ses prospects, il faut choisir entre empiler un outil de plus ou tout migrer. La migration prend du temps, fait courir un risque au référencement et oblige à former de nouveau l’équipe. Le problème ne vient pas du choix initial d’un outil simple, mais de l’absence de trajectoire."
+     ]
+    },
+    {
+     "h2": "Définir le minimum utile pour le lancement",
+     "paragraphs": [
+      "Un premier site n’a pas besoin de tout faire. Il doit présenter clairement l’offre, rassurer et permettre le contact ou l’achat. Commencez par lister ce qu’un visiteur doit pouvoir faire dès sa première visite.",
+      "Tout le reste, comme les programmes de fidélité, les comparateurs ou les espaces clients avancés, peut attendre que les premières ventes montrent ce que les clients demandent vraiment."
+     ],
+     "list": [
+      "Comprendre ce que vous proposez et pour qui",
+      "Trouver vos coordonnées, votre zone d’intervention ou vos conditions",
+      "Consulter quelques produits ou prestations phares",
+      "Payer en ligne ou demander un devis",
+      "Vous trouver sur un moteur de recherche grâce à des pages bien titrées"
+     ]
+    },
+    {
+     "h2": "Vérifier la trajectoire avant de choisir l’outil",
+     "paragraphs": [
+      "La question clé n’est pas « quel outil est le plus simple aujourd’hui ? » mais « que se passera-t-il quand j’aurai besoin de gérer le stock, les fournisseurs ou plusieurs sites ? ». Posez-la à chaque solution envisagée et demandez une réponse concrète : faut-il migrer, ajouter un module ou changer d’éditeur ?"
+     ],
+     "list": [
+      "Les commandes de la boutique alimentent-elles directement la gestion du stock ?",
+      "Peut-on ajouter CRM, ventes et achats sans changer de plateforme ?",
+      "Le site gère-t-il plusieurs langues, marques ou pays si besoin ?",
+      "Les données sont-elles exportables si vous changez de solution ?",
+      "Le coût reste-t-il lisible à chaque palier de croissance ?"
+     ]
+    },
+    {
+     "h2": "Un exemple de socle évolutif : Omnifloo",
+     "paragraphs": [
+      "[Omnifloo](https://omnifloo.com/), solution éditée par Dyonysos sur la base d’Odoo, illustre cette logique. L’offre commence par un site vitrine, ajoute une boutique en ligne avec paiement et gestion de stock, puis permet d’activer CRM, ventes, achats et inventaire au même endroit, sans migration de données ni changement d’éditeur. L’éditeur annonce un site et une boutique prêts en 5 jours.",
+      "Le socle est open source (licence LGPLv3), ce qui garde le code et les données portables, et il gère nativement le multisite, le multi-société et le multilingue. Des thèmes sectoriels servent de point de départ, avec des démonstrations en ligne pour le site vitrine d’un paysagiste et la boutique d’une torréfaction. Une formule gratuite permet de tester un site vitrine de trois pages avant de choisir une offre payante."
+     ]
+    },
+    {
+     "h2": "Faire grandir le système par étapes",
+     "paragraphs": [
+      "Une fois le site en ligne, avancez par besoin constaté plutôt que par liste de souhaits. Activez la boutique quand les demandes d’achat arrivent, la gestion du stock quand les ruptures ou les écarts deviennent coûteux, le CRM quand le suivi des prospects vous échappe, les achats quand les commandes fournisseurs se multiplient.",
+      "À chaque étape, fixez un indicateur simple : taux de conversion de la boutique, nombre de ressaisies évitées, délai de traitement d’une commande. C’est lui qui vous dira si l’étape suivante est utile, et à quel moment."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Faut-il lancer le site et la boutique en même temps ?",
+     "a": "Pas forcément. Si vous vendez surtout en direct ou sur rendez-vous, un site vitrine bien construit peut suffire au départ. L’important est que le socle choisi permette d’ajouter la boutique plus tard sans reconstruire le site."
+    },
+    {
+     "q": "Un outil comme Shopify ou Wix est-il un mauvais choix ?",
+     "a": "Non, ce sont des solutions efficaces pour lancer un site ou une boutique. La question porte sur la suite : si vous prévoyez de gérer stock, achats et relation client dans un même système, vérifiez dès le départ comment ces besoins seront couverts et à quel coût."
+    },
+    {
+     "q": "Comment éviter de perdre son référencement en changeant d’outil ?",
+     "a": "Conservez autant que possible les mêmes adresses de pages, mettez en place des redirections permanentes pour celles qui changent et reprenez les titres et descriptions existants. Le plus sûr reste de choisir un socle qui évite la migration."
+    }
+   ]
+  },
+  "site-vitrine-ecommerce-erp-ordre": {
+   "intro": "L’ordre le plus sûr suit votre façon de vendre : d’abord un site vitrine qui rend l’offre trouvable et crédible, ensuite une boutique en ligne si une partie des ventes peut se faire sans échange préalable, enfin un ERP lorsque le volume de commandes, de stock ou de fournisseurs rend les ressaisies coûteuses. Chaque étape doit s’appuyer sur la précédente plutôt que la remplacer.",
+   "sections": [
+    {
+     "h2": "Étape 1 : le site vitrine, pour être trouvé et rassurer",
+     "paragraphs": [
+      "Le site vitrine répond à une question simple : un client qui entend parler de vous peut-il vérifier rapidement ce que vous faites, où et pour qui ? Pour un artisan, un cabinet ou une entreprise de services, c’est souvent l’essentiel du besoin numérique au démarrage.",
+      "Soignez les pages qui portent la décision : présentation de l’offre, réalisations ou références, zone d’intervention, contact. Donnez à chaque page un titre et une description qui correspondent aux recherches de vos clients : c’est la base du référencement local."
+     ]
+    },
+    {
+     "h2": "Étape 2 : la boutique en ligne, quand la vente peut se faire sans vous",
+     "paragraphs": [
+      "Une boutique se justifie lorsqu’une partie des produits ou prestations peut être achetée sans devis ni discussion : prix fixe, caractéristiques claires, livraison ou retrait organisés. Si chaque vente demande un échange, un formulaire de demande de devis bien conçu peut être plus utile qu’un panier."
+     ],
+     "list": [
+      "Un catalogue stable, avec des prix et des descriptions fiables",
+      "Des conditions de livraison, de retrait et de retour définies",
+      "Un moyen de paiement en ligne adapté à vos clients",
+      "Une personne chargée de traiter les commandes chaque jour",
+      "Un suivi du stock, même simple, pour ne pas vendre ce que vous n’avez plus"
+     ]
+    },
+    {
+     "h2": "Étape 3 : l’ERP, quand les ressaisies coûtent plus cher que l’outil",
+     "paragraphs": [
+      "Un ERP rassemble dans une même base les ventes, les achats, le stock, la facturation et la relation client. Il devient pertinent lorsque l’information circule mal entre ces fonctions : commandes ressaisies à la main, stock faux, relances clients oubliées, marges difficiles à reconstituer.",
+      "Le signal n’est pas la taille de l’entreprise mais la répétition des frictions. Notez pendant quelques semaines les ressaisies et les erreurs qu’elles provoquent : si la liste s’allonge, le coût d’un système unifié devient plus facile à justifier."
+     ]
+    },
+    {
+     "h2": "Choisir un socle qui permet de passer d’une étape à l’autre",
+     "paragraphs": [
+      "Le piège consiste à choisir chaque outil isolément : un constructeur de site, puis une solution de boutique, puis un ERP qui oblige à tout reprendre. Chaque transition impose une migration des produits, des clients et parfois des adresses de pages.",
+      "Une autre voie consiste à partir d’un socle unique où ces étapes sont des modules à activer. C’est le principe d’[Omnifloo](https://omnifloo.com/), une offre éditée par Dyonysos sur Odoo : un site vitrine d’abord, une boutique avec paiement et gestion de stock ensuite, puis CRM, ventes, achats et inventaire dans le même système, sans migration. Le socle est open source, ce qui laisse les données exportables.",
+      "Quel que soit l’outil retenu, posez la même question à chaque étape : que faudra-t-il reprendre ou migrer pour passer à la suivante ?"
+     ]
+    },
+    {
+     "h2": "Adapter l’ordre à votre situation",
+     "paragraphs": [
+      "Cet ordre n’est pas une règle absolue. Un commerce qui gère déjà un stock important en magasin peut avoir besoin d’une gestion unifiée avant même d’ouvrir une boutique en ligne. À l’inverse, une activité de services peut rester longtemps sur un site vitrine complété par un outil de prise de rendez-vous."
+     ],
+     "list": [
+      "Vous vendez surtout sur devis : site vitrine, puis CRM",
+      "Vous vendez des produits à prix fixe : site vitrine et boutique rapidement, puis gestion du stock",
+      "Vous avez plusieurs points de vente ou entités : pensez gestion unifiée dès le départ",
+      "Vous visez plusieurs pays : vérifiez tôt le multilingue et la gestion multi-société"
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Peut-on se passer de site vitrine et ouvrir directement une boutique ?",
+     "a": "Oui, si votre offre se vend sans explication préalable. La boutique contient alors les pages de présentation essentielles. Veillez simplement à ce que les informations qui rassurent, comme les conditions de vente, le contact et les mentions légales, soient faciles à trouver."
+    },
+    {
+     "q": "À partir de quand un ERP est-il utile pour une petite entreprise ?",
+     "a": "Lorsque les ressaisies entre ventes, stock, achats et facturation deviennent fréquentes et génèrent des erreurs. Ce n’est pas une question de chiffre d’affaires, mais de circulation de l’information entre les fonctions."
+    },
+    {
+     "q": "Faut-il tout équiper en même temps pour gagner du temps ?",
+     "a": "Rarement. Activer trop de fonctions d’un coup alourdit la formation et retarde la mise en ligne. Mieux vaut un socle qui permet d’ajouter les modules au moment où le besoin apparaît."
+    }
+   ]
   }
  },
  "en": {
@@ -2696,7 +2831,7 @@
      "h2": "Choose a platform that reduces fragmentation",
      "paragraphs": [
       "The main criterion is simple: the platform should replace channels, not add to them. Check that it brings together the essential uses, messages, calendar and documents, and that it allows access to be managed by role: school leadership, teachers, families and students.",
-      "École Connect, for example, was designed with this in mind. It offers a configurable space that brings together news and messages, a school calendar, shared documents, information tracking and role-based access. Other solutions exist; compare them on how easy they are for families to use, particularly on a phone, and how easy they are for staff to set up."
+      "[École Connect](https://ecole-connect-pied.vercel.app/), for example, was designed with this in mind. It offers a configurable space that brings together news and messages, a school calendar, shared documents, information tracking and role-based access. Other solutions exist; compare them on how easy they are for families to use, particularly on a phone, and how easy they are for staff to set up."
      ]
     },
     {
@@ -2759,7 +2894,7 @@
      "h2": "Governance, access rights and data protection",
      "paragraphs": [
       "A school platform handles data about minors. Data minimization should guide the configuration: collect only what is useful, limit the visibility of each piece of information to the people concerned and plan for accounts to be deleted when students leave the school. Ask the provider about data hosting, backup management and reversibility terms.",
-      "Also appoint an internal platform administrator. Without a designated owner, former students’ accounts pile up, sections multiply and the tool becomes hard to navigate. A solution such as École Connect, which relies on role-based access, makes this framework easier to set up, but the ground rules are still for the school to define."
+      "Also appoint an internal platform administrator. Without a designated owner, former students’ accounts pile up, sections multiply and the tool becomes hard to navigate. A solution such as [École Connect](https://ecole-connect-pied.vercel.app/), which relies on role-based access, makes this framework easier to set up, but the ground rules are still for the school to define."
      ]
     },
     {
@@ -2826,7 +2961,7 @@
      "h2": "Building a school calendar everyone can read",
      "paragraphs": [
       "A useful calendar clearly distinguishes between levels: whole-school events, grade-level events and class events. Each family should see only what concerns them; otherwise the calendar becomes background noise that no one checks anymore.",
-      "Set a few simple rules: a clear title, a time and a place, and an attached document when parents need to take action, such as signing a permission slip. Post events as early as possible and avoid changing them without sending a notification. In École Connect, the school calendar and shared documents are in the same space, so there’s no need to send people to another tool."
+      "Set a few simple rules: a clear title, a time and a place, and an attached document when parents need to take action, such as signing a permission slip. Post events as early as possible and avoid changing them without sending a notification. In [École Connect](https://ecole-connect-pied.vercel.app/), the school calendar and shared documents are in the same space, so there’s no need to send people to another tool."
      ]
     },
     {
@@ -2899,7 +3034,7 @@
      "h2": "Streamline, unify or orchestrate: three strategies",
      "paragraphs": [
       "Streamlining means keeping the existing tools but reducing their number by eliminating duplicates. It’s the fastest route, but it often leaves several points of entry.",
-      "Unifying means choosing a single portal for all communication: news, messages, calendar and documents. Highly specialized tools stay in place, but families only have one habit to learn. This is the approach taken by solutions such as École Connect, which aim to reduce fragmentation rather than add another app to families’ routines.",
+      "Unifying means choosing a single portal for all communication: news, messages, calendar and documents. Highly specialized tools stay in place, but families only have one habit to learn. This is the approach taken by solutions such as [École Connect](https://ecole-connect-pied.vercel.app/), which aim to reduce fragmentation rather than add another app to families’ routines.",
       "Finally, orchestrating means keeping several tools but publishing a home page that lists them and explains what each one is for. This can work during a transition phase, but it doesn’t reduce the cognitive load."
      ]
     },
@@ -2961,7 +3096,7 @@
      "h2": "Choose the right format and length for your class",
      "paragraphs": [
       "For a quick check in the middle of a lesson, five to eight questions are usually enough. For a review session, a longer quiz divided into topics lets you pause and revisit weak spots. Adjust the response time to the difficulty: a calculation or analysis question deserves more time than a vocabulary question.",
-      "A tool for creating questions quickly, such as QuizPlay, lets you prepare these variations without spending your whole evening on them and reuse questions from one unit to the next."
+      "A tool for creating questions quickly, such as [QuizPlay](https://quizplay-production.up.railway.app/), lets you prepare these variations without spending your whole evening on them and reuse questions from one unit to the next."
      ]
     },
     {
@@ -3003,7 +3138,7 @@
      "paragraphs": [
       "Kahoot made its name with a game-based approach: projected questions, answers from participants’ devices, a leaderboard and a competitive atmosphere. It is very widespread in classrooms and popular for energizing a group.",
       "Wooclap is widely used in higher education and professional training to make a lecture or presentation participatory, with various types of interaction beyond the classic quiz.",
-      "QuizPlay positions itself as an alternative focused on simplicity and lesson design: quick question creation, group facilitation, instant results and learning progress tracking, in class or remotely. These positions aren’t mutually exclusive, and many teachers use several tools depending on the situation."
+      "[QuizPlay](https://quizplay-production.up.railway.app/) positions itself as an alternative focused on simplicity and lesson design: quick question creation, group facilitation, instant results and learning progress tracking, in class or remotely. These positions aren’t mutually exclusive, and many teachers use several tools depending on the situation."
      ]
     },
     {
@@ -3094,7 +3229,7 @@
      "h2": "Quizzes as checkpoints, not decoration",
      "paragraphs": [
       "A well-timed quiz provides valuable information: has the whole group understood the concept, or only the fastest learners? Used after a key input, it lets you decide on the spot whether to revisit a point or move on.",
-      "A tool such as QuizPlay lets you run these quizzes with the whole group and display the results instantly, which turns the check into a discussion. What matters most is still discussing the answers, especially mistakes shared by several participants."
+      "A tool such as [QuizPlay](https://quizplay-production.up.railway.app/) lets you run these quizzes with the whole group and display the results instantly, which turns the check into a discussion. What matters most is still discussing the answers, especially mistakes shared by several participants."
      ]
     },
     {
@@ -3163,7 +3298,7 @@
      "h2": "Organize sharing so resources can be found",
      "paragraphs": [
       "The main reason course sharing fails isn’t technical but organizational: a document sent by email in September can’t be found in December. A single, stable access point whose address doesn’t change is better, along with organization by topic or sequence rather than by date sent.",
-      "An educational library such as CoursHub meets this need by letting you create resources, organize them by topic, find them through search and share courses with your learners or colleagues. A shared storage space can also work for a small volume, provided you set naming and filing rules from the outset."
+      "An educational library such as [CoursHub](https://coursehub-dusky-seven.vercel.app/) meets this need by letting you create resources, organize them by topic, find them through search and share courses with your learners or colleagues. A shared storage space can also work for a small volume, provided you set naming and filing rules from the outset."
      ]
     },
     {
@@ -3237,7 +3372,7 @@
     {
      "h2": "Where CoursHub fits among the options",
      "paragraphs": [
-      "CoursHub is designed to centralize, organize, find and share educational resources in one coherent library. Its features cover resource creation, topic-based organization, search, course sharing and building a shared knowledge base, for uses such as a school-wide library, a training catalog or sharing between teachers.",
+      "[CoursHub](https://coursehub-dusky-seven.vercel.app/) is designed to centralize, organize, find and share educational resources in one coherent library. Its features cover resource creation, topic-based organization, search, course sharing and building a shared knowledge base, for uses such as a school-wide library, a training catalog or sharing between teachers.",
       "If your main need is managing enrollment, grades or assessed learning paths, a full learning platform will be a better fit, and a resource library can complement it. What matters is not asking a single tool to do everything."
      ]
     },
@@ -3923,7 +4058,7 @@
      "h2": "Start with the audit, not the tool",
      "paragraphs": [
       "The most common mistake is choosing software before describing the processes it needs to support. An audit, even a light one, maps the flows, identifies double entry and quantifies the expected gains. It sometimes reveals that a full suite would be oversized or, on the contrary, that a pile-up of connectors would become more cumbersome than a single system.",
-      "Dyonysos’s Connected Business Management Solutions start from this process audit. Depending on the context, they may lead to an integration built around Odoo or to API connectors and targeted business workflows, with support for teams in both cases. The two routes are not mutually exclusive: a well-documented targeted project also paves the way for a possible later migration."
+      "Dyonysos’s Connected Business Management Solutions start from this process audit. Depending on the context, they may lead to an [integration built around Odoo](https://dyonysos.fr/applications-odoo) or to API connectors and targeted business workflows, with support for teams in both cases. The two routes are not mutually exclusive: a well-documented targeted project also paves the way for a possible later migration."
      ]
     }
    ],
@@ -3984,7 +4119,8 @@
      "h2": "Choosing a technical route: no-code, packaged solution or customizable foundation",
      "paragraphs": [
       "Several approaches coexist. No-code tools let you test an idea very quickly, with limits as soon as business rules become more complex. Packaged solutions built for marketplaces, such as Sharetribe, cover most needs and are updated regularly. Custom development offers complete freedom, at the cost of a longer timeline and a larger budget.",
-      "Between these options, a customizable foundation such as Dyonysos’s Customizable Marketplace starts from existing building blocks (profiles, listings, search and filters, transaction flow, administration) and then lets you adapt the branding and workflows. The right choice depends mainly on how specific your transaction is and how much control you want to keep over the product and its deployment."
+      "Between these options, a customizable foundation such as Dyonysos’s Customizable Marketplace starts from existing building blocks (profiles, listings, search and filters, transaction flow, administration) and then lets you adapt the branding and workflows. The right choice depends mainly on how specific your transaction is and how much control you want to keep over the product and its deployment.",
+      "Within the Dyonysos ecosystem, [Tribuplace](https://tribuplace.com/) applies this approach as a ready-to-use marketplace foundation with three roles: customer, provider and operator. It includes search with filters, time-slot booking, price negotiation and payments through Stripe Connect, and each client gets a test environment separate from production. An online demo lets you explore all three spaces before committing, and the source code is handed over from the Extend plan onwards."
      ]
     },
     {
@@ -4044,7 +4180,8 @@
      "h2": "An overview of the types of alternatives",
      "paragraphs": [
       "Alternatives fall into three families. SaaS marketplace platforms, which include Sharetribe, prioritize speed. Multi-vendor e-commerce frameworks and extensions suit you if you already have an online store and a technical team. Customizable foundations and custom development are aimed at projects where control comes first.",
-      "In this last family, Dyonysos’s Customizable Marketplace is worth considering when control over the product, deployment or specific workflows is a priority. It starts from a foundation with profiles and listings, search and filters, a transaction flow, administration and brand customization, for use cases such as a services marketplace, a B2B portal or a rental platform."
+      "In this last family, Dyonysos’s Customizable Marketplace is worth considering when control over the product, deployment or specific workflows is a priority. It starts from a foundation with profiles and listings, search and filters, a transaction flow, administration and brand customization, for use cases such as a services marketplace, a B2B portal or a rental platform.",
+      "[Tribuplace](https://tribuplace.com/), the marketplace foundation of the Dyonysos ecosystem, is explicitly positioned in this space. It follows the three-role model popularized by Sharetribe (customer, provider, operator), with a configurable transaction engine and Stripe Connect payments, but leaves the choice of hosting to you and hands over the source code from its Extend plan onwards. It is worth adding to your comparison grid if reversibility and code ownership are among your criteria."
      ]
     },
     {
@@ -4671,6 +4808,139 @@
      "a": "Yes, and as early as possible. A poorly explained engagement is often perceived as an audit or a challenge, which cuts off access to information. Presenting the objective of the engagement and what it will bring the teams encourages their cooperation."
     }
    ]
+  },
+  "lancer-site-boutique-en-ligne-evolutif": {
+   "intro": "To launch a website and an online store without having to rebuild everything a few years later, choose from the outset a foundation that can take on the management tasks that will follow: catalog, stock, customers, purchasing. Start small, with the essential pages and products, but make sure your data will stay in one place and remain exportable as the business grows.",
+   "sections": [
+    {
+     "h2": "Why so many businesses end up rebuilding their website",
+     "paragraphs": [
+      "The scenario is common: a brochure website set up quickly with an online builder, then a store added with another solution, then a spreadsheet for stock and separate invoicing software. Each tool works, but none of them talk to each other. Orders are re-entered, stock levels drift apart and customer records are duplicated.",
+      "The day the business wants to manage supplier purchases, sell in several countries or track prospects, it has to choose between stacking yet another tool or migrating everything. Migration takes time, puts search rankings at risk and means retraining the team. The problem is not the initial choice of a simple tool, but the lack of a growth path."
+     ]
+    },
+    {
+     "h2": "Define the useful minimum for launch",
+     "paragraphs": [
+      "A first website does not need to do everything. It must present the offer clearly, build trust and make it easy to get in touch or buy. Start by listing what a visitor should be able to do on their very first visit.",
+      "Everything else, such as loyalty programs, comparison tools or advanced customer accounts, can wait until the first sales show what customers really ask for."
+     ],
+     "list": [
+      "Understand what you offer and who it is for",
+      "Find your contact details, service area or terms",
+      "Browse a few flagship products or services",
+      "Pay online or request a quote",
+      "Find you on a search engine thanks to well-titled pages"
+     ]
+    },
+    {
+     "h2": "Check the growth path before choosing the tool",
+     "paragraphs": [
+      "The key question is not “which tool is simplest today?” but “what will happen when I need to manage stock, suppliers or several websites?”. Ask it of every solution you consider and request a concrete answer: will you need to migrate, add a module or change vendor?"
+     ],
+     "list": [
+      "Do store orders feed stock management directly?",
+      "Can CRM, sales and purchasing be added without changing platform?",
+      "Can the website handle several languages, brands or countries if needed?",
+      "Can the data be exported if you switch solutions?",
+      "Does the cost remain clear at each stage of growth?"
+     ]
+    },
+    {
+     "h2": "An example of a scalable foundation: Omnifloo",
+     "paragraphs": [
+      "[Omnifloo](https://omnifloo.com/), a solution published by Dyonysos and built on Odoo, illustrates this approach. The offer starts with a brochure website, adds an online store with payment and stock management, then lets you activate CRM, sales, purchasing and inventory in the same place, with no data migration and no change of vendor. The publisher states that the website and store can be ready in 5 days.",
+      "The foundation is open source (LGPLv3 license), which keeps code and data portable, and it natively supports multiple websites, multiple companies and multiple languages. Industry themes serve as a starting point, with online demos of a landscaper’s brochure website and a coffee roaster’s online store. A free plan lets you test a three-page brochure website before choosing a paid plan."
+     ]
+    },
+    {
+     "h2": "Grow the system step by step",
+     "paragraphs": [
+      "Once the website is live, move forward based on observed needs rather than a wish list. Activate the store when purchase requests come in, stock management when stock-outs or discrepancies become costly, CRM when prospect follow-up slips through the cracks, and purchasing when supplier orders multiply.",
+      "At each step, set a simple indicator: store conversion rate, number of re-entries avoided, time taken to process an order. That indicator will tell you whether the next step is worthwhile, and when."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Should the website and the store be launched at the same time?",
+     "a": "Not necessarily. If you mainly sell face to face or by appointment, a well-built brochure website may be enough at first. What matters is that the chosen foundation lets you add the store later without rebuilding the website."
+    },
+    {
+     "q": "Is a tool like Shopify or Wix a bad choice?",
+     "a": "No, they are effective solutions for launching a website or a store. The question is what comes next: if you plan to manage stock, purchasing and customer relations in a single system, check from the outset how those needs will be covered and at what cost."
+    },
+    {
+     "q": "How can you avoid losing search rankings when changing tools?",
+     "a": "Keep the same page addresses wherever possible, set up permanent redirects for those that change and carry over existing titles and descriptions. The safest option is still to choose a foundation that avoids migration altogether."
+    }
+   ]
+  },
+  "site-vitrine-ecommerce-erp-ordre": {
+   "intro": "The safest order follows the way you sell: first a brochure website that makes your offer easy to find and credible, then an online store if part of your sales can happen without prior discussion, and finally an ERP when the volume of orders, stock or suppliers makes re-entering data costly. Each step should build on the previous one rather than replace it.",
+   "sections": [
+    {
+     "h2": "Step 1: the brochure website, to be found and build trust",
+     "paragraphs": [
+      "A brochure website answers a simple question: can a customer who hears about you quickly check what you do, where and for whom? For a tradesperson, a professional practice or a service company, that is often the core of the digital need at the start.",
+      "Take care of the pages that drive the decision: presentation of the offer, past work or references, service area, contact. Give each page a title and description that match what your customers search for: this is the foundation of local search visibility."
+     ]
+    },
+    {
+     "h2": "Step 2: the online store, when the sale can happen without you",
+     "paragraphs": [
+      "A store makes sense when some products or services can be bought without a quote or a conversation: fixed price, clear specifications, organized delivery or pick-up. If every sale requires a discussion, a well-designed quote request form may be more useful than a shopping cart."
+     ],
+     "list": [
+      "A stable catalog with reliable prices and descriptions",
+      "Defined delivery, pick-up and return terms",
+      "An online payment method suited to your customers",
+      "Someone responsible for processing orders every day",
+      "Stock tracking, even a simple one, so you do not sell what you no longer have"
+     ]
+    },
+    {
+     "h2": "Step 3: the ERP, when re-entering data costs more than the tool",
+     "paragraphs": [
+      "An ERP brings sales, purchasing, stock, invoicing and customer relations together in a single database. It becomes relevant when information flows poorly between these functions: orders re-entered by hand, inaccurate stock, forgotten customer follow-ups, margins that are hard to reconstruct.",
+      "The signal is not the size of the business but recurring friction. For a few weeks, note every re-entry and the errors it causes: if the list keeps growing, the cost of a unified system becomes easier to justify."
+     ]
+    },
+    {
+     "h2": "Choose a foundation that lets you move from one step to the next",
+     "paragraphs": [
+      "The trap is choosing each tool in isolation: a website builder, then a store solution, then an ERP that forces you to start over. Each transition requires migrating products, customers and sometimes page addresses.",
+      "Another route is to start from a single foundation where these steps are modules to activate. This is the principle behind [Omnifloo](https://omnifloo.com/), an offer published by Dyonysos on Odoo: a brochure website first, then a store with payment and stock management, then CRM, sales, purchasing and inventory in the same system, with no migration. The foundation is open source, which keeps the data exportable.",
+      "Whatever tool you choose, ask the same question at each step: what will have to be redone or migrated to move on to the next one?"
+     ]
+    },
+    {
+     "h2": "Adapt the order to your situation",
+     "paragraphs": [
+      "This order is not an absolute rule. A retailer that already manages significant in-store stock may need unified management even before opening an online store. Conversely, a service business may stay on a brochure website with an appointment booking tool for a long time."
+     ],
+     "list": [
+      "You mainly sell on quotation: brochure website, then CRM",
+      "You sell fixed-price products: brochure website and store quickly, then stock management",
+      "You have several outlets or entities: plan for unified management from the start",
+      "You are targeting several countries: check multilingual and multi-company support early"
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Can you skip the brochure website and open a store straight away?",
+     "a": "Yes, if your offer sells without prior explanation. The store then includes the essential presentation pages. Just make sure that reassuring information, such as terms of sale, contact details and legal notices, is easy to find."
+    },
+    {
+     "q": "When does an ERP become useful for a small business?",
+     "a": "When re-entering data between sales, stock, purchasing and invoicing becomes frequent and causes errors. It is not a question of revenue, but of how information flows between functions."
+    },
+    {
+     "q": "Should everything be set up at once to save time?",
+     "a": "Rarely. Activating too many functions at once makes training heavier and delays going live. It is better to have a foundation that lets you add modules when the need arises."
+    }
+   ]
   }
  },
  "es": {
@@ -5033,7 +5303,7 @@
      "h2": "Elegir una plataforma que reduzca la fragmentación",
      "paragraphs": [
       "El criterio principal es sencillo: la plataforma debe sustituir canales, no sumarse a ellos. Compruebe que reúne los usos esenciales, mensajes, calendario y documentos, y que permite gestionar los accesos según los perfiles: dirección, profesorado, familias y alumnado.",
-      "École Connect, por ejemplo, se ha diseñado con esta lógica. Ofrece un espacio configurable que reúne noticias y mensajes, agenda escolar, documentos compartidos, seguimiento de la información y acceso según perfiles. Existen otras soluciones; compárelas en función de la facilidad de uso para las familias, sobre todo en el móvil, y de la sencillez de configuración para el equipo."
+      "[École Connect](https://ecole-connect-pied.vercel.app/), por ejemplo, se ha diseñado con esta lógica. Ofrece un espacio configurable que reúne noticias y mensajes, agenda escolar, documentos compartidos, seguimiento de la información y acceso según perfiles. Existen otras soluciones; compárelas en función de la facilidad de uso para las familias, sobre todo en el móvil, y de la sencillez de configuración para el equipo."
      ]
     },
     {
@@ -5096,7 +5366,7 @@
      "h2": "Gobernanza, permisos de acceso y protección de datos",
      "paragraphs": [
       "Una plataforma escolar trata datos de menores. El principio de minimización debe guiar la configuración: recoger solo lo que sea útil, limitar la visibilidad de cada información a las personas afectadas y prever la eliminación de las cuentas al finalizar la escolarización. Pregunte al proveedor por el alojamiento de los datos, la gestión de las copias de seguridad y las condiciones de reversibilidad.",
-      "Designe también a un responsable interno de la plataforma. Sin una persona de referencia, las cuentas de antiguos alumnos se acumulan, las secciones se multiplican y la herramienta pierde claridad. Una solución como École Connect, basada en el acceso según perfiles, facilita este encuadre, pero las reglas del juego debe definirlas el centro."
+      "Designe también a un responsable interno de la plataforma. Sin una persona de referencia, las cuentas de antiguos alumnos se acumulan, las secciones se multiplican y la herramienta pierde claridad. Una solución como [École Connect](https://ecole-connect-pied.vercel.app/), basada en el acceso según perfiles, facilita este encuadre, pero las reglas del juego debe definirlas el centro."
      ]
     },
     {
@@ -5163,7 +5433,7 @@
      "h2": "Crear una agenda escolar que todos puedan entender",
      "paragraphs": [
       "Una agenda útil distingue con claridad los niveles: eventos de todo el centro, de un curso o de una clase. Cada familia solo debe ver lo que le concierne; de lo contrario, la agenda se convierte en un ruido de fondo que ya nadie consulta.",
-      "Establezca algunas normas sencillas: un título explícito, una hora y un lugar, y un documento adjunto cuando se espera una acción de las familias, como una autorización que firmar. Publique los eventos lo antes posible y evite modificarlos sin notificación. En École Connect, la agenda escolar y los documentos compartidos están en el mismo espacio, lo que evita remitir a otra herramienta."
+      "Establezca algunas normas sencillas: un título explícito, una hora y un lugar, y un documento adjunto cuando se espera una acción de las familias, como una autorización que firmar. Publique los eventos lo antes posible y evite modificarlos sin notificación. En [École Connect](https://ecole-connect-pied.vercel.app/), la agenda escolar y los documentos compartidos están en el mismo espacio, lo que evita remitir a otra herramienta."
      ]
     },
     {
@@ -5236,7 +5506,7 @@
      "h2": "Racionalizar, unificar u orquestar: tres estrategias",
      "paragraphs": [
       "Racionalizar consiste en conservar las herramientas existentes, pero reducir su número eliminando las duplicidades. Es la vía más rápida, aunque a menudo deja varios puntos de entrada.",
-      "Unificar supone elegir un portal único para todo lo relacionado con la comunicación: noticias, mensajes, agenda y documentos. Las herramientas muy específicas se mantienen, pero las familias solo tienen que adquirir un hábito. Es el enfoque de soluciones como École Connect, que buscan reducir la fragmentación en lugar de añadir una aplicación más al día a día de las familias.",
+      "Unificar supone elegir un portal único para todo lo relacionado con la comunicación: noticias, mensajes, agenda y documentos. Las herramientas muy específicas se mantienen, pero las familias solo tienen que adquirir un hábito. Es el enfoque de soluciones como [École Connect](https://ecole-connect-pied.vercel.app/), que buscan reducir la fragmentación en lugar de añadir una aplicación más al día a día de las familias.",
       "Orquestar, por último, consiste en mantener varias herramientas, pero publicar una página de inicio que las reúna y explique para qué sirve cada una. Esta solución puede ser adecuada en una fase de transición, pero no reduce la carga cognitiva."
      ]
     },
@@ -5298,7 +5568,7 @@
      "h2": "Elegir el formato y la duración adecuados para la clase",
      "paragraphs": [
       "Para una comprobación rápida a mitad de clase, suelen bastar entre cinco y ocho preguntas. Para una sesión de repaso, un quiz más largo dividido por temas permite hacer pausas y volver sobre los puntos débiles. Ajuste el tiempo de respuesta a la dificultad: una pregunta de cálculo o de análisis merece más tiempo que una de vocabulario.",
-      "Una herramienta de creación rápida de preguntas, como QuizPlay, permite preparar estas variantes sin dedicarle toda la tarde y reutilizar las preguntas de una secuencia a otra."
+      "Una herramienta de creación rápida de preguntas, como [QuizPlay](https://quizplay-production.up.railway.app/), permite preparar estas variantes sin dedicarle toda la tarde y reutilizar las preguntas de una secuencia a otra."
      ]
     },
     {
@@ -5340,7 +5610,7 @@
      "paragraphs": [
       "Kahoot se dio a conocer con un enfoque de juego: preguntas proyectadas, respuestas desde los dispositivos de los participantes, clasificación y ambiente de competición. Está muy extendido en las aulas y se valora para dinamizar un grupo.",
       "Wooclap se utiliza ampliamente en la enseñanza superior y en la formación profesional para hacer participativa una clase o una presentación, con distintos tipos de interacción más allá del quiz clásico.",
-      "QuizPlay se presenta como una alternativa centrada en la sencillez y el diseño pedagógico: creación rápida de preguntas, dinamización grupal, resultados inmediatos y seguimiento de la progresión, en el aula o a distancia. Estos enfoques no son excluyentes, y muchos docentes utilizan varias herramientas según el momento."
+      "[QuizPlay](https://quizplay-production.up.railway.app/) se presenta como una alternativa centrada en la sencillez y el diseño pedagógico: creación rápida de preguntas, dinamización grupal, resultados inmediatos y seguimiento de la progresión, en el aula o a distancia. Estos enfoques no son excluyentes, y muchos docentes utilizan varias herramientas según el momento."
      ]
     },
     {
@@ -5431,7 +5701,7 @@
      "h2": "Los quiz como puntos de control, no como decorado",
      "paragraphs": [
       "Un quiz situado en el momento adecuado aporta una información valiosa: ¿ha comprendido el concepto todo el grupo o solo los más rápidos? Utilizado después de una aportación clave, permite decidir de inmediato si volver sobre un punto o seguir avanzando.",
-      "Una herramienta como QuizPlay permite dinamizar estos quiz de forma grupal y mostrar los resultados al instante, lo que convierte la comprobación en debate. Lo más importante sigue siendo comentar las respuestas, sobre todo los errores compartidos por varios participantes."
+      "Una herramienta como [QuizPlay](https://quizplay-production.up.railway.app/) permite dinamizar estos quiz de forma grupal y mostrar los resultados al instante, lo que convierte la comprobación en debate. Lo más importante sigue siendo comentar las respuestas, sobre todo los errores compartidos por varios participantes."
      ]
     },
     {
@@ -5500,7 +5770,7 @@
      "h2": "Organizar el intercambio para que los recursos se encuentren",
      "paragraphs": [
       "El principal fallo al compartir cursos no es técnico, sino organizativo: un documento enviado por mensajería en septiembre es imposible de encontrar en diciembre. Es preferible un único punto de acceso, estable y con una dirección que no cambie, y una clasificación por tema o por secuencia en lugar de por fecha de envío.",
-      "Una biblioteca de recursos educativos como CoursHub responde a esta necesidad, ya que permite crear recursos, clasificarlos por tema, encontrarlos mediante la búsqueda y compartir cursos con su alumnado o con sus colegas. Un espacio de almacenamiento compartido también puede servir para un volumen reducido, siempre que se fijen desde el principio normas de nomenclatura y organización."
+      "Una biblioteca de recursos educativos como [CoursHub](https://coursehub-dusky-seven.vercel.app/) responde a esta necesidad, ya que permite crear recursos, clasificarlos por tema, encontrarlos mediante la búsqueda y compartir cursos con su alumnado o con sus colegas. Un espacio de almacenamiento compartido también puede servir para un volumen reducido, siempre que se fijen desde el principio normas de nomenclatura y organización."
      ]
     },
     {
@@ -5574,7 +5844,7 @@
     {
      "h2": "Qué lugar ocupa CoursHub entre las opciones",
      "paragraphs": [
-      "CoursHub está diseñado para centralizar, organizar, localizar y compartir recursos educativos en una biblioteca coherente. Sus funciones abarcan la creación de recursos, la clasificación temática, la búsqueda, el intercambio de cursos y el conocimiento colectivo, para usos como una biblioteca de centro, un catálogo de formación o el intercambio entre docentes.",
+      "[CoursHub](https://coursehub-dusky-seven.vercel.app/) está diseñado para centralizar, organizar, localizar y compartir recursos educativos en una biblioteca coherente. Sus funciones abarcan la creación de recursos, la clasificación temática, la búsqueda, el intercambio de cursos y el conocimiento colectivo, para usos como una biblioteca de centro, un catálogo de formación o el intercambio entre docentes.",
       "Si su necesidad principal es la gestión de matrículas, calificaciones o itinerarios evaluados, una plataforma de aprendizaje completa será más adecuada, y una biblioteca de recursos podrá complementarla. Lo importante es no pedir a una sola herramienta que lo haga todo."
      ]
     },
@@ -6260,7 +6530,7 @@
      "h2": "Empezar por la auditoría, no por la herramienta",
      "paragraphs": [
       "El error más frecuente consiste en elegir un software antes de haber descrito los procesos a los que debe servir. Una auditoría, aunque sea ligera, mapea los flujos, identifica las dobles introducciones de datos y cuantifica los beneficios esperados. A veces revela que una suite completa estaría sobredimensionada o, por el contrario, que una acumulación de conectores acabaría siendo más pesada que un sistema único.",
-      "Las Soluciones de gestión conectada de Dyonysos parten de esta auditoría de procesos. Según el contexto, pueden desembocar en una integración en torno a Odoo o en conectores API y flujos de trabajo de negocio específicos, con acompañamiento de los equipos en ambos casos. Las dos vías no se excluyen: un proyecto específico bien documentado también prepara una posible migración posterior."
+      "Las Soluciones de gestión conectada de Dyonysos parten de esta auditoría de procesos. Según el contexto, pueden desembocar en una [integración en torno a Odoo](https://dyonysos.fr/applications-odoo) o en conectores API y flujos de trabajo de negocio específicos, con acompañamiento de los equipos en ambos casos. Las dos vías no se excluyen: un proyecto específico bien documentado también prepara una posible migración posterior."
      ]
     }
    ],
@@ -6321,7 +6591,8 @@
      "h2": "Elegir la vía técnica: no-code, solución empaquetada o base personalizable",
      "paragraphs": [
       "Coexisten varios enfoques. Las herramientas no-code permiten probar una idea muy rápido, con limitaciones en cuanto las reglas de negocio se complican. Las soluciones empaquetadas específicas para marketplaces, como Sharetribe, cubren lo esencial de las necesidades y evolucionan con regularidad. Un desarrollo a medida ofrece total libertad, a costa de un plazo y un presupuesto mayores.",
-      "Entre estas opciones, una base personalizable como el Marketplace personalizable de Dyonysos parte de componentes existentes (perfiles, anuncios, búsqueda y filtros, proceso de transacción, administración) y permite adaptar después la marca y los flujos de trabajo. La elección adecuada depende sobre todo del grado de especificidad de su transacción y del control que desee conservar sobre el producto y su despliegue."
+      "Entre estas opciones, una base personalizable como el Marketplace personalizable de Dyonysos parte de componentes existentes (perfiles, anuncios, búsqueda y filtros, proceso de transacción, administración) y permite adaptar después la marca y los flujos de trabajo. La elección adecuada depende sobre todo del grado de especificidad de su transacción y del control que desee conservar sobre el producto y su despliegue.",
+      "Dentro del ecosistema Dyonysos, [Tribuplace](https://tribuplace.com/) aplica este enfoque en forma de base de marketplace lista para usar con tres roles: cliente, proveedor y operador. Incluye búsqueda con filtros, reserva por franjas horarias, negociación de precios y pagos mediante Stripe Connect, y cada cliente dispone de un entorno de pruebas separado del de producción. Una demostración en línea permite recorrer los tres espacios antes de comprometerse, y el código fuente se entrega a partir del plan Extend."
      ]
     },
     {
@@ -6381,7 +6652,8 @@
      "h2": "Panorama de los tipos de alternativas",
      "paragraphs": [
       "Las alternativas se agrupan en tres familias. Las plataformas SaaS de marketplace, entre las que se encuentra Sharetribe, priorizan la rapidez. Los frameworks y extensiones de e-commerce multivendedor son adecuados cuando ya dispone de una tienda y de un equipo técnico. Las bases personalizables y el desarrollo a medida se dirigen a los proyectos en los que prima el control.",
-      "Dentro de esta última familia, el Marketplace personalizable de Dyonysos es la opción a considerar cuando el control del producto, del despliegue o de flujos de trabajo específicos es prioritario. Parte de una base con perfiles y anuncios, búsqueda y filtros, proceso de transacción, administración y personalización de marca, para usos como un marketplace de servicios, un portal B2B o una plataforma de alquiler."
+      "Dentro de esta última familia, el Marketplace personalizable de Dyonysos es la opción a considerar cuando el control del producto, del despliegue o de flujos de trabajo específicos es prioritario. Parte de una base con perfiles y anuncios, búsqueda y filtros, proceso de transacción, administración y personalización de marca, para usos como un marketplace de servicios, un portal B2B o una plataforma de alquiler.",
+      "[Tribuplace](https://tribuplace.com/), la base de marketplace del ecosistema Dyonysos, se sitúa explícitamente en este terreno. Retoma el modelo de tres roles popularizado por Sharetribe (cliente, proveedor, operador), con un motor de transacciones configurable y pagos mediante Stripe Connect, pero deja libre la elección del alojamiento y entrega el código fuente a partir de su plan Extend. Merece un lugar en su tabla comparativa si la reversibilidad y la propiedad del código forman parte de sus criterios."
      ]
     },
     {
@@ -7008,6 +7280,139 @@
      "a": "Sí, y cuanto antes. Una misión mal explicada suele percibirse como un control o un cuestionamiento, lo que cierra el acceso a la información. Presentar el objetivo de la misión y lo que aportará a los equipos favorece su cooperación."
     }
    ]
+  },
+  "lancer-site-boutique-en-ligne-evolutif": {
+   "intro": "Para lanzar un sitio web y una tienda online sin tener que reconstruirlo todo unos años después, elija desde el principio una base capaz de acoger la gestión que vendrá más tarde: catálogo, stock, clientes, compras. Empiece con poco, con las páginas y los productos esenciales, pero compruebe que sus datos seguirán en un mismo lugar y serán exportables cuando la actividad crezca.",
+   "sections": [
+    {
+     "h2": "Por qué tantas empresas acaban rehaciendo su sitio web",
+     "paragraphs": [
+      "El escenario es frecuente: un sitio vitrina creado rápidamente con un constructor online, después una tienda añadida con otra solución, luego una hoja de cálculo para el stock y un programa de facturación aparte. Cada herramienta funciona, pero ninguna se comunica con las demás. Los pedidos se vuelven a introducir, el stock deja de cuadrar y las fichas de clientes se duplican.",
+      "El día en que la empresa quiere gestionar sus compras a proveedores, vender en varios países o hacer seguimiento de sus clientes potenciales, tiene que elegir entre sumar otra herramienta o migrarlo todo. La migración lleva tiempo, pone en riesgo el posicionamiento en buscadores y obliga a formar de nuevo al equipo. El problema no es haber elegido al principio una herramienta sencilla, sino la falta de una trayectoria."
+     ]
+    },
+    {
+     "h2": "Definir el mínimo útil para el lanzamiento",
+     "paragraphs": [
+      "Un primer sitio no tiene por qué hacerlo todo. Debe presentar la oferta con claridad, generar confianza y facilitar el contacto o la compra. Empiece por enumerar lo que un visitante debe poder hacer desde su primera visita.",
+      "Todo lo demás, como los programas de fidelización, los comparadores o las áreas de cliente avanzadas, puede esperar a que las primeras ventas muestren lo que los clientes piden de verdad."
+     ],
+     "list": [
+      "Entender qué ofrece usted y para quién",
+      "Encontrar sus datos de contacto, su zona de trabajo o sus condiciones",
+      "Consultar algunos productos o servicios destacados",
+      "Pagar online o solicitar un presupuesto",
+      "Encontrarle en un buscador gracias a páginas bien tituladas"
+     ]
+    },
+    {
+     "h2": "Comprobar la trayectoria antes de elegir la herramienta",
+     "paragraphs": [
+      "La pregunta clave no es «¿qué herramienta es la más sencilla hoy?», sino «¿qué pasará cuando necesite gestionar el stock, los proveedores o varios sitios?». Plantéela a cada solución que considere y pida una respuesta concreta: ¿habrá que migrar, añadir un módulo o cambiar de proveedor?"
+     ],
+     "list": [
+      "¿Los pedidos de la tienda alimentan directamente la gestión del stock?",
+      "¿Se pueden añadir CRM, ventas y compras sin cambiar de plataforma?",
+      "¿El sitio admite varios idiomas, marcas o países si hace falta?",
+      "¿Se pueden exportar los datos si cambia de solución?",
+      "¿El coste sigue siendo claro en cada etapa de crecimiento?"
+     ]
+    },
+    {
+     "h2": "Un ejemplo de base escalable: Omnifloo",
+     "paragraphs": [
+      "[Omnifloo](https://omnifloo.com/), una solución editada por Dyonysos sobre la base de Odoo, ilustra esta lógica. La oferta empieza con un sitio vitrina, añade una tienda online con pago y gestión de stock y después permite activar CRM, ventas, compras e inventario en el mismo lugar, sin migración de datos ni cambio de proveedor. El editor anuncia un sitio y una tienda listos en 5 días.",
+      "La base es de código abierto (licencia LGPLv3), lo que mantiene el código y los datos portables, y gestiona de forma nativa varios sitios, varias sociedades y varios idiomas. Unos temas sectoriales sirven de punto de partida, con demostraciones online del sitio vitrina de un paisajista y de la tienda de un tostador de café. Un plan gratuito permite probar un sitio vitrina de tres páginas antes de elegir un plan de pago."
+     ]
+    },
+    {
+     "h2": "Hacer crecer el sistema por etapas",
+     "paragraphs": [
+      "Una vez que el sitio esté en línea, avance según las necesidades observadas y no según una lista de deseos. Active la tienda cuando lleguen solicitudes de compra, la gestión del stock cuando las roturas o los desajustes resulten costosos, el CRM cuando el seguimiento de los clientes potenciales se le escape y las compras cuando se multipliquen los pedidos a proveedores.",
+      "En cada etapa, fije un indicador sencillo: tasa de conversión de la tienda, número de introducciones manuales evitadas, plazo de tramitación de un pedido. Ese indicador le dirá si la siguiente etapa es útil y en qué momento."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Hay que lanzar el sitio y la tienda al mismo tiempo?",
+     "a": "No necesariamente. Si vende sobre todo en persona o con cita previa, un sitio vitrina bien construido puede bastar al principio. Lo importante es que la base elegida permita añadir la tienda más adelante sin reconstruir el sitio."
+    },
+    {
+     "q": "¿Una herramienta como Shopify o Wix es una mala elección?",
+     "a": "No, son soluciones eficaces para lanzar un sitio o una tienda. La cuestión es lo que viene después: si prevé gestionar stock, compras y relación con los clientes en un mismo sistema, compruebe desde el principio cómo se cubrirán esas necesidades y a qué coste."
+    },
+    {
+     "q": "¿Cómo evitar perder posicionamiento al cambiar de herramienta?",
+     "a": "Conserve en la medida de lo posible las mismas direcciones de página, configure redirecciones permanentes para las que cambien y mantenga los títulos y descripciones existentes. Lo más seguro sigue siendo elegir una base que evite la migración."
+    }
+   ]
+  },
+  "site-vitrine-ecommerce-erp-ordre": {
+   "intro": "El orden más seguro sigue su forma de vender: primero un sitio vitrina que haga su oferta fácil de encontrar y creíble, después una tienda online si parte de las ventas puede hacerse sin conversación previa y, por último, un ERP cuando el volumen de pedidos, stock o proveedores haga costoso volver a introducir los datos. Cada etapa debe apoyarse en la anterior en lugar de sustituirla.",
+   "sections": [
+    {
+     "h2": "Etapa 1: el sitio vitrina, para ser encontrado y generar confianza",
+     "paragraphs": [
+      "El sitio vitrina responde a una pregunta sencilla: ¿puede un cliente que ha oído hablar de usted comprobar rápidamente qué hace, dónde y para quién? Para un artesano, un despacho profesional o una empresa de servicios, suele ser lo esencial de la necesidad digital al principio.",
+      "Cuide las páginas que influyen en la decisión: presentación de la oferta, trabajos realizados o referencias, zona de trabajo, contacto. Dé a cada página un título y una descripción que correspondan a lo que buscan sus clientes: es la base del posicionamiento local."
+     ]
+    },
+    {
+     "h2": "Etapa 2: la tienda online, cuando la venta puede hacerse sin usted",
+     "paragraphs": [
+      "Una tienda se justifica cuando parte de los productos o servicios puede comprarse sin presupuesto ni conversación: precio fijo, características claras, entrega o recogida organizadas. Si cada venta requiere un intercambio, un formulario de solicitud de presupuesto bien diseñado puede ser más útil que un carrito."
+     ],
+     "list": [
+      "Un catálogo estable, con precios y descripciones fiables",
+      "Condiciones de entrega, recogida y devolución definidas",
+      "Un medio de pago online adaptado a sus clientes",
+      "Una persona encargada de tramitar los pedidos cada día",
+      "Un seguimiento del stock, aunque sea sencillo, para no vender lo que ya no tiene"
+     ]
+    },
+    {
+     "h2": "Etapa 3: el ERP, cuando volver a introducir datos cuesta más que la herramienta",
+     "paragraphs": [
+      "Un ERP reúne en una misma base de datos las ventas, las compras, el stock, la facturación y la relación con los clientes. Resulta pertinente cuando la información circula mal entre estas funciones: pedidos introducidos a mano, stock erróneo, seguimientos de clientes olvidados, márgenes difíciles de reconstruir.",
+      "La señal no es el tamaño de la empresa, sino la repetición de los roces. Anote durante unas semanas las introducciones manuales y los errores que provocan: si la lista crece, el coste de un sistema unificado resulta más fácil de justificar."
+     ]
+    },
+    {
+     "h2": "Elegir una base que permita pasar de una etapa a otra",
+     "paragraphs": [
+      "La trampa consiste en elegir cada herramienta por separado: un constructor de sitios, después una solución de tienda y luego un ERP que obliga a rehacerlo todo. Cada transición exige migrar productos, clientes y a veces direcciones de página.",
+      "Otra vía consiste en partir de una base única en la que estas etapas son módulos que se activan. Es el principio de [Omnifloo](https://omnifloo.com/), una oferta editada por Dyonysos sobre Odoo: primero un sitio vitrina, después una tienda con pago y gestión de stock y luego CRM, ventas, compras e inventario en el mismo sistema, sin migración. La base es de código abierto, lo que mantiene los datos exportables.",
+      "Sea cual sea la herramienta elegida, plantee la misma pregunta en cada etapa: ¿qué habrá que rehacer o migrar para pasar a la siguiente?"
+     ]
+    },
+    {
+     "h2": "Adaptar el orden a su situación",
+     "paragraphs": [
+      "Este orden no es una regla absoluta. Un comercio que ya gestiona un stock importante en tienda física puede necesitar una gestión unificada incluso antes de abrir una tienda online. Por el contrario, una actividad de servicios puede mantenerse mucho tiempo con un sitio vitrina completado con una herramienta de citas."
+     ],
+     "list": [
+      "Vende sobre todo con presupuesto: sitio vitrina y después CRM",
+      "Vende productos a precio fijo: sitio vitrina y tienda pronto, después gestión del stock",
+      "Tiene varios puntos de venta o entidades: piense en una gestión unificada desde el principio",
+      "Se dirige a varios países: compruebe pronto el soporte multilingüe y multisociedad"
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Se puede prescindir del sitio vitrina y abrir directamente una tienda?",
+     "a": "Sí, si su oferta se vende sin explicación previa. La tienda incluye entonces las páginas de presentación esenciales. Solo asegúrese de que la información que genera confianza, como las condiciones de venta, el contacto y el aviso legal, sea fácil de encontrar."
+    },
+    {
+     "q": "¿A partir de cuándo es útil un ERP para una pequeña empresa?",
+     "a": "Cuando volver a introducir datos entre ventas, stock, compras y facturación se vuelve frecuente y genera errores. No es una cuestión de facturación, sino de cómo circula la información entre las funciones."
+    },
+    {
+     "q": "¿Conviene equiparlo todo a la vez para ganar tiempo?",
+     "a": "Rara vez. Activar demasiadas funciones de golpe hace más pesada la formación y retrasa la puesta en línea. Es mejor una base que permita añadir módulos en el momento en que surge la necesidad."
+    }
+   ]
   }
  },
  "nl": {
@@ -7370,7 +7775,7 @@
      "h2": "Kies een platform dat versnippering tegengaat",
      "paragraphs": [
       "Het belangrijkste criterium is eenvoudig: het platform moet kanalen vervangen, niet erbij komen. Controleer of het de essentiële toepassingen bundelt, berichten, agenda en documenten, en of u toegang per profiel kunt regelen: schoolleiding, leerkrachten, gezinnen, leerlingen.",
-      "École Connect is bijvoorbeeld vanuit deze gedachte ontwikkeld. Het biedt een configureerbare omgeving met nieuws en berichten, een schoolagenda, gedeelde documenten, opvolging van informatie en toegang per profiel. Er bestaan ook andere oplossingen; vergelijk ze op gebruiksgemak voor gezinnen, met name op de telefoon, en op hoe eenvoudig het team ze kan inrichten."
+      "[École Connect](https://ecole-connect-pied.vercel.app/) is bijvoorbeeld vanuit deze gedachte ontwikkeld. Het biedt een configureerbare omgeving met nieuws en berichten, een schoolagenda, gedeelde documenten, opvolging van informatie en toegang per profiel. Er bestaan ook andere oplossingen; vergelijk ze op gebruiksgemak voor gezinnen, met name op de telefoon, en op hoe eenvoudig het team ze kan inrichten."
      ]
     },
     {
@@ -7433,7 +7838,7 @@
      "h2": "Beheer, toegangsrechten en gegevensbescherming",
      "paragraphs": [
       "Een schoolplatform verwerkt gegevens over minderjarigen. Het principe van dataminimalisatie moet de inrichting sturen: alleen verzamelen wat nuttig is, de zichtbaarheid van elke informatie beperken tot de betrokkenen en het verwijderen van accounts aan het einde van de schoolloopbaan regelen. Vraag de leverancier naar de hosting van de gegevens, het beheer van back-ups en de mogelijkheden om gegevens weer mee te nemen bij vertrek.",
-      "Wijs ook intern een verantwoordelijke voor het platform aan. Zonder aanspreekpunt stapelen de accounts van oud-leerlingen zich op, groeit het aantal rubrieken en verliest de tool zijn overzichtelijkheid. Een oplossing als École Connect, die werkt met toegang per profiel, maakt deze afbakening eenvoudiger, maar de spelregels moet de school zelf vaststellen."
+      "Wijs ook intern een verantwoordelijke voor het platform aan. Zonder aanspreekpunt stapelen de accounts van oud-leerlingen zich op, groeit het aantal rubrieken en verliest de tool zijn overzichtelijkheid. Een oplossing als [École Connect](https://ecole-connect-pied.vercel.app/), die werkt met toegang per profiel, maakt deze afbakening eenvoudiger, maar de spelregels moet de school zelf vaststellen."
      ]
     },
     {
@@ -7500,7 +7905,7 @@
      "h2": "Een schoolagenda opzetten die voor iedereen overzichtelijk is",
      "paragraphs": [
       "Een bruikbare agenda maakt duidelijk onderscheid tussen niveaus: evenementen voor de hele school, voor één leerjaar en voor één klas. Elk gezin mag alleen zien wat voor hem relevant is, anders wordt de agenda achtergrondruis die niemand meer raadpleegt.",
-      "Spreek een paar eenvoudige regels af: een duidelijke titel, een tijd en een plaats, en een bijgevoegd document wanneer van ouders een actie wordt verwacht, zoals een toestemmingsformulier om te ondertekenen. Publiceer evenementen zo vroeg mogelijk en wijzig ze niet zonder melding. In École Connect staan de schoolagenda en de gedeelde documenten in dezelfde omgeving, zodat u niet naar een andere tool hoeft te verwijzen."
+      "Spreek een paar eenvoudige regels af: een duidelijke titel, een tijd en een plaats, en een bijgevoegd document wanneer van ouders een actie wordt verwacht, zoals een toestemmingsformulier om te ondertekenen. Publiceer evenementen zo vroeg mogelijk en wijzig ze niet zonder melding. In [École Connect](https://ecole-connect-pied.vercel.app/) staan de schoolagenda en de gedeelde documenten in dezelfde omgeving, zodat u niet naar een andere tool hoeft te verwijzen."
      ]
     },
     {
@@ -7573,7 +7978,7 @@
      "h2": "Rationaliseren, samenvoegen of orkestreren: drie strategieën",
      "paragraphs": [
       "Rationaliseren betekent de bestaande tools houden, maar het aantal verminderen door dubbelingen te schrappen. Dat is de snelste weg, maar er blijven vaak meerdere toegangspunten bestaan.",
-      "Samenvoegen betekent kiezen voor één portaal voor alles wat met communicatie te maken heeft: nieuws, berichten, agenda en documenten. Zeer specifieke vaktools blijven bestaan, maar gezinnen hoeven zich nog maar één gewoonte eigen te maken. Dat is de aanpak van oplossingen als École Connect, die versnippering willen tegengaan in plaats van gezinnen nog een app te bezorgen.",
+      "Samenvoegen betekent kiezen voor één portaal voor alles wat met communicatie te maken heeft: nieuws, berichten, agenda en documenten. Zeer specifieke vaktools blijven bestaan, maar gezinnen hoeven zich nog maar één gewoonte eigen te maken. Dat is de aanpak van oplossingen als [École Connect](https://ecole-connect-pied.vercel.app/), die versnippering willen tegengaan in plaats van gezinnen nog een app te bezorgen.",
       "Orkestreren ten slotte betekent meerdere tools houden, maar een startpagina publiceren die ze opsomt en uitlegt waarvoor elk ervan dient. Dat kan werken in een overgangsfase, maar het vermindert de mentale belasting niet."
      ]
     },
@@ -7635,7 +8040,7 @@
      "h2": "Kies een vorm en duur die bij de klas passen",
      "paragraphs": [
       "Voor een snelle controle halverwege de les volstaan doorgaans vijf tot acht vragen. Voor een herhalingsles kunt u met een langere quiz, verdeeld in thema’s, pauzes inlassen en terugkomen op de zwakke punten. Stem de antwoordtijd af op de moeilijkheid: een reken- of analysevraag verdient meer tijd dan een woordenschatvraag.",
-      "Met een tool om snel vragen te maken, zoals QuizPlay, bereidt u deze varianten voor zonder er een hele avond aan kwijt te zijn en hergebruikt u vragen van de ene lessenreeks in de andere."
+      "Met een tool om snel vragen te maken, zoals [QuizPlay](https://quizplay-production.up.railway.app/), bereidt u deze varianten voor zonder er een hele avond aan kwijt te zijn en hergebruikt u vragen van de ene lessenreeks in de andere."
      ]
     },
     {
@@ -7677,7 +8082,7 @@
      "paragraphs": [
       "Kahoot is bekend geworden met een spelgerichte aanpak: geprojecteerde vragen, antwoorden via de apparaten van de deelnemers, een ranglijst en een competitieve sfeer. De tool is zeer verbreid in klaslokalen en wordt gewaardeerd om een groep te activeren.",
       "Wooclap wordt veel gebruikt in het hoger onderwijs en in beroepsopleidingen om een college of presentatie participatief te maken, met verschillende soorten interactie die verder gaan dan de klassieke quiz.",
-      "QuizPlay profileert zich als alternatief dat draait om eenvoud en een didactisch scenario: snel vragen maken, groepsactiviteiten, directe resultaten en het volgen van de leervoortgang, in de klas of op afstand. Deze profielen sluiten elkaar niet uit, en veel docenten gebruiken afhankelijk van het moment meerdere tools."
+      "[QuizPlay](https://quizplay-production.up.railway.app/) profileert zich als alternatief dat draait om eenvoud en een didactisch scenario: snel vragen maken, groepsactiviteiten, directe resultaten en het volgen van de leervoortgang, in de klas of op afstand. Deze profielen sluiten elkaar niet uit, en veel docenten gebruiken afhankelijk van het moment meerdere tools."
      ]
     },
     {
@@ -7768,7 +8173,7 @@
      "h2": "Quizzen als controlemoment, niet als decor",
      "paragraphs": [
       "Een quiz op het juiste moment levert waardevolle informatie op: begrijpt de hele groep het onderwerp, of alleen de snelsten? Na een belangrijke inbreng helpt hij u direct te beslissen of u op een punt terugkomt of verdergaat.",
-      "Met een tool als QuizPlay kunt u deze quizzen klassikaal afnemen en de resultaten direct tonen, zodat de controle een gesprek wordt. Het belangrijkste blijft de antwoorden te bespreken, vooral de fouten die meerdere deelnemers maakten."
+      "Met een tool als [QuizPlay](https://quizplay-production.up.railway.app/) kunt u deze quizzen klassikaal afnemen en de resultaten direct tonen, zodat de controle een gesprek wordt. Het belangrijkste blijft de antwoorden te bespreken, vooral de fouten die meerdere deelnemers maakten."
      ]
     },
     {
@@ -7837,7 +8242,7 @@
      "h2": "Organiseer het delen zo dat bronnen worden teruggevonden",
      "paragraphs": [
       "Het grootste probleem bij het delen van lessen is niet technisch maar organisatorisch: een document dat in september per bericht is verstuurd, is in december onvindbaar. Beter is één stabiel toegangspunt waarvan het adres niet verandert, met een indeling per thema of per onderdeel in plaats van per verzenddatum.",
-      "Een bibliotheek met lesmateriaal als CoursHub speelt in op deze behoefte: u kunt er leermiddelen maken, ze per thema indelen, ze met de zoekfunctie terugvinden en lessen delen met uw cursisten of collega’s. Voor een kleine hoeveelheid kan ook een gedeelde opslagruimte volstaan, mits u vanaf het begin regels vastlegt voor naamgeving en ordening."
+      "Een bibliotheek met lesmateriaal als [CoursHub](https://coursehub-dusky-seven.vercel.app/) speelt in op deze behoefte: u kunt er leermiddelen maken, ze per thema indelen, ze met de zoekfunctie terugvinden en lessen delen met uw cursisten of collega’s. Voor een kleine hoeveelheid kan ook een gedeelde opslagruimte volstaan, mits u vanaf het begin regels vastlegt voor naamgeving en ordening."
      ]
     },
     {
@@ -7911,7 +8316,7 @@
     {
      "h2": "Waar CoursHub staat tussen de opties",
      "paragraphs": [
-      "CoursHub is ontworpen om lesmateriaal te centraliseren, te ordenen, terug te vinden en te delen in één samenhangende bibliotheek. De functies omvatten het maken van leermiddelen, thematische indeling, zoeken, lessen delen en een gedeelde kennisbank, voor toepassingen zoals een bibliotheek van de onderwijsinstelling, een opleidingscatalogus of het delen tussen docenten.",
+      "[CoursHub](https://coursehub-dusky-seven.vercel.app/) is ontworpen om lesmateriaal te centraliseren, te ordenen, terug te vinden en te delen in één samenhangende bibliotheek. De functies omvatten het maken van leermiddelen, thematische indeling, zoeken, lessen delen en een gedeelde kennisbank, voor toepassingen zoals een bibliotheek van de onderwijsinstelling, een opleidingscatalogus of het delen tussen docenten.",
       "Is uw belangrijkste behoefte het beheer van inschrijvingen, cijfers of getoetste leertrajecten, dan past een volledig leerplatform beter, en kan een bibliotheek met lesmateriaal als aanvulling dienen. Het belangrijkste is dat u niet van één tool verlangt dat hij alles doet."
      ]
     },
@@ -8597,7 +9002,7 @@
      "h2": "Begin met de audit, niet met de tool",
      "paragraphs": [
       "De meest gemaakte fout is software kiezen voordat u de processen hebt beschreven die ze moet ondersteunen. Een audit, hoe beperkt ook, brengt de stromen in kaart, spoort dubbele invoer op en becijfert de verwachte winst. Soms blijkt daaruit dat een volledige suite overbemeten zou zijn, of juist dat een opeenstapeling van koppelingen zwaarder zou worden dan één systeem.",
-      "De Verbonden bedrijfsoplossingen van Dyonysos vertrekken vanuit die procesaudit. Afhankelijk van de context kunnen ze uitmonden in een integratie rond Odoo of in API-koppelingen en gerichte bedrijfsworkflows, in beide gevallen met begeleiding van de teams. De twee routes sluiten elkaar niet uit: een goed gedocumenteerd gericht project bereidt ook een eventuele latere migratie voor."
+      "De Verbonden bedrijfsoplossingen van Dyonysos vertrekken vanuit die procesaudit. Afhankelijk van de context kunnen ze uitmonden in een [integratie rond Odoo](https://dyonysos.fr/applications-odoo) of in API-koppelingen en gerichte bedrijfsworkflows, in beide gevallen met begeleiding van de teams. De twee routes sluiten elkaar niet uit: een goed gedocumenteerd gericht project bereidt ook een eventuele latere migratie voor."
      ]
     }
    ],
@@ -8658,7 +9063,8 @@
      "h2": "De technische route kiezen: no-code, standaardpakket of aanpasbare basis",
      "paragraphs": [
       "Er bestaan meerdere benaderingen naast elkaar. Met no-codetools test u een idee heel snel, maar ze stuiten op grenzen zodra de bedrijfsregels complexer worden. Standaardpakketten voor marketplaces, zoals Sharetribe, dekken de belangrijkste behoeften en worden regelmatig doorontwikkeld. Maatwerkontwikkeling biedt volledige vrijheid, tegen een langere doorlooptijd en een hoger budget.",
-      "Tussen deze opties in vertrekt een aanpasbare basis zoals de Aanpasbare marketplace van Dyonysos vanuit bestaande bouwstenen (profielen, advertenties, zoeken en filters, transactietraject, beheer) en kunt u daarna het merk en de workflows aanpassen. De juiste keuze hangt vooral af van hoe specifiek uw transactie is en hoeveel controle u wilt houden over het product en de uitrol ervan."
+      "Tussen deze opties in vertrekt een aanpasbare basis zoals de Aanpasbare marketplace van Dyonysos vanuit bestaande bouwstenen (profielen, advertenties, zoeken en filters, transactietraject, beheer) en kunt u daarna het merk en de workflows aanpassen. De juiste keuze hangt vooral af van hoe specifiek uw transactie is en hoeveel controle u wilt houden over het product en de uitrol ervan.",
+      "Binnen het Dyonysos-ecosysteem past [Tribuplace](https://tribuplace.com/) deze aanpak toe als kant-en-klare marketplacebasis met drie rollen: klant, aanbieder en operator. Het omvat zoeken met filters, reserveren per tijdslot, prijsonderhandeling en betalingen via Stripe Connect, en elke klant krijgt een testomgeving die los staat van de productie. Met een online demo verkent u de drie omgevingen voordat u zich vastlegt, en vanaf het Extend-abonnement wordt de broncode overgedragen."
      ]
     },
     {
@@ -8718,7 +9124,8 @@
      "h2": "Overzicht van soorten alternatieven",
      "paragraphs": [
       "De alternatieven vallen in drie families uiteen. SaaS-platforms voor marketplaces, waartoe Sharetribe behoort, geven voorrang aan snelheid. Frameworks en extensies voor multi-vendor e-commerce passen wanneer u al een webwinkel en een technisch team hebt. Aanpasbare basisplatforms en maatwerkontwikkeling zijn gericht op projecten waarin controle voorop staat.",
-      "Binnen die laatste familie is de Aanpasbare marketplace van Dyonysos het overwegen waard wanneer controle over het product, de uitrol of specifieke workflows prioriteit heeft. Ze vertrekt vanuit een basis met profielen en advertenties, zoeken en filters, transactietraject, beheer en merkaanpassing, voor toepassingen zoals een dienstenmarketplace, een B2B-portaal of een verhuurplatform."
+      "Binnen die laatste familie is de Aanpasbare marketplace van Dyonysos het overwegen waard wanneer controle over het product, de uitrol of specifieke workflows prioriteit heeft. Ze vertrekt vanuit een basis met profielen en advertenties, zoeken en filters, transactietraject, beheer en merkaanpassing, voor toepassingen zoals een dienstenmarketplace, een B2B-portaal of een verhuurplatform.",
+      "[Tribuplace](https://tribuplace.com/), de marketplacebasis van het Dyonysos-ecosysteem, richt zich uitdrukkelijk op deze situatie. Het volgt het drierollenmodel dat Sharetribe bekend heeft gemaakt (klant, aanbieder, operator), met een configureerbare transactie-engine en betalingen via Stripe Connect, maar laat de keuze van de hosting aan u en draagt vanaf het Extend-abonnement de broncode over. Neem het op in uw vergelijkingsraster als omkeerbaarheid en eigendom van de code tot uw criteria behoren."
      ]
     },
     {
@@ -9707,7 +10114,7 @@
      "h2": "Eine Plattform wählen, die die Zersplitterung verringert",
      "paragraphs": [
       "Das Hauptkriterium ist einfach: Die Plattform muss Kanäle ersetzen, nicht zu ihnen hinzukommen. Prüfen Sie, ob sie die wesentlichen Funktionen – Nachrichten, Kalender und Dokumente – bündelt und ob sich Zugriffe nach Rollen steuern lassen: Schulleitung, Lehrkräfte, Familien, Schülerinnen und Schüler.",
-      "École Connect wurde zum Beispiel nach dieser Logik entwickelt. Die Lösung bietet einen konfigurierbaren Bereich mit Neuigkeiten und Nachrichten, Schulkalender, geteilten Dokumenten, Nachverfolgung von Informationen und rollenbasiertem Zugriff. Es gibt auch andere Lösungen; vergleichen Sie sie danach, wie einfach sie für Familien zu nutzen sind, vor allem auf dem Smartphone, und wie leicht sie sich vom Team einrichten lassen."
+      "[École Connect](https://ecole-connect-pied.vercel.app/) wurde zum Beispiel nach dieser Logik entwickelt. Die Lösung bietet einen konfigurierbaren Bereich mit Neuigkeiten und Nachrichten, Schulkalender, geteilten Dokumenten, Nachverfolgung von Informationen und rollenbasiertem Zugriff. Es gibt auch andere Lösungen; vergleichen Sie sie danach, wie einfach sie für Familien zu nutzen sind, vor allem auf dem Smartphone, und wie leicht sie sich vom Team einrichten lassen."
      ]
     },
     {
@@ -9770,7 +10177,7 @@
      "h2": "Verantwortlichkeiten, Zugriffsrechte und Datenschutz",
      "paragraphs": [
       "Eine Schulplattform verarbeitet Daten von Minderjährigen. Das Prinzip der Datenminimierung sollte die Konfiguration leiten: nur Nützliches erheben, die Sichtbarkeit jeder Information auf die betroffenen Personen beschränken und die Löschung der Konten am Ende der Schulzeit vorsehen. Fragen Sie den Anbieter nach dem Hosting der Daten, der Handhabung von Backups und den Bedingungen für einen späteren Wechsel (Reversibilität).",
-      "Benennen Sie außerdem eine interne verantwortliche Person für die Plattform. Ohne Ansprechperson häufen sich die Konten ehemaliger Schülerinnen und Schüler, die Rubriken vervielfachen sich und das Tool wird unübersichtlich. Eine Lösung wie École Connect mit rollenbasiertem Zugriff erleichtert diese Strukturierung, doch die Spielregeln muss die Schule selbst festlegen."
+      "Benennen Sie außerdem eine interne verantwortliche Person für die Plattform. Ohne Ansprechperson häufen sich die Konten ehemaliger Schülerinnen und Schüler, die Rubriken vervielfachen sich und das Tool wird unübersichtlich. Eine Lösung wie [École Connect](https://ecole-connect-pied.vercel.app/) mit rollenbasiertem Zugriff erleichtert diese Strukturierung, doch die Spielregeln muss die Schule selbst festlegen."
      ]
     },
     {
@@ -9837,7 +10244,7 @@
      "h2": "Einen Schulkalender aufbauen, den alle verstehen",
      "paragraphs": [
       "Ein nützlicher Kalender unterscheidet klar zwischen Ebenen: Veranstaltungen der ganzen Schule, einer Jahrgangsstufe, einer Klasse. Jede Familie sollte nur sehen, was sie betrifft, sonst wird der Kalender zum Hintergrundrauschen, das niemand mehr beachtet.",
-      "Legen Sie einige einfache Regeln fest: ein aussagekräftiger Titel, Uhrzeit und Ort sowie ein angehängtes Dokument, wenn von den Eltern etwas erwartet wird, etwa eine zu unterschreibende Einverständniserklärung. Veröffentlichen Sie Termine so früh wie möglich und ändern Sie sie nicht ohne Benachrichtigung. In École Connect befinden sich Schulkalender und geteilte Dokumente im selben Bereich, sodass nicht auf ein anderes Tool verwiesen werden muss."
+      "Legen Sie einige einfache Regeln fest: ein aussagekräftiger Titel, Uhrzeit und Ort sowie ein angehängtes Dokument, wenn von den Eltern etwas erwartet wird, etwa eine zu unterschreibende Einverständniserklärung. Veröffentlichen Sie Termine so früh wie möglich und ändern Sie sie nicht ohne Benachrichtigung. In [École Connect](https://ecole-connect-pied.vercel.app/) befinden sich Schulkalender und geteilte Dokumente im selben Bereich, sodass nicht auf ein anderes Tool verwiesen werden muss."
      ]
     },
     {
@@ -9910,7 +10317,7 @@
      "h2": "Reduzieren, vereinheitlichen oder koordinieren: drei Strategien",
      "paragraphs": [
       "Reduzieren bedeutet, die bestehenden Tools zu behalten, ihre Zahl aber durch das Streichen von Doppelungen zu verringern. Das ist der schnellste Weg, lässt aber oft mehrere Zugangspunkte bestehen.",
-      "Vereinheitlichen heißt, ein einziges Portal für alles zu wählen, was Kommunikation betrifft: Neuigkeiten, Nachrichten, Kalender und Dokumente. Sehr spezifische Fachtools bleiben bestehen, doch Familien müssen sich nur noch eine Gewohnheit aneignen. Diesen Ansatz verfolgen Lösungen wie École Connect, die die Zersplitterung verringern wollen, statt den Familien eine weitere App hinzuzufügen.",
+      "Vereinheitlichen heißt, ein einziges Portal für alles zu wählen, was Kommunikation betrifft: Neuigkeiten, Nachrichten, Kalender und Dokumente. Sehr spezifische Fachtools bleiben bestehen, doch Familien müssen sich nur noch eine Gewohnheit aneignen. Diesen Ansatz verfolgen Lösungen wie [École Connect](https://ecole-connect-pied.vercel.app/), die die Zersplitterung verringern wollen, statt den Familien eine weitere App hinzuzufügen.",
       "Koordinieren schließlich bedeutet, mehrere Tools zu behalten, aber eine Startseite zu veröffentlichen, die sie auflistet und erklärt, wofür jedes dient. Diese Lösung kann in einer Übergangsphase passen, verringert aber nicht die kognitive Belastung."
      ]
     },
@@ -9972,7 +10379,7 @@
      "h2": "Format und Dauer passend zur Klasse wählen",
      "paragraphs": [
       "Für eine kurze Überprüfung mitten im Unterricht genügen in der Regel fünf bis acht Fragen. Für eine Wiederholungsstunde erlaubt ein längeres, nach Themen gegliedertes Quiz Pausen und die Rückkehr zu unsicheren Punkten. Passen Sie die Antwortzeit an den Schwierigkeitsgrad an: Eine Rechen- oder Analysefrage verdient mehr Zeit als eine Vokabelfrage.",
-      "Ein Tool zur schnellen Fragenerstellung wie QuizPlay ermöglicht es, solche Varianten vorzubereiten, ohne den ganzen Abend daran zu sitzen, und Fragen von einer Unterrichtseinheit zur nächsten wiederzuverwenden."
+      "Ein Tool zur schnellen Fragenerstellung wie [QuizPlay](https://quizplay-production.up.railway.app/) ermöglicht es, solche Varianten vorzubereiten, ohne den ganzen Abend daran zu sitzen, und Fragen von einer Unterrichtseinheit zur nächsten wiederzuverwenden."
      ]
     },
     {
@@ -10014,7 +10421,7 @@
      "paragraphs": [
       "Kahoot ist durch einen spielerischen Ansatz bekannt geworden: projizierte Fragen, Antworten über die Geräte der Teilnehmenden, Rangliste und Wettbewerbsatmosphäre. Es ist in Schulklassen weit verbreitet und beliebt, um eine Gruppe zu aktivieren.",
       "Wooclap wird häufig an Hochschulen und in der beruflichen Weiterbildung eingesetzt, um eine Lehrveranstaltung oder Präsentation partizipativ zu gestalten – mit verschiedenen Interaktionsformen, die über das klassische Quiz hinausgehen.",
-      "QuizPlay positioniert sich als Alternative, die auf Einfachheit und didaktischen Ablauf setzt: schnelle Fragenerstellung, Gruppenmoderation, sofortige Ergebnisse und Verfolgung des Lernfortschritts, im Unterricht oder online. Diese Ausrichtungen schließen sich nicht aus, und viele Lehrkräfte nutzen je nach Situation mehrere Tools."
+      "[QuizPlay](https://quizplay-production.up.railway.app/) positioniert sich als Alternative, die auf Einfachheit und didaktischen Ablauf setzt: schnelle Fragenerstellung, Gruppenmoderation, sofortige Ergebnisse und Verfolgung des Lernfortschritts, im Unterricht oder online. Diese Ausrichtungen schließen sich nicht aus, und viele Lehrkräfte nutzen je nach Situation mehrere Tools."
      ]
     },
     {
@@ -10105,7 +10512,7 @@
      "h2": "Quizze als Kontrollpunkte, nicht als Dekoration",
      "paragraphs": [
       "Ein zum richtigen Zeitpunkt eingesetztes Quiz liefert eine wertvolle Information: Hat die ganze Gruppe das Thema verstanden oder nur die Schnellsten? Nach einem zentralen Input eingesetzt, erlaubt es die sofortige Entscheidung, einen Punkt zu wiederholen oder weiterzugehen.",
-      "Ein Tool wie QuizPlay ermöglicht es, diese Quizze gemeinsam durchzuführen und die Ergebnisse sofort anzuzeigen, sodass aus der Überprüfung eine Diskussion wird. Am wichtigsten bleibt, die Antworten zu besprechen, vor allem Fehler, die mehrere Teilnehmende gemacht haben."
+      "Ein Tool wie [QuizPlay](https://quizplay-production.up.railway.app/) ermöglicht es, diese Quizze gemeinsam durchzuführen und die Ergebnisse sofort anzuzeigen, sodass aus der Überprüfung eine Diskussion wird. Am wichtigsten bleibt, die Antworten zu besprechen, vor allem Fehler, die mehrere Teilnehmende gemacht haben."
      ]
     },
     {
@@ -10174,7 +10581,7 @@
      "h2": "Das Teilen so organisieren, dass Ressourcen wiedergefunden werden",
      "paragraphs": [
       "Das Teilen von Kursen scheitert selten an der Technik, sondern an der Organisation: Ein im September per Messenger verschicktes Dokument ist im Dezember nicht mehr auffindbar. Besser ist ein zentraler, stabiler Zugangspunkt mit gleichbleibender Adresse und eine Ordnung nach Thema oder Sequenz statt nach Versanddatum.",
-      "Eine Materialbibliothek wie CoursHub erfüllt diesen Bedarf: Sie können Ressourcen erstellen, nach Themen ordnen, über die Suche wiederfinden und Kurse mit Ihren Lernenden oder Kolleginnen und Kollegen teilen. Bei geringem Umfang kann auch ein gemeinsamer Speicherort genügen, sofern Sie von Anfang an Regeln für Benennung und Ablage festlegen."
+      "Eine Materialbibliothek wie [CoursHub](https://coursehub-dusky-seven.vercel.app/) erfüllt diesen Bedarf: Sie können Ressourcen erstellen, nach Themen ordnen, über die Suche wiederfinden und Kurse mit Ihren Lernenden oder Kolleginnen und Kollegen teilen. Bei geringem Umfang kann auch ein gemeinsamer Speicherort genügen, sofern Sie von Anfang an Regeln für Benennung und Ablage festlegen."
      ]
     },
     {
@@ -10248,7 +10655,7 @@
     {
      "h2": "Wo CoursHub unter den Optionen steht",
      "paragraphs": [
-      "CoursHub ist darauf ausgelegt, Lehr- und Lernmaterialien in einer einheitlichen Bibliothek zu bündeln, zu ordnen, wiederzufinden und zu teilen. Seine Funktionen umfassen die Erstellung von Ressourcen, die thematische Einordnung, die Suche, das Teilen von Kursen und den gemeinsamen Wissensaufbau – für Einsatzzwecke wie die Bibliothek einer Bildungseinrichtung, einen Schulungskatalog oder den Austausch zwischen Lehrkräften.",
+      "[CoursHub](https://coursehub-dusky-seven.vercel.app/) ist darauf ausgelegt, Lehr- und Lernmaterialien in einer einheitlichen Bibliothek zu bündeln, zu ordnen, wiederzufinden und zu teilen. Seine Funktionen umfassen die Erstellung von Ressourcen, die thematische Einordnung, die Suche, das Teilen von Kursen und den gemeinsamen Wissensaufbau – für Einsatzzwecke wie die Bibliothek einer Bildungseinrichtung, einen Schulungskatalog oder den Austausch zwischen Lehrkräften.",
       "Geht es Ihnen vor allem um die Verwaltung von Anmeldungen, Noten oder bewerteten Lernpfaden, ist eine vollständige Lernplattform besser geeignet, und eine Materialbibliothek kann sie ergänzen. Wichtig ist, nicht von einem einzigen Tool alles zu verlangen."
      ]
     },
@@ -10934,7 +11341,7 @@
      "h2": "Mit dem Audit beginnen, nicht mit dem Tool",
      "paragraphs": [
       "Der häufigste Fehler besteht darin, eine Software auszuwählen, bevor die Prozesse beschrieben sind, die sie unterstützen soll. Ein Audit, auch ein schlankes, bildet die Abläufe ab, identifiziert doppelte Eingaben und beziffert den erwarteten Nutzen. Manchmal zeigt es, dass eine Komplettsuite überdimensioniert wäre, oder umgekehrt, dass eine Ansammlung von Konnektoren schwerfälliger würde als ein einheitliches System.",
-      "Das Angebot Vernetzte Unternehmenssoftware von Dyonysos setzt bei diesem Prozessaudit an. Je nach Ausgangslage kann es zu einer Integration rund um Odoo oder zu API-Konnektoren und gezielten Geschäftsworkflows führen, in beiden Fällen mit Begleitung der Teams. Die beiden Wege schließen sich nicht aus: Ein gut dokumentiertes gezieltes Projekt bereitet auch eine mögliche spätere Migration vor."
+      "Das Angebot Vernetzte Unternehmenssoftware von Dyonysos setzt bei diesem Prozessaudit an. Je nach Ausgangslage kann es zu einer [Integration rund um Odoo](https://dyonysos.fr/applications-odoo) oder zu API-Konnektoren und gezielten Geschäftsworkflows führen, in beiden Fällen mit Begleitung der Teams. Die beiden Wege schließen sich nicht aus: Ein gut dokumentiertes gezieltes Projekt bereitet auch eine mögliche spätere Migration vor."
      ]
     }
    ],
@@ -10995,7 +11402,8 @@
      "h2": "Den technischen Weg wählen: No-Code, Standardlösung oder anpassbare Basis",
      "paragraphs": [
       "Es gibt mehrere Ansätze. No-Code-Tools ermöglichen es, eine Idee sehr schnell zu testen, stoßen aber an Grenzen, sobald die Geschäftsregeln komplexer werden. Standardlösungen für Marktplätze wie Sharetribe decken die meisten Anforderungen ab und werden regelmäßig weiterentwickelt. Eine Individualentwicklung bietet volle Freiheit, erfordert aber mehr Zeit und Budget.",
-      "Zwischen diesen Optionen setzt eine anpassbare Basis wie das Dyonysos-Angebot Anpassbarer Marktplatz auf vorhandenen Bausteinen auf (Profile, Inserate, Suche und Filter, Transaktionsablauf, Verwaltung) und ermöglicht es, anschließend Markenauftritt und Workflows anzupassen. Die richtige Wahl hängt vor allem davon ab, wie spezifisch Ihre Transaktion ist und wie viel Kontrolle Sie über Produkt und Deployment behalten möchten."
+      "Zwischen diesen Optionen setzt eine anpassbare Basis wie das Dyonysos-Angebot Anpassbarer Marktplatz auf vorhandenen Bausteinen auf (Profile, Inserate, Suche und Filter, Transaktionsablauf, Verwaltung) und ermöglicht es, anschließend Markenauftritt und Workflows anzupassen. Die richtige Wahl hängt vor allem davon ab, wie spezifisch Ihre Transaktion ist und wie viel Kontrolle Sie über Produkt und Deployment behalten möchten.",
+      "Im Dyonysos-Ökosystem setzt [Tribuplace](https://tribuplace.com/) diesen Ansatz als sofort einsetzbare Marktplatz-Basis mit drei Rollen um: Kunde, Anbieter und Betreiber. Enthalten sind Suche mit Filtern, Buchung nach Zeitfenstern, Preisverhandlung und Zahlungen über Stripe Connect; jeder Kunde erhält eine von der Produktion getrennte Testumgebung. Eine Online-Demo zeigt alle drei Bereiche, bevor Sie sich festlegen, und ab dem Tarif Extend wird der Quellcode übergeben."
      ]
     },
     {
@@ -11055,7 +11463,8 @@
      "h2": "Überblick über die Arten von Alternativen",
      "paragraphs": [
       "Die Alternativen lassen sich in drei Gruppen einteilen. SaaS-Plattformen für Marktplätze, zu denen Sharetribe gehört, setzen auf Schnelligkeit. Frameworks und Erweiterungen für Multi-Vendor-E-Commerce eignen sich, wenn Sie bereits einen Onlineshop und ein technisches Team haben. Anpassbare Basislösungen und Individualentwicklung zielen auf Projekte, bei denen Kontrolle Vorrang hat.",
-      "In dieser letzten Gruppe kommt das Dyonysos-Angebot Anpassbarer Marktplatz in Betracht, wenn die Kontrolle über Produkt, Deployment oder spezifische Workflows Vorrang hat. Es baut auf einer Basis mit Profilen und Inseraten, Suche und Filtern, Transaktionsablauf, Verwaltung und individuellem Branding auf – für Einsatzzwecke wie einen Marktplatz für Dienstleistungen, ein B2B-Portal oder eine Vermietungsplattform."
+      "In dieser letzten Gruppe kommt das Dyonysos-Angebot Anpassbarer Marktplatz in Betracht, wenn die Kontrolle über Produkt, Deployment oder spezifische Workflows Vorrang hat. Es baut auf einer Basis mit Profilen und Inseraten, Suche und Filtern, Transaktionsablauf, Verwaltung und individuellem Branding auf – für Einsatzzwecke wie einen Marktplatz für Dienstleistungen, ein B2B-Portal oder eine Vermietungsplattform.",
+      "[Tribuplace](https://tribuplace.com/), die Marktplatz-Basis des Dyonysos-Ökosystems, ist ausdrücklich auf diesen Fall ausgerichtet. Es übernimmt das von Sharetribe bekannt gemachte Drei-Rollen-Modell (Kunde, Anbieter, Betreiber) mit konfigurierbarer Transaktions-Engine und Zahlungen über Stripe Connect, lässt Ihnen aber die Wahl des Hostings und übergibt ab dem Tarif Extend den Quellcode. Es gehört in Ihr Vergleichsraster, wenn Umkehrbarkeit und Eigentum am Code zu Ihren Kriterien zählen."
      ]
     },
     {

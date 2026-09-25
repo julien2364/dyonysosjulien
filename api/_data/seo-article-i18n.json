@@ -34,7 +34,9 @@
    "formation-ms-project-entreprise": "Corporate MS Project Training: Curriculum and Benefits",
    "formation-gestion-projet-organisme": "How Do You Design Effective Project Management Training?",
    "formateur-gestion-projet-universite-ecole": "Bringing a Project Management Trainer Into a University or School",
-   "conseil-gestion-projet-sur-mesure": "When Should You Hire a Project Management Consultant?"
+   "conseil-gestion-projet-sur-mesure": "When Should You Hire a Project Management Consultant?",
+   "lancer-site-boutique-en-ligne-evolutif": "How to Launch Your Website and Online Store Without Starting Over as You Grow",
+   "site-vitrine-ecommerce-erp-ordre": "Brochure Website, E-commerce, ERP: In What Order Should You Equip Your Business?"
   },
   "products": {
    "cvdesignpro": {
@@ -296,6 +298,26 @@
      "Business analysis",
      "Tailored consulting"
     ]
+   },
+   "omnifloo": {
+    "name": "Omnifloo",
+    "tag": "Website · Online store · ERP",
+    "problem": "A website and a store built on separate tools often mean migrating everything once the business needs stock, purchasing or CRM.",
+    "audience": "Small businesses, tradespeople, retailers and growing SMEs.",
+    "value": "Launch a brochure website and an online store on an open-source Odoo foundation, then activate CRM, sales, purchasing and inventory in the same place, with no migration.",
+    "compare": "Compared with Shopify or Wix, the benefit lies in the continuity towards a full ERP; compared with a proprietary cloud ERP suite, in the portability of code and data.",
+    "uses": [
+     "A tradesperson’s brochure website",
+     "A retailer’s online store",
+     "Gradual move to an ERP"
+    ],
+    "features": [
+     "Brochure website and industry themes",
+     "Online store with payment and stock",
+     "Multi-website, multi-company, multilingual",
+     "CRM, sales, purchasing, inventory",
+     "Open-source foundation, exportable data"
+    ]
    }
   }
  },
@@ -334,7 +356,9 @@
    "formation-ms-project-entreprise": "Formación en MS Project para empresas: programa y beneficios",
    "formation-gestion-projet-organisme": "¿Cómo diseñar una formación eficaz en gestión de proyectos?",
    "formateur-gestion-projet-universite-ecole": "Contar con un formador en gestión de proyectos en una universidad o escuela",
-   "conseil-gestion-projet-sur-mesure": "¿Cuándo recurrir a un consultor en gestión de proyectos?"
+   "conseil-gestion-projet-sur-mesure": "¿Cuándo recurrir a un consultor en gestión de proyectos?",
+   "lancer-site-boutique-en-ligne-evolutif": "Cómo lanzar su sitio web y su tienda online sin volver a empezar de cero al crecer",
+   "site-vitrine-ecommerce-erp-ordre": "Sitio vitrina, e-commerce, ERP: ¿en qué orden equiparse?"
   },
   "products": {
    "cvdesignpro": {
@@ -595,6 +619,26 @@
      "PM² y buenas prácticas PMP",
      "Business analysis",
      "Consultoría a medida"
+    ]
+   },
+   "omnifloo": {
+    "name": "Omnifloo",
+    "tag": "Sitio web · Tienda online · ERP",
+    "problem": "Un sitio y una tienda montados con herramientas aisladas suelen obligar a migrarlo todo cuando la actividad necesita stock, compras o CRM.",
+    "audience": "Pequeñas empresas, artesanos, comercios y pymes en crecimiento.",
+    "value": "Lanzar un sitio vitrina y una tienda online sobre una base Odoo de código abierto y después activar CRM, ventas, compras e inventario en el mismo lugar, sin migración.",
+    "compare": "Frente a Shopify o Wix, el interés está en la continuidad hacia un ERP completo; frente a una suite ERP en la nube propietaria, en la portabilidad del código y de los datos.",
+    "uses": [
+     "Sitio vitrina de un artesano",
+     "Tienda online de un comercio",
+     "Paso progresivo a un ERP"
+    ],
+    "features": [
+     "Sitio vitrina y temas sectoriales",
+     "Tienda online con pago y stock",
+     "Multisitio, multisociedad, multilingüe",
+     "CRM, ventas, compras, inventario",
+     "Base de código abierto, datos exportables"
     ]
    }
   }

@@ -4,19 +4,22 @@ const { loadData, renderArticle, renderProduct, renderBlogIndex, LANGS } = requi
 
 const data = loadData();
 const slugs = data.articles.map((a) => a[0]);
+// Langues réellement disponibles pour un article (les guides Omnifloo n'existent qu'en fr, en, es).
+const available = (slug) => LANGS.filter((l) => l === 'fr' || (data.i18n[l].titles[slug] && data.bodies[l][slug]));
 
 test('chaque article et chaque langue produit un HTML complet et autonome', () => {
   for (const lang of LANGS) {
     for (const slug of slugs) {
       const { status, html, canonical } = renderArticle(data, lang, slug);
-      const url = `https://dyonysos.fr${lang === 'fr' ? '' : '/' + lang}/blog/${slug}`;
+      const served = available(slug).includes(lang) ? lang : 'fr';
+      const url = `https://dyonysos.fr${served === 'fr' ? '' : '/' + served}/blog/${slug}`;
       assert.equal(status, 200, `${lang}/${slug}`);
       assert.equal(canonical, url);
-      assert.match(html, new RegExp(`<html lang="${lang}">`));
+      assert.match(html, new RegExp(`<html lang="${served}">`));
       assert.ok(html.includes(`<link rel="canonical" href="${url}">`), `canonique ${lang}/${slug}`);
       assert.doesNotMatch(html, /<title>Guide Dyonysos<\/title>/);
       assert.match(html, /<meta name="description" content="[^"]{40,}">/);
-      for (const l of LANGS) assert.ok(html.includes(`hreflang="${l}"`), `hreflang ${l} sur ${lang}/${slug}`);
+      for (const l of LANGS) assert.equal(html.includes(`hreflang="${l}"`), available(slug).includes(l), `hreflang ${l} sur ${lang}/${slug}`);
       assert.ok(html.includes('hreflang="x-default"'));
       assert.match(html, /<h1>[^<]{10,}<\/h1>/);
       assert.equal((html.match(/<details>/g) || []).length, 3);
@@ -98,15 +101,16 @@ test('fiches solutions : HTML complet, canonique, hreflang et lien direct vers l
   assert.equal(renderProduct(data, 'fr', 'nexiste-pas').status, 404);
 });
 
-test('liste du blog : les 34 guides dans chaque langue, titres traduits', () => {
+test('liste du blog : tous les guides dans chaque langue, titres traduits', () => {
   for (const lang of LANGS) {
     const { status, html } = renderBlogIndex(data, lang);
     const url = `https://dyonysos.fr${lang === 'fr' ? '' : '/' + lang}/blog`;
     assert.equal(status, 200);
     assert.match(html, new RegExp(`<html lang="${lang}">`));
     assert.ok(html.includes(`<link rel="canonical" href="${url}">`));
-    assert.equal((html.match(/<article class="card">/g) || []).length, slugs.length, lang);
-    for (const s of slugs) assert.ok(html.includes(`href="${lang === 'fr' ? '' : '/' + lang}/blog/${s}"`));
+    assert.equal((html.match(/<article class="card"/g) || []).length, slugs.length, lang);
+    assert.equal((html.match(/<article class="card" lang="fr">/g) || []).length, slugs.filter((s) => !available(s).includes(lang)).length, `${lang} : cartes françaises`);
+    for (const s of slugs) assert.ok(html.includes(`href="${lang === 'fr' || !available(s).includes(lang) ? '' : '/' + lang}/blog/${s}"`), `${lang}/${s}`);
     assert.ok(html.includes('href="/applications-odoo"'));
   }
   assert.ok(renderBlogIndex(data, 'en').html.includes('How Do You Tailor Your Resume to a Job Posting?'));
@@ -131,5 +135,37 @@ test('corps rédigés : chaque article a son propre contenu, sommaire et FAQ', (
       intros.add(w.intro);
     }
   }
-  for (const lang of LANGS) assert.equal(Object.keys(data.bodies[lang]).length, slugs.length, `les 34 articles ont un corps rédigé en ${lang}`);
+  for (const lang of LANGS) for (const s of slugs) if (available(s).includes(lang)) assert.ok(data.bodies[lang][s], `corps rédigé ${lang}/${s}`);
+  for (const lang of LANGS) assert.ok(Object.keys(data.bodies[lang]).length >= 34, lang);
+});
+
+const LINKS = {
+  'creer-quiz-interactif-classe': 'https://quizplay-production.up.railway.app/',
+  'alternative-kahoot-wooclap': 'https://quizplay-production.up.railway.app/',
+  'rendre-formation-interactive': 'https://quizplay-production.up.railway.app/',
+  'creer-partager-cours-en-ligne': 'https://coursehub-dusky-seven.vercel.app/',
+  'plateforme-ressources-pedagogiques': 'https://coursehub-dusky-seven.vercel.app/',
+  'digitaliser-communication-ecole-parents': 'https://ecole-connect-pied.vercel.app/',
+  'plateforme-numerique-ecole': 'https://ecole-connect-pied.vercel.app/',
+  'centraliser-devoirs-notes-agenda': 'https://ecole-connect-pied.vercel.app/',
+  'alternative-applications-scolaires': 'https://ecole-connect-pied.vercel.app/',
+  'odoo-ou-solution-ciblee': 'https://dyonysos.fr/applications-odoo',
+  'creer-marketplace': 'https://tribuplace.com/',
+  'alternative-sharetribe': 'https://tribuplace.com/',
+  'lancer-site-boutique-en-ligne-evolutif': 'https://omnifloo.com/',
+  'site-vitrine-ecommerce-erp-ordre': 'https://omnifloo.com/',
+};
+
+test('liens sortants : un lien dans le corps vers le site du produit, sans syntaxe brute ni lien dans la description', () => {
+  for (const [slug, href] of Object.entries(LINKS)) {
+    for (const lang of available(slug)) {
+      const { html } = renderArticle(data, lang, slug);
+      const body = html.slice(html.indexOf('<article class="article-body">'), html.indexOf('<section id="faq"'));
+      assert.equal(body.split(`<a href="${href}">`).length - 1, 1, `${lang}/${slug} : un seul lien dans le corps`);
+      assert.doesNotMatch(html, /\]\(https?:|\]\(\//, `${lang}/${slug} : syntaxe brute`);
+      assert.doesNotMatch(html.match(/<meta name="description" content="([^"]*)"/)[1], /\[|\]\(/);
+    }
+  }
+  assert.deepEqual(available('lancer-site-boutique-en-ligne-evolutif'), ['fr', 'en', 'es']);
+  assert.deepEqual(available('creer-marketplace'), LANGS);
 });

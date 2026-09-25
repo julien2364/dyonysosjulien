@@ -131,5 +131,5 @@ test('corps rédigés : chaque article a son propre contenu, sommaire et FAQ', (
       intros.add(w.intro);
     }
   }
-  assert.equal(Object.keys(data.bodies.fr).length, slugs.length, 'les 34 articles français ont un corps rédigé');
+  for (const lang of LANGS) assert.equal(Object.keys(data.bodies[lang]).length, slugs.length, `les 34 articles ont un corps rédigé en ${lang}`);
 });

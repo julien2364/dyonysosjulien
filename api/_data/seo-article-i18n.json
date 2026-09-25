@@ -74,7 +74,7 @@
      "Group facilitation",
      "Instant results",
      "In-class or remote use",
-     "Learning progress tracking"
+     "Structured learning progression"
     ]
    },
    "courshub": {
@@ -152,7 +152,7 @@
     "features": [
      "Price comparison",
      "Margin calculation",
-     "Fee accounting",
+     "Fees factored in",
      "Opportunity qualification",
      "Analysis history"
     ]
@@ -324,7 +324,7 @@
    "suivre-marge-ecommerce": "¿Cómo controlar el margen real en e-commerce?",
    "tableau-bord-profit-amazon": "Crear un cuadro de mando de rentabilidad para marketplaces",
    "automatiser-processus-pme": "¿Cómo automatizar los procesos de una pyme sin complicaciones?",
-   "odoo-ou-solution-ciblee": "Odoo o una solución sectorial específica: ¿cómo elegir?",
+   "odoo-ou-solution-ciblee": "Odoo o una solución de negocio específica: ¿cómo elegir?",
    "creer-marketplace": "¿Cómo crear un marketplace de servicios o de productos?",
    "alternative-sharetribe": "Alternativa a Sharetribe: ¿qué criterios tener en cuenta?",
    "alternative-canva-entreprise": "¿Canva o una herramienta de diseño adaptada a la empresa?",
@@ -362,7 +362,7 @@
     "tag": "Quiz interactivos",
     "problem": "Mantener la atención de una clase o de un grupo y comprobar la comprensión sin sobrecargar la sesión.",
     "audience": "Docentes, formadores, dinamizadores y responsables pedagógicos.",
-    "value": "Crear y dirigir quiz con respuesta inmediata para convertir la evaluación en una secuencia de aprendizaje.",
+    "value": "Crear y dirigir quiz con retroalimentación inmediata para convertir la evaluación en una secuencia de aprendizaje.",
     "compare": "Una alternativa centrada en la sencillez y en el diseño pedagógico, que conviene valorar frente a Kahoot o Wooclap según las necesidades.",
     "uses": [
      "Evaluación formativa",
@@ -453,7 +453,7 @@
      "Comparación de precios",
      "Cálculo de margen",
      "Inclusión de comisiones y gastos",
-     "Calificación de oportunidades",
+     "Cualificación de oportunidades",
      "Historial de análisis"
     ]
    },
@@ -490,7 +490,7 @@
      "Priorización del catálogo"
     ],
     "features": [
-     "Panel de control",
+     "Cuadro de mando",
      "Seguimiento de gastos",
      "Cálculo de margen",
      "Análisis por producto",
@@ -586,7 +586,7 @@
     "compare": "El formato adecuado depende del resultado esperado: dominio de una herramienta, profesionalización, resolución de un problema de proyecto o una transformación más amplia.",
     "uses": [
      "Formación in company",
-     "Intervención universitaria",
+     "Docencia universitaria",
      "Acompañamiento de un jefe de proyecto"
     ],
     "features": [
@@ -671,7 +671,7 @@
     ],
     "features": [
      "Snel vragen maken",
-     "Groepsactiviteiten",
+     "Quizzen met de hele groep",
      "Directe resultaten",
      "In de klas of op afstand",
      "Leervoortgang"
@@ -1031,7 +1031,7 @@
     ],
     "features": [
      "Unternehmenssuche",
-     "Branchenfilter",
+     "Filter für Unternehmensdaten",
      "Kontextbezogene Unternehmensprofile",
      "B2B-Chancen",
      "Nachvollziehbare Quellen"
@@ -1130,7 +1130,7 @@
      "Vermietungsplattform"
     ],
     "features": [
-     "Profile und Angebote",
+     "Profile und Inserate",
      "Suche und Filter",
      "Transaktionsablauf",
      "Verwaltung",

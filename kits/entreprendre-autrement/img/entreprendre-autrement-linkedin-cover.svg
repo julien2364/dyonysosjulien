@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1128 191" role="img" aria-labelledby="t">
+  <title id="t">Bannière LinkedIn Entreprendre Autrement</title>
+  <rect width="1128" height="191" fill="#F7F4EF"/>
+  <path d="M820 196c82-139 159-152 308-140" fill="none" stroke="#2FBF9B" stroke-width="44" stroke-linecap="round"/>
+  <path d="m1071 15 57 45-66 27" fill="none" stroke="#FF6B4A" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="54" y="69" font-family="Sora,Inter,Arial,sans-serif" font-size="42" font-weight="800" fill="#1E3A5F">Entreprendre <tspan fill="#FF6B4A">Autrement</tspan></text>
+  <text x="55" y="112" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="600" fill="#4A5568">La boîte à outils pratique pour entreprendre sans jargon</text>
+  <text x="55" y="151" font-family="Inter,Arial,sans-serif" font-size="18" fill="#1E3A5F">Fiches · simulateurs · modèles · retours d’expérience</text>
+</svg>

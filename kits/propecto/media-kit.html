@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Propecto — Media kit</title>
+<meta name="description" content="Media kit Propecto (octobre 2026) : fiche d’identité, textes de présentation prêts à copier, chiffres clés, formats de visibilité et éléments de marque.">
+<style>
+/* Kits partenaires DYONYSOS — feuille commune (A4 portrait, impression Chromium + lecture web). */
+@font-face{font-family:Inter;font-style:normal;font-weight:400;font-display:swap;src:url(fonts/inter-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:Inter;font-style:normal;font-weight:500;font-display:swap;src:url(fonts/inter-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:Inter;font-style:normal;font-weight:600;font-display:swap;src:url(fonts/inter-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:Inter;font-style:normal;font-weight:700;font-display:swap;src:url(fonts/inter-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:Inter;font-style:normal;font-weight:800;font-display:swap;src:url(fonts/inter-latin-800-normal.woff2) format("woff2")}
+@font-face{font-family:Sora;font-style:normal;font-weight:700;font-display:swap;src:url(fonts/sora-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:Sora;font-style:normal;font-weight:800;font-display:swap;src:url(fonts/sora-latin-800-normal.woff2) format("woff2")}
+
+@page{size:A4;margin:0}
+:root{
+  --navy:#08233f;--blue:#1688d8;--purple:#714bce;--ink:#26384a;--muted:#55667a;
+  --line:#dbe4ed;--soft:#f4f7fb;--white:#fff;
+  --hero:linear-gradient(120deg,#071f39,#0b416a 62%,#6947b9);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact;-webkit-text-size-adjust:100%}
+body{font-family:Inter,Arial,sans-serif;font-size:9.3pt;line-height:1.5;color:var(--ink);background:#e6ebf1;font-kerning:normal}
+a{color:inherit;text-decoration:none}
+img,svg{display:block}
+strong,b{font-weight:700}
+
+/* ---------- Pages ---------- */
+.page{position:relative;width:210mm;height:297mm;overflow:hidden;background:#fff;margin:0 auto;break-after:page;page-break-after:always}
+.page:last-of-type{break-after:auto;page-break-after:auto}
+.inner{position:absolute;inset:0;padding:13mm 15mm 0}
+.ph{display:flex;align-items:center;justify-content:space-between;height:9mm;padding-bottom:2.5mm;border-bottom:1px solid var(--line);margin-bottom:6.5mm}
+.ph .doc{font-size:7.4pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.pf{position:absolute;left:15mm;right:15mm;bottom:8.5mm;display:flex;justify-content:space-between;align-items:center;padding-top:2.6mm;border-top:1px solid var(--line);font-size:7.1pt;color:var(--muted)}
+.pf b{color:var(--navy);font-weight:700}
+.pf .num{font-weight:700;color:var(--navy)}
+
+.kicker{display:inline-flex;align-items:center;gap:2mm;font-size:7.4pt;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--accent-text)}
+.kicker:before{content:"";width:6mm;height:.6mm;border-radius:1mm;background:var(--accent-text)}
+h2.title{margin:2.2mm 0 2.6mm;max-width:172mm;font-size:21pt;line-height:1.12;letter-spacing:-.028em;font-weight:800;color:var(--navy)}
+.lead{max-width:165mm;font-size:10.4pt;line-height:1.5;color:var(--muted)}
+h3{font-size:10.6pt;line-height:1.3;font-weight:800;color:var(--navy);letter-spacing:-.01em}
+.label{display:flex;align-items:center;gap:2mm;margin-bottom:2mm;font-size:7.2pt;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-text)}
+.label svg{width:4.2mm;height:4.2mm}
+.section-title{display:flex;align-items:baseline;justify-content:space-between;margin:0 0 3mm}
+.section-title h3{font-size:11pt}
+.section-title span{font-size:7.4pt;color:var(--muted)}
+
+/* ---------- Icônes ---------- */
+.ico{flex:0 0 auto;display:grid;place-items:center;width:10.5mm;height:10.5mm;border-radius:3mm;background:var(--accent-soft);color:var(--accent-text)}
+.ico svg{width:5.4mm;height:5.4mm;stroke-width:1.8}
+.ico.sm{width:8mm;height:8mm;border-radius:2.4mm}
+.ico.sm svg{width:4.3mm;height:4.3mm}
+
+/* ---------- Page projet ---------- */
+.psp{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;margin-top:4.6mm}
+.card{padding:4.6mm 4.8mm;border:1px solid var(--line);border-radius:3.6mm;background:#fff}
+.psp .card p{font-size:8.6pt;line-height:1.48;color:var(--ink)}
+.psp .card.sol{background:var(--accent-soft);border-color:transparent}
+.block{margin-top:5mm}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:2.6mm 6mm;list-style:none}
+.checks li{display:grid;grid-template-columns:5.2mm 1fr;gap:2.4mm;align-items:start;padding-bottom:2.6mm;border-bottom:1px solid #edf1f5}
+.checks .tick{display:grid;place-items:center;width:5.2mm;height:5.2mm;margin-top:.3mm;border-radius:50%;background:var(--accent-text);color:#fff}
+.checks .tick svg{width:3.2mm;height:3.2mm;stroke-width:3}
+.checks b{display:block;font-size:9pt;line-height:1.35;color:var(--navy)}
+.checks span{display:block;font-size:8.2pt;line-height:1.45;color:var(--muted)}
+.tag{display:inline-block;margin-left:1.6mm;padding:.35mm 1.8mm;border-radius:5mm;background:var(--accent2-soft,#fff4ec);color:var(--tag-text,#9a3412);font-size:6.6pt;font-weight:800;letter-spacing:.06em;text-transform:uppercase;vertical-align:1px;white-space:nowrap}
+
+.figs{display:grid;gap:4mm;margin-top:4.6mm}
+.figs.n3{grid-template-columns:repeat(3,1fr)}
+.figs.n4{grid-template-columns:repeat(4,1fr)}
+.fig{position:relative;padding:4.4mm 4.6mm 4.2mm;border-radius:3.6mm;background:var(--soft);overflow:hidden}
+.fig:before{content:"";position:absolute;left:0;top:0;bottom:0;width:1.2mm;background:var(--accent-text)}
+.fig b{display:block;font-size:21pt;line-height:1.05;font-weight:800;letter-spacing:-.03em;color:var(--accent-text);white-space:nowrap}
+.fig b sup{font-size:11pt;vertical-align:8pt;margin-left:.5mm}
+.fig span{display:block;margin-top:1.6mm;font-size:8.1pt;line-height:1.4;color:var(--ink)}
+.fig.small b{font-size:13pt;line-height:1.25;padding-top:1.4mm}
+.note{margin-top:2.6mm;font-size:7pt;line-height:1.45;color:var(--muted)}
+
+.visual{margin-top:5mm;border-radius:4mm;overflow:hidden;border:1px solid var(--line);background:#fff}
+.visual .vh{display:flex;justify-content:space-between;align-items:center;padding:3mm 4.6mm;border-bottom:1px solid var(--line);background:var(--soft)}
+.visual .vh b{font-size:8.6pt;color:var(--navy)}
+.visual .vh span{font-size:7pt;color:var(--muted)}
+.visual .vb{padding:4mm 4.6mm}
+.visual img.shot{width:100%;height:auto}
+.caption{padding:2.6mm 4.6mm;font-size:7.2pt;line-height:1.45;color:var(--muted);border-top:1px solid var(--line);background:#fff}
+
+/* ---------- Formats ---------- */
+.formats{display:grid;grid-template-columns:1fr 1fr;gap:3.6mm;margin-top:6mm}
+.fcard{display:grid;grid-template-columns:10.5mm 1fr;gap:3.6mm;align-items:start;padding:4.4mm 4.8mm;border:1px solid var(--line);border-radius:3.6mm;background:#fff}
+.fcard h3{font-size:10pt;margin:.4mm 0 1.2mm}
+.fcard p{font-size:8.5pt;line-height:1.48;color:var(--muted)}
+.open{position:relative;margin-top:6mm;padding:7mm 8mm;border-radius:4.4mm;background:var(--hero);color:#fff;overflow:hidden}
+.open:after{content:"";position:absolute;right:-18mm;top:-22mm;width:70mm;height:70mm;border-radius:50%;background:radial-gradient(circle,#ffffff26,transparent 65%)}
+.open p.big{position:relative;font-size:15.5pt;line-height:1.25;font-weight:800;letter-spacing:-.02em;max-width:150mm}
+.open p.small{position:relative;margin-top:2.4mm;font-size:9.4pt;color:#d6e4ef;max-width:150mm}
+
+/* ---------- Apport / proposition ---------- */
+.two{display:grid;grid-template-columns:1.06fr .94fr;gap:5mm;margin-top:6mm}
+.plain{list-style:none}
+.plain li{display:grid;grid-template-columns:5.2mm 1fr;gap:2.4mm;padding:2.1mm 0;border-bottom:1px solid #edf1f5;font-size:8.8pt;line-height:1.45}
+.plain li:last-child{border-bottom:0}
+.steps{list-style:none;counter-reset:s}
+.steps li{position:relative;padding:2.2mm 0 2.4mm 10mm;border-bottom:1px solid #edf1f5;font-size:8.8pt;line-height:1.45}
+.steps li:last-child{border-bottom:0}
+.steps li:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:2.2mm;display:grid;place-items:center;width:6.6mm;height:6.6mm;border-radius:2mm;background:var(--hero);color:#fff;font-size:8.4pt;font-weight:800}
+.steps b{display:block;color:var(--navy);font-size:9.1pt}
+.focus{margin-top:5mm;padding:5mm 5.4mm;border-radius:4mm;background:var(--accent-soft)}
+.focus .fh{display:flex;align-items:center;gap:3mm;margin-bottom:1.6mm}
+.focus .fh h3{font-size:11pt}
+.focus .intro{font-size:8.6pt;color:var(--ink);margin-bottom:3.4mm;max-width:170mm}
+.method{display:grid;grid-template-columns:repeat(5,1fr);gap:2.6mm;list-style:none;counter-reset:m}
+.method li{position:relative;padding:8.6mm 3mm 3mm;border-radius:3mm;background:#fff;font-size:7.9pt;line-height:1.42}
+.method li:before{counter-increment:m;content:counter(m);position:absolute;left:3mm;top:2.6mm;font-size:12pt;font-weight:800;color:var(--accent-text)}
+.flow{display:grid;grid-template-columns:1fr 4mm 1fr 4mm 1fr 4mm 1fr;align-items:stretch;gap:1.6mm}
+.flow .step{padding:3.4mm;border-radius:3mm;background:#fff}
+.flow .step b{display:block;font-size:8.8pt;color:var(--navy);margin-bottom:.8mm}
+.flow .step span{display:block;font-size:7.7pt;line-height:1.4;color:var(--muted)}
+.flow .arrow{display:grid;place-items:center;color:var(--accent-text)}
+.flow .arrow svg{width:4mm;height:4mm;stroke-width:2.4}
+.focus .fnote{margin-top:3mm;font-size:7.4pt;color:var(--muted)}
+.groups{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm}
+.groups .g{padding:3.4mm 3.6mm;border-radius:3mm;background:#fff}
+.groups .g b{display:block;margin-bottom:1.6mm;font-size:7.4pt;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-text)}
+.groups .g li{list-style:none;padding:1.3mm 0;border-top:1px solid #efe9df;font-size:8.1pt;line-height:1.38;color:var(--navy);font-weight:600}
+.groups .g li:first-of-type{border-top:0}
+
+.contact{position:absolute;left:15mm;right:15mm;bottom:25mm;display:grid;grid-template-columns:1fr auto;gap:6mm;align-items:center;padding:6.4mm 7mm;border-radius:4.4mm;background:var(--hero);color:#fff;overflow:hidden}
+.contact .k{font-size:7.2pt;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#bce2ff}
+.contact .n{margin-top:1.4mm;font-size:15pt;font-weight:800;letter-spacing:-.02em}
+.contact .r{font-size:9pt;color:#d6e4ef}
+.contact .lines{margin-top:3mm;display:grid;gap:1.4mm;font-size:9.4pt}
+.contact .lines div{display:flex;align-items:center;gap:2.4mm}
+.contact .lines svg{width:4.2mm;height:4.2mm;color:#bce2ff;stroke-width:2}
+.contact .brand{text-align:right}
+.contact .brand img{width:44mm;height:auto;margin-left:auto}
+.contact .brand span{display:block;margin-top:2mm;font-size:7.6pt;color:#d6e4ef}
+.legal{position:absolute;left:15mm;right:15mm;bottom:16mm;font-size:6.6pt;line-height:1.4;color:var(--muted)}
+
+/* ---------- Couverture ---------- */
+.cover{background:var(--cover-bg);color:#fff}
+.cover .inner{padding:14mm 15mm}
+.cover .top{display:flex;justify-content:space-between;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:2mm;padding:1.8mm 3.6mm;border:1px solid #ffffff45;border-radius:10mm;background:#ffffff10;font-size:7.6pt;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:#d8ecff}
+.cover .hero{margin-top:30mm}
+.cover .eyebrow{font-size:9pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#bce2ff}
+.cover h1{margin-top:4mm;max-width:168mm;font-size:39pt;line-height:1.04;letter-spacing:-.042em;font-weight:800}
+.cover .sub{margin-top:6mm;max-width:150mm;font-size:12pt;line-height:1.5;color:#d6e4ef}
+.cover .chips{display:flex;flex-wrap:wrap;gap:2.4mm;margin-top:7mm}
+.cover .chips span{display:inline-flex;align-items:center;gap:1.6mm;padding:1.6mm 3.2mm;border-radius:10mm;background:#ffffff16;border:1px solid #ffffff2e;font-size:8.4pt;font-weight:600;color:#fff}
+.cover .chips svg{width:3.6mm;height:3.6mm;stroke-width:2.6;color:var(--cover-accent,#8fe3ea)}
+.cover .art{position:absolute;left:15mm;right:15mm;top:166mm;height:76mm}
+.cover .foot{position:absolute;left:15mm;right:15mm;bottom:13mm;display:flex;align-items:flex-end;justify-content:space-between;padding-top:5mm;border-top:1px solid #ffffff30}
+.cover .foot .proj{font-size:7.4pt;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#bce2ff}
+.cover .foot img{width:46mm;height:auto;margin-top:2.4mm}
+.cover .foot .meta{text-align:right;font-size:8.6pt;line-height:1.55;color:#d6e4ef}
+.cover .foot .meta b{color:#fff}
+
+/* couverture claire (Entreprendre Autrement) */
+.cover.light{color:var(--dark)}
+.cover.light .pill{border-color:#1e3a5f30;background:#fff;color:var(--dark)}
+.cover.light .eyebrow{color:var(--accent-text)}
+.cover.light .sub{color:#4A5568}
+.cover.light .chips span{background:#fff;border-color:#1e3a5f1f;color:var(--dark)}
+.cover.light .chips svg{color:#1A7A63}
+.cover.light .foot{border-top-color:#1e3a5f26}
+.cover.light .foot .proj{color:var(--accent-text)}
+.cover.light .foot .meta{color:#4A5568}
+.cover.light .foot .meta b{color:var(--dark)}
+
+/* ---------- Logos ---------- */
+.wordmark{display:inline-flex;align-items:center;gap:2.6mm;font-weight:800;letter-spacing:-.03em;line-height:1}
+.omni-word{font-size:17pt;font-weight:800;letter-spacing:-.035em}
+.omni-word i{font-style:normal;color:var(--omni-accent,#2fd0d2)}
+.ea-word{font-family:Sora,Inter,sans-serif;font-weight:800;letter-spacing:-.02em}
+.ea-word i{font-style:normal;color:#FF6B4A}
+
+/* ---------- Media kit ---------- */
+.mk-hero{position:relative;height:74mm;padding:13mm 15mm 0;background:var(--cover-bg);color:#fff;overflow:hidden}
+.mk-hero.light{color:var(--dark)}
+.mk-hero .top{display:flex;justify-content:space-between;align-items:center}
+.mk-hero h1{margin-top:12mm;font-size:30pt;line-height:1.05;letter-spacing:-.04em;font-weight:800}
+.mk-hero p{margin-top:3mm;max-width:150mm;font-size:10.6pt;color:#d6e4ef}
+.mk-hero.light p{color:#4A5568}
+.mk-hero.light .pill{border-color:#1e3a5f30;background:#fff;color:var(--dark)}
+.mk-body{padding:7mm 15mm 0}
+.mk-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:5mm}
+table.id{width:100%;border-collapse:collapse;font-size:8.5pt}
+table.id th{width:24mm;padding:1.85mm 3mm 1.85mm 0;text-align:left;vertical-align:top;font-size:7.1pt;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+table.id td{padding:1.85mm 0;vertical-align:top;color:var(--navy);font-weight:600;line-height:1.42}
+table.id tr+tr th,table.id tr+tr td{border-top:1px solid #edf1f5}
+.copy{position:relative;margin-top:4.4mm;padding:4.6mm 5mm;border:1.4px dashed #b9c9d7;border-radius:3.6mm;background:#fff}
+.copy .ch{display:flex;justify-content:space-between;align-items:center;margin-bottom:2mm}
+.copy .ch b{font-size:9.6pt;color:var(--navy)}
+.copy .ch span{padding:.6mm 2.2mm;border-radius:5mm;background:var(--soft);font-size:7pt;font-weight:700;color:var(--muted)}
+.copy p{font-size:9pt;line-height:1.56;color:var(--ink)}
+.side{padding:4.6mm 5mm;border-radius:3.6mm;background:var(--soft)}
+.side h3{margin-bottom:2mm}
+.side p{font-size:8.4pt;line-height:1.5;color:var(--ink)}
+.side .who{margin-top:3mm;padding-top:3mm;border-top:1px solid var(--line)}
+.side .who b{display:block;color:var(--navy);font-size:10pt}
+.side .who span{display:block;font-size:8.2pt;color:var(--muted)}
+.side .ln{display:flex;align-items:center;gap:2mm;margin-top:2mm;font-size:8.5pt;font-weight:600;color:var(--navy);word-break:break-word}
+.side .ln svg{width:4mm;height:4mm;color:var(--accent-text);flex:0 0 auto}
+.vis{display:grid;grid-template-columns:1fr 1fr;gap:2.6mm 5mm;list-style:none}
+.vis li{display:grid;grid-template-columns:5.2mm 1fr;gap:2.4mm;padding:2mm 0;border-bottom:1px solid #edf1f5}
+.vis b{display:block;font-size:8.9pt;color:var(--navy)}
+.vis span{display:block;font-size:8pt;line-height:1.42;color:var(--muted)}
+.brandrow{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.logo-tile{display:grid;place-items:center;height:30mm;border-radius:3.6mm;border:1px solid var(--line);background:#fff;padding:4mm}
+.logo-tile.dark{background:var(--logo-dark-bg,#0B1B3A);border-color:transparent;color:#fff}
+.logo-tile small{display:block;margin-top:1.6mm;text-align:center;font-size:6.8pt;color:var(--muted)}
+.logo-tile.dark small{color:#c9d6e4}
+.swatches{display:grid;grid-template-columns:repeat(5,1fr);gap:2.4mm;margin-top:4mm}
+.sw{border-radius:3mm;overflow:hidden;border:1px solid var(--line);background:#fff}
+.sw i{display:block;height:13mm}
+.sw b{display:block;padding:1.6mm 2.2mm 0;font-size:7.6pt;color:var(--navy)}
+.sw span{display:block;padding:0 2.2mm 1.8mm;font-size:7.2pt;font-family:Inter,monospace;color:var(--muted);letter-spacing:.02em}
+.typo{display:grid;grid-template-columns:auto 1fr;gap:4mm;align-items:center;margin-top:3.6mm;padding:3.6mm 4.4mm;border-radius:3.6mm;background:var(--soft)}
+.typo .aa{font-size:24pt;font-weight:800;color:var(--navy);letter-spacing:-.03em;line-height:1}
+.typo p{font-size:8.2pt;line-height:1.45}
+.rules{margin-top:2.6mm;font-size:7.6pt;line-height:1.5;color:var(--muted)}
+.mk-contact{position:absolute;left:15mm;right:15mm;bottom:25mm;display:grid;grid-template-columns:1fr auto;gap:6mm;align-items:center;padding:5.4mm 6.4mm;border-radius:4.2mm;background:var(--hero);color:#fff}
+.mk-contact .k{font-size:7.2pt;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#bce2ff}
+.mk-contact .n{margin-top:1mm;font-size:12.5pt;font-weight:800}
+.mk-contact .l{margin-top:1.4mm;display:flex;flex-wrap:wrap;gap:1mm 5mm;font-size:8.8pt;color:#e6eef6}
+.mk-contact img{width:38mm;height:auto}
+
+/* ---------- Écran (version web) ---------- */
+.toolbar{display:none}
+@media screen{
+  body{padding:62px 0 28px}
+  .page{margin:0 auto 22px;box-shadow:0 18px 50px #0b315124,0 2px 6px #0b31510f;border-radius:2px}
+  .toolbar{position:fixed;z-index:10;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;gap:12px;height:50px;padding:0 18px;background:#08233f;color:#fff;font-size:14px;box-shadow:0 4px 18px #0000002e}
+  .toolbar .t{font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .toolbar .t a{color:#bce2ff;font-weight:600;margin-right:10px}
+  .toolbar nav{display:flex;gap:8px;flex:0 0 auto}
+  .toolbar nav a{display:inline-flex;align-items:center;min-height:34px;padding:0 12px;border-radius:7px;border:1px solid #ffffff40;color:#fff;font-weight:700;font-size:13px}
+  .toolbar nav a.primary{border:0;background:linear-gradient(100deg,#714bce,#1688d8)}
+}
+@media screen and (max-width:640px){
+  .toolbar .t{font-size:12px}
+  .toolbar nav a.sec{display:none}
+}
+@media print{
+  body{background:#fff}
+  .toolbar{display:none!important}
+}
+
+/* ---------- Art de couverture : Omnifloo ---------- */
+.oart{height:100%;display:flex;flex-direction:column;gap:3.4mm}
+.ogrid{display:grid;grid-template-columns:repeat(4,1fr);gap:3.4mm}
+.ocard{padding:4.4mm 4mm;border-radius:3.6mm;background:#ffffff14;border:1px solid #ffffff2e}
+.ocard .oi{display:grid;place-items:center;width:9mm;height:9mm;margin-bottom:3mm;border-radius:2.6mm;background:#ffffff;color:#007E80}
+.ocard .oi svg{width:5mm;height:5mm;stroke-width:1.9}
+.ocard b{display:block;font-size:11pt;letter-spacing:-.01em}
+.ocard span{display:block;margin-top:.8mm;font-size:8.4pt;color:#d6e4ef}
+.obar{display:flex;align-items:center;justify-content:space-between;gap:4mm;padding:4mm 4.6mm;border-radius:3.6mm;background:#ffffff;color:#142740}
+.obar small{display:block;font-size:7pt;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#007E80}
+.obar b{display:block;font-size:11pt;margin-top:.6mm}
+.ochips{display:flex;gap:2mm}
+.ochips span{display:inline-flex;align-items:center;gap:1.4mm;padding:1.6mm 2.8mm;border-radius:10mm;background:#E6F4F4;font-size:8.2pt;font-weight:700;color:#142740}
+.ochips svg{width:3.8mm;height:3.8mm;color:#007E80;stroke-width:2}
+.onote{font-size:7.4pt;color:#c9d9e6}
+
+/* ---------- Art de couverture : Entreprendre Autrement ---------- */
+.eart{position:relative;height:100%}
+.eart .epath{position:absolute;right:-15mm;bottom:-6mm;width:150mm;height:auto;opacity:.95}
+.ecards{position:absolute;left:0;bottom:2mm;display:grid;grid-template-columns:repeat(3,38mm);gap:3.4mm}
+.ecard{padding:4.4mm 4.4mm 4mm;border-radius:3.6mm;background:#fff;box-shadow:0 10px 26px #1e3a5f14;border:1px solid #1e3a5f14}
+.ecard b{display:block;font-family:Sora,Inter,sans-serif;font-size:21pt;font-weight:800;line-height:1;color:#1E3A5F;letter-spacing:-.02em}
+.ecard span{display:block;margin-top:1.6mm;font-size:8.4pt;color:#4A5568}
+
+/* ---------- Visuel Propecto ---------- */
+.pflow{display:grid;grid-template-columns:1fr 6mm 1.05fr 6mm 1fr;align-items:center;gap:1mm}
+.pcol{display:grid;gap:1.8mm}
+.psrc{display:flex;align-items:baseline;gap:2mm;padding:1.7mm 3mm;border-radius:2.4mm;background:var(--soft);border-left:1mm solid var(--accent2)}
+.psrc b{font-size:8.4pt;color:var(--navy);min-width:14mm}
+.psrc span{font-size:7.6pt;color:var(--muted)}
+.parr{display:grid;place-items:center;color:var(--accent-text)}
+.parr svg{width:5mm;height:5mm;stroke-width:2.2}
+.pcore{display:flex;flex-direction:column;align-items:center;text-align:center;padding:4.6mm 4mm;border-radius:3.6mm;background:linear-gradient(160deg,#0B1B3A,#0c3a78);color:#fff}
+.pcore svg{margin-bottom:2.4mm}
+.pcore b{font-size:9.6pt;line-height:1.3}
+.pcore span{margin-top:1.4mm;font-size:7.6pt;line-height:1.42;color:#d6e4ef}
+.pcore em{margin-top:2.4mm;padding:.8mm 2.6mm;border-radius:5mm;background:#ffffff1f;font-style:normal;font-size:7.2pt;font-weight:700;color:#bfe9ee}
+.puse{display:grid;grid-template-columns:8mm 1fr;gap:2.4mm;align-items:center;padding:1.8mm 0}
+.puse b{display:block;font-size:9pt;color:var(--navy)}
+.puse span{display:block;font-size:7.7pt;line-height:1.35;color:var(--muted)}
+
+/* ---------- Visuel Entreprendre Autrement ---------- */
+.themes{display:grid;grid-template-columns:repeat(5,1fr);gap:2.6mm}
+.theme{display:flex;flex-direction:column;gap:1.8mm;padding:3mm;border-radius:3mm;background:var(--accent-soft)}
+.theme .ico{background:#fff;color:#C84A2C}
+.theme b{display:block;font-family:Sora,Inter,sans-serif;font-size:8.8pt;color:#1E3A5F}
+.theme span{display:block;font-size:7.3pt;line-height:1.35;color:#4A5568}
+.plain .tick svg,.vis .ico svg{width:3.2mm;height:3.2mm;stroke-width:3}
+.vis .ico{background:var(--accent-soft);color:var(--accent-text)}
+
+.checks b .tag{display:inline-block;margin-left:1.6mm}
+
+:root{--accent:#155EEF;--accent-text:#155EEF;--accent2:#00A7B5;--accent-soft:#EEF4FF;--dark:#0B1B3A;--cover-bg:radial-gradient(circle at 86% 16%, #ffffff22 0 8%, transparent 32%), linear-gradient(120deg, #071a36 0%, #0c3a78 58%, #0b8fae 100%);--logo-dark-bg:#0B1B3A;}
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <div class="t"><a href="https://dyonysos.fr/espace-partenaires">Espace partenaires</a>Propecto — Media kit</div>
+  <nav><a class="sec" href="kit-partenaire.html">Kit partenaire</a><a class="primary" href="media-kit.pdf">Télécharger le PDF</a></nav>
+</div>
+
+<section class="page">
+  <div class="mk-hero">
+    <div class="top">
+      <svg style="height:13mm;width:auto" viewBox="0 0 1010 300" role="img" aria-label="Propecto">
+  <defs><linearGradient id="pgrad-dark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#155EEF"/><stop offset="1" stop-color="#00A7B5"/></linearGradient></defs>
+  <rect x="24" y="24" width="252" height="252" rx="59.22" fill="url(#pgrad-dark)"/>
+  <text x="150" y="152" text-anchor="middle" dominant-baseline="central" font-family="Inter, Arial, sans-serif" font-size="150" font-weight="800" fill="#FFFFFF">P</text>
+  <text x="330" y="152" dominant-baseline="central" font-family="Inter, Arial, sans-serif" font-size="150" font-weight="800" letter-spacing="-5.25"><tspan fill="#FFFFFF">Pro</tspan><tspan fill="#8FB8FF">pecto</tspan></text>
+</svg>
+      <span class="pill">Media kit — octobre 2026</span>
+    </div>
+    <h1>Ciblez. Vérifiez. Prospectez.</h1>
+    <p>Tout ce qu’il faut pour présenter Propecto : fiche d’identité, textes prêts à copier, chiffres clés sourcés, éléments de marque et contacts.</p>
+  </div>
+  <div class="mk-body">
+    <div class="mk-grid">
+      <div>
+        <div class="section-title"><h3>Fiche d’identité</h3><span>Un projet DYONYSOS</span></div>
+        <table class="id">
+<tr><th>Nom</th><td>Propecto</td></tr><tr><th>Site</th><td>propecto.eu</td></tr><tr><th>Catégorie</th><td>Données d’entreprises, marchés publics et prospection B2B</td></tr><tr><th>Éditeur</th><td>DYONYSOS SASU, Mouguerre (Pyrénées-Atlantiques)</td></tr><tr><th>Fondateur</th><td>Julien Daures</td></tr><tr><th>Public</th><td>Dirigeants, commerciaux, consultants, experts-comptables, développement économique</td></tr><tr><th>Zone</th><td>Europe</td></tr><tr><th>Accès</th><td>Aperçu gratuit de la fiche 360 ; analyse étendue en complément</td></tr><tr><th>Signature</th><td>« Ciblez. Vérifiez. Prospectez. »</td></tr>        </table>
+      </div>
+      <div class="side">
+        <h3>Presse et partenariats</h3>
+        <p>Une question, une demande de visuel ou d’interview, un projet de partenariat : une seule adresse, réponse personnelle du fondateur.</p>
+        <div class="who"><b>Julien Daures</b><span>Fondateur de DYONYSOS</span></div>
+        <div class="ln"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /> <rect x="2" y="4" width="20" height="16" rx="2" /> </svg>julien.daures@dyonysos.fr</div>
+        <div class="ln"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /> <path d="M2 12h20" /> </svg>dyonysos.fr/espace-partenaires</div>
+        <div class="ln"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9 17H7A5 5 0 0 1 7 7h2" /> <path d="M15 7h2a5 5 0 1 1 0 10h-2" /> <line x1="8" x2="16" y1="12" y2="12" /> </svg>propecto.eu</div>
+      </div>
+    </div>
+    <div class="copy">
+      <div class="ch"><b>Présentation courte, prête à copier</b><span>52 mots</span></div>
+      <p>Propecto (propecto.eu) est une plateforme européenne de données d’entreprises éditée par DYONYSOS. Elle réunit sur une fiche unique l’identité, les dirigeants, les comptes, les marchés publics et les aides de chaque entreprise, avec le lien vers chaque source officielle. Son objectif : aider dirigeants et commerciaux à cibler, vérifier et prospecter en confiance.</p>
+    </div>
+    <div class="copy">
+      <div class="ch"><b>Présentation longue, prête à copier</b><span>120 mots</span></div>
+      <p>Propecto (propecto.eu) est une plateforme européenne de données d’entreprises et de développement commercial B2B, éditée par DYONYSOS, société basée à Mouguerre (Pyrénées-Atlantiques). Elle rassemble des informations publiques aujourd’hui dispersées — identité (INSEE), vie juridique (BODACC), actes et comptes (INPI), marchés publics (BOAMP, TED) — dans une fiche unique par entreprise, avec le lien vers chaque source. La fiche 360 réunit identité légale, dirigeants, comptes, documents et signaux de marché ; son aperçu gratuit propose trois lectures complémentaires, pensées pour le dirigeant, son comptable et son cabinet de conseil. Propecto s’adresse aux dirigeants, commerciaux, consultants et équipes de développement économique qui veulent décider sur des données traçables. Des guides pratiques publiés sur le site expliquent comment vérifier une entreprise à partir des sources officielles.</p>
+    </div>
+  </div>
+  <div class="pf"><span><b>Propecto</b> — Media kit</span><span>dyonysos.fr/espace-partenaires</span><span class="num">1 / 2</span></div>
+</section>
+
+<section class="page">
+  <div class="inner">
+    <div class="ph"><svg style="height:8.4mm;width:auto" viewBox="0 0 1010 300" role="img" aria-label="Propecto">
+  <defs><linearGradient id="pgrad-light" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#155EEF"/><stop offset="1" stop-color="#00A7B5"/></linearGradient></defs>
+  <rect x="24" y="24" width="252" height="252" rx="59.22" fill="url(#pgrad-light)"/>
+  <text x="150" y="152" text-anchor="middle" dominant-baseline="central" font-family="Inter, Arial, sans-serif" font-size="150" font-weight="800" fill="#FFFFFF">P</text>
+  <text x="330" y="152" dominant-baseline="central" font-family="Inter, Arial, sans-serif" font-size="150" font-weight="800" letter-spacing="-5.25"><tspan fill="#0B1B3A">Pro</tspan><tspan fill="#1F5BE3">pecto</tspan></text>
+</svg><span class="doc">Media kit · octobre 2026</span></div>
+    <div class="section-title"><h3>Chiffres clés</h3><span>Sources : DYONYSOS, relevés datés</span></div>
+    <div class="figs n4" style="margin-top:0">
+<div class="fig"><b>15 M+</b><span>fiches entreprises en base (estimation basse, 01/10/2026)</span></div><div class="fig"><b>5</b><span>sources officielles citées sur les fiches</span></div><div class="fig"><b>3</b><span>lectures gratuites de la fiche 360</span></div><div class="fig small"><b>En lancement</b><span>audience et nombre d’utilisateurs : chiffres publiés dès qu’ils seront mesurés</span></div>    </div>
+    <div class="block">
+      <div class="section-title"><h3>Formats de visibilité proposés aux partenaires</h3><span>Combinables, sans exclusivité</span></div>
+      <ul class="vis">
+<li><span class="ico sm" style="width:5.2mm;height:5.2mm;border-radius:50%"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><div><b>Page partenaire</b><span>Logo, lien et présentation sur dyonysos.fr/espace-partenaires.</span></div></li><li><span class="ico sm" style="width:5.2mm;height:5.2mm;border-radius:50%"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><div><b>Mention dans un guide</b><span>Encadré « pour aller plus loin » dans un guide Propecto pertinent.</span></div></li><li><span class="ico sm" style="width:5.2mm;height:5.2mm;border-radius:50%"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><div><b>Article invité ou croisé</b><span>Publication sur propecto.eu et chez vous, avec lien canonique.</span></div></li><li><span class="ico sm" style="width:5.2mm;height:5.2mm;border-radius:50%"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><div><b>Webinaire ou atelier co-animé</b><span>Méthode de vérification d’un partenaire, lecture d’un avis de marché.</span></div></li><li><span class="ico sm" style="width:5.2mm;height:5.2mm;border-radius:50%"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><div><b>Relais en newsletter et réseaux</b><span>Annonce croisée sur nos canaux et les vôtres.</span></div></li><li><span class="ico sm" style="width:5.2mm;height:5.2mm;border-radius:50%"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><div><b>Contenu sponsorisé</b><span>Dossier thématique co-signé, toujours identifié comme partenariat.</span></div></li>      </ul>
+    </div>
+    <div class="block">
+      <div class="section-title"><h3>Éléments de marque</h3><span>Logo, couleurs, typographie</span></div>
+      <div class="brandrow">
+        <div class="logo-tile"><div><svg style="height:13mm;width:auto" viewBox="0 0 1010 300" role="img" aria-label="Propecto">
+  <defs><linearGradient id="pgrad-light" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#155EEF"/><stop offset="1" stop-color="#00A7B5"/></linearGradient></defs>
+  <rect x="24" y="24" width="252" height="252" rx="59.22" fill="url(#pgrad-light)"/>
+  <text x="150" y="152" text-anchor="middle" dominant-baseline="central" font-family="Inter, Arial, sans-serif" font-size="150" font-weight="800" fill="#FFFFFF">P</text>
+  <text x="330" y="152" dominant-baseline="central" font-family="Inter, Arial, sans-serif" font-size="150" font-weight="800" letter-spacing="-5.25"><tspan fill="#0B1B3A">Pro</tspan><tspan fill="#1F5BE3">pecto</tspan></text>
+</svg><small>Sur fond clair</small></div></div>
+        <div class="logo-tile dark"><div><svg style="height:13mm;width:auto" viewBox="0 0 1010 300" role="img" aria-label="Propecto">
+  <defs><linearGradient id="pgrad-dark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#155EEF"/><stop offset="1" stop-color="#00A7B5"/></linearGradient></defs>
+  <rect x="24" y="24" width="252" height="252" rx="59.22" fill="url(#pgrad-dark)"/>
+  <text x="150" y="152" text-anchor="middle" dominant-baseline="central" font-family="Inter, Arial, sans-serif" font-size="150" font-weight="800" fill="#FFFFFF">P</text>
+  <text x="330" y="152" dominant-baseline="central" font-family="Inter, Arial, sans-serif" font-size="150" font-weight="800" letter-spacing="-5.25"><tspan fill="#FFFFFF">Pro</tspan><tspan fill="#8FB8FF">pecto</tspan></text>
+</svg><small>Sur fond sombre</small></div></div>
+      </div>
+      <div class="swatches" style="grid-template-columns:repeat(5,1fr)">
+<div class="sw"><i style="background:#0B1B3A"></i><b>Bleu nuit</b><span>#0B1B3A</span></div><div class="sw"><i style="background:#155EEF"></i><b>Bleu principal</b><span>#155EEF</span></div><div class="sw"><i style="background:#1F5BE3"></i><b>Bleu vif</b><span>#1F5BE3</span></div><div class="sw"><i style="background:#00A7B5"></i><b>Turquoise</b><span>#00A7B5</span></div><div class="sw"><i style="background:#EEF4FF;border-bottom:1px solid var(--line)"></i><b>Bleu très clair</b><span>#EEF4FF</span></div>      </div>
+      <div class="typo"><span class="aa" >Aa</span><p><b>Typographie.</b> Inter ExtraBold et Bold pour les titres et le logo ; Inter Regular et Medium pour les textes.</p></div>
+      <p class="rules">Symbole « P » seul pour les avatars. Marge libre autour du logo : 15 % de la largeur du symbole. Ne pas modifier les proportions, les couleurs ni l’ordre du dégradé. Sur fond sombre : « Pro » en blanc, « pecto » en bleu clair.</p>
+    </div>
+  </div>
+  <div class="mk-contact">
+    <div>
+      <div class="k">Contact presse et partenariats</div>
+      <div class="n">Julien Daures, fondateur</div>
+      <div class="l"><span>julien.daures@dyonysos.fr</span><span>dyonysos.fr/espace-partenaires</span><span>propecto.eu</span></div>
+    </div>
+    <img src="img/dyonysos-blanc.png" alt="Dyonysos" style="width:38mm;height:auto">
+  </div>
+  <p class="legal">Propecto est édité par DYONYSOS SASU (RCS Bayonne), Mouguerre (64). Chiffres arrêtés au 1er octobre 2026 ; « en lancement » signifie qu’aucune mesure publiable n’existe encore.</p>
+  <div class="pf"><span><b>Propecto</b> — Media kit</span><span>dyonysos.fr/espace-partenaires</span><span class="num">2 / 2</span></div>
+</section>
+<script>
+(function(){function z(v){document.querySelectorAll('.page').forEach(function(p){p.style.zoom=v})}function f(){var w=document.documentElement.clientWidth;z(w<820?String((w-12)/794):'')}addEventListener('resize',f);addEventListener('beforeprint',function(){z('')});addEventListener('afterprint',f);if(!matchMedia('print').matches)f()})();
+</script>
+</body>
+</html>

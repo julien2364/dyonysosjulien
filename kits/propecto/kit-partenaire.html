@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Propecto — Kit partenaire</title>
+<meta name="description" content="Kit partenaire Propecto (octobre 2026) : le projet, les formats de partenariat et le contact. Un projet DYONYSOS.">
+<style>
+/* Kits partenaires DYONYSOS — feuille commune (A4 portrait, impression Chromium + lecture web). */
+@font-face{font-family:Inter;font-style:normal;font-weight:400;font-display:swap;src:url(fonts/inter-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:Inter;font-style:normal;font-weight:500;font-display:swap;src:url(fonts/inter-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:Inter;font-style:normal;font-weight:600;font-display:swap;src:url(fonts/inter-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:Inter;font-style:normal;font-weight:700;font-display:swap;src:url(fonts/inter-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:Inter;font-style:normal;font-weight:800;font-display:swap;src:url(fonts/inter-latin-800-normal.woff2) format("woff2")}
+@font-face{font-family:Sora;font-style:normal;font-weight:700;font-display:swap;src:url(fonts/sora-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:Sora;font-style:normal;font-weight:800;font-display:swap;src:url(fonts/sora-latin-800-normal.woff2) format("woff2")}
+
+@page{size:A4;margin:0}
+:root{
+  --navy:#08233f;--blue:#1688d8;--purple:#714bce;--ink:#26384a;--muted:#55667a;
+  --line:#dbe4ed;--soft:#f4f7fb;--white:#fff;
+  --hero:linear-gradient(120deg,#071f39,#0b416a 62%,#6947b9);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact;-webkit-text-size-adjust:100%}
+body{font-family:Inter,Arial,sans-serif;font-size:9.3pt;line-height:1.5;color:var(--ink);background:#e6ebf1;font-kerning:normal}
+a{color:inherit;text-decoration:none}
+img,svg{display:block}
+strong,b{font-weight:700}
+
+/* ---------- Pages ---------- */
+.page{position:relative;width:210mm;height:297mm;overflow:hidden;background:#fff;margin:0 auto;break-after:page;page-break-after:always}
+.page:last-of-type{break-after:auto;page-break-after:auto}
+.inner{position:absolute;inset:0;padding:13mm 15mm 0}
+.ph{display:flex;align-items:center;justify-content:space-between;height:9mm;padding-bottom:2.5mm;border-bottom:1px solid var(--line);margin-bottom:6.5mm}
+.ph .doc{font-size:7.4pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.pf{position:absolute;left:15mm;right:15mm;bottom:8.5mm;display:flex;justify-content:space-between;align-items:center;padding-top:2.6mm;border-top:1px solid var(--line);font-size:7.1pt;color:var(--muted)}
+.pf b{color:var(--navy);font-weight:700}
+.pf .num{font-weight:700;color:var(--navy)}
+
+.kicker{display:inline-flex;align-items:center;gap:2mm;font-size:7.4pt;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--accent-text)}
+.kicker:before{content:"";width:6mm;height:.6mm;border-radius:1mm;background:var(--accent-text)}
+h2.title{margin:2.2mm 0 2.6mm;max-width:172mm;font-size:21pt;line-height:1.12;letter-spacing:-.028em;font-weight:800;color:var(--navy)}
+.lead{max-width:165mm;font-size:10.4pt;line-height:1.5;color:var(--muted)}
+h3{font-size:10.6pt;line-height:1.3;font-weight:800;color:var(--navy);letter-spacing:-.01em}
+.label{display:flex;align-items:center;gap:2mm;margin-bottom:2mm;font-size:7.2pt;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-text)}
+.label svg{width:4.2mm;height:4.2mm}
+.section-title{display:flex;align-items:baseline;justify-content:space-between;margin:0 0 3mm}
+.section-title h3{font-size:11pt}
+.section-title span{font-size:7.4pt;color:var(--muted)}
+
+/* ---------- Icônes ---------- */
+.ico{flex:0 0 auto;display:grid;place-items:center;width:10.5mm;height:10.5mm;border-radius:3mm;background:var(--accent-soft);color:var(--accent-text)}
+.ico svg{width:5.4mm;height:5.4mm;stroke-width:1.8}
+.ico.sm{width:8mm;height:8mm;border-radius:2.4mm}
+.ico.sm svg{width:4.3mm;height:4.3mm}
+
+/* ---------- Page projet ---------- */
+.psp{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;margin-top:4.6mm}
+.card{padding:4.6mm 4.8mm;border:1px solid var(--line);border-radius:3.6mm;background:#fff}
+.psp .card p{font-size:8.6pt;line-height:1.48;color:var(--ink)}
+.psp .card.sol{background:var(--accent-soft);border-color:transparent}
+.block{margin-top:5mm}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:2.6mm 6mm;list-style:none}
+.checks li{display:grid;grid-template-columns:5.2mm 1fr;gap:2.4mm;align-items:start;padding-bottom:2.6mm;border-bottom:1px solid #edf1f5}
+.checks .tick{display:grid;place-items:center;width:5.2mm;height:5.2mm;margin-top:.3mm;border-radius:50%;background:var(--accent-text);color:#fff}
+.checks .tick svg{width:3.2mm;height:3.2mm;stroke-width:3}
+.checks b{display:block;font-size:9pt;line-height:1.35;color:var(--navy)}
+.checks span{display:block;font-size:8.2pt;line-height:1.45;color:var(--muted)}
+.tag{display:inline-block;margin-left:1.6mm;padding:.35mm 1.8mm;border-radius:5mm;background:var(--accent2-soft,#fff4ec);color:var(--tag-text,#9a3412);font-size:6.6pt;font-weight:800;letter-spacing:.06em;text-transform:uppercase;vertical-align:1px;white-space:nowrap}
+
+.figs{display:grid;gap:4mm;margin-top:4.6mm}
+.figs.n3{grid-template-columns:repeat(3,1fr)}
+.figs.n4{grid-template-columns:repeat(4,1fr)}
+.fig{position:relative;padding:4.4mm 4.6mm 4.2mm;border-radius:3.6mm;background:var(--soft);overflow:hidden}
+.fig:before{content:"";position:absolute;left:0;top:0;bottom:0;width:1.2mm;background:var(--accent-text)}
+.fig b{display:block;font-size:21pt;line-height:1.05;font-weight:800;letter-spacing:-.03em;color:var(--accent-text);white-space:nowrap}
+.fig b sup{font-size:11pt;vertical-align:8pt;margin-left:.5mm}
+.fig span{display:block;margin-top:1.6mm;font-size:8.1pt;line-height:1.4;color:var(--ink)}
+.fig.small b{font-size:13pt;line-height:1.25;padding-top:1.4mm}
+.note{margin-top:2.6mm;font-size:7pt;line-height:1.45;color:var(--muted)}
+
+.visual{margin-top:5mm;border-radius:4mm;overflow:hidden;border:1px solid var(--line);background:#fff}
+.visual .vh{display:flex;justify-content:space-between;align-items:center;padding:3mm 4.6mm;border-bottom:1px solid var(--line);background:var(--soft)}
+.visual .vh b{font-size:8.6pt;color:var(--navy)}
+.visual .vh span{font-size:7pt;color:var(--muted)}
+.visual .vb{padding:4mm 4.6mm}
+.visual img.shot{width:100%;height:auto}
+.caption{padding:2.6mm 4.6mm;font-size:7.2pt;line-height:1.45;color:var(--muted);border-top:1px solid var(--line);background:#fff}
+
+/* ---------- Formats ---------- */
+.formats{display:grid;grid-template-columns:1fr 1fr;gap:3.6mm;margin-top:6mm}
+.fcard{display:grid;grid-template-columns:10.5mm 1fr;gap:3.6mm;align-items:start;padding:4.4mm 4.8mm;border:1px solid var(--line);border-radius:3.6mm;background:#fff}
+.fcard h3{font-size:10pt;margin:.4mm 0 1.2mm}
+.fcard p{font-size:8.5pt;line-height:1.48;color:var(--muted)}
+.open{position:relative;margin-top:6mm;padding:7mm 8mm;border-radius:4.4mm;background:var(--hero);color:#fff;overflow:hidden}
+.open:after{content:"";position:absolute;right:-18mm;top:-22mm;width:70mm;height:70mm;border-radius:50%;background:radial-gradient(circle,#ffffff26,transparent 65%)}
+.open p.big{position:relative;font-size:15.5pt;line-height:1.25;font-weight:800;letter-spacing:-.02em;max-width:150mm}
+.open p.small{position:relative;margin-top:2.4mm;font-size:9.4pt;color:#d6e4ef;max-width:150mm}
+
+/* ---------- Apport / proposition ---------- */
+.two{display:grid;grid-template-columns:1.06fr .94fr;gap:5mm;margin-top:6mm}
+.plain{list-style:none}
+.plain li{display:grid;grid-template-columns:5.2mm 1fr;gap:2.4mm;padding:2.1mm 0;border-bottom:1px solid #edf1f5;font-size:8.8pt;line-height:1.45}
+.plain li:last-child{border-bottom:0}
+.steps{list-style:none;counter-reset:s}
+.steps li{position:relative;padding:2.2mm 0 2.4mm 10mm;border-bottom:1px solid #edf1f5;font-size:8.8pt;line-height:1.45}
+.steps li:last-child{border-bottom:0}
+.steps li:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:2.2mm;display:grid;place-items:center;width:6.6mm;height:6.6mm;border-radius:2mm;background:var(--hero);color:#fff;font-size:8.4pt;font-weight:800}
+.steps b{display:block;color:var(--navy);font-size:9.1pt}
+.focus{margin-top:5mm;padding:5mm 5.4mm;border-radius:4mm;background:var(--accent-soft)}
+.focus .fh{display:flex;align-items:center;gap:3mm;margin-bottom:1.6mm}
+.focus .fh h3{font-size:11pt}
+.focus .intro{font-size:8.6pt;color:var(--ink);margin-bottom:3.4mm;max-width:170mm}
+.method{display:grid;grid-template-columns:repeat(5,1fr);gap:2.6mm;list-style:none;counter-reset:m}
+.method li{position:relative;padding:8.6mm 3mm 3mm;border-radius:3mm;background:#fff;font-size:7.9pt;line-height:1.42}
+.method li:before{counter-increment:m;content:counter(m);position:absolute;left:3mm;top:2.6mm;font-size:12pt;font-weight:800;color:var(--accent-text)}
+.flow{display:grid;grid-template-columns:1fr 4mm 1fr 4mm 1fr 4mm 1fr;align-items:stretch;gap:1.6mm}
+.flow .step{padding:3.4mm;border-radius:3mm;background:#fff}
+.flow .step b{display:block;font-size:8.8pt;color:var(--navy);margin-bottom:.8mm}
+.flow .step span{display:block;font-size:7.7pt;line-height:1.4;color:var(--muted)}
+.flow .arrow{display:grid;place-items:center;color:var(--accent-text)}
+.flow .arrow svg{width:4mm;height:4mm;stroke-width:2.4}
+.focus .fnote{margin-top:3mm;font-size:7.4pt;color:var(--muted)}
+.groups{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm}
+.groups .g{padding:3.4mm 3.6mm;border-radius:3mm;background:#fff}
+.groups .g b{display:block;margin-bottom:1.6mm;font-size:7.4pt;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-text)}
+.groups .g li{list-style:none;padding:1.3mm 0;border-top:1px solid #efe9df;font-size:8.1pt;line-height:1.38;color:var(--navy);font-weight:600}
+.groups .g li:first-of-type{border-top:0}
+
+.contact{position:absolute;left:15mm;right:15mm;bottom:25mm;display:grid;grid-template-columns:1fr auto;gap:6mm;align-items:center;padding:6.4mm 7mm;border-radius:4.4mm;background:var(--hero);color:#fff;overflow:hidden}
+.contact .k{font-size:7.2pt;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#bce2ff}
+.contact .n{margin-top:1.4mm;font-size:15pt;font-weight:800;letter-spacing:-.02em}
+.contact .r{font-size:9pt;color:#d6e4ef}
+.contact .lines{margin-top:3mm;display:grid;gap:1.4mm;font-size:9.4pt}
+.contact .lines div{display:flex;align-items:center;gap:2.4mm}
+.contact .lines svg{width:4.2mm;height:4.2mm;color:#bce2ff;stroke-width:2}
+.contact .brand{text-align:right}
+.contact .brand img{width:44mm;height:auto;margin-left:auto}
+.contact .brand span{display:block;margin-top:2mm;font-size:7.6pt;color:#d6e4ef}
+.legal{position:absolute;left:15mm;right:15mm;bottom:16mm;font-size:6.6pt;line-height:1.4;color:var(--muted)}
+
+/* ---------- Couverture ---------- */
+.cover{background:var(--cover-bg);color:#fff}
+.cover .inner{padding:14mm 15mm}
+.cover .top{display:flex;justify-content:space-between;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:2mm;padding:1.8mm 3.6mm;border:1px solid #ffffff45;border-radius:10mm;background:#ffffff10;font-size:7.6pt;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:#d8ecff}
+.cover .hero{margin-top:30mm}
+.cover .eyebrow{font-size:9pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#bce2ff}
+.cover h1{margin-top:4mm;max-width:168mm;font-size:39pt;line-height:1.04;letter-spacing:-.042em;font-weight:800}
+.cover .sub{margin-top:6mm;max-width:150mm;font-size:12pt;line-height:1.5;color:#d6e4ef}
+.cover .chips{display:flex;flex-wrap:wrap;gap:2.4mm;margin-top:7mm}
+.cover .chips span{display:inline-flex;align-items:center;gap:1.6mm;padding:1.6mm 3.2mm;border-radius:10mm;background:#ffffff16;border:1px solid #ffffff2e;font-size:8.4pt;font-weight:600;color:#fff}
+.cover .chips svg{width:3.6mm;height:3.6mm;stroke-width:2.6;color:var(--cover-accent,#8fe3ea)}
+.cover .art{position:absolute;left:15mm;right:15mm;top:166mm;height:76mm}
+.cover .foot{position:absolute;left:15mm;right:15mm;bottom:13mm;display:flex;align-items:flex-end;justify-content:space-between;padding-top:5mm;border-top:1px solid #ffffff30}
+.cover .foot .proj{font-size:7.4pt;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#bce2ff}
+.cover .foot img{width:46mm;height:auto;margin-top:2.4mm}
+.cover .foot .meta{text-align:right;font-size:8.6pt;line-height:1.55;color:#d6e4ef}
+.cover .foot .meta b{color:#fff}
+
+/* couverture claire (Entreprendre Autrement) */
+.cover.light{color:var(--dark)}
+.cover.light .pill{border-color:#1e3a5f30;background:#fff;color:var(--dark)}
+.cover.light .eyebrow{color:var(--accent-text)}
+.cover.light .sub{color:#4A5568}
+.cover.light .chips span{background:#fff;border-color:#1e3a5f1f;color:var(--dark)}
+.cover.light .chips svg{color:#1A7A63}
+.cover.light .foot{border-top-color:#1e3a5f26}
+.cover.light .foot .proj{color:var(--accent-text)}
+.cover.light .foot .meta{color:#4A5568}
+.cover.light .foot .meta b{color:var(--dark)}
+
+/* ---------- Logos ---------- */
+.wordmark{display:inline-flex;align-items:center;gap:2.6mm;font-weight:800;letter-spacing:-.03em;line-height:1}
+.omni-word{font-size:17pt;font-weight:800;letter-spacing:-.035em}
+.omni-word i{font-style:normal;color:var(--omni-accent,#2fd0d2)}
+.ea-word{font-family:Sora,Inter,sans-serif;font-weight:800;letter-spacing:-.02em}
+.ea-word i{font-style:normal;color:#FF6B4A}
+
+/* ---------- Media kit ---------- */
+.mk-hero{position:relative;height:74mm;padding:13mm 15mm 0;background:var(--cover-bg);color:#fff;overflow:hidden}
+.mk-hero.light{color:var(--dark)}
+.mk-hero .top{display:flex;justify-content:space-between;align-items:center}
+.mk-hero h1{margin-top:12mm;font-size:30pt;line-height:1.05;letter-spacing:-.04em;font-weight:800}
+.mk-hero p{margin-top:3mm;max-width:150mm;font-size:10.6pt;color:#d6e4ef}
+.mk-hero.light p{color:#4A5568}
+.mk-hero.light .pill{border-color:#1e3a5f30;background:#fff;color:var(--dark)}
+.mk-body{padding:7mm 15mm 0}
+.mk-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:5mm}
+table.id{width:100%;border-collapse:collapse;font-size:8.5pt}
+table.id th{width:24mm;padding:1.85mm 3mm 1.85mm 0;text-align:left;vertical-align:top;font-size:7.1pt;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+table.id td{padding:1.85mm 0;vertical-align:top;color:var(--navy);font-weight:600;line-height:1.42}
+table.id tr+tr th,table.id tr+tr td{border-top:1px solid #edf1f5}
+.copy{position:relative;margin-top:4.4mm;padding:4.6mm 5mm;border:1.4px dashed #b9c9d7;border-radius:3.6mm;background:#fff}
+.copy .ch{display:flex;justify-content:space-between;align-items:center;margin-bottom:2mm}
+.copy .ch b{font-size:9.6pt;color:var(--navy)}
+.copy .ch span{padding:.6mm 2.2mm;border-radius:5mm;background:var(--soft);font-size:7pt;font-weight:700;color:var(--muted)}
+.copy p{font-size:9pt;line-height:1.56;color:var(--ink)}
+.side{padding:4.6mm 5mm;border-radius:3.6mm;background:var(--soft)}
+.side h3{margin-bottom:2mm}
+.side p{font-size:8.4pt;line-height:1.5;color:var(--ink)}
+.side .who{margin-top:3mm;padding-top:3mm;border-top:1px solid var(--line)}
+.side .who b{display:block;color:var(--navy);font-size:10pt}
+.side .who span{display:block;font-size:8.2pt;color:var(--muted)}
+.side .ln{display:flex;align-items:center;gap:2mm;margin-top:2mm;font-size:8.5pt;font-weight:600;color:var(--navy);word-break:break-word}
+.side .ln svg{width:4mm;height:4mm;color:var(--accent-text);flex:0 0 auto}
+.vis{display:grid;grid-template-columns:1fr 1fr;gap:2.6mm 5mm;list-style:none}
+.vis li{display:grid;grid-template-columns:5.2mm 1fr;gap:2.4mm;padding:2mm 0;border-bottom:1px solid #edf1f5}
+.vis b{display:block;font-size:8.9pt;color:var(--navy)}
+.vis span{display:block;font-size:8pt;line-height:1.42;color:var(--muted)}
+.brandrow{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.logo-tile{display:grid;place-items:center;height:30mm;border-radius:3.6mm;border:1px solid var(--line);background:#fff;padding:4mm}
+.logo-tile.dark{background:var(--logo-dark-bg,#0B1B3A);border-color:transparent;color:#fff}
+.logo-tile small{display:block;margin-top:1.6mm;text-align:center;font-size:6.8pt;color:var(--muted)}
+.logo-tile.dark small{color:#c9d6e4}
+.swatches{display:grid;grid-template-columns:repeat(5,1fr);gap:2.4mm;margin-top:4mm}
+.sw{border-radius:3mm;overflow:hidden;border:1px solid var(--line);background:#fff}
+.sw i{display:block;height:13mm}
+.sw b{display:block;padding:1.6mm 2.2mm 0;font-size:7.6pt;color:var(--navy)}
+.sw span{display:block;padding:0 2.2mm 1.8mm;font-size:7.2pt;font-family:Inter,monospace;color:var(--muted);letter-spacing:.02em}
+.typo{display:grid;grid-template-columns:auto 1fr;gap:4mm;align-items:center;margin-top:3.6mm;padding:3.6mm 4.4mm;border-radius:3.6mm;background:var(--soft)}
+.typo .aa{font-size:24pt;font-weight:800;color:var(--navy);letter-spacing:-.03em;line-height:1}
+.typo p{font-size:8.2pt;line-height:1.45}
+.rules{margin-top:2.6mm;font-size:7.6pt;line-height:1.5;color:var(--muted)}
+.mk-contact{position:absolute;left:15mm;right:15mm;bottom:25mm;display:grid;grid-template-columns:1fr auto;gap:6mm;align-items:center;padding:5.4mm 6.4mm;border-radius:4.2mm;background:var(--hero);color:#fff}
+.mk-contact .k{font-size:7.2pt;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#bce2ff}
+.mk-contact .n{margin-top:1mm;font-size:12.5pt;font-weight:800}
+.mk-contact .l{margin-top:1.4mm;display:flex;flex-wrap:wrap;gap:1mm 5mm;font-size:8.8pt;color:#e6eef6}
+.mk-contact img{width:38mm;height:auto}
+
+/* ---------- Écran (version web) ---------- */
+.toolbar{display:none}
+@media screen{
+  body{padding:62px 0 28px}
+  .page{margin:0 auto 22px;box-shadow:0 18px 50px #0b315124,0 2px 6px #0b31510f;border-radius:2px}
+  .toolbar{position:fixed;z-index:10;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;gap:12px;height:50px;padding:0 18px;background:#08233f;color:#fff;font-size:14px;box-shadow:0 4px 18px #0000002e}
+  .toolbar .t{font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .toolbar .t a{color:#bce2ff;font-weight:600;margin-right:10px}
+  .toolbar nav{display:flex;gap:8px;flex:0 0 auto}
+  .toolbar nav a{display:inline-flex;align-items:center;min-height:34px;padding:0 12px;border-radius:7px;border:1px solid #ffffff40;color:#fff;font-weight:700;font-size:13px}
+  .toolbar nav a.primary{border:0;background:linear-gradient(100deg,#714bce,#1688d8)}
+}
+@media screen and (max-width:640px){
+  .toolbar .t{font-size:12px}
+  .toolbar nav a.sec{display:none}
+}
+@media print{
+  body{background:#fff}
+  .toolbar{display:none!important}
+}
+
+/* ---------- Art de couverture : Omnifloo ---------- */
+.oart{height:100%;display:flex;flex-direction:column;gap:3.4mm}
+.ogrid{display:grid;grid-template-columns:repeat(4,1fr);gap:3.4mm}
+.ocard{padding:4.4mm 4mm;border-radius:3.6mm;background:#ffffff14;border:1px solid #ffffff2e}
+.ocard .oi{display:grid;place-items:center;width:9mm;height:9mm;margin-bottom:3mm;border-radius:2.6mm;background:#ffffff;color:#007E80}
+.ocard .oi svg{width:5mm;height:5mm;stroke-width:1.9}
+.ocard b{display:block;font-size:11pt;letter-spacing:-.01em}
+.ocard span{display:block;margin-top:.8mm;font-size:8.4pt;color:#d6e4ef}
+.obar{display:flex;align-items:center;justify-content:space-between;gap:4mm;padding:4mm 4.6mm;border-radius:3.6mm;background:#ffffff;color:#142740}
+.obar small{display:block;font-size:7pt;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#007E80}
+.obar b{display:block;font-size:11pt;margin-top:.6mm}
+.ochips{display:flex;gap:2mm}
+.ochips span{display:inline-flex;align-items:center;gap:1.4mm;padding:1.6mm 2.8mm;border-radius:10mm;background:#E6F4F4;font-size:8.2pt;font-weight:700;color:#142740}
+.ochips svg{width:3.8mm;height:3.8mm;color:#007E80;stroke-width:2}
+.onote{font-size:7.4pt;color:#c9d9e6}
+
+/* ---------- Art de couverture : Entreprendre Autrement ---------- */
+.eart{position:relative;height:100%}
+.eart .epath{position:absolute;right:-15mm;bottom:-6mm;width:150mm;height:auto;opacity:.95}
+.ecards{position:absolute;left:0;bottom:2mm;display:grid;grid-template-columns:repeat(3,38mm);gap:3.4mm}
+.ecard{padding:4.4mm 4.4mm 4mm;border-radius:3.6mm;background:#fff;box-shadow:0 10px 26px #1e3a5f14;border:1px solid #1e3a5f14}
+.ecard b{display:block;font-family:Sora,Inter,sans-serif;font-size:21pt;font-weight:800;line-height:1;color:#1E3A5F;letter-spacing:-.02em}
+.ecard span{display:block;margin-top:1.6mm;font-size:8.4pt;color:#4A5568}
+
+/* ---------- Visuel Propecto ---------- */
+.pflow{display:grid;grid-template-columns:1fr 6mm 1.05fr 6mm 1fr;align-items:center;gap:1mm}
+.pcol{display:grid;gap:1.8mm}
+.psrc{display:flex;align-items:baseline;gap:2mm;padding:1.7mm 3mm;border-radius:2.4mm;background:var(--soft);border-left:1mm solid var(--accent2)}
+.psrc b{font-size:8.4pt;color:var(--navy);min-width:14mm}
+.psrc span{font-size:7.6pt;color:var(--muted)}
+.parr{display:grid;place-items:center;color:var(--accent-text)}
+.parr svg{width:5mm;height:5mm;stroke-width:2.2}
+.pcore{display:flex;flex-direction:column;align-items:center;text-align:center;padding:4.6mm 4mm;border-radius:3.6mm;background:linear-gradient(160deg,#0B1B3A,#0c3a78);color:#fff}
+.pcore svg{margin-bottom:2.4mm}
+.pcore b{font-size:9.6pt;line-height:1.3}
+.pcore span{margin-top:1.4mm;font-size:7.6pt;line-height:1.42;color:#d6e4ef}
+.pcore em{margin-top:2.4mm;padding:.8mm 2.6mm;border-radius:5mm;background:#ffffff1f;font-style:normal;font-size:7.2pt;font-weight:700;color:#bfe9ee}
+.puse{display:grid;grid-template-columns:8mm 1fr;gap:2.4mm;align-items:center;padding:1.8mm 0}
+.puse b{display:block;font-size:9pt;color:var(--navy)}
+.puse span{display:block;font-size:7.7pt;line-height:1.35;color:var(--muted)}
+
+/* ---------- Visuel Entreprendre Autrement ---------- */
+.themes{display:grid;grid-template-columns:repeat(5,1fr);gap:2.6mm}
+.theme{display:flex;flex-direction:column;gap:1.8mm;padding:3mm;border-radius:3mm;background:var(--accent-soft)}
+.theme .ico{background:#fff;color:#C84A2C}
+.theme b{display:block;font-family:Sora,Inter,sans-serif;font-size:8.8pt;color:#1E3A5F}
+.theme span{display:block;font-size:7.3pt;line-height:1.35;color:#4A5568}
+.plain .tick svg,.vis .ico svg{width:3.2mm;height:3.2mm;stroke-width:3}
+.vis .ico{background:var(--accent-soft);color:var(--accent-text)}
+
+.checks b .tag{display:inline-block;margin-left:1.6mm}
+
+:root{--accent:#155EEF;--accent-text:#155EEF;--accent2:#00A7B5;--accent-soft:#EEF4FF;--dark:#0B1B3A;--cover-bg:radial-gradient(circle at 86% 16%, #ffffff22 0 8%, transparent 32%), linear-gradient(120deg, #071a36 0%, #0c3a78 58%, #0b8fae 100%);--accent2-soft:#E3F6F8;--tag-text:#00666F;--cover-accent:#7ee6ee;--logo-dark-bg:#0B1B3A;}
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <div class="t"><a href="https://dyonysos.fr/espace-partenaires">Espace partenaires</a>Propecto — Kit partenaire</div>
+  <nav><a class="sec" href="media-kit.html">Media kit</a><a class="primary" href="kit-partenaire.pdf">Télécharger le PDF</a></nav>
+</div>
+
+<section class="page cover">
+  <div class="inner">
+    <div class="top">
+      <svg style="height:13mm;width:auto" viewBox="0 0 1010 300" role="img" aria-label="Propecto">
+  <defs><linearGradient id="pgrad-dark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#155EEF"/><stop offset="1" stop-color="#00A7B5"/></linearGradient></defs>
+  <rect x="24" y="24" width="252" height="252" rx="59.22" fill="url(#pgrad-dark)"/>
+  <text x="150" y="152" text-anchor="middle" dominant-baseline="central" font-family="Inter, Arial, sans-serif" font-size="150" font-weight="800" fill="#FFFFFF">P</text>
+  <text x="330" y="152" dominant-baseline="central" font-family="Inter, Arial, sans-serif" font-size="150" font-weight="800" letter-spacing="-5.25"><tspan fill="#FFFFFF">Pro</tspan><tspan fill="#8FB8FF">pecto</tspan></text>
+</svg>
+      <span class="pill">Kit partenaire — octobre 2026</span>
+    </div>
+    <div class="hero">
+      <p class="eyebrow">Données d’entreprises B2B</p>
+      <h1>Ciblez. Vérifiez. Prospectez.</h1>
+      <p class="sub">La plateforme européenne qui réunit, sur une fiche unique par entreprise, les données publiques officielles — identité, dirigeants, comptes, marchés publics et aides — avec le lien vers chaque source.</p>
+      <div class="chips"><span><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Sources officielles citées</span><span><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Fiche 360 gratuite en aperçu</span><span><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg>Marchés publics et aides</span></div>
+    </div>
+    <div class="art"><svg viewBox="0 0 180 76" style="width:100%;height:100%" aria-hidden="true">
+  <defs>
+    <linearGradient id="artg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#155EEF"/><stop offset="1" stop-color="#00A7B5"/></linearGradient>
+  </defs>
+  <circle cx="90" cy="38" r="36" fill="#ffffff" fill-opacity=".05"/>
+  <circle cx="90" cy="38" r="26" fill="none" stroke="#ffffff" stroke-opacity=".22" stroke-width=".35" stroke-dasharray="1.2 1.6"/>
+  <path d="M46 7.5 C 60 7.5, 60 38, 72 38" fill="none" stroke="#9ed8ff" stroke-opacity=".55" stroke-width=".35"/>
+  <rect x="4" y="2" width="42" height="11" rx="5.5" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".3" stroke-width=".3"/>
+  <circle cx="10" cy="7.5" r="1.3" fill="#5fe0e8"/>
+  <text x="14" y="6.9" font-family="Inter" font-size="3.6" font-weight="800" fill="#ffffff">INSEE</text>
+  <text x="14" y="10.7" font-family="Inter" font-size="2.7" font-weight="500" fill="#cfe3f5">Identité</text>
+  <path d="M46 22.5 C 60 22.5, 60 38, 72 38" fill="none" stroke="#9ed8ff" stroke-opacity=".55" stroke-width=".35"/>
+  <rect x="4" y="17" width="42" height="11" rx="5.5" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".3" stroke-width=".3"/>
+  <circle cx="10" cy="22.5" r="1.3" fill="#5fe0e8"/>
+  <text x="14" y="21.9" font-family="Inter" font-size="3.6" font-weight="800" fill="#ffffff">BODACC</text>
+  <text x="14" y="25.7" font-family="Inter" font-size="2.7" font-weight="500" fill="#cfe3f5">Vie juridique</text>
+  <path d="M46 37.5 C 60 37.5, 60 38, 72 38" fill="none" stroke="#9ed8ff" stroke-opacity=".55" stroke-width=".35"/>
+  <rect x="4" y="32" width="42" height="11" rx="5.5" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".3" stroke-width=".3"/>
+  <circle cx="10" cy="37.5" r="1.3" fill="#5fe0e8"/>
+  <text x="14" y="36.9" font-family="Inter" font-size="3.6" font-weight="800" fill="#ffffff">INPI</text>
+  <text x="14" y="40.7" font-family="Inter" font-size="2.7" font-weight="500" fill="#cfe3f5">Actes et comptes</text>
+  <path d="M46 52.5 C 60 52.5, 60 38, 72 38" fill="none" stroke="#9ed8ff" stroke-opacity=".55" stroke-width=".35"/>
+  <rect x="4" y="47" width="42" height="11" rx="5.5" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".3" stroke-width=".3"/>
+  <circle cx="10" cy="52.5" r="1.3" fill="#5fe0e8"/>
+  <text x="14" y="51.9" font-family="Inter" font-size="3.6" font-weight="800" fill="#ffffff">BOAMP</text>
+  <text x="14" y="55.7" font-family="Inter" font-size="2.7" font-weight="500" fill="#cfe3f5">Marchés publics FR</text>
+  <path d="M46 67.5 C 60 67.5, 60 38, 72 38" fill="none" stroke="#9ed8ff" stroke-opacity=".55" stroke-width=".35"/>
+  <rect x="4" y="62" width="42" height="11" rx="5.5" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".3" stroke-width=".3"/>
+  <circle cx="10" cy="67.5" r="1.3" fill="#5fe0e8"/>
+  <text x="14" y="66.9" font-family="Inter" font-size="3.6" font-weight="800" fill="#ffffff">TED</text>
+  <text x="14" y="70.7" font-family="Inter" font-size="2.7" font-weight="500" fill="#cfe3f5">Marchés publics UE</text>
+  <path d="M108 38 C 120 38, 120 14.5, 134 14.5" fill="none" stroke="#9ed8ff" stroke-opacity=".55" stroke-width=".35"/>
+  <rect x="134" y="8" width="44" height="13" rx="6.5" fill="#ffffff" fill-opacity=".14" stroke="#ffffff" stroke-opacity=".35" stroke-width=".3"/>
+  <text x="139" y="13.6" font-family="Inter" font-size="3.9" font-weight="800" fill="#ffffff">Cibler</text>
+  <text x="139" y="17.6" font-family="Inter" font-size="2.6" font-weight="500" fill="#d6e8f7">entreprises, décideurs, marchés</text>
+  <path d="M108 38 C 120 38, 120 35.5, 134 35.5" fill="none" stroke="#9ed8ff" stroke-opacity=".55" stroke-width=".35"/>
+  <rect x="134" y="29" width="44" height="13" rx="6.5" fill="#ffffff" fill-opacity=".14" stroke="#ffffff" stroke-opacity=".35" stroke-width=".3"/>
+  <text x="139" y="34.6" font-family="Inter" font-size="3.9" font-weight="800" fill="#ffffff">Vérifier</text>
+  <text x="139" y="38.6" font-family="Inter" font-size="2.6" font-weight="500" fill="#d6e8f7">clients, fournisseurs, partenaires</text>
+  <path d="M108 38 C 120 38, 120 56.5, 134 56.5" fill="none" stroke="#9ed8ff" stroke-opacity=".55" stroke-width=".35"/>
+  <rect x="134" y="50" width="44" height="13" rx="6.5" fill="#ffffff" fill-opacity=".14" stroke="#ffffff" stroke-opacity=".35" stroke-width=".3"/>
+  <text x="139" y="55.6" font-family="Inter" font-size="3.9" font-weight="800" fill="#ffffff">Prospecter</text>
+  <text x="139" y="59.6" font-family="Inter" font-size="2.6" font-weight="500" fill="#d6e8f7">sur des données traçables</text>
+  <rect x="72" y="20" width="36" height="36" rx="8.5" fill="url(#artg)"/>
+  <rect x="72" y="20" width="36" height="36" rx="8.5" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".4"/>
+  <text x="90" y="38.6" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="21" font-weight="800" fill="#ffffff">P</text>
+  <text x="90" y="64" text-anchor="middle" font-family="Inter" font-size="3" font-weight="700" fill="#cfe3f5" letter-spacing=".3">UNE FICHE PAR ENTREPRISE · SOURCES CITÉES</text>
+</svg></div>
+    <div class="foot">
+      <div><div class="proj">Un projet</div><img src="img/dyonysos-blanc.png" alt="Dyonysos" style="width:46mm;height:auto"></div>
+      <div class="meta"><b>propecto.eu</b><br>dyonysos.fr/espace-partenaires</div>
+    </div>
+  </div>
+</section>
+
+<section class="page">
+  <div class="inner">
+    <div class="ph"><svg style="height:8.4mm;width:auto" viewBox="0 0 1010 300" role="img" aria-label="Propecto">
+  <defs><linearGradient id="pgrad-light" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#155EEF"/><stop offset="1" stop-color="#00A7B5"/></linearGradient></defs>
+  <rect x="24" y="24" width="252" height="252" rx="59.22" fill="url(#pgrad-light)"/>
+  <text x="150" y="152" text-anchor="middle" dominant-baseline="central" font-family="Inter, Arial, sans-serif" font-size="150" font-weight="800" fill="#FFFFFF">P</text>
+  <text x="330" y="152" dominant-baseline="central" font-family="Inter, Arial, sans-serif" font-size="150" font-weight="800" letter-spacing="-5.25"><tspan fill="#0B1B3A">Pro</tspan><tspan fill="#1F5BE3">pecto</tspan></text>
+</svg><span class="doc">Kit partenaire · octobre 2026</span></div>
+    <span class="kicker">01 · Le projet</span>
+    <h2 class="title">Vérifier une entreprise ne devrait pas demander cinq onglets.</h2>
+    <div class="psp">
+      <div class="card"><div class="label"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <circle cx="12" cy="12" r="6" /> <circle cx="12" cy="12" r="2" /> </svg>Le problème</div><p>Pour savoir à qui l’on a affaire, l’information existe, publique et gratuite, mais elle est dispersée : identité à l’INSEE, vie juridique au BODACC, actes et comptes à l’INPI, marchés publics au BOAMP et sur TED.</p></div>
+      <div class="card sol"><div class="label"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /> <path d="M20 2v4" /> <path d="M22 4h-4" /> <circle cx="4" cy="20" r="2" /> </svg>La solution</div><p>Propecto rassemble ces sources dans une fiche unique par entreprise, tenue à jour et lisible, avec le lien vers chaque source officielle. La fiche 360 y ajoute dirigeants, comptes, documents et signaux de marché.</p></div>
+      <div class="card"><div class="label"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <path d="M16 3.128a4 4 0 0 1 0 7.744" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <circle cx="9" cy="7" r="4" /> </svg>Pour qui</div><p>Dirigeants, commerciaux, consultants et équipes de développement économique. La fiche 360 est conçue pour décider à trois : chef d’entreprise, comptable et cabinet de conseil.</p></div>
+    </div>
+    <div class="visual">
+  <div class="vh"><b>Comment Propecto fonctionne</b><span>Schéma de principe — illustration, pas une capture d’écran.</span></div>
+  <div class="vb pflow">
+    <div class="pcol">
+      <div class="psrc"><b>INSEE</b><span>identité</span></div>
+      <div class="psrc"><b>BODACC</b><span>annonces légales</span></div>
+      <div class="psrc"><b>INPI</b><span>actes et comptes</span></div>
+      <div class="psrc"><b>BOAMP</b><span>marchés publics FR</span></div>
+      <div class="psrc"><b>TED</b><span>marchés publics UE</span></div>
+    </div>
+    <div class="parr"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></div>
+    <div class="pcore">
+      <svg style="width:11mm;height:11mm" viewBox="0 0 512 512" aria-hidden="true">
+  <defs><linearGradient id="pm11mm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#155EEF"/><stop offset="1" stop-color="#00A7B5"/></linearGradient></defs>
+  <rect width="512" height="512" rx="120.32" fill="url(#pm11mm)"/>
+  <text x="256" y="262" text-anchor="middle" dominant-baseline="central" font-family="Inter, Arial, sans-serif" font-size="300" font-weight="800" fill="#FFFFFF">P</text>
+</svg>
+      <b>Une fiche unique par entreprise</b>
+      <em>Lien vers chaque source officielle</em>
+    </div>
+    <div class="parr"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></div>
+    <div class="pcol">
+      <div class="puse"><span class="ico sm"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <circle cx="12" cy="12" r="6" /> <circle cx="12" cy="12" r="2" /> </svg></span><div><b>Cibler</b><span>entreprises, décideurs et marchés publics</span></div></div>
+      <div class="puse"><span class="ico sm"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /> <path d="m9 12 2 2 4-4" /> </svg></span><div><b>Vérifier</b><span>un client, un fournisseur ou un partenaire</span></div></div>
+      <div class="puse"><span class="ico sm"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /> </svg></span><div><b>Prospecter</b><span>en s’appuyant sur des données traçables</span></div></div>
+    </div>
+  </div>
+</div>
+    <div class="block">
+      <div class="section-title"><h3>Ce qui existe aujourd’hui</h3><span>État au 1er octobre 2026</span></div>
+      <ul class="checks">
+        <li><span class="tick"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><div><b>Recherche d’entreprises et fiches sourcées</b><span>Lien vers la source officielle de chaque donnée.</span></div></li>
+        <li><span class="tick"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><div><b>Fiche 360 : aperçu gratuit en trois lectures</b><span>Référence complète, synthèse en quatre cartes, chronologie.</span></div></li>
+        <li><span class="tick"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><div><b>Analyse étendue</b><span>Scénarios, ratios, comparables, gouvernance, risques.</span></div></li>
+        <li><span class="tick"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><div><b>Marchés publics, aides et marques</b><span>Dans le même référentiel que les données légales.</span></div></li>
+        <li><span class="tick"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><div><b>Guides pratiques publiés</b><span>SIREN, TVA et LEI, registres européens, avis de marché.</span></div></li>
+        <li><span class="tick"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><div><b>Connecteur ERP et CRM<span class="tag">En développement</span></b><span>API et MCP ; premières versions avec Odoo et Omnifloo.</span></div></li>
+      </ul>
+    </div>
+    <div class="figs n3">
+<div class="fig"><b>15 M+<sup>*</sup></b><span>fiches entreprises en base</span></div><div class="fig"><b>5</b><span>sources officielles citées : INSEE, BODACC, INPI, BOAMP, TED</span></div><div class="fig"><b>3</b><span>lectures gratuites de la fiche 360</span></div>    </div>
+    <p class="note">* Estimation basse retenue au 1er octobre 2026 ; le volume évolue avec les imports. Source : DYONYSOS. L’exemple public NOVAENERGIE INDUSTRIES SA (propecto.eu/exemple/fiche-entreprise) est construit avec des données 100 % fictives.</p>
+  </div>
+  <div class="pf"><span><b>Propecto</b> — Kit partenaire</span><span>dyonysos.fr/espace-partenaires</span><span class="num">2 / 4</span></div>
+</section>
+
+<section class="page">
+  <div class="inner">
+    <div class="ph"><svg style="height:8.4mm;width:auto" viewBox="0 0 1010 300" role="img" aria-label="Propecto">
+  <defs><linearGradient id="pgrad-light" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#155EEF"/><stop offset="1" stop-color="#00A7B5"/></linearGradient></defs>
+  <rect x="24" y="24" width="252" height="252" rx="59.22" fill="url(#pgrad-light)"/>
+  <text x="150" y="152" text-anchor="middle" dominant-baseline="central" font-family="Inter, Arial, sans-serif" font-size="150" font-weight="800" fill="#FFFFFF">P</text>
+  <text x="330" y="152" dominant-baseline="central" font-family="Inter, Arial, sans-serif" font-size="150" font-weight="800" letter-spacing="-5.25"><tspan fill="#0B1B3A">Pro</tspan><tspan fill="#1F5BE3">pecto</tspan></text>
+</svg><span class="doc">Kit partenaire · octobre 2026</span></div>
+    <span class="kicker">02 · Formats de partenariat</span>
+    <h2 class="title">Travaillons ensemble, au format qui vous convient.</h2>
+    <p class="lead">Chaque format peut démarrer par un test simple, sans exclusivité, et se combiner avec les autres. Nous adaptons le contenu à vos clients ou à vos membres.</p>
+    <div class="formats">
+      <div class="fcard"><span class="ico"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m11 17 2 2a1 1 0 1 0 3-3" /> <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" /> <path d="m21 3 1 11h-2" /> <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" /> <path d="M3 4h8" /> </svg></span><div><h3>Affiliation et apport d’affaires</h3><p>Recommandation croisée avec lien suivi : vous orientez vos clients vers Propecto, nous orientons nos utilisateurs vers vos services au bon moment.</p></div></div>
+      <div class="fcard"><span class="ico"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" /> <path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14" /> <path d="M8 6v8" /> </svg></span><div><h3>Co-marketing</h3><p>Articles et webinaires croisés (vérifier un fournisseur, lire un avis de marché), relais dans nos newsletters et les vôtres.</p></div></div>
+      <div class="fcard"><span class="ico"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 22v-5" /> <path d="M15 8V2" /> <path d="M17 8a1 1 0 0 1 1 1v4a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1z" /> <path d="M9 8V2" /> </svg></span><div><h3>Intégration, API, connecteur</h3><p>Les données d’entreprises et de marchés publics dans votre outil : API et MCP en cours d’ouverture, premiers connecteurs Odoo et Omnifloo.</p></div></div>
+      <div class="fcard"><span class="ico"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 7v14" /> <path d="M20 11v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8" /> <path d="M7.5 7a1 1 0 0 1 0-5A4.8 8 0 0 1 12 7a4.8 8 0 0 1 4.5-5 1 1 0 0 1 0 5" /> <rect x="3" y="7" width="18" height="4" rx="1" /> </svg></span><div><h3>Offres réservées à vos clients ou membres</h3><p>Conditions dédiées pour vos adhérents ou vos clients, définies ensemble et réservées à votre réseau.</p></div></div>
+      <div class="fcard"><span class="ico"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" /> <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" /> <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" /> </svg></span><div><h3>Marque blanche et licence</h3><p>Annuaire co-brandé ou module de recherche aux couleurs de votre réseau : CCI, fédération, cabinet.</p></div></div>
+      <div class="fcard"><span class="ico"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M8 2v3" /> <path d="M16 2v3" /> <rect x="3" y="3" width="18" height="18" rx="2" /> <path d="M3 9h18" /> <path d="M8 13h.01" /> <path d="M12 13h.01" /> <path d="M16 13h.01" /> <path d="M8 17h.01" /> <path d="M12 17h.01" /> <path d="M16 17h.01" /> </svg></span><div><h3>Événements</h3><p>Atelier « vérifier un partenaire en 5 minutes », interventions, salons et rencontres d’affaires.</p></div></div>
+      <div class="fcard"><span class="ico"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /> <circle cx="12" cy="12" r="3" /> </svg></span><div><h3>Visibilité réciproque</h3><p>Logo et page partenaire, mention dans nos guides et sur dyonysos.fr/espace-partenaires.</p></div></div>
+      <div class="fcard"><span class="ico"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M13 21h8" /> <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" /> </svg></span><div><h3>Contenus sponsorisés</h3><p>Guides ou dossiers thématiques co-signés, toujours identifiés comme partenariat.</p></div></div>
+    </div>
+    <div class="open">
+      <p class="big">Nous restons ouverts à tout type de partenariat et de visibilité.</p>
+      <p class="small">Une idée qui ne rentre dans aucune de ces cases ? Écrivez-nous : nous étudions chaque proposition, y compris les formats atypiques, pourvu qu’ils servent vos clients et les nôtres.</p>
+    </div>
+  </div>
+  <div class="pf"><span><b>Propecto</b> — Kit partenaire</span><span>dyonysos.fr/espace-partenaires</span><span class="num">3 / 4</span></div>
+</section>
+
+<section class="page">
+  <div class="inner">
+    <div class="ph"><svg style="height:8.4mm;width:auto" viewBox="0 0 1010 300" role="img" aria-label="Propecto">
+  <defs><linearGradient id="pgrad-light" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#155EEF"/><stop offset="1" stop-color="#00A7B5"/></linearGradient></defs>
+  <rect x="24" y="24" width="252" height="252" rx="59.22" fill="url(#pgrad-light)"/>
+  <text x="150" y="152" text-anchor="middle" dominant-baseline="central" font-family="Inter, Arial, sans-serif" font-size="150" font-weight="800" fill="#FFFFFF">P</text>
+  <text x="330" y="152" dominant-baseline="central" font-family="Inter, Arial, sans-serif" font-size="150" font-weight="800" letter-spacing="-5.25"><tspan fill="#0B1B3A">Pro</tspan><tspan fill="#1F5BE3">pecto</tspan></text>
+</svg><span class="doc">Kit partenaire · octobre 2026</span></div>
+    <span class="kicker">03 · Ce que nous apportons</span>
+    <h2 class="title">Ce que nous apportons et proposons.</h2>
+    <div class="two">
+      <div class="card">
+        <div class="label"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 7v14" /> <path d="M20 11v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8" /> <path d="M7.5 7a1 1 0 0 1 0-5A4.8 8 0 0 1 12 7a4.8 8 0 0 1 4.5-5 1 1 0 0 1 0 5" /> <rect x="3" y="7" width="18" height="4" rx="1" /> </svg>Ce que nous apportons</div>
+        <ul class="plain"><li><span class="tick" style="display:grid;place-items:center;width:5.2mm;height:5.2mm;border-radius:50%;background:var(--accent-soft);color:var(--accent-text)"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><span>Des données publiques réunies et sourcées : chaque information renvoie à son origine officielle.</span></li><li><span class="tick" style="display:grid;place-items:center;width:5.2mm;height:5.2mm;border-radius:50%;background:var(--accent-soft);color:var(--accent-text)"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><span>Une fiche 360 pensée pour décider à trois : dirigeant, comptable et conseil.</span></li><li><span class="tick" style="display:grid;place-items:center;width:5.2mm;height:5.2mm;border-radius:50%;background:var(--accent-soft);color:var(--accent-text)"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><span>Des contenus pédagogiques prêts à relayer : guides, méthode de vérification en cinq minutes.</span></li><li><span class="tick" style="display:grid;place-items:center;width:5.2mm;height:5.2mm;border-radius:50%;background:var(--accent-soft);color:var(--accent-text)"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><span>Des données publiques ouvertes (SIRENE, BODACC, DECP, TED) réutilisées dans le respect de leurs licences.</span></li><li><span class="tick" style="display:grid;place-items:center;width:5.2mm;height:5.2mm;border-radius:50%;background:var(--accent-soft);color:var(--accent-text)"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><span>Un éditeur qui connaît le terrain de la gestion : DYONYSOS intègre Odoo et édite l’ERP open source Omnifloo.</span></li></ul>
+      </div>
+      <div class="card">
+        <div class="label"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m11 17 2 2a1 1 0 1 0 3-3" /> <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" /> <path d="m21 3 1 11h-2" /> <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" /> <path d="M3 4h8" /> </svg>Ce que nous proposons</div>
+        <ol class="steps"><li><b>Un échange de 30 minutes</b>pour identifier le format le plus utile à vos clients ou à vos membres.</li><li><b>Un premier test simple</b>un article croisé, un atelier ou un lien de recommandation, mesuré ensemble.</li><li><b>Un bilan partagé</b>puis un format durable si le test est concluant, sans exclusivité imposée.</li></ol>
+      </div>
+    </div>
+    <div class="focus">
+  <div class="fh"><span class="ico sm"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /> <path d="M20 2v4" /> <path d="M22 4h-4" /> <circle cx="4" cy="20" r="2" /> </svg></span><h3>Prêt à animer : vérifier un partenaire en 5 minutes</h3></div>
+  <p class="intro">La méthode publiée par Propecto, à proposer à vos membres en atelier, en webinaire ou en article co-signé.</p>  <ol class="method"><li>Retrouver le SIREN, vérifier l’état administratif (actif ou cessé) et le siège.</li><li>Contrôler la cohérence : activité déclarée, ancienneté de l’entreprise.</li><li>Chercher les annonces BODACC des vingt-quatre derniers mois.</li><li>Lire le dernier exercice déposé, en tenant compte du décalage et de la confidentialité possible.</li><li>Élargir : marchés publics remportés, marques déposées, établissements secondaires.</li></ol></div>
+  </div>
+  <div class="contact">
+    <div>
+      <div class="k">Contact partenariats</div>
+      <div class="n">Julien Daures</div>
+      <div class="r">Fondateur de DYONYSOS</div>
+      <div class="lines">
+        <div><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /> <rect x="2" y="4" width="20" height="16" rx="2" /> </svg>julien.daures@dyonysos.fr</div>
+        <div><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /> <path d="M2 12h20" /> </svg>dyonysos.fr/espace-partenaires</div>
+        <div><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M9 17H7A5 5 0 0 1 7 7h2" /> <path d="M15 7h2a5 5 0 1 1 0 10h-2" /> <line x1="8" x2="16" y1="12" y2="12" /> </svg>propecto.eu</div>
+      </div>
+    </div>
+    <div class="brand"><span style="margin:0 0 2mm">Un projet</span><img src="img/dyonysos-blanc.png" alt="Dyonysos" style="width:44mm;height:auto"><span>Mouguerre · Pyrénées-Atlantiques</span></div>
+  </div>
+  <p class="legal">Propecto est édité par DYONYSOS SASU (RCS Bayonne), Mouguerre (64). Document d’information non contractuel, octobre 2026. Les marques citées appartiennent à leurs propriétaires respectifs ; leur mention ne signifie pas un partenariat existant.</p>
+  <div class="pf"><span><b>Propecto</b> — Kit partenaire</span><span>dyonysos.fr/espace-partenaires</span><span class="num">4 / 4</span></div>
+</section>
+<script>
+(function(){function z(v){document.querySelectorAll('.page').forEach(function(p){p.style.zoom=v})}function f(){var w=document.documentElement.clientWidth;z(w<820?String((w-12)/794):'')}addEventListener('resize',f);addEventListener('beforeprint',function(){z('')});addEventListener('afterprint',f);if(!matchMedia('print').matches)f()})();
+</script>
+</body>
+</html>

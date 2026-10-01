@@ -96,7 +96,7 @@ test('fiches solutions : HTML complet, canonique, hreflang et lien direct vers l
     assert.equal(titles.size, ROUTED_PRODUCTS.length, `titres uniques ${lang}`);
   }
   const en = renderProduct(data, 'en', 'cvdesignpro').html;
-  assert.match(en, /Resume creation and formatting/);
+  assert.match(en, /CV creation and formatting/);
   assert.doesNotMatch(en, /Création et mise en forme|Le niveau de disponibilité/);
   assert.equal(renderProduct(data, 'fr', 'nexiste-pas').status, 404);
 });
@@ -113,7 +113,7 @@ test('liste du blog : tous les guides dans chaque langue, titres traduits', () =
     for (const s of slugs) assert.ok(html.includes(`href="${lang === 'fr' || !available(s).includes(lang) ? '' : '/' + lang}/blog/${s}"`), `${lang}/${s}`);
     assert.ok(html.includes('href="/applications-odoo"'));
   }
-  assert.ok(renderBlogIndex(data, 'en').html.includes('How Do You Tailor Your Resume to a Job Posting?'));
+  assert.ok(renderBlogIndex(data, 'en').html.includes('How Do You Tailor Your CV to a Job Posting?'));
 });
 
 test('corps rédigés : chaque article a son propre contenu, sommaire et FAQ', () => {
@@ -168,4 +168,16 @@ test('liens sortants : un lien dans le corps vers le site du produit, sans synta
   }
   assert.deepEqual(available('lancer-site-boutique-en-ligne-evolutif'), ['fr', 'en', 'es']);
   assert.deepEqual(available('creer-marketplace'), LANGS);
+});
+
+test('anglais britannique : aucune forme américaine dans les articles et fiches en anglais (décision 01/10/2026)', () => {
+  const fs = require('fs');
+  const path = require('path');
+  const us = /\b(organiz\w*|optimiz\w*|analyz\w*|prioritiz\w*|specializ\w*|centraliz\w*|customiz\w*|personaliz\w*|standardiz\w*|digitiz\w*|recogniz\w*|summariz\w*|colors?|behaviors?|favor\w*|catalogs?|centers?|centered|fulfillment|enrollment|judgment|resumes?)\b/i;
+  for (const f of ['seo-article-bodies.json', 'seo-article-i18n.json']) {
+    const en = JSON.stringify(JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'api', '_data', f), 'utf8')).en);
+    const texte = en.replace(/"[a-z0-9-]+":/g, '').replace(/https?:[^"\s]+/g, '').replace(/Analyzer\+/g, ''); // marque Analyzer+ conservée
+    const m = texte.match(us);
+    assert.equal(m, null, `${f} : forme américaine « ${m && m[0]} » — lancer python3 scripts/en-gb.py --ecrire`);
+  }
 });

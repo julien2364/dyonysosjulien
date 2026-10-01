@@ -2473,20 +2473,20 @@
  },
  "en": {
   "optimiser-cv-ats": {
-   "intro": "An ATS-friendly resume is, above all, a document that applicant tracking software can read without errors: a linear structure, standard section headings, a text-based file and wording that mirrors the target role. Optimizing it therefore means removing whatever interferes with automated parsing, then checking that the key information is extracted correctly.",
+   "intro": "An ATS-friendly CV is, above all, a document that applicant tracking software can read without errors: a linear structure, standard section headings, a text-based file and wording that mirrors the target role. Optimising it therefore means removing whatever interferes with automated parsing, then checking that the key information is extracted correctly.",
    "sections": [
     {
-     "h2": "What an ATS actually does with your resume",
+     "h2": "What an ATS actually does with your CV",
      "paragraphs": [
-      "An ATS (Applicant Tracking System) is software for managing job applications. When you upload your resume, it breaks it down into fields: name, contact details, work experience, dates, degrees, skills. The recruiter then reviews this profile, filters applications or runs a keyword search across the database.",
-      "The real risk is not being arbitrarily “rejected by a robot,” but being misread: a job placed under the wrong section, a job title missing from the profile, skills that go unseen because they were embedded in an image. Optimizing a resume for ATS is about making that extraction reliable."
+      "An ATS (Applicant Tracking System) is software for managing job applications. When you upload your CV, it breaks it down into fields: name, contact details, work experience, dates, degrees, skills. The recruiter then reviews this profile, filters applications or runs a keyword search across the database.",
+      "The real risk is not being arbitrarily “rejected by a robot,” but being misread: a job placed under the wrong section, a job title missing from the profile, skills that go unseen because they were embedded in an image. Optimising a CV for ATS is about making that extraction reliable."
      ]
     },
     {
      "h2": "Layout: the elements that disrupt automated parsing",
      "paragraphs": [
-      "Highly designed templates are often the main culprits. Software reads text in an order that doesn’t always match the visual order: a sidebar can end up mixed in with the body of the resume, and a table can merge cells with no clear logic.",
-      "You can still have a polished resume, as long as you favor a simple structure: a single column, or a secondary column limited to non-essential information."
+      "Highly designed templates are often the main culprits. Software reads text in an order that doesn’t always match the visual order: a sidebar can end up mixed in with the body of the CV, and a table can merge cells with no clear logic.",
+      "You can still have a polished CV, as long as you favour a simple structure: a single column, or a secondary column limited to non-essential information."
      ],
      "list": [
       "Text placed in floating text boxes or shapes",
@@ -2497,7 +2497,7 @@
      ]
     },
     {
-     "h2": "Section headings and date formats the software recognizes",
+     "h2": "Section headings and date formats the software recognises",
      "paragraphs": [
       "An ATS identifies sections by their headings. “Work Experience,” “Education,” “Skills” and “Languages” are understood without ambiguity; “My Journey” or “What I Can Do” are less so. Save your originality for the content, not the headings.",
       "For each position, use the same order throughout: job title, company, location, dates. Write dates consistently, for example month and year in numbers or spelled out, without switching formats. A consistent timeline lets the software calculate your length of experience correctly."
@@ -2506,15 +2506,15 @@
     {
      "h2": "Choosing keywords without keyword stuffing",
      "paragraphs": [
-      "Recruiters search their database using the terms in the job posting: the exact job title, tools, certifications, core skills. Pick out these terms in the posting and make sure they appear in your resume wherever they reflect your actual experience. If the posting mentions “management control” and you wrote “financial oversight,” add the expected phrase.",
-      "Place these keywords in context, within your accomplishments, rather than in an endless list. Software can pick them up anywhere, but a human will read the resume afterward: a pile of terms with no evidence weakens your application. Also account for variants and acronyms, for example by writing out the full name of a standard followed by its abbreviation."
+      "Recruiters search their database using the terms in the job posting: the exact job title, tools, certifications, core skills. Pick out these terms in the posting and make sure they appear in your CV wherever they reflect your actual experience. If the posting mentions “management control” and you wrote “financial oversight,” add the expected phrase.",
+      "Place these keywords in context, within your accomplishments, rather than in an endless list. Software can pick them up anywhere, but a human will read the CV afterward: a pile of terms with no evidence weakens your application. Also account for variants and acronyms, for example by writing out the full name of a standard followed by its abbreviation."
      ]
     },
     {
      "h2": "File format and pre-submission check",
      "paragraphs": [
       "First, follow the application form’s instructions. Failing that, a PDF exported from a word processor, with selectable text, is generally parsed well; a PDF created from a scan or an image is not. Give the file a clear name that includes your name and the target position.",
-      "Before sending, run a simple test: copy the entire PDF and paste it into a plain-text editor. If the order is illogical, letters disappear or whole blocks are missing, an ATS will run into the same problems. Specialized tools also offer a compatibility analysis: CVDesignPro, for example, builds this check into resume creation and formatting, so you don’t have to rework the layout afterward."
+      "Before sending, run a simple test: copy the entire PDF and paste it into a plain-text editor. If the order is illogical, letters disappear or whole blocks are missing, an ATS will run into the same problems. Specialised tools also offer a compatibility analysis: CVDesignPro, for example, builds this check into CV creation and formatting, so you don’t have to rework the layout afterward."
      ],
      "list": [
       "The copied-and-pasted text stays in the right order",
@@ -2527,7 +2527,7 @@
    ],
    "faq": [
     {
-     "q": "Is a two-column resume necessarily incompatible with an ATS?",
+     "q": "Is a two-column CV necessarily incompatible with an ATS?",
      "a": "Not necessarily, but it is more prone to parsing errors. If you want to keep two columns, reserve the secondary column for short items such as languages or contact details, and check the result with the copy-and-paste test. The main content, work experience and education, should remain in a single continuous flow."
     },
     {
@@ -2535,19 +2535,19 @@
      "a": "A photo generally doesn’t prevent the text from being read, but it adds nothing for the software and takes up space. Whether to include one depends mainly on the norms of the country and industry. What matters is that no important information is embedded in an image."
     },
     {
-     "q": "Should I create an ATS version and a “designed” version of my resume?",
-     "a": "That’s a reasonable option if you also send your resume directly to contacts or hand it out at events. For uploads to job portals, use the plain version. Just make sure both versions contain exactly the same information to avoid any inconsistency."
+     "q": "Should I create an ATS version and a “designed” version of my CV?",
+     "a": "That’s a reasonable option if you also send your CV directly to contacts or hand it out at events. For uploads to job portals, use the plain version. Just make sure both versions contain exactly the same information to avoid any inconsistency."
     }
    ]
   },
   "adapter-cv-offre-emploi": {
-   "intro": "Tailoring your resume to a job posting means reorganizing your existing background to highlight what directly addresses the needs stated in the posting: title, summary, order of experience, selected accomplishments and wording. You’re not rewriting your career; you’re changing the hierarchy of evidence.",
+   "intro": "Tailoring your CV to a job posting means reorganising your existing background to highlight what directly addresses the needs stated in the posting: title, summary, order of experience, selected accomplishments and wording. You’re not rewriting your career; you’re changing the hierarchy of evidence.",
    "sections": [
     {
-     "h2": "Decode the job posting before touching your resume",
+     "h2": "Decode the job posting before touching your CV",
      "paragraphs": [
       "A job posting often mixes responsibilities, essential requirements and nice-to-haves. Start by reading it carefully, pen in hand, and sorting what is being asked for. Items that are repeated, placed at the top of the posting or phrased as mandatory are generally the priorities.",
-      "Also note the context: team size, the company’s stage of development, who the role works with. The same job title, such as “project officer,” does not carry the same expectations at a small organization as it does at a large corporation.",
+      "Also note the context: team size, the company’s stage of development, who the role works with. The same job title, such as “project officer,” does not carry the same expectations at a small organisation as it does at a large corporation.",
       "If the posting is very short, round out your reading with the company’s website and other postings from the same employer: they often reveal the team’s real priorities."
      ],
      "list": [
@@ -2568,14 +2568,14 @@
     {
      "h2": "Title, summary and section order: the most visible levers",
      "paragraphs": [
-      "Your resume title should reflect the target role while staying true to your experience. If the posting is looking for a “sales administration manager” and you hold that role under a different name, a title close to the one in the posting makes your resume easier to read.",
+      "Your CV title should reflect the target role while staying true to your experience. If the posting is looking for a “sales administration manager” and you hold that role under a different name, a title close to the one in the posting makes your CV easier to read.",
       "Your summary, two or three lines long, sums up what you bring to this particular role. Next, adjust the order: a highly sought-after technical skill can move to the top of its section, and recent, relevant training can come before work experience for a career changer."
      ]
     },
     {
      "h2": "Select, rewrite and trim your experience",
      "paragraphs": [
-      "For each position you’ve held, choose the two to four accomplishments most closely tied to the posting and list them first. Unrelated duties can be summarized in a single line, or even removed if they are old. A tailored resume is often shorter than the generic version.",
+      "For each position you’ve held, choose the two to four accomplishments most closely tied to the posting and list them first. Unrelated duties can be summarised in a single line, or even removed if they are old. A tailored CV is often shorter than the generic version.",
       "Rewrite your phrasing using the posting’s vocabulary when it accurately describes what you did. However, never add a skill you couldn’t back up in an interview: the gap would show as soon as the first technical questions come up."
      ],
      "list": [
@@ -2589,14 +2589,14 @@
      "h2": "Managing multiple versions without spending hours on it",
      "paragraphs": [
       "When you apply regularly, the challenge becomes practical: keeping track of which version was sent to whom, and avoiding redoing the layout every time. Name your files with the company and the date, and record the version used for each application in a tracking spreadsheet.",
-      "Some tools support this process. CVDesignPro, for instance, offers a feature for tailoring your resume to a job posting and can prepare the accompanying cover letter, which helps keep your message consistent across both documents. Whatever tool you use, the final review is yours: check that every addition reflects your actual experience."
+      "Some tools support this process. CVDesignPro, for instance, offers a feature for tailoring your CV to a job posting and can prepare the accompanying cover letter, which helps keep your message consistent across both documents. Whatever tool you use, the final review is yours: check that every addition reflects your actual experience."
      ]
     }
    ],
    "faq": [
     {
-     "q": "How much time should I spend tailoring a resume?",
-     "a": "It depends on the gap between your master resume and the role. For a posting very close to your current job, a few adjustments to the title, summary and order of accomplishments are often enough. For a career change or a move to a new industry, plan for more in-depth work, particularly on vocabulary."
+     "q": "How much time should I spend tailoring a CV?",
+     "a": "It depends on the gap between your master CV and the role. For a posting very close to your current job, a few adjustments to the title, summary and order of accomplishments are often enough. For a career change or a move to a new industry, plan for more in-depth work, particularly on vocabulary."
     },
     {
      "q": "What should I do if I don’t meet every requirement in the posting?",
@@ -2604,32 +2604,32 @@
     },
     {
      "q": "Should I change my previous job titles to match the posting?",
-     "a": "No. Your official job title must remain accurate, since it can be verified. You can, however, add a clarification in parentheses or in the description to spell out your actual role. It’s the overall resume title and the summary that carry the alignment with the posting."
+     "a": "No. Your official job title must remain accurate, since it can be verified. You can, however, add a clarification in parentheses or in the description to spell out your actual role. It’s the overall CV title and the summary that carry the alignment with the posting."
     }
    ]
   },
   "outils-ia-ameliorer-cv": {
-   "intro": "Improving a resume with artificial intelligence usually involves combining three types of tools: a conversational assistant to rephrase and structure, a proofreading tool for language, and a dedicated resume tool for formatting, ATS compatibility and tailoring to a job posting. The right choice depends less on the technology than on the step where you’re stuck.",
+   "intro": "Improving a CV with artificial intelligence usually involves combining three types of tools: a conversational assistant to rephrase and structure, a proofreading tool for language, and a dedicated CV tool for formatting, ATS compatibility and tailoring to a job posting. The right choice depends less on the technology than on the step where you’re stuck.",
    "sections": [
     {
      "h2": "Three types of AI tools, three different uses",
      "paragraphs": [
       "General-purpose conversational assistants are useful for turning a list of tasks into accomplishments, suggesting several versions of a summary or rephrasing a paragraph that runs too long. However, they have no knowledge of your background of their own: they work solely from what you give them.",
-      "Proofreading and rewriting tools catch errors, repetition and clunky phrasing. Finally, dedicated resume platforms build AI into a complete workflow: template creation, compatibility analysis, tailoring to a job posting and sometimes writing the cover letter."
+      "Proofreading and rewriting tools catch errors, repetition and clunky phrasing. Finally, dedicated CV platforms build AI into a complete workflow: template creation, compatibility analysis, tailoring to a job posting and sometimes writing the cover letter."
      ]
     },
     {
      "h2": "Match the tool to the step you’re at",
      "paragraphs": [
-      "Before choosing a tool, identify your main difficulty. A candidate with a lot of experience but a confusing resume doesn’t have the same needs as a recent graduate struggling to fill a page."
+      "Before choosing a tool, identify your main difficulty. A candidate with a lot of experience but a confusing CV doesn’t have the same needs as a recent graduate struggling to fill a page."
      ],
      "list": [
       "Blank page: an assistant that draws out your accomplishments by asking questions",
       "Text too long: a request for a summary focused on a specific role",
       "Errors and style: a proofreading tool, followed by a human review",
-      "Layout and readability: a resume builder",
+      "Layout and readability: a CV builder",
       "Applying abroad: translation help, reviewed by a native speaker",
-      "Specific job posting: a tailoring feature that compares your resume with the posting"
+      "Specific job posting: a tailoring feature that compares your CV with the posting"
      ]
     },
     {
@@ -2644,40 +2644,40 @@
      "h2": "Limitations to keep in mind: accuracy, sameness and personal data",
      "paragraphs": [
       "A generative tool can produce statements that sound appealing but are false: a skill you haven’t mastered, an exaggerated result, an embellished job title. Reread every sentence and ask yourself whether you could justify it in an interview. If not, delete it.",
-      "Another pitfall is sameness: text generated without precise instructions tends to sound alike, and recruiters end up recognizing these turns of phrase. Personalize it with your own examples and vocabulary. Finally, apply a data minimization principle: don’t share more personal information than necessary, remove your address and phone number from the text you submit, and review the tool’s privacy policy."
+      "Another pitfall is sameness: text generated without precise instructions tends to sound alike, and recruiters end up recognising these turns of phrase. Personalise it with your own examples and vocabulary. Finally, apply a data minimisation principle: don’t share more personal information than necessary, remove your address and phone number from the text you submit, and review the tool’s privacy policy."
      ]
     },
     {
      "h2": "A four-step method for a credible result",
      "paragraphs": [
       "Start by writing a first draft yourself, even an imperfect one, with all your facts. Then use AI to structure and rephrase it, and compare the text against the target job posting. Finish with a human review, ideally by someone who knows your field.",
-      "If you prefer a guided workflow rather than juggling several tools, a dedicated solution such as CVDesignPro brings together resume creation, ATS compatibility analysis, tailoring to a job posting and the cover letter, with multilingual support. The advantage is keeping a consistent document from one step to the next, without copying and pasting between apps."
+      "If you prefer a guided workflow rather than juggling several tools, a dedicated solution such as CVDesignPro brings together CV creation, ATS compatibility analysis, tailoring to a job posting and the cover letter, with multilingual support. The advantage is keeping a consistent document from one step to the next, without copying and pasting between apps."
      ]
     }
    ],
    "faq": [
     {
-     "q": "Can a recruiter tell that my resume was improved with AI?",
+     "q": "Can a recruiter tell that my CV was improved with AI?",
      "a": "There’s no reliable way to prove it, but generic, overly polished text does draw attention. The real risk lies elsewhere: a phrase you can’t explain in an interview. If every line reflects your experience and the way you speak, it matters little where the rephrasing came from."
     },
     {
-     "q": "Can I rely on AI to translate my resume?",
+     "q": "Can I rely on AI to translate my CV?",
      "a": "It provides a good starting point, particularly to save time. However, double-check job titles, degree names and industry terminology, which don’t always have a direct equivalent. A review by a native speaker or an industry professional is still recommended."
     },
     {
-     "q": "Are free AI tools enough to improve a resume?",
+     "q": "Are free AI tools enough to improve a CV?",
      "a": "For rephrasing a few sentences or correcting language, a general-purpose tool may be enough. The limitations show up in layout, checking readability by recruitment software and managing several targeted versions. Choose based on these needs rather than on price alone."
     }
    ]
   },
   "cvdesignpro-vs-outils-cv": {
-   "intro": "Choosing between CVDesignPro and another resume builder depends on your top priority: complete design freedom, a template you can fill in quickly, or guidance focused on the content of your application and how easily recruiters can read it. Each type of tool has its place; what matters is matching it to your situation.",
+   "intro": "Choosing between CVDesignPro and another CV builder depends on your top priority: complete design freedom, a template you can fill in quickly, or guidance focused on the content of your application and how easily recruiters can read it. Each type of tool has its place; what matters is matching it to your situation.",
    "sections": [
     {
-     "h2": "An overview of resume-building tools",
+     "h2": "An overview of CV-building tools",
      "paragraphs": [
       "Word processors such as Word or Google Docs give you full control over the document along with basic templates. They suit people who are comfortable with formatting, but all the work of structuring and writing remains up to them.",
-      "General-purpose design editors such as Canva offer many visual templates and a great deal of layout freedom. They are popular for creative resumes and materials meant to be printed. Then there are online resume builders, which guide you section by section, and specialized platforms that add an application-focused layer: analysis, tailoring and supporting documents.",
+      "General-purpose design editors such as Canva offer many visual templates and a great deal of layout freedom. They are popular for creative CVs and materials meant to be printed. Then there are online CV builders, which guide you section by section, and specialised platforms that add an application-focused layer: analysis, tailoring and supporting documents.",
       "These categories aren’t mutually exclusive: they meet different needs, from visual freedom to writing assistance."
      ]
     },
@@ -2687,54 +2687,54 @@
       "Rather than comparing feature lists, ask yourself a few practical questions. They quickly show whether a tool fits the way you’ll actually use it."
      ],
      "list": [
-      "Is the resume it produces still readable by recruitment software?",
+      "Is the CV it produces still readable by recruitment software?",
       "Does the tool help you write the content, or only format it?",
       "Is it easy to create a version tailored to each job posting?",
       "Can you prepare your cover letter as part of the same process?",
       "Does the tool handle applications in multiple languages?",
-      "Can you freely export and reuse your resume?"
+      "Can you freely export and reuse your CV?"
      ]
     },
     {
      "h2": "What an application-focused platform offers",
      "paragraphs": [
-      "CVDesignPro focuses on the application process rather than pure design. The tool covers resume creation and formatting, ATS compatibility analysis, tailoring to a job posting, the cover letter and multilingual support. Compared with a general-purpose design editor, the approach puts content, readability and hiring criteria first.",
-      "This approach is aimed at candidates preparing their first application, experienced professionals who need to reposition themselves and those applying for specific positions. It is also relevant to training organizations, career coaching firms and recruitment teams that help candidates structure their applications."
+      "CVDesignPro focuses on the application process rather than pure design. The tool covers CV creation and formatting, ATS compatibility analysis, tailoring to a job posting, the cover letter and multilingual support. Compared with a general-purpose design editor, the approach puts content, readability and hiring criteria first.",
+      "This approach is aimed at candidates preparing their first application, experienced professionals who need to reposition themselves and those applying for specific positions. It is also relevant to training organisations, career coaching firms and recruitment teams that help candidates structure their applications."
      ]
     },
     {
      "h2": "When another tool will be a better fit",
      "paragraphs": [
-      "If you’re a graphic designer, an illustrator or a candidate in a field where your resume doubles as a showcase of your style, a design editor will give you more creative freedom. You can then prepare a second, plainer version for uploading to job portals.",
-      "If your resume is already well built and you rarely apply for jobs, a simple word processor may be enough. Finally, some people combine tools: a writing assistant for the content, an editor for a visual version and a specialized platform for targeted applications.",
-      "In any case, keep a master version of your resume in a format you can easily edit. Switching tools in the middle of a job search then becomes much less of a hassle, and you stay in control of your content."
+      "If you’re a graphic designer, an illustrator or a candidate in a field where your CV doubles as a showcase of your style, a design editor will give you more creative freedom. You can then prepare a second, plainer version for uploading to job portals.",
+      "If your CV is already well built and you rarely apply for jobs, a simple word processor may be enough. Finally, some people combine tools: a writing assistant for the content, an editor for a visual version and a specialised platform for targeted applications.",
+      "In any case, keep a master version of your CV in a format you can easily edit. Switching tools in the middle of a job search then becomes much less of a hassle, and you stay in control of your content."
      ]
     },
     {
      "h2": "Test before you choose: a simple checklist",
      "paragraphs": [
-      "The most reliable way to decide is to run the same content through two or three tools. Take your current resume and a real job posting, then compare the results on observable criteria rather than on visual impression alone.",
+      "The most reliable way to decide is to run the same content through two or three tools. Take your current CV and a real job posting, then compare the results on observable criteria rather than on visual impression alone.",
       "Measure how long it takes to get a tailored version, check the readability of the exported PDF by copying and pasting it into a text editor, and ask someone you know to spot your target role and main skills within a few seconds. The tool that makes these three points easiest for your situation is the right choice."
      ]
     }
    ],
    "faq": [
     {
-     "q": "Can a resume made with a design editor be rejected by an ATS?",
+     "q": "Can a CV made with a design editor be rejected by an ATS?",
      "a": "It isn’t rejected as such, but some design elements may be misinterpreted: text inside shapes, multiple columns, skills represented by icons. If you use this type of tool, choose a simple template and check that the text remains selectable and in the right order."
     },
     {
-     "q": "Is CVDesignPro suitable for an organization that supports multiple candidates?",
-     "a": "The tool is designed in particular for training organizations and career coaching firms. Its guided workflow helps structure resumes, tailor them to job postings and prepare the accompanying letters. To check whether it fits your organization, the simplest approach is to test it on a few real cases."
+     "q": "Is CVDesignPro suitable for an organisation that supports multiple candidates?",
+     "a": "The tool is designed in particular for training organisations and career coaching firms. Its guided workflow helps structure CVs, tailor them to job postings and prepare the accompanying letters. To check whether it fits your organisation, the simplest approach is to test it on a few real cases."
     },
     {
-     "q": "Do you have to pay for a tool to get a good resume?",
-     "a": "No. A good resume relies first and foremost on clear content, concrete accomplishments and a readable structure, all of which are achievable with a word processor. A specialized tool mainly saves time and reduces errors when you’re sending out many targeted applications."
+     "q": "Do you have to pay for a tool to get a good CV?",
+     "a": "No. A good CV relies first and foremost on clear content, concrete accomplishments and a readable structure, all of which are achievable with a word processor. A specialised tool mainly saves time and reduces errors when you’re sending out many targeted applications."
     }
    ]
   },
   "comment-recruteurs-analysent-cv": {
-   "intro": "Recruiters review a resume in two stages: a quick scan to check fit with the role (job title, experience, key skills, location), followed by an in-depth read of shortlisted applications to assess how coherent the career path is, the evidence of results and motivation. Understanding this process helps you put the right information in the right places.",
+   "intro": "Recruiters review a CV in two stages: a quick scan to check fit with the role (job title, experience, key skills, location), followed by an in-depth read of shortlisted applications to assess how coherent the career path is, the evidence of results and motivation. Understanding this process helps you put the right information in the right places.",
    "sections": [
     {
      "h2": "The first screening: a quick scan",
@@ -2753,20 +2753,20 @@
     {
      "h2": "The in-depth read: coherence and evidence",
      "paragraphs": [
-      "Shortlisted resumes are reread more carefully. The recruiter then pieces together the thread of your career: does each step make sense, do responsibilities increase over time, are changes of industry or profession explained?",
+      "Shortlisted CVs are reread more carefully. The recruiter then pieces together the thread of your career: does each step make sense, do responsibilities increase over time, are changes of industry or profession explained?",
       "Above all, they look at how your experience is described. A list of tasks shows what the job was supposed to involve; an accomplishment shows what the candidate actually achieved. A line such as “overhauled the invoicing process, reducing late payments” provides evidence, whereas “managed invoicing” reads like a job description."
      ]
     },
     {
      "h2": "Signals that reassure and signals that raise questions",
      "paragraphs": [
-      "Some elements aren’t deal-breakers but do prompt questions. A recruiter isn’t looking for a perfect career path; they’re trying to understand it. Resumes that anticipate these questions are generally better received."
+      "Some elements aren’t deal-breakers but do prompt questions. A recruiter isn’t looking for a perfect career path; they’re trying to understand it. CVs that anticipate these questions are generally better received."
      ],
      "list": [
       "Unexplained gaps in employment",
       "Vague dates or dates that don’t match across sections",
       "Skills listed with no connection to any role",
-      "A resume title that doesn’t match the position offered",
+      "A CV title that doesn’t match the position offered",
       "Spelling mistakes for a role that requires strong writing skills",
       "A layout that makes the timeline hard to follow"
      ]
@@ -2774,36 +2774,36 @@
     {
      "h2": "The context of the role changes what recruiters look for",
      "paragraphs": [
-      "Criteria vary depending on the profession and level. For a technical role, the recruiter checks your command of specific tools or methods. For a sales role, they look for performance indicators and types of clients. For a first job, they focus on internships, projects, work-study programs and volunteer involvement.",
-      "The recruiter isn’t always the only reader: a hiring manager often reviews shortlisted profiles with a more technical eye. Your resume therefore needs to speak to both, using terms an HR generalist can understand along with details that will convince a specialist.",
+      "Criteria vary depending on the profession and level. For a technical role, the recruiter checks your command of specific tools or methods. For a sales role, they look for performance indicators and types of clients. For a first job, they focus on internships, projects, work-study programmes and volunteer involvement.",
+      "The recruiter isn’t always the only reader: a hiring manager often reviews shortlisted profiles with a more technical eye. Your CV therefore needs to speak to both, using terms an HR generalist can understand along with details that will convince a specialist.",
       "For unsolicited applications, the reading is different again: without a job posting to refer to, the recruiter wants to quickly understand what type of role you’re targeting. A clear title then becomes essential."
      ]
     },
     {
-     "h2": "Preparing a resume that makes the recruiter’s job easier",
+     "h2": "Preparing a CV that makes the recruiter’s job easier",
      "paragraphs": [
-      "Reread your resume from the perspective of the person receiving it. Within a few seconds, can they tell what role you’re targeting and why you’re a credible candidate? If not, rework the title, the summary and the order of your accomplishments.",
-      "A tool such as CVDesignPro can help check the document’s consistency and its ATS compatibility, in addition to tailoring it to a specific job posting. But the best check is still a human one: ask someone in your field to read your resume and tell you what stands out after a quick read."
+      "Reread your CV from the perspective of the person receiving it. Within a few seconds, can they tell what role you’re targeting and why you’re a credible candidate? If not, rework the title, the summary and the order of your accomplishments.",
+      "A tool such as CVDesignPro can help check the document’s consistency and its ATS compatibility, in addition to tailoring it to a specific job posting. But the best check is still a human one: ask someone in your field to read your CV and tell you what stands out after a quick read."
      ]
     }
    ],
    "faq": [
     {
      "q": "Do recruiters really read cover letters?",
-     "a": "It depends on the company and the role. Some read it only for candidates already shortlisted on the basis of their resume, while others give it real weight, particularly for career changers or first jobs. It is especially useful for explaining what a resume can’t show: motivation, a change in direction, availability."
+     "a": "It depends on the company and the role. Some read it only for candidates already shortlisted on the basis of their CV, while others give it real weight, particularly for career changers or first jobs. It is especially useful for explaining what a CV can’t show: motivation, a change in direction, availability."
     },
     {
-     "q": "Does a gap in employment hurt a resume?",
+     "q": "Does a gap in employment hurt a CV?",
      "a": "A career break isn’t a problem in itself; it’s the lack of explanation that raises doubts. Briefly mention the reason when it is easy to state, such as training, a personal project or time devoted to family. You can go into more detail in the interview if needed."
     },
     {
-     "q": "Do recruiters verify the information on a resume?",
-     "a": "They may contact former employers with your consent, ask for proof of your qualifications or test your skills during the interview. Inconsistencies between your resume, your online profile and what you say often come to light at this stage. An accurate, precise resume therefore remains the safest strategy."
+     "q": "Do recruiters verify the information on a CV?",
+     "a": "They may contact former employers with your consent, ask for proof of your qualifications or test your skills during the interview. Inconsistencies between your CV, your online profile and what you say often come to light at this stage. An accurate, precise CV therefore remains the safest strategy."
     }
    ]
   },
   "digitaliser-communication-ecole-parents": {
-   "intro": "Digitizing school-parent communication means replacing scattered channels (paper notebooks, emails, group chats, notice boards) with a shared space where every family can find messages, schedules and documents, governed by clear usage guidelines. Success depends as much on organization and support for families as on the tool you choose.",
+   "intro": "Digitising school-parent communication means replacing scattered channels (paper notebooks, emails, group chats, notice boards) with a shared space where every family can find messages, schedules and documents, governed by clear usage guidelines. Success depends as much on organisation and support for families as on the tool you choose.",
    "sections": [
     {
      "h2": "Take stock of your existing channels",
@@ -2816,14 +2816,14 @@
     {
      "h2": "Define who communicates what, and through which channel",
      "paragraphs": [
-      "Digitization often fails because the tool is rolled out without any rules. Draft a short set of guidelines, approved by the staff, that specifies what type of information is published, expected response times and which topics call for a direct conversation or a meeting.",
+      "Digitisation often fails because the tool is rolled out without any rules. Draft a short set of guidelines, approved by the staff, that specifies what type of information is published, expected response times and which topics call for a direct conversation or a meeting.",
       "These guidelines also protect teachers: setting response windows and distinguishing between group announcements and one-to-one exchanges keeps the tool from turning into an always-on messaging service."
      ],
      "list": [
       "School news: school leadership, published to everyone",
       "Class information: teacher, sent to the class’s recipients",
       "Events and field trips: shared calendar, reminder before the date",
-      "Administrative documents: dedicated space, organized by term",
+      "Administrative documents: dedicated space, organised by term",
       "Sensitive individual situations: direct conversation or meeting"
      ]
     },
@@ -2845,7 +2845,7 @@
     {
      "h2": "Protect data and track adoption",
      "paragraphs": [
-      "School communication contains information about minors. Apply a data minimization principle: publish only what is necessary, restrict access to each piece of information to the people concerned and avoid posting photos of students without permission. Involve the school leadership and the person responsible for data protection in configuration decisions.",
+      "School communication contains information about minors. Apply a data minimisation principle: publish only what is necessary, restrict access to each piece of information to the people concerned and avoid posting photos of students without permission. Involve the school leadership and the person responsible for data protection in configuration decisions.",
       "To find out whether the approach is working, look at concrete indicators: fewer repeated questions to the front office, fewer forgotten documents or appointments and feedback from families at meetings. A review at the end of each term lets you adjust the rules and sections."
      ]
     }
@@ -2857,7 +2857,7 @@
     },
     {
      "q": "How can we keep teachers from being contacted at all hours?",
-     "a": "Agree on availability rules as a team and share them with families at the start of the school year. Distinguish between group announcements, published in the shared space, and one-to-one exchanges, which can go through appointment scheduling. A tool that centralizes information also cuts down on repetitive questions."
+     "a": "Agree on availability rules as a team and share them with families at the start of the school year. Distinguish between group announcements, published in the shared space, and one-to-one exchanges, which can go through appointment scheduling. A tool that centralises information also cuts down on repetitive questions."
     },
     {
      "q": "Should parent group chats disappear?",
@@ -2884,7 +2884,7 @@
      "list": [
       "Posting news and sending targeted messages by class or group",
       "A shared school calendar that’s easy to read without prior training",
-      "An organized document space where files can still be found months later",
+      "An organised document space where files can still be found months later",
       "Different access rights for school leadership, teachers, students and families",
       "Visibility into whether important information has been read",
       "Comfortable viewing on a smartphone, without complicated steps"
@@ -2893,7 +2893,7 @@
     {
      "h2": "Governance, access rights and data protection",
      "paragraphs": [
-      "A school platform handles data about minors. Data minimization should guide the configuration: collect only what is useful, limit the visibility of each piece of information to the people concerned and plan for accounts to be deleted when students leave the school. Ask the provider about data hosting, backup management and reversibility terms.",
+      "A school platform handles data about minors. Data minimisation should guide the configuration: collect only what is useful, limit the visibility of each piece of information to the people concerned and plan for accounts to be deleted when students leave the school. Ask the provider about data hosting, backup management and reversibility terms.",
       "Also appoint an internal platform administrator. Without a designated owner, former students’ accounts pile up, sections multiply and the tool becomes hard to navigate. A solution such as [École Connect](https://ecole-connect-pied.vercel.app/), which relies on role-based access, makes this framework easier to set up, but the ground rules are still for the school to define."
      ]
     },
@@ -2924,7 +2924,7 @@
      "a": "Not necessarily a complex tool, but a single point of entry, yes. Even with just a few classes, information quickly gets scattered across home-school notebooks, emails and messaging apps. A simple platform focused on news, the calendar and documents is often enough to bring clarity to communication."
     },
     {
-     "q": "Should we prioritize a mobile app or browser access?",
+     "q": "Should we prioritise a mobile app or browser access?",
      "a": "What matters most is that families can view information on their phone without difficulty. Well-designed mobile web access avoids having to install yet another app, which is a strong argument when parents already have several. Test both options with a few parents before deciding."
     },
     {
@@ -2934,13 +2934,13 @@
    ]
   },
   "centraliser-devoirs-notes-agenda": {
-   "intro": "Centralizing school life means giving each type of information a single, well-known home: homework in one place, events in a shared calendar, conversations in a designated messaging tool. The tool matters, but success depends above all on posting conventions shared by the staff and a gradual transition that doesn’t leave families behind.",
+   "intro": "Centralising school life means giving each type of information a single, well-known home: homework in one place, events in a shared calendar, conversations in a designated messaging tool. The tool matters, but success depends above all on posting conventions shared by the staff and a gradual transition that doesn’t leave families behind.",
    "sections": [
     {
      "h2": "What fragmentation costs families and staff",
      "paragraphs": [
       "When homework is written on the board, field trip dates are sent by email and reminders are relayed in a parent group chat, everyone pieces the information together in their own way. Students forget an assignment, families ask several teachers the same question and staff spend time repeating what has already been said.",
-      "Fragmentation also creates inequalities: the most connected parents know where to look, while others find out too late. Centralizing is therefore as much a matter of fairness as of efficiency.",
+      "Fragmentation also creates inequalities: the most connected parents know where to look, while others find out too late. Centralising is therefore as much a matter of fairness as of efficiency.",
       "Finally, fragmentation undermines continuity: when a teacher is replaced or changes, part of the history remains locked away in personal tools."
      ]
     },
@@ -2965,16 +2965,16 @@
      ]
     },
     {
-     "h2": "Organizing homework and documents so they can be found",
+     "h2": "Organising homework and documents so they can be found",
      "paragraphs": [
       "Homework poses a particular challenge: there’s a lot of it, it’s dated and it often comes with materials. Adopt a shared naming convention, for example subject, due date and a short title, and always attach the document to the assignment rather than posting it elsewhere.",
-      "For documents, think in terms of lifespan: some are useful all year, such as the school rules or the timetable, while others are only relevant for a few days. Organizing them into permanent and temporary folders, with regular clean-ups, keeps the space easy to browse."
+      "For documents, think in terms of lifespan: some are useful all year, such as the school rules or the timetable, while others are only relevant for a few days. Organising them into permanent and temporary folders, with regular clean-ups, keeps the space easy to browse."
      ]
     },
     {
      "h2": "A smooth transition that doesn’t leave anyone behind",
      "paragraphs": [
-      "Centralization often fails during the switchover, when the old channels keep running in parallel. Plan the transition in stages."
+      "Centralisation often fails during the switchover, when the old channels keep running in parallel. Plan the transition in stages."
      ],
      "list": [
       "Announce the switchover date and the posting guidelines",
@@ -2985,7 +2985,7 @@
      ]
     },
     {
-     "h2": "Making sure centralization holds up over time",
+     "h2": "Making sure centralisation holds up over time",
      "paragraphs": [
       "After a few weeks, look at concrete signals: are families still asking questions whose answers have already been posted? Are teachers posting in the right place? Information tracking helps identify important messages that few people have viewed and send targeted reminders, rather than resending the same message to everyone. A staff check-in at the end of each term is often enough to correct any drift."
      ]
@@ -2998,7 +2998,7 @@
     },
     {
      "q": "Should grades be in the same place as homework and the calendar?",
-     "a": "Academic results are often handled by a dedicated student information system with its own confidentiality rules. What matters is that families clearly know where to find them and that the communication platform points to it unambiguously. Centralizing doesn’t mean merging everything; it means avoiding duplicate information."
+     "a": "Academic results are often handled by a dedicated student information system with its own confidentiality rules. What matters is that families clearly know where to find them and that the communication platform points to it unambiguously. Centralising doesn’t mean merging everything; it means avoiding duplicate information."
     },
     {
      "q": "How should we handle separated families or siblings in different classes?",
@@ -3007,7 +3007,7 @@
    ]
   },
   "alternative-applications-scolaires": {
-   "intro": "The alternative to piling up apps isn’t yet another app, but a central portal that takes over everyday communication and clearly points to the few specialized tools that are still needed. The process involves an honest inventory of the tools in place, a decision about what should go and change management support for families.",
+   "intro": "The alternative to piling up apps isn’t yet another app, but a central portal that takes over everyday communication and clearly points to the few specialised tools that are still needed. The process involves an honest inventory of the tools in place, a decision about what should go and change management support for families.",
    "sections": [
     {
      "h2": "How a school ends up with a dozen apps",
@@ -3020,7 +3020,7 @@
      "h2": "Take inventory of the tools actually in use",
      "paragraphs": [
       "A quick survey of teachers and a conversation with a few parent representatives are enough to get an accurate picture. For each tool, note the following.",
-      "Don’t pass judgment on the tools you identify: the goal is to understand the needs they meet. A tool adopted spontaneously by several teachers often signals a real gap in the school’s official toolkit, which the chosen solution will need to fill."
+      "Don’t pass judgement on the tools you identify: the goal is to understand the needs they meet. A tool adopted spontaneously by several teachers often signals a real gap in the school’s official toolkit, which the chosen solution will need to fill."
      ],
      "list": [
       "The specific use it covers and who uses it",
@@ -3034,21 +3034,21 @@
      "h2": "Streamline, unify or orchestrate: three strategies",
      "paragraphs": [
       "Streamlining means keeping the existing tools but reducing their number by eliminating duplicates. It’s the fastest route, but it often leaves several points of entry.",
-      "Unifying means choosing a single portal for all communication: news, messages, calendar and documents. Highly specialized tools stay in place, but families only have one habit to learn. This is the approach taken by solutions such as [École Connect](https://ecole-connect-pied.vercel.app/), which aim to reduce fragmentation rather than add another app to families’ routines.",
+      "Unifying means choosing a single portal for all communication: news, messages, calendar and documents. Highly specialised tools stay in place, but families only have one habit to learn. This is the approach taken by solutions such as [École Connect](https://ecole-connect-pied.vercel.app/), which aim to reduce fragmentation rather than add another app to families’ routines.",
       "Finally, orchestrating means keeping several tools but publishing a home page that lists them and explains what each one is for. This can work during a transition phase, but it doesn’t reduce the cognitive load."
      ]
     },
     {
      "h2": "What a single portal should replace, and what it shouldn’t",
      "paragraphs": [
-      "A communication portal is meant to take over day-to-day exchanges: general information, messages to families, the events calendar and document distribution. It doesn’t necessarily need to replace specialized regulatory or instructional tools, such as those that manage grades, attendance or certain learning content.",
-      "The key is to draw a clear line and communicate it: if the information relates to how school life is organized, it’s on the portal. If it belongs to a specialized tool, the portal indicates where to find it. Families readily accept a second tool if its purpose is clearly justified."
+      "A communication portal is meant to take over day-to-day exchanges: general information, messages to families, the events calendar and document distribution. It doesn’t necessarily need to replace specialised regulatory or instructional tools, such as those that manage grades, attendance or certain learning content.",
+      "The key is to draw a clear line and communicate it: if the information relates to how school life is organised, it’s on the portal. If it belongs to a specialised tool, the portal indicates where to find it. Families readily accept a second tool if its purpose is clearly justified."
      ]
     },
     {
      "h2": "Leading the change with teachers and families",
      "paragraphs": [
-      "Removing an app a teacher likes can feel like a loss of autonomy. Explain the collective benefit and leave some organizational leeway within the portal, for example a class section they manage freely. For families, announce the timeline, offer help with logging in and set a date after which the old channels will no longer be updated.",
+      "Removing an app a teacher likes can feel like a loss of autonomy. Explain the collective benefit and leave some organisational leeway within the portal, for example a class section they manage freely. For families, announce the timeline, offer help with logging in and set a date after which the old channels will no longer be updated.",
       "Then measure the results in simple terms: the number of tools in use before and after, recurring questions from parents and feedback from teachers at staff meetings. If an old tool resurfaces, it’s often a sign of an unmet need that should be looked into."
      ]
     }
@@ -3056,7 +3056,7 @@
    "faq": [
     {
      "q": "Can a communication portal coexist with the existing student information system?",
-     "a": "Yes, and that’s actually the most common scenario. The portal covers communication and organization, while the student information system keeps its specific functions. You simply need to define the split clearly and tell families where to find each type of information."
+     "a": "Yes, and that’s actually the most common scenario. The portal covers communication and organisation, while the student information system keeps its specific functions. You simply need to define the split clearly and tell families where to find each type of information."
     },
     {
      "q": "How can we win over a teacher who is very attached to their app?",
@@ -3136,7 +3136,7 @@
     {
      "h2": "Three tools, three different starting points",
      "paragraphs": [
-      "Kahoot made its name with a game-based approach: projected questions, answers from participants’ devices, a leaderboard and a competitive atmosphere. It is very widespread in classrooms and popular for energizing a group.",
+      "Kahoot made its name with a game-based approach: projected questions, answers from participants’ devices, a leaderboard and a competitive atmosphere. It is very widespread in classrooms and popular for energising a group.",
       "Wooclap is widely used in higher education and professional training to make a lecture or presentation participatory, with various types of interaction beyond the classic quiz.",
       "[QuizPlay](https://quizplay-production.up.railway.app/) positions itself as an alternative focused on simplicity and lesson design: quick question creation, group facilitation, instant results and learning progress tracking, in class or remotely. These positions aren’t mutually exclusive, and many teachers use several tools depending on the situation."
      ]
@@ -3152,13 +3152,13 @@
       "Preparation time available per session",
       "How much competition you want in the activity",
       "Need to track progress from one session to the next",
-      "Constraints set by your school or organization"
+      "Constraints set by your school or organisation"
      ]
     },
     {
      "h2": "A fun moment or a learning sequence: the deciding question",
      "paragraphs": [
-      "If your main goal is to build energy at the end of a session or close a module on a festive note, a highly game-based tool will naturally be a good fit. If you’re looking instead to check understanding, spot mistakes and adjust your lesson, what matters is being able to analyze the answers and set aside time for explanation.",
+      "If your main goal is to build energy at the end of a session or close a module on a festive note, a highly game-based tool will naturally be a good fit. If you’re looking instead to check understanding, spot mistakes and adjust your lesson, what matters is being able to analyse the answers and set aside time for explanation.",
       "Ask yourself a simple question: what will you do with the results after the session? If the answer is “nothing,” the choice of tool matters little. If you plan to use them to prepare the next session, choose the one that gives you the clearest view of mistakes."
      ]
     },
@@ -3185,10 +3185,10 @@
     },
     {
      "q": "What should matter most for a corporate trainer?",
-     "a": "The ability to link the quiz to the training objectives and use the answers to adjust the content. Next come ease of joining for busy adults and the tone of the activity, which should remain appropriate for a professional setting. Your organization’s internal constraints may also guide the choice."
+     "a": "The ability to link the quiz to the training objectives and use the answers to adjust the content. Next come ease of joining for busy adults and the tone of the activity, which should remain appropriate for a professional setting. Your organisation’s internal constraints may also guide the choice."
     },
     {
-     "q": "Should you favor the tool participants know best?",
+     "q": "Should you favour the tool participants know best?",
      "a": "Familiarity shortens the learning curve, which is a real advantage with a busy audience. It shouldn’t, however, overshadow your learning objective. A less familiar tool that better fits your lesson plan can usually be picked up in a few minutes, as long as it stays simple."
     }
    ]
@@ -3200,14 +3200,14 @@
      "h2": "Interactivity doesn’t mean nonstop activities",
      "paragraphs": [
       "Many trainers equate interactivity with a string of games and activities. Yet a session overloaded with activities is just as tiring as a continuous lecture, and it can cause the objectives to be lost from view. Useful interactivity is the kind that requires participants to apply what they have just learned.",
-      "The right reflex is to ask, for each part of the program, what participants should be able to do afterward, then design the activity that lets them try it out during the session."
+      "The right reflex is to ask, for each part of the programme, what participants should be able to do afterward, then design the activity that lets them try it out during the session."
      ]
     },
     {
      "h2": "Structure the session in short cycles",
      "paragraphs": [
       "A group’s attention declines when the same way of working goes on for too long. Build your agenda in cycles: a brief input, an application activity, a group debrief. Each cycle ends with a summary that links it to what comes next.",
-      "This structure also helps the trainer: they always know where the group stands and can shorten or extend a cycle as needed without jeopardizing the whole day.",
+      "This structure also helps the trainer: they always know where the group stands and can shorten or extend a cycle as needed without jeopardising the whole day.",
       "Also prepare backup activities. If a cycle runs faster than expected, you have an extra exercise ready; if it falls behind, you know which activity to cut without touching the essentials. This flexibility keeps you from sacrificing the discussion time at the end of the day, which is often the most valuable."
      ]
     },
@@ -3221,7 +3221,7 @@
       "A few minutes of pair work followed by a group debrief",
       "A case study drawn from participants’ real situations",
       "A short role-play of a workplace situation",
-      "A participant summarizing a concept instead of the trainer",
+      "A participant summarising a concept instead of the trainer",
       "A closing round on what each person will put into practice"
      ]
     },
@@ -3259,12 +3259,12 @@
     },
     {
      "q": "Is interactivity possible with a very large group?",
-     "a": "Yes, as long as you favor formats in which everyone answers at the same time, such as polls and group quizzes, rather than taking turns to speak. Short discussions with neighbors also work very well in a lecture hall. The trainer then summarizes the trends rather than each individual answer."
+     "a": "Yes, as long as you favour formats in which everyone answers at the same time, such as polls and group quizzes, rather than taking turns to speak. Short discussions with neighbours also work very well in a lecture hall. The trainer then summarises the trends rather than each individual answer."
     }
    ]
   },
   "creer-partager-cours-en-ligne": {
-   "intro": "To create and share an online course, start by breaking your content into short sequences with a clear objective, produce materials in formats that are readable on every screen, then publish them in a single space where your learners know to find them. Sharing succeeds when each resource is named, organized and accompanied by instructions, not when it is simply sent as an email attachment.",
+   "intro": "To create and share an online course, start by breaking your content into short sequences with a clear objective, produce materials in formats that are readable on every screen, then publish them in a single space where your learners know to find them. Sharing succeeds when each resource is named, organised and accompanied by instructions, not when it is simply sent as an email attachment.",
    "sections": [
     {
      "h2": "Start from a learning objective, not an existing file",
@@ -3290,15 +3290,15 @@
     {
      "h2": "Choose formats that work on every device",
      "paragraphs": [
-      "Many learners view courses on their phones. Favor formats that open without special software: web pages, lightweight PDFs, short videos hosted on a service that plays anywhere. Avoid editable office files when learners aren’t meant to edit them, since they display differently from one device to another.",
+      "Many learners view courses on their phones. Favour formats that open without special software: web pages, lightweight PDFs, short videos hosted on a service that plays anywhere. Avoid editable office files when learners aren’t meant to edit them, since they display differently from one device to another.",
       "Also think about accessibility: a clear heading hierarchy, sufficient contrast, alt text for meaningful images and captions for videos. These measures benefit everyone, not just people with disabilities."
      ]
     },
     {
-     "h2": "Organize sharing so resources can be found",
+     "h2": "Organise sharing so resources can be found",
      "paragraphs": [
-      "The main reason course sharing fails isn’t technical but organizational: a document sent by email in September can’t be found in December. A single, stable access point whose address doesn’t change is better, along with organization by topic or sequence rather than by date sent.",
-      "An educational library such as [CoursHub](https://coursehub-dusky-seven.vercel.app/) meets this need by letting you create resources, organize them by topic, find them through search and share courses with your learners or colleagues. A shared storage space can also work for a small volume, provided you set naming and filing rules from the outset."
+      "The main reason course sharing fails isn’t technical but organisational: a document sent by email in September can’t be found in December. A single, stable access point whose address doesn’t change is better, along with organisation by topic or sequence rather than by date sent.",
+      "An educational library such as [CoursHub](https://coursehub-dusky-seven.vercel.app/) meets this need by letting you create resources, organise them by topic, find them through search and share courses with your learners or colleagues. A shared storage space can also work for a small volume, provided you set naming and filing rules from the outset."
      ]
     },
     {
@@ -3312,7 +3312,7 @@
      "h2": "Keep the course alive and improve it after publication",
      "paragraphs": [
       "An online course is never set in stone. Note recurring questions, identify resources that aren’t being viewed and flag passages that lead to mistakes. A short update after each session is often enough to fix what’s getting in the way.",
-      "When several teachers work on the same subject, pooling materials keeps each of them from rebuilding the same content alone. Tools geared toward building shared knowledge, including CoursHub, make this collaborative work easier, but the essential condition is still for the team to agree on structure and filing conventions."
+      "When several teachers work on the same subject, pooling materials keeps each of them from rebuilding the same content alone. Tools geared towards building shared knowledge, including CoursHub, make this collaborative work easier, but the essential condition is still for the team to agree on structure and filing conventions."
      ]
     }
    ],
@@ -3332,19 +3332,19 @@
    ]
   },
   "plateforme-ressources-pedagogiques": {
-   "intro": "A good platform for educational resources is one your teachers and learners will actually use: it should make content easy to upload, organize and find, adapt to your organization and not impose a disproportionate management burden. The choice should therefore be based on your real-world needs, tested on a sample of actual resources, rather than on a list of features.",
+   "intro": "A good platform for educational resources is one your teachers and learners will actually use: it should make content easy to upload, organise and find, adapt to your organisation and not impose a disproportionate management burden. The choice should therefore be based on your real-world needs, tested on a sample of actual resources, rather than on a list of features.",
    "sections": [
     {
      "h2": "Distinguishing a resource platform, a school digital workspace and a storage tool",
      "paragraphs": [
-      "Schools often already have several tools: a digital workspace, a learning platform that handles enrollment and assessments, and shared storage. An educational resource platform has a more focused role: building a structured, searchable and reusable content library.",
+      "Schools often already have several tools: a digital workspace, a learning platform that handles enrolment and assessments, and shared storage. An educational resource platform has a more focused role: building a structured, searchable and reusable content library.",
       "Clarifying this role helps you avoid two opposite mistakes: buying a tool that duplicates what you already have, or, conversely, expecting a simple shared folder to offer editorial navigation it was never designed to provide."
      ]
     },
     {
      "h2": "Map your needs before comparing tools",
      "paragraphs": [
-      "Start with a quick inventory: what types of resources do you produce, how many people contribute, who uses them and at what point in the year? A training organization that publishes a catalog doesn’t have the same expectations as a team of teachers sharing lessons internally.",
+      "Start with a quick inventory: what types of resources do you produce, how many people contribute, who uses them and at what point in the year? A training organisation that publishes a catalogue doesn’t have the same expectations as a team of teachers sharing lessons internally.",
       "Next, identify the situations that are causing problems today. These are what should guide your evaluation."
      ],
      "list": [
@@ -3358,7 +3358,7 @@
     {
      "h2": "The criteria that make a difference day to day",
      "paragraphs": [
-      "Ease of uploading determines everything else: if publishing a resource takes more than a few minutes, the library will stay empty. Next comes the quality of the organization system, with topics, levels or subjects that match your vocabulary, and how well search performs on titles and descriptions.",
+      "Ease of uploading determines everything else: if publishing a resource takes more than a few minutes, the library will stay empty. Next comes the quality of the organisation system, with topics, levels or subjects that match your vocabulary, and how well search performs on titles and descriptions.",
       "Also look at how viewing and editing rights are managed, whether you can share a course with a specific group and whether you can export your content if you ever switch tools. This last point, often overlooked, protects the work your teams have built up."
      ]
     },
@@ -3372,8 +3372,8 @@
     {
      "h2": "Where CoursHub fits among the options",
      "paragraphs": [
-      "[CoursHub](https://coursehub-dusky-seven.vercel.app/) is designed to centralize, organize, find and share educational resources in one coherent library. Its features cover resource creation, topic-based organization, search, course sharing and building a shared knowledge base, for uses such as a school-wide library, a training catalog or sharing between teachers.",
-      "If your main need is managing enrollment, grades or assessed learning paths, a full learning platform will be a better fit, and a resource library can complement it. What matters is not asking a single tool to do everything."
+      "[CoursHub](https://coursehub-dusky-seven.vercel.app/) is designed to centralise, organise, find and share educational resources in one coherent library. Its features cover resource creation, topic-based organisation, search, course sharing and building a shared knowledge base, for uses such as a school-wide library, a training catalogue or sharing between teachers.",
+      "If your main need is managing enrolment, grades or assessed learning paths, a full learning platform will be a better fit, and a resource library can complement it. What matters is not asking a single tool to do everything."
      ]
     },
     {
@@ -3387,7 +3387,7 @@
    "faq": [
     {
      "q": "Does a resource platform replace the school’s digital workspace?",
-     "a": "Generally not. The digital workspace covers school life, messaging and timetables, while a resource platform focuses on organizing educational content. The two can coexist, as long as everyone knows where to upload and where to look for courses."
+     "a": "Generally not. The digital workspace covers school life, messaging and timetables, while a resource platform focuses on organising educational content. The two can coexist, as long as everyone knows where to upload and where to look for courses."
     },
     {
      "q": "Who should decide on the filing structure?",
@@ -3395,12 +3395,12 @@
     },
     {
      "q": "How can you encourage teachers to share their resources?",
-     "a": "Make uploading quick, recognize contributions and show the immediate benefit: finding ready-to-use materials saves everyone time. Also spell out the reuse rules, so everyone knows what others can do with their work."
+     "a": "Make uploading quick, recognise contributions and show the immediate benefit: finding ready-to-use materials saves everyone time. Also spell out the reuse rules, so everyone knows what others can do with their work."
     }
    ]
   },
   "annuaire-entreprises-prospection-b2b": {
-   "intro": "In B2B prospecting, a business directory is used to build a list of targets that precisely match your ideal customer profile, then to qualify each company before reaching out. Its effectiveness depends less on the number of listings than on how finely you use the filters and how you turn that information into prioritized sales actions.",
+   "intro": "In B2B prospecting, a business directory is used to build a list of targets that precisely match your ideal customer profile, then to qualify each company before reaching out. Its effectiveness depends less on the number of listings than on how finely you use the filters and how you turn that information into prioritised sales actions.",
    "sections": [
     {
      "h2": "Define your ideal customer before opening the directory",
@@ -3427,14 +3427,14 @@
      "h2": "Qualify each company before the first contact",
      "paragraphs": [
       "A directory listing provides context: declared business activity, executives, locations and sometimes financial information. Take a few minutes to confirm that the company truly matches your target and to find a conversation starter: a new site opening, a change in leadership, headcount growth.",
-      "Check where the information comes from. Identifiable sources let you judge how current and reliable it is, and help you avoid basing a message on outdated data. Propecto highlights contextualized company profiles with identifiable sources, which makes this step easier."
+      "Check where the information comes from. Identifiable sources let you judge how current and reliable it is, and help you avoid basing a message on outdated data. Propecto highlights contextualised company profiles with identifiable sources, which makes this step easier."
      ]
     },
     {
-     "h2": "Prioritize rather than contacting everyone",
+     "h2": "Prioritise rather than contacting everyone",
      "paragraphs": [
       "Not all companies on a list are equally valuable. Sort them into three tiers: priority targets that meet all the criteria and show a timely signal, secondary targets that match the profile without any particular signal, and companies to keep an eye on.",
-      "Focus your personalized outreach on the first tier. A message that mentions a specific aspect of the company’s situation is far better received than a generic email sent to a long list.",
+      "Focus your personalised outreach on the first tier. A message that mentions a specific aspect of the company’s situation is far better received than a generic email sent to a long list.",
       "Review this ranking regularly: a secondary company can become a priority as soon as a signal appears, such as a major hiring drive or the opening of a location in your area. This review takes little time and keeps you from missing the right moment to reach out."
      ]
     },
@@ -3475,7 +3475,7 @@
    ]
   },
   "firmoscope-alternative-pappers": {
-   "intro": "Propecto and Pappers don’t answer quite the same question: Pappers is widely used to look up public legal and financial information about a French company you’ve already identified, while Propecto is geared toward exploration, that is, finding relevant companies and taking sales action. In many cases, the two are used one after the other rather than one instead of the other.",
+   "intro": "Propecto and Pappers don’t answer quite the same question: Pappers is widely used to look up public legal and financial information about a French company you’ve already identified, while Propecto is geared towards exploration, that is, finding relevant companies and taking sales action. In many cases, the two are used one after the other rather than one instead of the other.",
    "sections": [
     {
      "h2": "Two different starting points",
@@ -3501,7 +3501,7 @@
     {
      "h2": "A combined use case",
      "paragraphs": [
-      "Take a consultant who wants to offer their services to manufacturing companies in a given region. They start with a filtered search in Propecto to get a list of companies in the sector, review the contextualized profiles to rule out those that don’t fit, then select around twenty priority targets.",
+      "Take a consultant who wants to offer their services to manufacturing companies in a given region. They start with a filtered search in Propecto to get a list of companies in the sector, review the contextualised profiles to rule out those that don’t fit, then select around twenty priority targets.",
       "Before each first meeting, they can dig deeper into a company’s legal and financial situation using a lookup service such as Pappers. Exploration fuels prospecting; lookup makes preparation more reliable."
      ]
     },
@@ -3522,7 +3522,7 @@
     {
      "h2": "Avoiding duplicate work across tools",
      "paragraphs": [
-      "Using several services has a hidden cost: re-entering data, scattered lists and contradictory information. Define who does what: the exploration tool to build and prioritize lists, the lookup tool for occasional checks and your CRM as the single source of truth for the history of your interactions.",
+      "Using several services has a hidden cost: re-entering data, scattered lists and contradictory information. Define who does what: the exploration tool to build and prioritise lists, the lookup tool for occasional checks and your CRM as the single source of truth for the history of your interactions.",
       "In your CRM, record the date and source of the key information you use. If you’re ever unsure about a piece of data, you’ll know where to double-check it."
      ]
     }
@@ -3589,7 +3589,7 @@
      ]
     },
     {
-     "h2": "Standardize and keep a record of your analyses",
+     "h2": "Standardise and keep a record of your analyses",
      "paragraphs": [
       "To make fast, sound decisions, always use the same calculation template and keep a record of each analysis, even for products you turned down. By later comparing your forecasts with actual results, you refine your assumptions about fees and prices.",
       "A well-built spreadsheet may be enough at first. Arbitrage+ offers a tool-based approach: price comparison, margin calculation that includes fees, opportunity qualification and an analysis history to help you make informed purchasing decisions."
@@ -3612,12 +3612,12 @@
    ]
   },
   "alternative-selleramp": {
-   "intro": "Arbitrage+ and SellerAmp are not designed for the same use case: SellerAmp is known as a sourcing tool for Amazon sellers, used to analyze a product quickly while searching, whereas Arbitrage+ focuses on comparing prices and qualifying an opportunity by factoring in the main costs before you buy. The right choice therefore depends on how you work, and the two can complement each other.",
+   "intro": "Arbitrage+ and SellerAmp are not designed for the same use case: SellerAmp is known as a sourcing tool for Amazon sellers, used to analyse a product quickly while searching, whereas Arbitrage+ focuses on comparing prices and qualifying an opportunity by factoring in the main costs before you buy. The right choice therefore depends on how you work, and the two can complement each other.",
    "sections": [
     {
      "h2": "What product analysis involves for an Amazon seller",
      "paragraphs": [
-      "Analyzing a product before reselling it on Amazon comes down to answering a few questions: what price does it sell at, how quickly, against how many sellers, with what fees, and am I allowed to sell it? Depending on your model (retail arbitrage, online arbitrage or wholesale), the importance of each question varies.",
+      "Analysing a product before reselling it on Amazon comes down to answering a few questions: what price does it sell at, how quickly, against how many sellers, with what fees, and am I allowed to sell it? Depending on your model (retail arbitrage, online arbitrage or wholesale), the importance of each question varies.",
       "The tools on the market do not cover all of these points in the same way. Before comparing names, identify the steps in your process where you lose the most time or take the most risk."
      ]
     },
@@ -3625,7 +3625,7 @@
      "h2": "SellerAmp: a tool designed for sourcing",
      "paragraphs": [
       "SellerAmp is widely used by Amazon sellers as an analysis tool during the sourcing phase, notably as a browser extension or mobile app. It lets you quickly check key metrics for an Amazon product while you browse deals or store shelves.",
-      "This use case particularly suits sellers whose business is centered on Amazon and who review many products in a row. Its value lies in how quickly it delivers a diagnosis while you search."
+      "This use case particularly suits sellers whose business is centred on Amazon and who review many products in a row. Its value lies in how quickly it delivers a diagnosis while you search."
      ]
     },
     {
@@ -3641,8 +3641,8 @@
       "Ask yourself a few simple questions. The answers often point to your main tool and to the possible role of a complementary one."
      ],
      "list": [
-      "Is your business centered on Amazon or spread across several channels?",
-      "Do you analyze a lot of products in a short time, out in the field?",
+      "Is your business centred on Amazon or spread across several channels?",
+      "Do you analyse a lot of products in a short time, out in the field?",
       "Do you need to justify a purchasing decision to a partner or a lender?",
       "Do you want to keep and compare your analyses over time?",
       "How much detail do you expect on fees?"
@@ -3659,7 +3659,7 @@
     {
      "h2": "Test on your own products before deciding",
      "paragraphs": [
-      "The best comparison is still the one you run on your real cases. Select about ten recently analyzed products, some sold at a profit and others disappointing, and run them through each tool.",
+      "The best comparison is still the one you run on your real cases. Select about ten recently analysed products, some sold at a profit and others disappointing, and run them through each tool.",
       "Look at the time required, the clarity of the result and the tool’s ability to flag the products that turned out badly. This test against known outcomes is worth more than any feature list."
      ]
     }
@@ -3680,7 +3680,7 @@
    ]
   },
   "analyser-produit-avant-achat": {
-   "intro": "To analyze a product before buying it for resale, you need to work out its full cost, estimate realistic demand, gauge competitive pressure and write down the assumptions behind your calculation. A sound decision never rests on a selling price in isolation or on a single score: it compares several candidates using the same framework and is willing to say no.",
+   "intro": "To analyse a product before buying it for resale, you need to work out its full cost, estimate realistic demand, gauge competitive pressure and write down the assumptions behind your calculation. A sound decision never rests on a selling price in isolation or on a single score: it compares several candidates using the same framework and is willing to say no.",
    "sections": [
     {
      "h2": "Start from a specific buying question, not a gut feeling",
@@ -3693,12 +3693,12 @@
      "h2": "Work out the full cost all the way to the customer",
      "paragraphs": [
       "The supplier price is only the starting point. The real cost of a product sold includes everything that happens between the factory and delivery to the customer, plus whatever may come back. List every cost item, even approximately, rather than leaving one out.",
-      "On a marketplace, think in terms of fee categories: referral fees, fulfillment fees, storage fees and any advertising costs. Their amounts vary by category, size and period; check them in the official documentation at the time of your analysis rather than relying on a figure you heard elsewhere."
+      "On a marketplace, think in terms of fee categories: referral fees, fulfilment fees, storage fees and any advertising costs. Their amounts vary by category, size and period; check them in the official documentation at the time of your analysis rather than relying on a figure you heard elsewhere."
      ],
      "list": [
       "Unit purchase price and payment terms",
       "International shipping, customs clearance and import duties",
-      "Packaging, labeling and quality control",
+      "Packaging, labelling and quality control",
       "Marketplace or online store fees",
       "Advertising budget needed for the launch",
       "Allowance for returns, damage and unsold stock"
@@ -3722,7 +3722,7 @@
      "h2": "Make assumptions visible and compare several candidates",
      "paragraphs": [
       "Every figure in your analysis rests on an assumption: return rate, freight cost, sustainable selling price. Write them down next to the calculations, with their source and your level of confidence. You can then revise them when reality diverges, and a partner or buyer can follow your reasoning without having to ask you again.",
-      "Always analyze at least two or three products using the same framework: it is the comparison that reveals the best choice, not the absolute score. A well-built spreadsheet is enough to get started; a dedicated tool such as Analyzer+ offers an analysis sheet for each product, comparable criteria and visible assumptions, which makes pre-listing research easier as the number of candidates grows."
+      "Always analyse at least two or three products using the same framework: it is the comparison that reveals the best choice, not the absolute score. A well-built spreadsheet is enough to get started; a dedicated tool such as Analyzer+ offers an analysis sheet for each product, comparable criteria and visible assumptions, which makes pre-listing research easier as the number of candidates grows."
      ]
     },
     {
@@ -3750,7 +3750,7 @@
      "a": "There is no universal threshold: it all depends on your turnover speed, your cash needs and the product’s risk. Instead, set a minimum net margin consistent with your business and check that it holds in the conservative scenario, not just in the base scenario."
     },
     {
-     "q": "How much time should you spend analyzing a product?",
+     "q": "How much time should you spend analysing a product?",
      "a": "Enough to complete the full framework and compare against other candidates, without aiming for perfection. A quick first pass lets you eliminate clearly weak products; in-depth analysis is reserved for the few candidates that make it through that first filter."
     }
    ]
@@ -3844,7 +3844,7 @@
      "h2": "Setting up a monthly reconciliation routine",
      "paragraphs": [
       "Margin tracking is first and foremost a habit. Pick a fixed date each month, pull the sales and fee reports from your channels, supplier invoices and advertising spend, then reconcile them by SKU. The goal is not accounting precision to the cent, but an accurate and regular picture.",
-      "Keep the same format from one month to the next: continuity is what reveals trends. A spreadsheet may be enough at first; a solution such as Profit+ brings expense tracking, margin calculation and product-level analysis together in a dashboard, which lightens this monthly review as your catalog grows."
+      "Keep the same format from one month to the next: continuity is what reveals trends. A spreadsheet may be enough at first; a solution such as Profit+ brings expense tracking, margin calculation and product-level analysis together in a dashboard, which lightens this monthly review as your catalogue grows."
      ]
     },
     {
@@ -3857,7 +3857,7 @@
     {
      "h2": "Moving from findings to decisions",
      "paragraphs": [
-      "Margin tracking that leads to no decisions is merely an accounting exercise. For each product whose margin is deteriorating, identify the main cause and then choose a lever: renegotiate the purchase price, adjust the selling price, cut advertising, change the fulfillment method, or discontinue the SKU.",
+      "Margin tracking that leads to no decisions is merely an accounting exercise. For each product whose margin is deteriorating, identify the main cause and then choose a lever: renegotiate the purchase price, adjust the selling price, cut advertising, change the fulfilment method, or discontinue the SKU.",
       "Also rank your products by contribution: some generate most of the margin, while others tie up stock and attention for little return. This portfolio trade-off often unlocks more profitability than fine-tuning every cost.",
       "Finally, review your past decisions at the next review: did the price increase reduce sales? Did the cut in advertising affect visibility? This feedback loop turns margin tracking into a learning tool rather than a mere record."
      ]
@@ -3879,7 +3879,7 @@
    ]
   },
   "tableau-bord-profit-amazon": {
-   "intro": "A marketplace profit dashboard brings sales, all fees and margin per product together in a single view, so you can see each week or each month what is actually making money. To build one, first define the decisions it needs to inform, then choose a handful of metrics, make your data sources reliable and organize the display from the big picture down to the detail.",
+   "intro": "A marketplace profit dashboard brings sales, all fees and margin per product together in a single view, so you can see each week or each month what is actually making money. To build one, first define the decisions it needs to inform, then choose a handful of metrics, make your data sources reliable and organise the display from the big picture down to the detail.",
    "sections": [
     {
      "h2": "Start with the decisions the dashboard needs to support",
@@ -3896,7 +3896,7 @@
      ],
      "list": [
       "Net sales after refunds",
-      "Marketplace fees by category (referral, fulfillment, storage)",
+      "Marketplace fees by category (referral, fulfilment, storage)",
       "Advertising spend relative to sales",
       "Margin per unit and total margin per product",
       "Variance between actual and forecast margin",
@@ -3911,11 +3911,11 @@
      ]
     },
     {
-     "h2": "Organize the screen from the big picture to the detail",
+     "h2": "Organise the screen from the big picture to the detail",
      "paragraphs": [
       "A good structure has three levels. At the top, a few key figures for the period compared with the previous one. In the middle, a ranking of products by total margin, which immediately shows the top contributors and the loss-making SKUs. At the bottom, the detail for a single product: a breakdown of its fees and how it has changed over time.",
-      "Highlight exceptions rather than averages: a color or marker for products that exceed a drift threshold draws attention to where action is needed. The platform’s native reports remain useful for operational detail; the profit dashboard complements them by bringing together what they present separately.",
-      "Finally, add a section for dated comments, even a basic one. Noting that a rise in fees corresponds to a change in fulfillment method, or that a drop in sales coincides with a stockout, saves you from repeating the same investigation the following month and makes the dashboard understandable to anyone who consults it."
+      "Highlight exceptions rather than averages: a colour or marker for products that exceed a drift threshold draws attention to where action is needed. The platform’s native reports remain useful for operational detail; the profit dashboard complements them by bringing together what they present separately.",
+      "Finally, add a section for dated comments, even a basic one. Noting that a rise in fees corresponds to a change in fulfilment method, or that a drop in sales coincides with a stockout, saves you from repeating the same investigation the following month and makes the dashboard understandable to anyone who consults it."
      ]
     },
     {
@@ -3942,14 +3942,14 @@
    ]
   },
   "automatiser-processus-pme": {
-   "intro": "To automate a small business’s processes without the complexity, start by mapping a single repetitive process, remove unnecessary steps, then automate only the tasks that require no human judgment and offer a measurable gain. Move forward in small iterations, connecting the tools you already have rather than replacing your entire IT system.",
+   "intro": "To automate a small business’s processes without the complexity, start by mapping a single repetitive process, remove unnecessary steps, then automate only the tasks that require no human judgement and offer a measurable gain. Move forward in small iterations, connecting the tools you already have rather than replacing your entire IT system.",
    "sections": [
     {
      "h2": "Identifying good candidates for automation",
      "paragraphs": [
-      "Not every process deserves to be automated. The best candidates share a few characteristics: they occur frequently, follow stable rules and mostly involve copying or moving information from one tool to another. Conversely, a task that is rare, changes every time or requires judgment rarely benefits from automation.",
+      "Not every process deserves to be automated. The best candidates share a few characteristics: they occur frequently, follow stable rules and mostly involve copying or moving information from one tool to another. Conversely, a task that is rare, changes every time or requires judgement rarely benefits from automation.",
       "Ask your teams: where do you re-enter the same information? Which task do you dread at the end of the month? Which error keeps coming back? The answers often point to the priority projects far better than a theoretical audit.",
-      "Then roughly estimate the gain for each candidate by multiplying the time spent by the frequency, and compare it with the setup effort. This simple calculation is enough to prioritize a list of projects and rule out those whose benefit would remain marginal."
+      "Then roughly estimate the gain for each candidate by multiplying the time spent by the frequency, and compare it with the setup effort. This simple calculation is enough to prioritise a list of projects and rule out those whose benefit would remain marginal."
      ],
      "list": [
       "Frequent, repetitive task",
@@ -3978,7 +3978,7 @@
      "h2": "Connect your existing tools rather than replacing everything",
      "paragraphs": [
       "Most small businesses already have a CRM, an invoicing tool, email and spreadsheets. Many of these applications expose APIs, meaning interfaces that allow them to exchange data automatically. Connecting them eliminates double entry without forcing teams to switch tools.",
-      "This is the approach behind the Connected Business Management Solutions offered by Dyonysos: a process audit, followed by API connectors, automations and business workflows limited to the steps that deliver a measurable gain, such as CRM-to-invoicing synchronization or automated reporting."
+      "This is the approach behind the Connected Business Management Solutions offered by Dyonysos: a process audit, followed by API connectors, automations and business workflows limited to the steps that deliver a measurable gain, such as CRM-to-invoicing synchronisation or automated reporting."
      ]
     },
     {
@@ -4002,29 +4002,29 @@
     },
     {
      "q": "Which processes should you avoid automating at first?",
-     "a": "Those that change often, involve many exceptions or entail a sensitive decision, such as a commercial trade-off or a delicate customer relationship. It is better to stabilize them first, then automate only the preparation or handoff steps."
+     "a": "Those that change often, involve many exceptions or entail a sensitive decision, such as a commercial trade-off or a delicate customer relationship. It is better to stabilise them first, then automate only the preparation or handoff steps."
     },
     {
      "q": "Does automation raise data protection issues?",
-     "a": "Yes, as soon as personal data flows between tools. Apply the principle of data minimization: transfer only the information the flow requires, restrict access and keep a record of the data exchanges you set up."
+     "a": "Yes, as soon as personal data flows between tools. Apply the principle of data minimisation: transfer only the information the flow requires, restrict access and keep a record of the data exchanges you set up."
     }
    ]
   },
   "odoo-ou-solution-ciblee": {
-   "intro": "Choosing between Odoo and a targeted business solution depends mainly on the scope of your needs: Odoo makes sense when you want to unify many management functions in a single system, whereas a targeted solution is a better fit when the problem centers on a few specific workflows and your current tools are otherwise working well. The right call comes down to scope, your capacity to manage change and total cost over time.",
+   "intro": "Choosing between Odoo and a targeted business solution depends mainly on the scope of your needs: Odoo makes sense when you want to unify many management functions in a single system, whereas a targeted solution is a better fit when the problem centres on a few specific workflows and your current tools are otherwise working well. The right call comes down to scope, your capacity to manage change and total cost over time.",
    "sections": [
     {
      "h2": "What each approach involves",
      "paragraphs": [
       "Odoo is a modular business management suite, available as an open-source Community edition and an Enterprise edition. It covers many areas, such as CRM, sales, invoicing, purchasing, inventory and accounting, through applications that share a single database.",
-      "A targeted business solution, by contrast, tackles a well-defined need: an approval workflow, synchronization between a CRM and an invoicing tool, automated reporting. It generally builds on the software already in place and connects it, rather than replacing it."
+      "A targeted business solution, by contrast, tackles a well-defined need: an approval workflow, synchronisation between a CRM and an invoicing tool, automated reporting. It generally builds on the software already in place and connects it, rather than replacing it."
      ]
     },
     {
      "h2": "When Odoo makes sense",
      "paragraphs": [
       "An integrated suite becomes worthwhile when your difficulties stem precisely from a growing number of tools that don’t talk to each other, across many departments at once. If sales, inventory, purchasing and invoicing need to share the same data in real time, a single system avoids multiplying connections.",
-      "This choice does, however, require a genuine project: configuration, data migration, training and sometimes adapting your processes to the tool’s logic. It makes all the more sense when the organization is ready to rethink how it works and has the time to see the project through."
+      "This choice does, however, require a genuine project: configuration, data migration, training and sometimes adapting your processes to the tool’s logic. It makes all the more sense when the organisation is ready to rethink how it works and has the time to see the project through."
      ],
      "list": [
       "Needs spanning several departments at once",
@@ -4044,13 +4044,13 @@
      "h2": "A five-question decision framework",
      "paragraphs": [
       "To move beyond a debate of opinions, ask the same questions of each option and record the answers with the people involved. The choice often becomes clear on its own.",
-      "Then weight each question according to your priorities: a very time-constrained organization will give more weight to the change burden, a fast-growing one to scalability. Document this reasoning; it will help you justify the choice to management and to your teams."
+      "Then weight each question according to your priorities: a very time-constrained organisation will give more weight to the change burden, a fast-growing one to scalability. Document this reasoning; it will help you justify the choice to management and to your teams."
      ],
      "list": [
       "How many departments and processes are actually involved?",
       "Are your current tools satisfactory apart from the friction points?",
       "How much change can your teams absorb?",
-      "What is the total cost over time: licenses, configuration, maintenance, training?",
+      "What is the total cost over time: licences, configuration, maintenance, training?",
       "Who will maintain the solution once it is in place?"
      ]
     },
@@ -4098,13 +4098,13 @@
      "h2": "Solving the chicken-and-egg problem",
      "paragraphs": [
       "Without supply, buyers don’t come; without buyers, sellers leave. Most marketplaces that get off to a good start begin with a single side, usually supply, within a narrow scope: one city, one trade, one product category.",
-      "Recruit your first sellers by hand, help them write their listings and check the quality of each one. A small but reliable catalog converts better than a large, hit-or-miss one. Only broaden the scope once transactions are repeating without your intervention."
+      "Recruit your first sellers by hand, help them write their listings and check the quality of each one. A small but reliable catalogue converts better than a large, hit-or-miss one. Only broaden the scope once transactions are repeating without your intervention."
      ]
     },
     {
      "h2": "The core features of a first version",
      "paragraphs": [
-      "A first version should make it possible to publish an offer, find it, complete the exchange and track it. Everything else, such as advanced messaging, loyalty programs or detailed dashboards, can wait until the model has been validated.",
+      "A first version should make it possible to publish an offer, find it, complete the exchange and track it. Everything else, such as advanced messaging, loyalty programmes or detailed dashboards, can wait until the model has been validated.",
       "On the administration side, plan from the outset for listing moderation, account management and a way to track ongoing transactions: that is what will allow you to step in when an exchange goes wrong."
      ],
      "list": [
@@ -4116,10 +4116,10 @@
      ]
     },
     {
-     "h2": "Choosing a technical route: no-code, packaged solution or customizable foundation",
+     "h2": "Choosing a technical route: no-code, packaged solution or customisable foundation",
      "paragraphs": [
       "Several approaches coexist. No-code tools let you test an idea very quickly, with limits as soon as business rules become more complex. Packaged solutions built for marketplaces, such as Sharetribe, cover most needs and are updated regularly. Custom development offers complete freedom, at the cost of a longer timeline and a larger budget.",
-      "Between these options, a customizable foundation such as Dyonysos’s Customizable Marketplace starts from existing building blocks (profiles, listings, search and filters, transaction flow, administration) and then lets you adapt the branding and workflows. The right choice depends mainly on how specific your transaction is and how much control you want to keep over the product and its deployment.",
+      "Between these options, a customisable foundation such as Dyonysos’s Customisable Marketplace starts from existing building blocks (profiles, listings, search and filters, transaction flow, administration) and then lets you adapt the branding and workflows. The right choice depends mainly on how specific your transaction is and how much control you want to keep over the product and its deployment.",
       "Within the Dyonysos ecosystem, [Tribuplace](https://tribuplace.com/) applies this approach as a ready-to-use marketplace foundation with three roles: customer, provider and operator. It includes search with filters, time-slot booking, price negotiation and payments through Stripe Connect, and each client gets a test environment separate from production. An online demo lets you explore all three spaces before committing, and the source code is handed over from the Extend plan onwards."
      ]
     },
@@ -4142,7 +4142,7 @@
     },
     {
      "q": "Can a white-label marketplace carry my own brand identity?",
-     "a": "Yes, that is precisely the point of a white-label solution: the interface appears under your name and in your colors. However, check how far the customization goes, particularly for the transaction flow and business rules, not just the look and feel."
+     "a": "Yes, that is precisely the point of a white-label solution: the interface appears under your name and in your colours. However, check how far the customisation goes, particularly for the transaction flow and business rules, not just the look and feel."
     }
    ]
   },
@@ -4153,7 +4153,7 @@
      "h2": "What Sharetribe offers and when it’s enough",
      "paragraphs": [
       "Sharetribe is designed specifically for marketplaces. It offers a ready-to-use engine that can be configured without code for a fast launch, and a headless approach for teams that want to build their own interface on top of its infrastructure.",
-      "For a project whose transaction resembles the classic models (booking, rental, peer-to-peer or business sales), it is a solid option. Before looking elsewhere, check that your needs really go beyond what it allows: many projects switch tools for the wrong reasons, for example a design that could have been customized."
+      "For a project whose transaction resembles the classic models (booking, rental, peer-to-peer or business sales), it is a solid option. Before looking elsewhere, check that your needs really go beyond what it allows: many projects switch tools for the wrong reasons, for example a design that could have been customised."
      ]
     },
     {
@@ -4163,7 +4163,7 @@
      ],
      "list": [
       "A highly specific transaction flow: multi-step approval, quotes, B2B framework agreements",
-      "A hosting or deployment control requirement imposed by your organization",
+      "A hosting or deployment control requirement imposed by your organisation",
       "The need to integrate the platform with existing internal tools",
       "A federation or network that wants to host several communities under a single brand",
       "A desire to own the code and evolve the product at your own pace"
@@ -4173,15 +4173,15 @@
      "h2": "A five-criterion comparison framework",
      "paragraphs": [
       "Compare options on concrete criteria rather than on feature lists. For each one, note what is possible without development, what requires development and what is impossible.",
-      "The first criterion is how well the transaction flow fits your business. Next come customization of the brand and the experience, the deployment model, reversibility (can you retrieve your data and switch solutions?) and finally the total cost over several years, including your teams’ time and not just subscriptions."
+      "The first criterion is how well the transaction flow fits your business. Next come customisation of the brand and the experience, the deployment model, reversibility (can you retrieve your data and switch solutions?) and finally the total cost over several years, including your teams’ time and not just subscriptions."
      ]
     },
     {
      "h2": "An overview of the types of alternatives",
      "paragraphs": [
-      "Alternatives fall into three families. SaaS marketplace platforms, which include Sharetribe, prioritize speed. Multi-vendor e-commerce frameworks and extensions suit you if you already have an online store and a technical team. Customizable foundations and custom development are aimed at projects where control comes first.",
-      "In this last family, Dyonysos’s Customizable Marketplace is worth considering when control over the product, deployment or specific workflows is a priority. It starts from a foundation with profiles and listings, search and filters, a transaction flow, administration and brand customization, for use cases such as a services marketplace, a B2B portal or a rental platform.",
-      "[Tribuplace](https://tribuplace.com/), the marketplace foundation of the Dyonysos ecosystem, is explicitly positioned in this space. It follows the three-role model popularized by Sharetribe (customer, provider, operator), with a configurable transaction engine and Stripe Connect payments, but leaves the choice of hosting to you and hands over the source code from its Extend plan onwards. It is worth adding to your comparison grid if reversibility and code ownership are among your criteria."
+      "Alternatives fall into three families. SaaS marketplace platforms, which include Sharetribe, prioritise speed. Multi-vendor e-commerce frameworks and extensions suit you if you already have an online store and a technical team. Customisable foundations and custom development are aimed at projects where control comes first.",
+      "In this last family, Dyonysos’s Customisable Marketplace is worth considering when control over the product, deployment or specific workflows is a priority. It starts from a foundation with profiles and listings, search and filters, a transaction flow, administration and brand customisation, for use cases such as a services marketplace, a B2B portal or a rental platform.",
+      "[Tribuplace](https://tribuplace.com/), the marketplace foundation of the Dyonysos ecosystem, is explicitly positioned in this space. It follows the three-role model popularised by Sharetribe (customer, provider, operator), with a configurable transaction engine and Stripe Connect payments, but leaves the choice of hosting to you and hands over the source code from its Extend plan onwards. It is worth adding to your comparison grid if reversibility and code ownership are among your criteria."
      ]
     },
     {
@@ -4215,7 +4215,7 @@
      "a": "Yes, it is a common scenario for validating a model quickly. Plan from the start how you will retrieve your data, and avoid building processes that depend on quirks that are hard to reproduce elsewhere."
     },
     {
-     "q": "Does a customizable alternative necessarily take longer to launch?",
+     "q": "Does a customisable alternative necessarily take longer to launch?",
      "a": "Not necessarily, if it starts from an existing foundation rather than a blank page. The timeline depends mainly on the extent of the adaptations required: limit the first version to the workflows that truly make a difference for your business."
     }
    ]
@@ -4231,7 +4231,7 @@
      ]
     },
     {
-     "h2": "Canva’s recognized strengths for businesses",
+     "h2": "Canva’s recognised strengths for businesses",
      "paragraphs": [
       "Canva is widely adopted for its accessibility, its large library of templates and elements, its collaboration features and its support for a very wide range of formats, from social media to presentations. For a team that produces varied content, it is an effective starting point.",
       "Its limitations in a business context have less to do with the tool than with how it is used: the richer the library, the easier it is to stray from the brand guidelines, and the more governance effort it takes to make sure everyone starts from the right templates."
@@ -4240,14 +4240,14 @@
     {
      "h2": "When a focused tool is a better fit",
      "paragraphs": [
-      "A focused tool makes sense when consistency and speed of adaptation matter more than creative freedom. That is the case for a retailer that adapts every offer for several social networks, a small organization without a designer, or a network whose local branches must follow a shared identity.",
-      "Dyonysos’s Graphic Design solution addresses this type of need: multichannel formats, reusable templates, resizing, a resource library and export, all within a simplified workflow. It does not try to match the breadth of a suite like Canva, but to offer focused, customizable workflows for an organization."
+      "A focused tool makes sense when consistency and speed of adaptation matter more than creative freedom. That is the case for a retailer that adapts every offer for several social networks, a small organisation without a designer, or a network whose local branches must follow a shared identity.",
+      "Dyonysos’s Graphic Design solution addresses this type of need: multichannel formats, reusable templates, resizing, a resource library and export, all within a simplified workflow. It does not try to match the breadth of a suite like Canva, but to offer focused, customisable workflows for an organisation."
      ],
      "list": [
       "A lot of repetitive content to adapt",
       "Contributors who aren’t designers",
       "Brand guidelines that must be strictly enforced",
-      "A need to tailor a workflow to your organization"
+      "A need to tailor a workflow to your organisation"
      ]
     },
     {
@@ -4257,8 +4257,8 @@
      ],
      "list": [
       "Time needed to adapt a visual to every required format",
-      "How easily colors, fonts and logos can be locked",
-      "How the shared resource library is organized",
+      "How easily colours, fonts and logos can be locked",
+      "How the shared resource library is organised",
       "Export formats compatible with your distribution channels",
       "How easily non-designers can get up to speed"
      ]
@@ -4267,7 +4267,7 @@
      "h2": "Common mistakes when choosing a design tool",
      "paragraphs": [
       "The first mistake is choosing based on a demo by an expert, when the tool will be used by occasional contributors. The second is underestimating the preparation work: any tool, however simple, only produces consistent visuals if templates and a resource library have been designed beforehand.",
-      "Finally, many organizations forget to appoint someone responsible for the templates. Without someone to update them when the brand guidelines change, the templates grow stale and everyone goes back to cobbling together their own versions."
+      "Finally, many organisations forget to appoint someone responsible for the templates. Without someone to update them when the brand guidelines change, the templates grow stale and everyone goes back to cobbling together their own versions."
      ],
      "list": [
       "Choosing based on an expert’s demo",
@@ -4279,7 +4279,7 @@
     {
      "h2": "Using several tools side by side without losing consistency",
      "paragraphs": [
-      "It is not unusual to keep Canva for one-off creations and use a focused tool for recurring adaptations. This arrangement works provided you centralize brand assets (logos, color palettes, approved photos) and designate a reference tool for each type of content.",
+      "It is not unusual to keep Canva for one-off creations and use a focused tool for recurring adaptations. This arrangement works provided you centralise brand assets (logos, colour palettes, approved photos) and designate a reference tool for each type of content.",
       "The main risk is fragmentation: the same visuals exist in several versions across several tools. A simple rule, such as “an approved template lives in one place only,” prevents most inconsistencies."
      ]
     }
@@ -4295,7 +4295,7 @@
     },
     {
      "q": "How do you prevent brand guidelines from drifting between teams?",
-     "a": "Restrict the starting point to approved templates, gather logos, colors and images in a single library, and have the first pieces of content from each new contributor reviewed. Consistency comes more from the framework than from the tool."
+     "a": "Restrict the starting point to approved templates, gather logos, colours and images in a single library, and have the first pieces of content from each new contributor reviewed. Consistency comes more from the framework than from the tool."
     }
    ]
   },
@@ -4312,11 +4312,11 @@
     {
      "h2": "Separate what stays fixed from what changes",
      "paragraphs": [
-      "Some elements must be identical everywhere so the audience recognizes the campaign: the key message, the visual identity, the offer and its terms. Others, on the contrary, need to vary to fit the conventions of each platform.",
-      "Laying out this distinction in a small table avoids the two classic mistakes: posting the same visual cropped at random everywhere, or producing versions so different that the campaign is no longer recognizable."
+      "Some elements must be identical everywhere so the audience recognises the campaign: the key message, the visual identity, the offer and its terms. Others, on the contrary, need to vary to fit the conventions of each platform.",
+      "Laying out this distinction in a small table avoids the two classic mistakes: posting the same visual cropped at random everywhere, or producing versions so different that the campaign is no longer recognisable."
      ],
      "list": [
-      "Fixed: key message, logo, colors, offer, mandatory disclaimers",
+      "Fixed: key message, logo, colours, offer, mandatory disclaimers",
       "Variable: image aspect ratio, text length, tone, hook",
       "Variable: placement and wording of the call to action",
       "Variable: information hierarchy within the visual"
@@ -4400,7 +4400,7 @@
      "h2": "Choose the right level of fidelity",
      "paragraphs": [
       "At the very beginning, paper sketches or grayscale wireframes are enough to test the navigation logic. Once the structure has been validated, a higher-fidelity interactive prototype lets you test whether labels are understood, the visual hierarchy and ease of use.",
-      "Too much fidelity too early has a hidden cost: testers comment on the colors instead of the flow, and the team hesitates to throw away polished work. Only increase fidelity once the fundamental questions have been settled."
+      "Too much fidelity too early has a hidden cost: testers comment on the colours instead of the flow, and the team hesitates to throw away polished work. Only increase fidelity once the fundamental questions have been settled."
      ]
     },
     {
@@ -4418,7 +4418,7 @@
      ],
      "list": [
       "Guiding the tester instead of observing them",
-      "Asking for an opinion rather than observing behavior",
+      "Asking for an opinion rather than observing behaviour",
       "Recruiting testers who are too close to the project",
       "Testing a mobile use case on a computer",
       "Not writing down observations immediately"
@@ -4464,7 +4464,7 @@
       "SaaS is also a good way to test a need: if the tool is widely adopted and its limitations start to get in the way, you will have concrete arguments for considering a dedicated solution."
      ],
      "list": [
-      "A standard process common to many organizations",
+      "A standard process common to many organisations",
       "A need for fast rollout",
       "Few integrations with your internal systems",
       "No team available to oversee a development project"
@@ -4495,7 +4495,7 @@
      "h2": "A middle path: validate before you build",
      "paragraphs": [
       "Many custom projects become expensive because they start with too many features before the main use case has been validated. An incremental approach reduces this risk: scope the need, prototype the essential flow, test it, then develop in stages while measuring usage.",
-      "This is the approach taken by Dyonysos’s Mobile Apps solution, which prioritizes usage and validation before adding more features. It can also help you conclude that an existing SaaS is enough: a well-tested prototype is a good way to find out."
+      "This is the approach taken by Dyonysos’s Mobile Apps solution, which prioritises usage and validation before adding more features. It can also help you conclude that an existing SaaS is enough: a well-tested prototype is a good way to find out."
      ],
      "list": [
       "Scope the need and the main use case",
@@ -4513,7 +4513,7 @@
     },
     {
      "q": "Does a custom app have to be published on the app stores?",
-     "a": "Not necessarily. An internal app can be distributed in other ways depending on your organization and your devices. For a consumer-facing service, however, being on the app stores remains the expected channel."
+     "a": "Not necessarily. An internal app can be distributed in other ways depending on your organisation and your devices. For a consumer-facing service, however, being on the app stores remains the expected channel."
     },
     {
      "q": "How do you write a requirements document for a custom app?",
@@ -4522,12 +4522,12 @@
    ]
   },
   "formation-ms-project-entreprise": {
-   "intro": "Corporate Microsoft Project training teaches teams to build a reliable schedule in the tool: structuring tasks, linking them, assigning resources, tracking progress and producing useful reports. Its main benefit is standardized practices: schedules become readable, comparable from one project to the next and genuinely used to manage projects, instead of being redrawn before every meeting.",
+   "intro": "Corporate Microsoft Project training teaches teams to build a reliable schedule in the tool: structuring tasks, linking them, assigning resources, tracking progress and producing useful reports. Its main benefit is standardised practices: schedules become readable, comparable from one project to the next and genuinely used to manage projects, instead of being redrawn before every meeting.",
    "sections": [
     {
      "h2": "Why self-teaching Microsoft Project quickly reaches its limits",
      "paragraphs": [
-      "Microsoft Project looks like a spreadsheet, which leads many users to handle it like one: they enter dates by hand, color-code rows and adjust the Gantt chart by eye. The file looks like a schedule, but it recalculates nothing when a task falls behind.",
+      "Microsoft Project looks like a spreadsheet, which leads many users to handle it like one: they enter dates by hand, colour-code rows and adjust the Gantt chart by eye. The file looks like a schedule, but it recalculates nothing when a task falls behind.",
       "In reality, the tool runs on a scheduling engine that combines durations, links, calendars and resources. Until that engine is understood, every change produces unexpected effects, and users end up switching off automatic scheduling to regain control. Structured training recovers the time lost working around the tool rather than using it."
      ]
     },
@@ -4542,7 +4542,7 @@
       "Linking tasks, choosing the dependency type and managing lead and lag time",
       "Creating and assigning resources, and distinguishing duration, work and capacity",
       "Identifying and resolving resource overallocations",
-      "Saving a baseline, entering progress and analyzing variances",
+      "Saving a baseline, entering progress and analysing variances",
       "Reading the critical path and producing views and reports for the steering committee"
      ]
     },
@@ -4556,8 +4556,8 @@
     {
      "h2": "Working on the company’s real schedules",
      "paragraphs": [
-      "Generic exercises, such as building a house or organizing a trade show, help people learn the features but transfer poorly. In-house training works better when it is based on a project representative of the organization, anonymized if need be, which participants rebuild step by step during the session.",
-      "This is the approach Dyonysos takes in its Microsoft Project training: contextualized exercises built from the organization’s projects and constraints, so that the schedule produced in the classroom can serve as a working basis the very next day. The session can also result in a shared schedule template, which extends the training well beyond its end."
+      "Generic exercises, such as building a house or organising a trade show, help people learn the features but transfer poorly. In-house training works better when it is based on a project representative of the organisation, anonymised if need be, which participants rebuild step by step during the session.",
+      "This is the approach Dyonysos takes in its Microsoft Project training: contextualised exercises built from the organisation’s projects and constraints, so that the schedule produced in the classroom can serve as a working basis the very next day. The session can also result in a shared schedule template, which extends the training well beyond its end."
      ]
     },
     {
@@ -4589,7 +4589,7 @@
     },
     {
      "q": "Is in-house training better than a public session open to several companies?",
-     "a": "A public session suits an individual who needs to get up to speed with the tool. As soon as an entire team is involved, the in-house format lets you work on your own projects, templates and internal rules, and therefore standardize practices."
+     "a": "A public session suits an individual who needs to get up to speed with the tool. As soon as an entire team is involved, the in-house format lets you work on your own projects, templates and internal rules, and therefore standardise practices."
     },
     {
      "q": "Can beginners and experienced users be trained together?",
@@ -4598,10 +4598,10 @@
    ]
   },
   "formation-gestion-projet-organisme": {
-   "intro": "Effective project management training starts from a precisely diagnosed need, sets observable objectives, alternates methodology with hands-on practice on cases close to real work, then organizes how it will be applied in actual projects. What makes the difference is not how exhaustive the content is, but how well it aligns the audience, the situations they face and what is expected of them after the session.",
+   "intro": "Effective project management training starts from a precisely diagnosed need, sets observable objectives, alternates methodology with hands-on practice on cases close to real work, then organises how it will be applied in actual projects. What makes the difference is not how exhaustive the content is, but how well it aligns the audience, the situations they face and what is expected of them after the session.",
    "sections": [
     {
-     "h2": "Start from a diagnosis rather than a catalog",
+     "h2": "Start from a diagnosis rather than a catalogue",
      "paragraphs": [
       "It is tempting to reuse a standard curriculum covering the entire project life cycle. But a team that struggles to scope its projects does not have the same needs as a team that can scope them but fails to meet its deadlines. Before writing a single module, you need to understand what is holding people back today.",
       "This diagnosis can take the form of interviews with a few participants and their managers, a skills assessment questionnaire or a review of existing documents: project charters, schedules, committee minutes."
@@ -4611,28 +4611,28 @@
       "At what stage do difficulties most often arise?",
       "Which tools and templates are already mandated or in use?",
       "What level of autonomy is expected after the training?",
-      "Who in the organization will support putting it into practice?"
+      "Who in the organisation will support putting it into practice?"
      ]
     },
     {
      "h2": "Set observable learning objectives",
      "paragraphs": [
-      "“Understand project management” is not an objective, because nobody can check whether it has been achieved. “Write a scoping document specifying a project’s scope, deliverables and success criteria” is: it describes observable behavior and a deliverable that can be assessed.",
+      "“Understand project management” is not an objective, because nobody can check whether it has been achieved. “Write a scoping document specifying a project’s scope, deliverables and success criteria” is: it describes observable behaviour and a deliverable that can be assessed.",
       "Objectives worded this way serve as the common thread for the entire design. They determine the exercises, the time devoted to each topic and how learning is assessed. They also make the conversation with the sponsor easier, since the sponsor can see clearly what to expect."
      ]
     },
     {
      "h2": "Choosing the right framework: predictive, agile, PM² or PMP",
      "paragraphs": [
-      "Project management frameworks are not as opposed as people claim. Predictive approaches structure the project into phases planned in advance, while agile approaches favor short iterations and continuous adaptation to needs. The PMI guide, on which the PMP certification is based, brings together a broad body of good practices, while PM², the methodology developed by the European Commission, offers a lightweight framework that comes ready-equipped with document templates.",
-      "The right choice depends on the participants’ context. A team responding to structured public tenders does not face the same constraints as a digital product team. Many organizations actually operate in a hybrid mode, in which case the training should show how to combine practices rather than impose a doctrine."
+      "Project management frameworks are not as opposed as people claim. Predictive approaches structure the project into phases planned in advance, while agile approaches favour short iterations and continuous adaptation to needs. The PMI guide, on which the PMP certification is based, brings together a broad body of good practices, while PM², the methodology developed by the European Commission, offers a lightweight framework that comes ready-equipped with document templates.",
+      "The right choice depends on the participants’ context. A team responding to structured public tenders does not face the same constraints as a digital product team. Many organisations actually operate in a hybrid mode, in which case the training should show how to combine practices rather than impose a doctrine."
      ]
     },
     {
      "h2": "Design a progression that alternates methodology and practice",
      "paragraphs": [
-      "A running case study, followed from scoping to closure, gives the training coherence: each new concept is applied immediately to the same project, and participants see how upstream decisions affect what follows. Ideally, the case is inspired by the organization’s own projects, or replaced by projects the participants bring themselves.",
-      "Theoretical input works best when it is kept short and leads directly into an activity. Dyonysos builds its programs on this principle: methodology, contextualized exercises and skills transfer are designed together rather than as separate blocks."
+      "A running case study, followed from scoping to closure, gives the training coherence: each new concept is applied immediately to the same project, and participants see how upstream decisions affect what follows. Ideally, the case is inspired by the organisation’s own projects, or replaced by projects the participants bring themselves.",
+      "Theoretical input works best when it is kept short and leads directly into an activity. Dyonysos builds its programmes on this principle: methodology, contextualised exercises and skills transfer are designed together rather than as separate blocks."
      ],
      "list": [
       "A workshop on writing a project charter or scoping document",
@@ -4643,7 +4643,7 @@
      ]
     },
     {
-     "h2": "Organize how learning is applied after the session",
+     "h2": "Organise how learning is applied after the session",
      "paragraphs": [
       "Most of the learning happens after the training, when participants try to apply what they have learned in an environment that hasn’t changed. Without follow-through, good intentions fade within a few weeks.",
       "Several levers help embed new practices: giving each participant a specific application task on an ongoing project, involving their manager in choosing that assignment, scheduling a follow-up session some time after the training and making the templates used in class available. One-on-one coaching for project managers on their own projects is often the most effective follow-up."
@@ -4668,7 +4668,7 @@
     },
     {
      "q": "Can a training provider hand a project management module to an outside trainer?",
-     "a": "Yes, it is common practice when the provider lacks this expertise in-house. What matters is sharing the objectives, the audience and the assessment methods beforehand, so that the module fits in with the rest of the program rather than feeling like a bolt-on."
+     "a": "Yes, it is common practice when the provider lacks this expertise in-house. What matters is sharing the objectives, the audience and the assessment methods beforehand, so that the module fits in with the rest of the programme rather than feeling like a bolt-on."
     }
    ]
   },
@@ -4679,20 +4679,20 @@
      "h2": "What a professional trainer brings to students",
      "paragraphs": [
       "Students learn the definitions fairly easily: scope, milestone, critical path, stakeholder. What they lack is an understanding of real-world trade-offs: what to do when a sponsor changes their mind, how to announce a delay, why a schedule that is perfect on paper falls apart in the face of vacations and competing priorities.",
-      "A trainer who works or has worked in industry brings these first-hand situations, the vocabulary actually used in organizations and knowledge of the tools on the market. They also help students connect their supervised projects, internships and work-study placements to recognized practices, which boosts their employability."
+      "A trainer who works or has worked in industry brings these first-hand situations, the vocabulary actually used in organisations and knowledge of the tools on the market. They also help students connect their supervised projects, internships and work-study placements to recognised practices, which boosts their employability."
      ]
     },
     {
-     "h2": "Position the module within the program structure",
+     "h2": "Position the module within the programme structure",
      "paragraphs": [
-      "Before contacting a trainer, clarify the module’s role in the curriculum. An introduction early in a bachelor’s degree, an advanced course in a master’s program or a career-focused module in an engineering or business school do not call for the same content or the same teaching approach.",
+      "Before contacting a trainer, clarify the module’s role in the curriculum. An introduction early in a bachelor’s degree, an advanced course in a master’s programme or a career-focused module in an engineering or business school do not call for the same content or the same teaching approach.",
       "The link with other courses matters just as much. If students are running a supervised project in the same semester, the project management module can provide its methodological framework. If they are leaving for internships shortly afterward, it can prepare them for the situations they will encounter."
      ]
     },
     {
      "h2": "Build the content with the teaching team",
      "paragraphs": [
-      "An outside trainer knows neither the students’ prerequisites nor what has already been covered in other courses. A preparatory meeting with the program director avoids repetition and gaps in the progression.",
+      "An outside trainer knows neither the students’ prerequisites nor what has already been covered in other courses. A preparatory meeting with the programme director avoids repetition and gaps in the progression.",
       "This preparation should result in a shared document that serves as a reference for both the trainer and the academic lead."
      ],
      "list": [
@@ -4708,20 +4708,20 @@
      "h2": "Working formats suited to a student audience",
      "paragraphs": [
       "Students retain what they have practiced as a team better. A running group project, with deliverables due at each session, reproduces the constraints of a real project: dividing up roles, deadlines, disagreements to resolve. Role-plays, such as simulating a steering committee facing a demanding sponsor, bring out the interpersonal dimension that is often missing from courses.",
-      "Depending on the program, the module may include hands-on Microsoft Project training, an introduction to PM² or PMP good practices, or business analysis workshops focused on gathering and documenting requirements. Dyonysos can deliver sessions in this university setting, adapting the content to the students’ level and the objectives set by the institution."
+      "Depending on the programme, the module may include hands-on Microsoft Project training, an introduction to PM² or PMP good practices, or business analysis workshops focused on gathering and documenting requirements. Dyonysos can deliver sessions in this university setting, adapting the content to the students’ level and the objectives set by the institution."
      ]
     },
     {
      "h2": "Assess skills rather than knowledge",
      "paragraphs": [
-      "A quiz on definitions measures memorization, not the ability to run a project. It is more relevant to assess deliverables produced by the teams: scoping document, task breakdown, schedule, risk register, committee minutes. A final presentation also makes it possible to assess students’ ability to report on progress and defend their choices.",
+      "A quiz on definitions measures memorisation, not the ability to run a project. It is more relevant to assess deliverables produced by the teams: scoping document, task breakdown, schedule, risk register, committee minutes. A final presentation also makes it possible to assess students’ ability to report on progress and defend their choices.",
       "A criteria-based rubric, shared with students at the start of the module, makes assessment transparent and consistent across groups. It also makes grading easier to align when several trainers are involved."
      ]
     },
     {
      "h2": "Plan the practical arrangements for the engagement",
      "paragraphs": [
-      "Logistics are often underestimated. Check early on the access the trainer will need: equipped classrooms, the digital learning environment, where to upload materials, and license availability if software is used. Contracting arrangements for outside trainers vary from one institution to another: check with your administrative office to find out which procedures apply.",
+      "Logistics are often underestimated. Check early on the access the trainer will need: equipped classrooms, the digital learning environment, where to upload materials, and licence availability if software is used. Contracting arrangements for outside trainers vary from one institution to another: check with your administrative office to find out which procedures apply.",
       "Also set the schedule for submissions and presentations taking into account exam periods, internships and grading boards, so that an assessment doesn’t fall at a time when students have already left."
      ]
     }
@@ -4732,8 +4732,8 @@
      "a": "The best time is just before or during a real-world placement: a supervised project, an internship or a work-study period. Students can then apply what they learn immediately, which gives meaning to the concepts covered."
     },
     {
-     "q": "Do all students need Microsoft Project licenses?",
-     "a": "Only if the module includes hands-on use of the software. In that case, check with the IT department beforehand on license availability and installation on the computers. A methodology-focused module can work perfectly well with simpler tools."
+     "q": "Do all students need Microsoft Project licences?",
+     "a": "Only if the module includes hands-on use of the software. In that case, check with the IT department beforehand on licence availability and installation on the computers. A methodology-focused module can work perfectly well with simpler tools."
     },
     {
      "q": "Can the trainer follow supervised projects beyond their sessions?",
@@ -4762,20 +4762,20 @@
      "h2": "Five typical consulting engagements",
      "paragraphs": [
       "A project review involves examining an ongoing project, its deliverables, schedule and governance to produce a diagnosis and recommendations. A turnaround goes further: the consultant helps replan, renegotiate the scope and restore credible management in the eyes of the sponsors.",
-      "Setting up or overhauling a PMO aims to give the organization a consolidated view of its portfolio: prioritization rules, shared metrics, governance routines. Defining a methodological framework, for example one inspired by PM² or PMP good practices, gives teams shared templates and vocabulary. Finally, one-on-one support for a project manager helps them make decisions on their own project while developing their skills."
+      "Setting up or overhauling a PMO aims to give the organisation a consolidated view of its portfolio: prioritisation rules, shared metrics, governance routines. Defining a methodological framework, for example one inspired by PM² or PMP good practices, gives teams shared templates and vocabulary. Finally, one-on-one support for a project manager helps them make decisions on their own project while developing their skills."
      ]
     },
     {
      "h2": "Consultant, training or hiring: choosing the right response",
      "paragraphs": [
-      "Not every difficulty calls for consulting. If the team knows the methodology but struggles with its scheduling tool, targeted Microsoft Project training will be a better fit. If the organization has a lasting shortage of project management capacity, hiring or reorganizing is needed. Consulting is relevant when you need to solve a specific problem, design a system or support a transformation.",
-      "At Dyonysos, custom consulting and training are designed to complement each other: the right format depends on the expected outcome, whether that is getting to grips with a tool, professionalizing a team, solving a project problem or leading a broader transformation. In fact, a consulting engagement often leads to a training need identified along the way."
+      "Not every difficulty calls for consulting. If the team knows the methodology but struggles with its scheduling tool, targeted Microsoft Project training will be a better fit. If the organisation has a lasting shortage of project management capacity, hiring or reorganising is needed. Consulting is relevant when you need to solve a specific problem, design a system or support a transformation.",
+      "At Dyonysos, custom consulting and training are designed to complement each other: the right format depends on the expected outcome, whether that is getting to grips with a tool, professionalising a team, solving a project problem or leading a broader transformation. In fact, a consulting engagement often leads to a training need identified along the way."
      ]
     },
     {
      "h2": "Scope the engagement to get a tangible result",
      "paragraphs": [
-      "A poorly scoped engagement quickly turns into open-ended operational backup in disguise. The scoping should specify what the organization expects at the end of the engagement, and how it will know that the objective has been met.",
+      "A poorly scoped engagement quickly turns into open-ended operational backup in disguise. The scoping should specify what the organisation expects at the end of the engagement, and how it will know that the objective has been met.",
       "The PMO consultant or project management consultant must also have real access to information: project documents, interviews with the teams, attendance at steering meetings. Without that access, the recommendations will remain theoretical."
      ],
      "list": [
@@ -4790,7 +4790,7 @@
      "h2": "Plan for the post-engagement period to avoid dependency",
      "paragraphs": [
       "The risk with a consulting engagement is that practices slip back as soon as the consultant leaves. To prevent this, skills transfer must be planned from the scoping stage: the internal team co-builds the tools rather than receiving them ready-made, and a point person is appointed to keep them alive.",
-      "Deliverables should be documented and suited to the organization’s actual maturity level. A sophisticated dashboard that nobody knows how to update will be abandoned within a few weeks; a simple template that people understand and take ownership of will last."
+      "Deliverables should be documented and suited to the organisation’s actual maturity level. A sophisticated dashboard that nobody knows how to update will be abandoned within a few weeks; a simple template that people understand and take ownership of will last."
      ]
     }
    ],
@@ -4810,7 +4810,7 @@
    ]
   },
   "lancer-site-boutique-en-ligne-evolutif": {
-   "intro": "To launch a website and an online store without having to rebuild everything a few years later, choose from the outset a foundation that can take on the management tasks that will follow: catalog, stock, customers, purchasing. Start small, with the essential pages and products, but make sure your data will stay in one place and remain exportable as the business grows.",
+   "intro": "To launch a website and an online store without having to rebuild everything a few years later, choose from the outset a foundation that can take on the management tasks that will follow: catalogue, stock, customers, purchasing. Start small, with the essential pages and products, but make sure your data will stay in one place and remain exportable as the business grows.",
    "sections": [
     {
      "h2": "Why so many businesses end up rebuilding their website",
@@ -4823,7 +4823,7 @@
      "h2": "Define the useful minimum for launch",
      "paragraphs": [
       "A first website does not need to do everything. It must present the offer clearly, build trust and make it easy to get in touch or buy. Start by listing what a visitor should be able to do on their very first visit.",
-      "Everything else, such as loyalty programs, comparison tools or advanced customer accounts, can wait until the first sales show what customers really ask for."
+      "Everything else, such as loyalty programmes, comparison tools or advanced customer accounts, can wait until the first sales show what customers really ask for."
      ],
      "list": [
       "Understand what you offer and who it is for",
@@ -4850,7 +4850,7 @@
      "h2": "An example of a scalable foundation: Omnifloo",
      "paragraphs": [
       "[Omnifloo](https://omnifloo.com/), a solution published by Dyonysos and built on Odoo, illustrates this approach. The offer starts with a brochure website, adds an online store with payment and stock management, then lets you activate CRM, sales, purchasing and inventory in the same place, with no data migration and no change of vendor. The publisher states that the website and store can be ready in 5 days.",
-      "The foundation is open source (LGPLv3 license), which keeps code and data portable, and it natively supports multiple websites, multiple companies and multiple languages. Industry themes serve as a starting point, with online demos of a landscaper’s brochure website and a coffee roaster’s online store. A free plan lets you test a three-page brochure website before choosing a paid plan."
+      "The foundation is open source (LGPLv3 licence), which keeps code and data portable, and it natively supports multiple websites, multiple companies and multiple languages. Industry themes serve as a starting point, with online demos of a landscaper’s brochure website and a coffee roaster’s online store. A free plan lets you test a three-page brochure website before choosing a paid plan."
      ]
     },
     {
@@ -4889,10 +4889,10 @@
     {
      "h2": "Step 2: the online store, when the sale can happen without you",
      "paragraphs": [
-      "A store makes sense when some products or services can be bought without a quote or a conversation: fixed price, clear specifications, organized delivery or pick-up. If every sale requires a discussion, a well-designed quote request form may be more useful than a shopping cart."
+      "A store makes sense when some products or services can be bought without a quote or a conversation: fixed price, clear specifications, organised delivery or pick-up. If every sale requires a discussion, a well-designed quote request form may be more useful than a shopping cart."
      ],
      "list": [
-      "A stable catalog with reliable prices and descriptions",
+      "A stable catalogue with reliable prices and descriptions",
       "Defined delivery, pick-up and return terms",
       "An online payment method suited to your customers",
       "Someone responsible for processing orders every day",

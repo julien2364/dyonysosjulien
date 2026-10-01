@@ -1,12 +1,12 @@
 {
  "en": {
   "titles": {
-   "optimiser-cv-ats": "How Do You Optimize a Resume for ATS?",
-   "adapter-cv-offre-emploi": "How Do You Tailor Your Resume to a Job Posting?",
-   "outils-ia-ameliorer-cv": "Which AI Tools Can Help You Improve Your Resume?",
-   "cvdesignpro-vs-outils-cv": "CVDesignPro or a Resume Builder: Which Should You Choose?",
-   "comment-recruteurs-analysent-cv": "How Do Recruiters Review a Resume?",
-   "digitaliser-communication-ecole-parents": "How Can Schools Digitize Parent Communication?",
+   "optimiser-cv-ats": "How Do You Optimise a CV for ATS?",
+   "adapter-cv-offre-emploi": "How Do You Tailor Your CV to a Job Posting?",
+   "outils-ia-ameliorer-cv": "Which AI Tools Can Help You Improve Your CV?",
+   "cvdesignpro-vs-outils-cv": "CVDesignPro or a CV Builder: Which Should You Choose?",
+   "comment-recruteurs-analysent-cv": "How Do Recruiters Review a CV?",
+   "digitaliser-communication-ecole-parents": "How Can Schools Digitise Parent Communication?",
    "plateforme-numerique-ecole": "Which Digital Platform Should a School Choose?",
    "centraliser-devoirs-notes-agenda": "Bringing Homework, Schedules and School Communication Together",
    "alternative-applications-scolaires": "An Alternative to the Growing Number of School Apps",
@@ -19,7 +19,7 @@
    "firmoscope-alternative-pappers": "Propecto and Pappers: Complementary Use Cases",
    "calculer-rentabilite-arbitrage": "How Do You Calculate the Profitability of an Arbitrage Opportunity?",
    "alternative-selleramp": "Arbitrage+ and SellerAmp: Comparing Different Use Cases",
-   "analyser-produit-avant-achat": "How Do You Analyze a Product Before Buying It?",
+   "analyser-produit-avant-achat": "How Do You Analyse a Product Before Buying It?",
    "keepa-analyse-produit": "Keepa and Product Analysis Tools: How Do You Combine Them?",
    "suivre-marge-ecommerce": "How Do You Track Your Real Margin in E-commerce?",
    "tableau-bord-profit-amazon": "Building a Marketplace Profit Dashboard",
@@ -41,18 +41,18 @@
   "products": {
    "cvdesignpro": {
     "name": "CVDesignPro",
-    "tag": "Resume · ATS · Recruitment",
-    "problem": "Create a clear, credible resume tailored to a job posting without wasting time redoing the entire layout.",
-    "audience": "Job seekers, training organizations, career coaching firms and recruitment teams.",
-    "value": "A guided workflow to structure your resume, tailor it to each application, check its consistency and prepare the accompanying documents.",
+    "tag": "CV · ATS · Recruitment",
+    "problem": "Create a clear, credible CV tailored to a job posting without wasting time redoing the entire layout.",
+    "audience": "Job seekers, training organisations, career coaching firms and recruitment teams.",
+    "value": "A guided workflow to structure your CV, tailor it to each application, check its consistency and prepare the accompanying documents.",
     "compare": "Unlike a general-purpose design editor, the approach puts application content, readability and hiring criteria first.",
     "uses": [
      "Preparing a first job application",
      "Repositioning an experienced profile",
-     "Tailoring a resume to a specific job posting"
+     "Tailoring a CV to a specific job posting"
     ],
     "features": [
-     "Resume creation and formatting",
+     "CV creation and formatting",
      "ATS compatibility check",
      "Tailoring to a job posting",
      "Cover letter",
@@ -84,16 +84,16 @@
     "tag": "Educational resources",
     "problem": "Courses and materials end up scattered across folders, inboxes and hard-to-browse storage spaces.",
     "audience": "Teachers, trainers, schools and learners.",
-    "value": "Centralize, organize, find and share educational resources in one coherent library.",
+    "value": "Centralise, organise, find and share educational resources in one coherent library.",
     "compare": "Unlike a simple shared folder, the platform adds editorial structure and navigation designed for educational content.",
     "uses": [
      "School-wide library",
-     "Training catalog",
+     "Training catalogue",
      "Sharing between teachers"
     ],
     "features": [
      "Resource creation",
-     "Topic-based organization",
+     "Topic-based organisation",
      "Search",
      "Course sharing",
      "Shared knowledge base"
@@ -104,7 +104,7 @@
     "tag": "School communication",
     "problem": "Messages, homework, documents and events get scattered across multiple apps, emails and group chats.",
     "audience": "Schools, school leaders, teaching staff, students and families.",
-    "value": "A configurable space that centralizes communication and makes school information easier to follow.",
+    "value": "A configurable space that centralises communication and makes school information easier to follow.",
     "compare": "The platform aims to reduce fragmentation rather than add yet another app to families' routines.",
     "uses": [
      "School-to-parent communication",
@@ -134,7 +134,7 @@
     "features": [
      "Company search",
      "Business filters",
-     "Contextualized company profiles",
+     "Contextualised company profiles",
      "B2B opportunities",
      "Traceable sources"
     ]
@@ -165,7 +165,7 @@
     "problem": "Deciding on the basis of a single price or an opaque score hides costs, competition and uncertainty.",
     "audience": "Marketplace sellers, e-commerce managers and product analysts.",
     "value": "Bring together the criteria that matter to compare multiple products using a transparent method.",
-    "compare": "The tool structures internal decision-making; specialized historical data from services such as Keepa can remain complementary.",
+    "compare": "The tool structures internal decision-making; specialised historical data from services such as Keepa can remain complementary.",
     "uses": [
      "Pre-listing research",
      "Product comparison",
@@ -203,9 +203,9 @@
     "name": "Connected Business Management Solutions",
     "tag": "Operations · Automation",
     "problem": "Duplicate data entry and siloed tools slow teams down and undermine data quality.",
-    "audience": "Small and midsize businesses, nonprofits, training organizations and operations teams.",
+    "audience": "Small and midsize businesses, nonprofits, training organisations and operations teams.",
     "value": "Map the process, connect your tools and automate only the steps that deliver a measurable gain.",
-    "compare": "Depending on the context, an Odoo-based integration may make sense; a more targeted solution is a better fit when the need centers on a few specific workflows.",
+    "compare": "Depending on the context, an Odoo-based integration may make sense; a more targeted solution is a better fit when the need centres on a few specific workflows.",
     "uses": [
      "CRM-to-invoicing sync",
      "Approval workflow",
@@ -220,11 +220,11 @@
     ]
    },
    "marketplace": {
-    "name": "Customizable Marketplace",
+    "name": "Customisable Marketplace",
     "tag": "Marketplace · White label",
     "problem": "Building a full-featured marketplace requires profiles, listings, search, payments, transaction rules and administration.",
     "audience": "Entrepreneurs, federations, professional networks and vertical businesses.",
-    "value": "Start from a customizable foundation to validate a model, then adapt the experience, transactions and branding.",
+    "value": "Start from a customisable foundation to validate a model, then adapt the experience, transactions and branding.",
     "compare": "Sharetribe provides a complete no-code and headless engine; a Dyonysos foundation is worth considering when control over the product, deployment or specific workflows is a priority.",
     "uses": [
      "Services marketplace",
@@ -236,16 +236,16 @@
      "Search and filters",
      "Transaction flow",
      "Administration",
-     "Brand customization"
+     "Brand customisation"
     ]
    },
    "creation-graphique": {
     "name": "Graphic Design",
     "tag": "Design · Adaptation",
     "problem": "Quickly repurpose content across multiple formats without losing visual consistency.",
-    "audience": "Marketing teams, creators and small organizations.",
+    "audience": "Marketing teams, creators and small organisations.",
     "value": "Create, resize and adapt visual content through a streamlined workflow.",
-    "compare": "Canva offers a very broad suite; this approach targets focused, customizable workflows for a specific organization.",
+    "compare": "Canva offers a very broad suite; this approach targets focused, customisable workflows for a specific organisation.",
     "uses": [
      "Social media posts",
      "Sales collateral",
@@ -263,7 +263,7 @@
     "name": "Mobile Apps",
     "tag": "Mobile · Prototypes",
     "problem": "A mobile project becomes costly when it launches with too many features before the core use case has been validated.",
-    "audience": "Businesses, entrepreneurs and organizations with a specific mobile use case.",
+    "audience": "Businesses, entrepreneurs and organisations with a specific mobile use case.",
     "value": "Prototype the essential user journey, test its value and build out step by step.",
     "compare": "The priority is on usage and validation before adding more features.",
     "uses": [
@@ -282,9 +282,9 @@
    "formation-conseil": {
     "name": "Training & Consulting",
     "tag": "Training · Project management · Consulting",
-    "problem": "Generic training has little impact when it doesn't match participants' skill levels, the organization's tools or its real-world projects.",
-    "audience": "Businesses, training organizations, universities, schools, managers, project managers and operations teams.",
-    "value": "Design a directly applicable program that combines methodology, context-specific exercises, skills transfer and coaching.",
+    "problem": "Generic training has little impact when it doesn't match participants' skill levels, the organisation's tools or its real-world projects.",
+    "audience": "Businesses, training organisations, universities, schools, managers, project managers and operations teams.",
+    "value": "Design a directly applicable programme that combines methodology, context-specific exercises, skills transfer and coaching.",
     "compare": "The right format depends on the intended outcome: getting started with a tool, building professional skills, solving a project problem or driving broader transformation.",
     "uses": [
      "In-house corporate training",

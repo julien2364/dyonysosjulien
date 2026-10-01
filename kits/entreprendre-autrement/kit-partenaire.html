@@ -153,7 +153,7 @@ h3{font-size:10.6pt;line-height:1.3;font-weight:800;color:var(--navy);letter-spa
 .cover .chips{display:flex;flex-wrap:wrap;gap:2.4mm;margin-top:7mm}
 .cover .chips span{display:inline-flex;align-items:center;gap:1.6mm;padding:1.6mm 3.2mm;border-radius:10mm;background:#ffffff16;border:1px solid #ffffff2e;font-size:8.4pt;font-weight:600;color:#fff}
 .cover .chips svg{width:3.6mm;height:3.6mm;stroke-width:2.6;color:var(--cover-accent,#8fe3ea)}
-.cover .art{position:absolute;left:15mm;right:15mm;top:166mm;height:76mm}
+.cover .art{position:absolute;left:15mm;right:15mm;top:150mm;height:92mm}
 .cover .foot{position:absolute;left:15mm;right:15mm;bottom:13mm;display:flex;align-items:flex-end;justify-content:space-between;padding-top:5mm;border-top:1px solid #ffffff30}
 .cover .foot .proj{font-size:7.4pt;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#bce2ff}
 .cover .foot img{width:46mm;height:auto;margin-top:2.4mm}
@@ -174,16 +174,16 @@ h3{font-size:10.6pt;line-height:1.3;font-weight:800;color:var(--navy);letter-spa
 
 /* ---------- Logos ---------- */
 .wordmark{display:inline-flex;align-items:center;gap:2.6mm;font-weight:800;letter-spacing:-.03em;line-height:1}
-.omni-word{font-size:17pt;font-weight:800;letter-spacing:-.035em}
+.omni-word{display:inline-block;font-weight:800;letter-spacing:-.035em;line-height:1}
 .omni-word i{font-style:normal;color:var(--omni-accent,#2fd0d2)}
 .ea-word{font-family:Sora,Inter,sans-serif;font-weight:800;letter-spacing:-.02em}
 .ea-word i{font-style:normal;color:#FF6B4A}
 
 /* ---------- Media kit ---------- */
-.mk-hero{position:relative;height:74mm;padding:13mm 15mm 0;background:var(--cover-bg);color:#fff;overflow:hidden}
+.mk-hero{position:relative;min-height:70mm;padding:13mm 15mm 9mm;background:var(--cover-bg);color:#fff;overflow:hidden}
 .mk-hero.light{color:var(--dark)}
 .mk-hero .top{display:flex;justify-content:space-between;align-items:center}
-.mk-hero h1{margin-top:12mm;font-size:30pt;line-height:1.05;letter-spacing:-.04em;font-weight:800}
+.mk-hero h1{margin-top:10mm;font-size:27pt;line-height:1.05;letter-spacing:-.04em;font-weight:800}
 .mk-hero p{margin-top:3mm;max-width:150mm;font-size:10.6pt;color:#d6e4ef}
 .mk-hero.light p{color:#4A5568}
 .mk-hero.light .pill{border-color:#1e3a5f30;background:#fff;color:var(--dark)}
@@ -252,9 +252,9 @@ table.id tr+tr th,table.id tr+tr td{border-top:1px solid #edf1f5}
 }
 
 /* ---------- Art de couverture : Omnifloo ---------- */
-.oart{height:100%;display:flex;flex-direction:column;gap:3.4mm}
+.oart{height:100%;display:flex;flex-direction:column;justify-content:center;gap:3.4mm}
 .ogrid{display:grid;grid-template-columns:repeat(4,1fr);gap:3.4mm}
-.ocard{padding:4.4mm 4mm;border-radius:3.6mm;background:#ffffff14;border:1px solid #ffffff2e}
+.ocard{padding:5.4mm 4.4mm;border-radius:3.6mm;background:#ffffff14;border:1px solid #ffffff2e}
 .ocard .oi{display:grid;place-items:center;width:9mm;height:9mm;margin-bottom:3mm;border-radius:2.6mm;background:#ffffff;color:#007E80}
 .ocard .oi svg{width:5mm;height:5mm;stroke-width:1.9}
 .ocard b{display:block;font-size:11pt;letter-spacing:-.01em}
@@ -269,8 +269,8 @@ table.id tr+tr th,table.id tr+tr td{border-top:1px solid #edf1f5}
 
 /* ---------- Art de couverture : Entreprendre Autrement ---------- */
 .eart{position:relative;height:100%}
-.eart .epath{position:absolute;right:-15mm;bottom:-6mm;width:150mm;height:auto;opacity:.95}
-.ecards{position:absolute;left:0;bottom:2mm;display:grid;grid-template-columns:repeat(3,38mm);gap:3.4mm}
+.eart .epath{position:absolute;left:60mm;right:-14mm;bottom:10mm;width:calc(100% - 46mm);height:auto}
+.ecards{position:absolute;left:0;top:50%;transform:translateY(-50%);display:grid;grid-template-columns:52mm;gap:3.4mm}
 .ecard{padding:4.4mm 4.4mm 4mm;border-radius:3.6mm;background:#fff;box-shadow:0 10px 26px #1e3a5f14;border:1px solid #1e3a5f14}
 .ecard b{display:block;font-family:Sora,Inter,sans-serif;font-size:21pt;font-weight:800;line-height:1;color:#1E3A5F;letter-spacing:-.02em}
 .ecard span{display:block;margin-top:1.6mm;font-size:8.4pt;color:#4A5568}
@@ -294,7 +294,11 @@ table.id tr+tr th,table.id tr+tr td{border-top:1px solid #edf1f5}
 
 /* ---------- Visuel Entreprendre Autrement ---------- */
 .themes{display:grid;grid-template-columns:repeat(5,1fr);gap:2.6mm}
-.theme{display:flex;flex-direction:column;gap:1.8mm;padding:3mm;border-radius:3mm;background:var(--accent-soft)}
+.theme{display:grid;grid-template-columns:7mm 1fr;gap:1.4mm 2mm;align-items:center;padding:2.6mm;border-radius:3mm;background:var(--accent-soft)}
+.theme .ico{width:7mm;height:7mm;border-radius:2mm}
+.theme .ico svg{width:4mm;height:4mm}
+.theme>div{display:contents}
+.theme span:not(.ico){grid-column:1/-1}
 .theme .ico{background:#fff;color:#C84A2C}
 .theme b{display:block;font-family:Sora,Inter,sans-serif;font-size:8.8pt;color:#1E3A5F}
 .theme span{display:block;font-size:7.3pt;line-height:1.35;color:#4A5568}
@@ -315,14 +319,13 @@ table.id tr+tr th,table.id tr+tr td{border-top:1px solid #edf1f5}
 <section class="page cover light">
   <div class="inner">
     <div class="top">
-      <span class="wordmark"><svg style="width:15mm;height:15mm" viewBox="0 0 1200 1200" role="img" aria-label="Entreprendre Autrement">
-  <rect width="1200" height="1200" rx="220" fill="#F7F4EF" stroke="#1E3A5F" stroke-opacity=".12" stroke-width="10"/>
-  <path d="M207 736C330 615 363 440 535 379c112-40 203-7 308 52" fill="none" stroke="#2FBF9B" stroke-width="56" stroke-linecap="round"/>
-  <path d="m807 334 103 131-163 22" fill="none" stroke="#FF6B4A" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="600" y="700" text-anchor="middle" font-family="Sora,Inter,Arial,sans-serif" font-size="310" font-weight="800" letter-spacing="-28" fill="#1E3A5F">EA</text>
-  <rect x="220" y="824" width="760" height="6" rx="3" fill="#FF6B4A"/>
-  <text x="600" y="915" text-anchor="middle" font-family="Sora,Inter,Arial,sans-serif" font-size="57" font-weight="700" letter-spacing="4" fill="#1E3A5F">ENTREPRENDRE</text>
-  <text x="600" y="986" text-anchor="middle" font-family="Sora,Inter,Arial,sans-serif" font-size="57" font-weight="700" letter-spacing="4" fill="#FF6B4A">AUTREMENT</text>
+      <span class="wordmark"><svg style="width:15mm;height:15mm;flex:0 0 auto" viewBox="0 0 1200 1200" aria-hidden="true">
+  <rect width="1200" height="1200" rx="220" fill="#F7F4EF" stroke="#1E3A5F" stroke-opacity=".14" stroke-width="12"/>
+  <g transform="translate(600 600) scale(1.22) translate(-560 -540)">
+    <path d="M207 736C330 615 363 440 535 379c112-40 203-7 308 52" fill="none" stroke="#2FBF9B" stroke-width="60" stroke-linecap="round"/>
+    <path d="m807 334 103 131-163 22" fill="none" stroke="#FF6B4A" stroke-width="60" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="600" y="720" text-anchor="middle" font-family="Sora,Inter,Arial,sans-serif" font-size="330" font-weight="800" letter-spacing="-28" fill="#1E3A5F">EA</text>
+  </g>
 </svg><span class="ea-word" style="font-size:15pt;color:#1E3A5F">Entreprendre <i>Autrement</i></span></span>
       <span class="pill">Kit partenaire — octobre 2026</span>
     </div>
@@ -352,19 +355,18 @@ table.id tr+tr th,table.id tr+tr td{border-top:1px solid #edf1f5}
 
 <section class="page">
   <div class="inner">
-    <div class="ph"><span class="wordmark"><svg style="width:9mm;height:9mm" viewBox="0 0 1200 1200" role="img" aria-label="Entreprendre Autrement">
-  <rect width="1200" height="1200" rx="220" fill="#F7F4EF" stroke="#1E3A5F" stroke-opacity=".12" stroke-width="10"/>
-  <path d="M207 736C330 615 363 440 535 379c112-40 203-7 308 52" fill="none" stroke="#2FBF9B" stroke-width="56" stroke-linecap="round"/>
-  <path d="m807 334 103 131-163 22" fill="none" stroke="#FF6B4A" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="600" y="700" text-anchor="middle" font-family="Sora,Inter,Arial,sans-serif" font-size="310" font-weight="800" letter-spacing="-28" fill="#1E3A5F">EA</text>
-  <rect x="220" y="824" width="760" height="6" rx="3" fill="#FF6B4A"/>
-  <text x="600" y="915" text-anchor="middle" font-family="Sora,Inter,Arial,sans-serif" font-size="57" font-weight="700" letter-spacing="4" fill="#1E3A5F">ENTREPRENDRE</text>
-  <text x="600" y="986" text-anchor="middle" font-family="Sora,Inter,Arial,sans-serif" font-size="57" font-weight="700" letter-spacing="4" fill="#FF6B4A">AUTREMENT</text>
+    <div class="ph"><span class="wordmark"><svg style="width:9mm;height:9mm;flex:0 0 auto" viewBox="0 0 1200 1200" aria-hidden="true">
+  <rect width="1200" height="1200" rx="220" fill="#F7F4EF" stroke="#1E3A5F" stroke-opacity=".14" stroke-width="12"/>
+  <g transform="translate(600 600) scale(1.22) translate(-560 -540)">
+    <path d="M207 736C330 615 363 440 535 379c112-40 203-7 308 52" fill="none" stroke="#2FBF9B" stroke-width="60" stroke-linecap="round"/>
+    <path d="m807 334 103 131-163 22" fill="none" stroke="#FF6B4A" stroke-width="60" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="600" y="720" text-anchor="middle" font-family="Sora,Inter,Arial,sans-serif" font-size="330" font-weight="800" letter-spacing="-28" fill="#1E3A5F">EA</text>
+  </g>
 </svg><span class="ea-word" style="font-size:11pt;color:#1E3A5F">Entreprendre <i>Autrement</i></span></span><span class="doc">Kit partenaire · octobre 2026</span></div>
     <span class="kicker">01 · Le projet</span>
     <h2 class="title">Créer son activité ne devrait pas obliger à empiler trente outils.</h2>
     <div class="psp">
-      <div class="card"><div class="label"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <circle cx="12" cy="12" r="6" /> <circle cx="12" cy="12" r="2" /> </svg>Le problème</div><p>Statut, immatriculation, URSSAF, TVA, facturation, assurance : les créateurs doivent tout comprendre en même temps, avec des informations éparpillées et souvent jargonneuses, au moment où chaque décision compte.</p></div>
+      <div class="card"><div class="label"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <circle cx="12" cy="12" r="6" /> <circle cx="12" cy="12" r="2" /> </svg>Le problème</div><p>Statut, immatriculation, URSSAF, TVA, facturation, assurance : les créateurs doivent tout comprendre en même temps, avec des informations éparpillées et souvent jargonneuses.</p></div>
       <div class="card sol"><div class="label"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /> <path d="M20 2v4" /> <path d="M22 4h-4" /> <circle cx="4" cy="20" r="2" /> </svg>La solution</div><p>Entreprendre Autrement démystifie les démarches françaises avec des fiches actionnables, des outils interactifs et des modèles prêts à l’emploi, en accès libre. Ton professionnel mais accessible, orienté action : faites, calculez, comparez.</p></div>
       <div class="card"><div class="label"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <path d="M16 3.128a4 4 0 0 1 0 7.744" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <circle cx="9" cy="7" r="4" /> </svg>Pour qui</div><p>Micro-entrepreneurs (freelances, consultants, artisans, e-commerçants), créateurs de SASU, porteurs de projet et dirigeants de TPE, partout en France.</p></div>
     </div>
@@ -392,7 +394,7 @@ table.id tr+tr th,table.id tr+tr td{border-top:1px solid #edf1f5}
         <li><span class="tick"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><div><b>17 modèles téléchargeables</b><span>Gabarits Excel, Word et PDF, testés en ligne.</span></div></li>
         <li><span class="tick"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><div><b>Business Model Canvas interactif</b><span>Pour structurer son projet directement dans le navigateur.</span></div></li>
         <li><span class="tick"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><div><b>Articles de blog</b><span>Des articles pratiques en complément des fiches.</span></div></li>
-        <li><span class="tick"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><div><b>Espace projets<span class="tag">Nouveau</span></b><span>Pitch, BMC, SWOT, prévisionnel 3 ans, trésorerie 36 mois, plan de financement, exports PDF, Word et Excel, partage en lecture seule à un financeur.</span></div></li>
+        <li><span class="tick"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><div><b>Espace projets<span class="tag">Nouveau</span></b><span>Pitch, BMC, SWOT, prévisionnel, trésorerie, plan de financement ; exports PDF, Word, Excel.</span></div></li>
         <li><span class="tick"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><div><b>Accès libre</b><span>Fiches et outils sans compte ni paiement, financés par la publicité et des liens partenaires.</span></div></li>
       </ul>
     </div>
@@ -405,14 +407,13 @@ table.id tr+tr th,table.id tr+tr td{border-top:1px solid #edf1f5}
 
 <section class="page">
   <div class="inner">
-    <div class="ph"><span class="wordmark"><svg style="width:9mm;height:9mm" viewBox="0 0 1200 1200" role="img" aria-label="Entreprendre Autrement">
-  <rect width="1200" height="1200" rx="220" fill="#F7F4EF" stroke="#1E3A5F" stroke-opacity=".12" stroke-width="10"/>
-  <path d="M207 736C330 615 363 440 535 379c112-40 203-7 308 52" fill="none" stroke="#2FBF9B" stroke-width="56" stroke-linecap="round"/>
-  <path d="m807 334 103 131-163 22" fill="none" stroke="#FF6B4A" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="600" y="700" text-anchor="middle" font-family="Sora,Inter,Arial,sans-serif" font-size="310" font-weight="800" letter-spacing="-28" fill="#1E3A5F">EA</text>
-  <rect x="220" y="824" width="760" height="6" rx="3" fill="#FF6B4A"/>
-  <text x="600" y="915" text-anchor="middle" font-family="Sora,Inter,Arial,sans-serif" font-size="57" font-weight="700" letter-spacing="4" fill="#1E3A5F">ENTREPRENDRE</text>
-  <text x="600" y="986" text-anchor="middle" font-family="Sora,Inter,Arial,sans-serif" font-size="57" font-weight="700" letter-spacing="4" fill="#FF6B4A">AUTREMENT</text>
+    <div class="ph"><span class="wordmark"><svg style="width:9mm;height:9mm;flex:0 0 auto" viewBox="0 0 1200 1200" aria-hidden="true">
+  <rect width="1200" height="1200" rx="220" fill="#F7F4EF" stroke="#1E3A5F" stroke-opacity=".14" stroke-width="12"/>
+  <g transform="translate(600 600) scale(1.22) translate(-560 -540)">
+    <path d="M207 736C330 615 363 440 535 379c112-40 203-7 308 52" fill="none" stroke="#2FBF9B" stroke-width="60" stroke-linecap="round"/>
+    <path d="m807 334 103 131-163 22" fill="none" stroke="#FF6B4A" stroke-width="60" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="600" y="720" text-anchor="middle" font-family="Sora,Inter,Arial,sans-serif" font-size="330" font-weight="800" letter-spacing="-28" fill="#1E3A5F">EA</text>
+  </g>
 </svg><span class="ea-word" style="font-size:11pt;color:#1E3A5F">Entreprendre <i>Autrement</i></span></span><span class="doc">Kit partenaire · octobre 2026</span></div>
     <span class="kicker">02 · Formats de partenariat</span>
     <h2 class="title">Travaillons ensemble, au format qui vous convient.</h2>
@@ -437,14 +438,13 @@ table.id tr+tr th,table.id tr+tr td{border-top:1px solid #edf1f5}
 
 <section class="page">
   <div class="inner">
-    <div class="ph"><span class="wordmark"><svg style="width:9mm;height:9mm" viewBox="0 0 1200 1200" role="img" aria-label="Entreprendre Autrement">
-  <rect width="1200" height="1200" rx="220" fill="#F7F4EF" stroke="#1E3A5F" stroke-opacity=".12" stroke-width="10"/>
-  <path d="M207 736C330 615 363 440 535 379c112-40 203-7 308 52" fill="none" stroke="#2FBF9B" stroke-width="56" stroke-linecap="round"/>
-  <path d="m807 334 103 131-163 22" fill="none" stroke="#FF6B4A" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="600" y="700" text-anchor="middle" font-family="Sora,Inter,Arial,sans-serif" font-size="310" font-weight="800" letter-spacing="-28" fill="#1E3A5F">EA</text>
-  <rect x="220" y="824" width="760" height="6" rx="3" fill="#FF6B4A"/>
-  <text x="600" y="915" text-anchor="middle" font-family="Sora,Inter,Arial,sans-serif" font-size="57" font-weight="700" letter-spacing="4" fill="#1E3A5F">ENTREPRENDRE</text>
-  <text x="600" y="986" text-anchor="middle" font-family="Sora,Inter,Arial,sans-serif" font-size="57" font-weight="700" letter-spacing="4" fill="#FF6B4A">AUTREMENT</text>
+    <div class="ph"><span class="wordmark"><svg style="width:9mm;height:9mm;flex:0 0 auto" viewBox="0 0 1200 1200" aria-hidden="true">
+  <rect width="1200" height="1200" rx="220" fill="#F7F4EF" stroke="#1E3A5F" stroke-opacity=".14" stroke-width="12"/>
+  <g transform="translate(600 600) scale(1.22) translate(-560 -540)">
+    <path d="M207 736C330 615 363 440 535 379c112-40 203-7 308 52" fill="none" stroke="#2FBF9B" stroke-width="60" stroke-linecap="round"/>
+    <path d="m807 334 103 131-163 22" fill="none" stroke="#FF6B4A" stroke-width="60" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="600" y="720" text-anchor="middle" font-family="Sora,Inter,Arial,sans-serif" font-size="330" font-weight="800" letter-spacing="-28" fill="#1E3A5F">EA</text>
+  </g>
 </svg><span class="ea-word" style="font-size:11pt;color:#1E3A5F">Entreprendre <i>Autrement</i></span></span><span class="doc">Kit partenaire · octobre 2026</span></div>
     <span class="kicker">03 · Ce que nous apportons</span>
     <h2 class="title">Ce que nous apportons et proposons.</h2>

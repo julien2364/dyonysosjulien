@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-labelledby="t d">
+  <title id="t">Entreprendre Autrement — identité sociale</title>
+  <desc id="d">Monogramme EA bleu encre, corail et menthe, inspiré d'un chemin entrepreneurial.</desc>
+  <rect width="1200" height="1200" rx="220" fill="#F7F4EF"/>
+  <path d="M207 736C330 615 363 440 535 379c112-40 203-7 308 52" fill="none" stroke="#2FBF9B" stroke-width="56" stroke-linecap="round"/>
+  <path d="m807 334 103 131-163 22" fill="none" stroke="#FF6B4A" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="600" y="700" text-anchor="middle" font-family="Sora,Inter,Arial,sans-serif" font-size="310" font-weight="800" letter-spacing="-28" fill="#1E3A5F">EA</text>
+  <rect x="220" y="824" width="760" height="6" rx="3" fill="#FF6B4A"/>
+  <text x="600" y="915" text-anchor="middle" font-family="Sora,Inter,Arial,sans-serif" font-size="57" font-weight="700" letter-spacing="4" fill="#1E3A5F">ENTREPRENDRE</text>
+  <text x="600" y="986" text-anchor="middle" font-family="Sora,Inter,Arial,sans-serif" font-size="57" font-weight="700" letter-spacing="4" fill="#FF6B4A">AUTREMENT</text>
+</svg>

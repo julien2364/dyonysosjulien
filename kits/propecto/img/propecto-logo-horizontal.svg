@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300">
+  
+  <defs>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#155EEF"/>
+      <stop offset="1" stop-color="#00A7B5"/>
+    </linearGradient>
+    <linearGradient id="brand-dark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1B3A"/>
+      <stop offset="0.58" stop-color="#0F3274"/>
+      <stop offset="1" stop-color="#155EEF"/>
+    </linearGradient>
+    <filter id="brand-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#07152E" flood-opacity="0.20"/>
+    </filter>
+    <pattern id="brand-grid" width="52" height="52" patternUnits="userSpaceOnUse">
+      <path d="M52 0H0V52" fill="none" stroke="#FFFFFF" stroke-opacity="0.055" stroke-width="1"/>
+    </pattern>
+  </defs>
+  
+  
+  <g>
+    <rect x="24" y="24" width="252" height="252" rx="59.22" fill="url(#brand)"/>
+    <text x="150" y="158.82000000000002" text-anchor="middle" dominant-baseline="middle"
+      font-family="Inter, Arial, sans-serif" font-size="108.36" font-weight="850" fill="#FFFFFF">P</text>
+  </g>
+  
+  <text x="330" y="157" text-anchor="start" dominant-baseline="middle"
+    font-family="Inter, Arial, sans-serif" font-size="150" font-weight="850" letter-spacing="-5.250000000000001">
+    <tspan fill="#0B1B3A">Pro</tspan><tspan fill="#1F5BE3">pecto</tspan>
+  </text>
+
+</svg>

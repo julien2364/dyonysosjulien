@@ -230,6 +230,7 @@
   <url><loc>https://dyonysos.fr/es/solutions/profit-plus</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://dyonysos.fr/es/solutions/quizplay</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://dyonysos.fr/es/video</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dyonysos.fr/cgv</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
   <url><loc>https://dyonysos.fr/gestion</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://dyonysos.fr/graphisme</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://dyonysos.fr/marketplaces</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>

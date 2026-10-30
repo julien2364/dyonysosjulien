@@ -13,7 +13,7 @@ Sitemap: https://dyonysos.fr/sitemap.xml
 
 # ============================================================
 # BLOC À AJOUTER (pas à remplacer) dans le robots.txt existant
-# de chaque site ? autorise explicitement les crawlers IA à lire
+# de chaque site → autorise explicitement les crawlers IA à lire
 # le contenu, condition nécessaire pour être cité par ChatGPT,
 # Claude, Perplexity, Gemini / Google AI Overviews.
 # ============================================================
@@ -47,7 +47,7 @@ Allow: /
 
 # ============================================================
 # Rappel : ce bloc ne sert à rien si le domaine reste derrière
-# une protection Vercel (Deployment Protection / SSO) ? vérifier
+# une protection Vercel (Deployment Protection / SSO) → vérifier
 # d'abord que le site répond en 200 SANS authentification pour
 # un visiteur anonyme (curl -I https://votredomaine.com).
 # ============================================================

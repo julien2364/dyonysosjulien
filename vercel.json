@@ -117,10 +117,6 @@
       "destination": "/api/prerender?p=/de/legal"
     },
     {
-      "source": "/partenaires",
-      "destination": "/partenaires"
-    },
-    {
       "source": "/en/partenaires",
       "destination": "/api/prerender?p=/en/partenaires"
     },
@@ -137,10 +133,6 @@
       "destination": "/api/prerender?p=/de/partenaires"
     },
     {
-      "source": "/emploi",
-      "destination": "/emploi"
-    },
-    {
       "source": "/en/emploi",
       "destination": "/api/prerender?p=/en/emploi"
     },
@@ -155,10 +147,6 @@
     {
       "source": "/de/emploi",
       "destination": "/api/prerender?p=/de/emploi"
-    },
-    {
-      "source": "/formation-conseil",
-      "destination": "/formation-conseil"
     },
     {
       "source": "/en/formation-conseil",
@@ -287,18 +275,6 @@
     {
       "source": "/out/:solution",
       "destination": "/out"
-    },
-    {
-      "source": "/contact",
-      "destination": "/contact"
-    },
-    {
-      "source": "/espace-prive",
-      "destination": "/espace-prive"
-    },
-    {
-      "source": "/pilotage-social",
-      "destination": "/pilotage-social"
     },
     {
       "source": "/pilotage-odoo",

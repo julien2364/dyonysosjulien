@@ -44,5 +44,5 @@
     contactForm.addEventListener('submit',async e=>{e.preventDefault();const button=contactForm.querySelector('button');status.textContent='Envoi en cours…';status.className='status';button.disabled=true;try{const body=Object.fromEntries(new FormData(contactForm));const response=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const data=await response.json();if(!response.ok)throw new Error(data.error||'Envoi impossible.');status.textContent='Votre message a bien été envoyé.';status.className='status success';window.va?.('pageview',{route:'/conversion/contact-envoye',path:'/conversion/contact-envoye'});contactForm.reset()}catch(error){status.textContent=error.message;status.className='status error'}finally{button.disabled=false}})
   </script>
   <script src="/common.js" defer></script>
-</body>
+<script src="/mentions-config.js" defer></script><script src="/mentions.js" defer></script></body>
 </html>

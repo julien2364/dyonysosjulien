@@ -40,4 +40,4 @@
     document.querySelectorAll('[data-theme]').forEach(button=>button.addEventListener('click',()=>{document.documentElement.dataset.theme=button.dataset.theme;document.querySelectorAll('[data-theme]').forEach(b=>b.classList.toggle('active',b===button));document.querySelector('#themeNote').textContent=notes[button.dataset.theme];localStorage.setItem('dyonysos-theme',button.dataset.theme)}));
     const saved=localStorage.getItem('dyonysos-theme');if(saved&&notes[saved])document.querySelector(`[data-theme="${saved}"]`).click();
   </script>
-</body></html>
+<script src="/mentions-config.js" defer></script><script src="/mentions.js" defer></script></body></html>

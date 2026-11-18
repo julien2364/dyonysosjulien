@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- T034 — Gabarit de page application Dyonysos (blocs Website Builder éditables).
+     Fichier proposé seulement : aucune publication, aucune écriture dans Odoo.
+     Chaque page /applications/<slug> est une instance de ce gabarit remplie depuis
+     migration-odoo/manifeste-pages-apps.json. -->
+<odoo>
+  <template id="dyo_page_app" name="Page application Dyonysos" page="True">
+    <t t-call="website.layout">
+      <div id="wrap" class="oe_structure oe_empty o_dyo_app_page">
+        <!-- Bloc 1 : titre (éditable, snippet s_title) -->
+        <section class="s_title pt48 pb24" data-snippet="s_title" data-name="Titre">
+          <div class="container">
+            <h1 t-field="app.name">Nom de l'application</h1>
+            <p class="text-muted" t-field="app.group_title">Groupe</p>
+          </div>
+        </section>
+        <!-- Bloc 2 : accroche (éditable, snippet s_text_block) -->
+        <section class="s_text_block pt24 pb24" data-snippet="s_text_block" data-name="Accroche">
+          <div class="container">
+            <p class="lead" t-field="app.summary">Résumé de l'application</p>
+          </div>
+        </section>
+        <!-- Bloc 3 : prix / version / licence (éditable, snippet s_three_columns) -->
+        <section class="s_three_columns pt32 pb32 bg-light" data-snippet="s_three_columns" data-name="Infos clés">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-4 text-center">
+                <h4>Prix</h4>
+                <p><span t-field="app.price">0</span> <span t-field="app.currency">EUR</span></p>
+              </div>
+              <div class="col-lg-4 text-center">
+                <h4>Version</h4>
+                <p t-field="app.version">19.0.1.0.0</p>
+              </div>
+              <div class="col-lg-4 text-center">
+                <h4>Licence</h4>
+                <p t-field="app.license">OPL-1</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Bloc 4 : capture + description (éditables) -->
+        <section class="s_image_text pt32 pb32" data-snippet="s_image_text" data-name="Capture et description">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-6">
+                <img class="img-fluid" t-att-src="app.image" t-att-alt="app.name"/>
+              </div>
+              <div class="col-lg-6">
+                <div t-field="app.description_html">Description</div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Bloc 5 : vidéo de démo (éditable) -->
+        <section class="s_text_block pt24 pb24 bg-light" data-snippet="s_text_block" data-name="Vidéo" t-if="app.video_youtube_id">
+          <div class="container">
+            <h3>Vidéo de démonstration</h3>
+            <div class="ratio ratio-16x9">
+              <iframe t-att-src="'https://www.youtube.com/embed/' + app.video_youtube_id" allowfullscreen="allowfullscreen"></iframe>
+            </div>
+          </div>
+        </section>
+        <!-- Bloc 6 : appels à l'action (éditable, snippet s_call_to_action) -->
+        <section class="s_call_to_action pt48 pb48 bg-primary" data-snippet="s_call_to_action" data-name="Appels à l'action">
+          <div class="container text-center">
+            <h3 t-field="app.name">Nom de l'application</h3>
+            <div class="mt-3">
+              <a class="btn btn-light me-2" t-att-href="app.apps_url" t-if="app.apps_url">Voir sur Odoo Apps</a>
+              <a class="btn btn-outline-light" t-att-href="'/contact?objet=' + app.name">Demander un échange</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </t>
+  </template>
+</odoo>

@@ -14,11 +14,11 @@ const BANDEAU_RENDU = BANDEAU_MODELE.replace('{ANNEE_COURANTE}', ANNEE);
 
 // Pages publiques du site (index,follow) : toutes doivent afficher le bandeau.
 const PAGES = [
-  'articles.html', 'category.html', 'contact.html', 'dyonysos-directions-visuelles.html',
+  'articles.html', 'category.html', 'contact.html', 'defense.html', 'dyonysos-directions-visuelles.html',
   'dyonysos-maquette-entreprise-v2.html', 'dyonysos-solutions-v2.html', 'emploi.html',
-  'formation-conseil.html', 'halloween-2026.html', 'localized.html', 'localized-articles.html',
-  'localized-secondary.html', 'mentions-legales.html', 'mobile-articles.html', 'odoo-apps.html',
-  'odoo-connecteurs-ecommerce.html', 'odoo-mcp-ia.html', 'odoo-mrp-essentiel.html',
+  'espace-partenaires.html', 'formation-conseil.html', 'halloween-2026.html', 'localized.html',
+  'localized-articles.html', 'localized-secondary.html', 'mentions-legales.html', 'mobile-articles.html',
+  'odoo-apps.html', 'odoo-connecteurs-ecommerce.html', 'odoo-mcp-ia.html', 'odoo-mrp-essentiel.html',
   'outils-numeriques-etsy.html', 'partenaires.html', 'realisations.html',
 ];
 

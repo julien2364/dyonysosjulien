@@ -109,3 +109,20 @@ test('sitemap : script idempotent, six alternatives par page traduite', () => {
     assert.equal((block(loc).match(/<xhtml:link /g) || []).length, 6, loc);
   }
 });
+
+test('hreflang des pages statiques : chaque alternative de langue est une route réellement servie', () => {
+  const root = path.join(__dirname, '..');
+  const pages = fs.readdirSync(root).filter((f) => f.endsWith('.html'));
+  for (const f of pages) {
+    const html = fs.readFileSync(path.join(root, f), 'utf8');
+    const links = [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="https:\/\/dyonysos\.fr([^"]*)"\s*\/?>/g)];
+    for (const [, lang, p] of links) {
+      if (lang === 'fr' || lang === 'x-default') continue;
+      const rel = p.replace(/^\//, '');
+      const served = resolve(p) !== null
+        || fs.existsSync(path.join(root, `${rel}.html`))
+        || fs.existsSync(path.join(root, rel, 'index.html'));
+      assert.ok(served, `${f} : hreflang ${lang} -> ${p || '/'} declare une route non servie (ni prerender ni fichier statique)`);
+    }
+  }
+});

@@ -108,4 +108,12 @@ test('sitemap : script idempotent, six alternatives par page traduite', () => {
   for (const loc of ['/en/contact', '/blog/adapter-cv-offre-emploi', '/de/solutions/cvdesignpro', '/nl/commerce', '/es', '/mentions-legales']) {
     assert.equal((block(loc).match(/<xhtml:link /g) || []).length, 6, loc);
   }
+  const defense = block('/defense');
+  assert.ok(defense, '/defense present dans sitemap.xml');
+  assert.equal((defense.match(/<xhtml:link /g) || []).length, 0, '/defense : aucune traduction servie, donc aucune alternative annoncee');
+});
+
+test('accueil : la page /defense est referencee depuis le pied de page Entreprise', () => {
+  const html = fs.readFileSync(path.join(__dirname, '..', 'dyonysos-maquette-entreprise-v2.html'), 'utf8');
+  assert.ok(/<a href="\/defense">[^<]+<\/a>/.test(html), 'lien /defense absent de la page d\u2019accueil');
 });

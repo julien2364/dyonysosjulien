@@ -36,5 +36,7 @@ changement ne produit aucune modification fonctionnelle.
 
 La description YouTube contient toujours les deux portes d'entrée : page
 Dyonysos.fr et fiche officielle Odoo Apps. Le lien vidéo de la fiche Odoo doit
-être ajouté dans `static/description/index.html`, poussé sur la branche `19.0`,
-puis le dépôt doit être rescanné depuis le tableau de bord Odoo Apps.
+être ajouté dans `<module>/static/description/index.html` du dépôt des modules
+Odoo (julien2364/odoo-addons-dyonysos ; ce chemin n'existe pas dans ce dépôt),
+poussé sur la branche `19.0`, puis le dépôt doit être rescanné depuis le tableau
+de bord Odoo Apps.
